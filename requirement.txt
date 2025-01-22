@@ -1,0 +1,10 @@
+Flask
+Flask-CORS
+celery
+redis
+pandas
+numpy
+sentence-transformers
+faiss-cpu
+tqdm
+openpyxl

@@ -1,0 +1,4900 @@
+ 
+ 
+ 
+ 
+ 
+ 
+36 
+ 
+ 
+ 
+ 
+System-generated population listings were obtained whenever possible to ensure completeness prior to selecting 
+samples.  In some instances, full populations were tested in cases including but not limited to, the uniqueness of 
+the event or low overall population size. 
+ 
+ 
+Reliability of Information Provided by the Service Organization 
+ 
+Observation and inspection procedures were performed related to certain system-generated reports, listings, and 
+queries to assess the accuracy and completeness (reliability) of the information used in the performance of our 
+testing of the controls.  
+ 
+ 
+Test Results 
+ 
+The results of each test applied are listed alongside each respective test applied within the Testing Matrices.  Test 
+results not deemed as control deviations are noted by the phrase “No exceptions noted.” in the test result column 
+of the Testing Matrices.  Any phrase other than the aforementioned, constitutes either a test result that is the result 
+of non-occurrence, a change in the application of the control activity, or a deficiency in the operating effectiveness 
+of the control activity.  Testing deviations identified within the Testing Matrices are not necessarily weaknesses in 
+the total system of controls, as this determination can only be made after consideration of controls in place at user 
+entities and subservice organizations, if applicable, and other factors.  Control considerations that should be 
+implemented by subservice organizations, in order to complement the control activities and achieve the applicable 
+trust services criteria, are presented in the “Subservice Organizations” section within Section 3. 
+ 
+ 
+ 
+SECURITY CATEGORY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Control Environment 
+CC1.1 COSO Principle 1: The entity demonstrates a commitment to integrity and ethical values. 
+CC1.1.1 
+An information security 
+management system policy and 
+information security policy are 
+formally documented and 
+reviewed on an annual basis that 
+identifies information required to 
+support the functioning of internal 
+control and achievement of 
+objectives and associated 
+protection, access rights, and 
+retention requirements. 
+Inspected the information security 
+policy and information security 
+management system policy to 
+determine that an information 
+security management system 
+policy and information security 
+policy were formally documented 
+and reviewed during the period 
+that identified information required 
+to support the functioning of 
+internal control and achievement 
+of objectives and associated 
+protection, access rights, and 
+retention requirements. 
+No exceptions noted. 
+CC1.1.2 
+Background checks are 
+performed on new hires, to the 
+extent permissible by local law, 
+prior to the new hire employee’s 
+start date. 
+Inquired of the compliance 
+manager regarding background 
+verification checks to determine 
+that background checks were 
+performed on new hires, to the 
+extent permissible by local law, 
+prior to the new hire employee’s 
+start date. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+37 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the background checks 
+documentation for a sample of 
+employees hired during the period 
+to determine that background 
+checks were completed for each 
+employee sampled. 
+No exceptions noted. 
+CC1.1.3 
+U.S.-based employees must sign 
+an employee handbook 
+acknowledgement form after 
+reviewing the employee handbook 
+indicating that they have been 
+given access to the employee 
+manual and understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+Inquired of the compliance 
+manager regarding employee 
+handbook acknowledgement to 
+determine that U.S.-based 
+employees signed and 
+acknowledged the employee 
+handbook to understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+No exceptions noted. 
+Inspected the employee 
+handbook acknowledgment for a 
+sample of U.S.-based employees 
+hired during the period to 
+determine that each employee 
+sampled indicated that they had 
+been given access to the 
+employee manual and understood 
+their responsibilities for adhering 
+to the policies and procedures 
+contained within the manual. 
+No exceptions noted. 
+CC1.1.4 
+An employee sanction procedure 
+is in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy and / 
+or procedure. 
+Inspected the employee 
+handbook to determine that an 
+employee sanction procedure was 
+in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy and / 
+or procedure. 
+No exceptions noted. 
+CC1.2 COSO Principle 2: The board of directors demonstrates independence from management and exercises oversight of 
+the development and performance of internal control. 
+CC1.2.1 
+The board of directors establishes 
+and maintains a formal charter 
+and set of bylaws which describes 
+their responsibilities and oversight 
+of management’s system of 
+internal control. 
+Inspected the audit committee 
+charter, board of director bylaws, 
+and the members of the board of 
+directors to determine that the 
+board of directors established and 
+maintained a formal charter and 
+set of bylaws which described 
+their responsibilities and oversight 
+of management’s system of 
+internal control. 
+No exceptions noted. 
+CC1.2.2 
+The board of directors has 
+members who are independent 
+from management, as in 
+accordance with the board of 
+directors’ bylaws, and are 
+objective in evaluations and 
+decision making. 
+Inspected the audit committee 
+charter, board of director bylaws, 
+and the members of the board of 
+directors to determine that the 
+board of directors had members 
+who were independent from 
+management and were objective 
+in evaluations and decision 
+making. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+38 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.2.3 
+Management compiles and 
+provides internal control 
+performance metrics to the board 
+of directors on a quarterly basis. 
+Inspected the ISMS management 
+review results for a sample of 
+quarters during the period to 
+determine that management 
+compiled and provided internal 
+control performance metrics to the 
+board of directors for each quarter 
+sampled. 
+No exceptions noted. 
+CC1.2.4 
+An executive management team 
+that is comprised of security 
+personnel and executive staff 
+meets on a quarterly basis to 
+guide the company in managing 
+security, availability, and 
+confidentiality risks. 
+Inspected the internal audit 
+committee performance metrics 
+report provided to the board of 
+directors for a sample of quarters 
+during the period to determine 
+that an executive management 
+team comprised of security 
+personnel and executive staff met 
+to guide the company in 
+managing security, availability, 
+and confidentiality risks for each 
+quarter sampled. 
+No exceptions noted. 
+CC1.3 COSO Principle 3: Management establishes, with board oversight, structures, reporting lines, and appropriate 
+authorities and responsibilities in the pursuit of objectives. 
+CC1.3.1 
+An organizational chart is in place 
+to communicate the defined key 
+areas of authority, responsibility, 
+and lines of reporting to personnel 
+related to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of the system.  This 
+chart is communicated to 
+employees and updated as 
+needed. 
+Inquired of the compliance 
+manager regarding the 
+organizational structure to 
+determine that an organizational 
+chart was in place to 
+communicate the defined key 
+areas of authority, responsibility, 
+and lines of reporting to personnel 
+related to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of the system and that 
+the organizational chart was 
+communicated to employees and 
+updated as needed. 
+No exceptions noted. 
+Inspected the organizational chart 
+on the company intranet to 
+determine that an organizational 
+chart was in place and 
+communicated to employees via 
+the company intranet. 
+No exceptions noted. 
+CC1.3.2 
+Documented position descriptions 
+are in place to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs. 
+Inspected the documented 
+position descriptions for a sample 
+of employment positions to 
+determine that documented 
+position descriptions were in place 
+to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs 
+for each job sampled. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+39 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.3.3 
+Management compiles and 
+provides internal control 
+performance metrics to the board 
+of directors on a quarterly basis. 
+Inspected the ISMS management 
+review results for a sample of 
+quarters during the period to 
+determine that management 
+compiled and provided internal 
+control performance metrics to the 
+board of directors for each quarter 
+sampled. 
+No exceptions noted. 
+CC1.4 COSO Principle 4: The entity demonstrates a commitment to attract, develop, and retain competent individuals in 
+alignment with objectives. 
+CC1.4.1 
+Documented position descriptions 
+are in place to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs. 
+Inspected the documented 
+position descriptions for a sample 
+of employment positions to 
+determine that documented 
+position descriptions were in place 
+to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs 
+for each job sampled. 
+No exceptions noted. 
+CC1.4.2 
+An information security 
+management system policy and 
+information security policy are 
+formally documented and 
+reviewed on an annual basis that 
+identifies information required to 
+support the functioning of internal 
+control and achievement of 
+objectives and associated 
+protection, access rights, and 
+retention requirements. 
+Inspected the information security 
+policy and information security 
+management system policy to 
+determine that an information 
+security management system 
+policy and information security 
+policy were formally documented 
+and reviewed during the period 
+that identified information required 
+to support the functioning of 
+internal control and achievement 
+of objectives and associated 
+protection, access rights, and 
+retention requirements. 
+No exceptions noted. 
+CC1.4.3 
+U.S.-based employees must sign 
+an employee handbook 
+acknowledgement form after 
+reviewing the employee handbook 
+indicating that they have been 
+given access to the employee 
+manual and understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+Inquired of the compliance 
+manager regarding employee 
+handbook acknowledgement to 
+determine that U.S.-based 
+employees signed and 
+acknowledged the employee 
+handbook to understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+No exceptions noted. 
+Inspected the employee 
+handbook acknowledgment for a 
+sample of U.S.-based employees 
+hired during the period to 
+determine that each employee 
+sampled indicated that they had 
+been given access to the 
+employee manual and understood 
+their responsibilities for adhering 
+to the policies and procedures 
+contained within the manual. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+40 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.4.4 
+Employees are required to 
+complete security awareness 
+training on an annual basis to 
+understand their obligations and 
+responsibilities to comply with the 
+corporate security policies. 
+Inspected the security awareness 
+training materials and the security 
+awareness training completion 
+documentation for a sample of 
+current employees to determine 
+that each employee sampled 
+completed security awareness 
+training during the period to 
+understand their obligations and 
+responsibilities to comply with the 
+corporate security policies. 
+No exceptions noted. 
+CC1.5 COSO Principle 5: The entity holds individuals accountable for their internal control responsibilities in the pursuit of 
+objectives. 
+CC1.5.1 
+An organizational chart is in place 
+to communicate the defined key 
+areas of authority, responsibility, 
+and lines of reporting to personnel 
+related to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of the system.  This 
+chart is communicated to 
+employees and updated as 
+needed. 
+Inquired of the compliance 
+manager regarding the 
+organizational structure to 
+determine that an organizational 
+chart was in place to 
+communicate the defined key 
+areas of authority, responsibility, 
+and lines of reporting to personnel 
+related to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of the system and that 
+the organizational chart was 
+communicated to employees and 
+updated as needed. 
+No exceptions noted. 
+Inspected the organizational chart 
+on the company intranet to 
+determine that an organizational 
+chart was in place and 
+communicated to employees via 
+the company intranet. 
+No exceptions noted. 
+CC1.5.2 
+Documented position descriptions 
+are in place to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs. 
+Inspected the documented 
+position descriptions for a sample 
+of employment positions to 
+determine that documented 
+position descriptions were in place 
+to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs 
+for each job sampled. 
+No exceptions noted. 
+CC1.5.3 
+An employee sanction procedure 
+is in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy 
+and/or procedure. 
+Inspected the employee 
+handbook to determine that an 
+employee sanction procedure was 
+in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy 
+and/or procedure. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+41 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Communication and Information 
+CC2.1 COSO Principle 13: The entity obtains or generates and uses relevant, quality information to support the functioning 
+of internal control. 
+CC2.1.1 
+Documented policies and 
+procedures are in place to guide 
+personnel with regards to the 
+design, development, 
+implementation, operation, 
+maintenance, and monitoring of 
+in-scope systems.  These policies 
+and procedures are 
+communicated to internal 
+personnel via the company 
+intranet. 
+Inspected the information security 
+policies and evidence of 
+communication via the company 
+intranet to determine that 
+documented information security 
+policies and procedures were in 
+place to guide personnel with 
+regards to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of in-scope systems 
+and were communicated to 
+internal personnel via the 
+company intranet. 
+No exceptions noted. 
+CC2.1.2 
+A centralized logging system is 
+configured to log access related 
+events, which includes the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+Inspected the centralized 
+monitoring system configurations 
+and an example log generated 
+during the period to determine 
+that a centralized logging system 
+was configured to log access 
+related events, which included the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+No exceptions noted. 
+CC2.1.3 
+Security monitoring tools are 
+utilized to monitor for possible or 
+actual security breaches. 
+Inquired of the compliance 
+manager regarding security 
+monitoring tools to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+Inspected the security monitoring 
+tool alerting configurations and 
+example alerts generated during 
+the period to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+CC2.1.4 
+Enterprise monitoring applications 
+are in place to monitor the 
+performance and availability of the 
+in-scope systems and alert 
+operations personnel via on-
+screen alert when predefined 
+thresholds are exceeded. 
+Inspected the enterprise 
+monitoring configurations and 
+example alerts generated during 
+the period to determine that 
+enterprise monitoring applications 
+were in place to monitor the 
+performance and availability of the 
+in-scope systems and alerted 
+response center and data center 
+operations personnel via on-
+screen alert when predefined 
+thresholds were exceeded. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+42 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.1.5 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC2.1.6 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+43 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.1.7 
+The entity’s IT security group 
+monitors the security impact of 
+emerging technologies, and the 
+impact of applicable laws or 
+regulations are considered by 
+senior management on at least an 
+annual basis. 
+Inspected example security 
+related advisories from the public-
+facing website and the most 
+recent ISMS management review 
+meeting minutes to determine that 
+the entity’s IT security group 
+monitored the security impact of 
+emerging technologies, and the 
+impact of applicable laws or 
+regulations were considered by 
+senior management during the 
+period. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and / or security 
+breaches identified that impact Zscaler systems and customers. 
+CC2.2 COSO Principle 14: The entity internally communicates information, including objectives and responsibilities for 
+internal control, necessary to support the functioning of internal control. 
+CC2.2.1 
+Documented policies and 
+procedures are in place to guide 
+personnel with regards to the 
+design, development, 
+implementation, operation, 
+maintenance, and monitoring of 
+in-scope systems.  These policies 
+and procedures are 
+communicated to internal 
+personnel via the company 
+intranet. 
+Inspected the information security 
+policies and evidence of 
+communication via the company 
+intranet to determine that 
+documented information security 
+policies and procedures were in 
+place to guide personnel with 
+regards to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of in-scope systems 
+and were communicated to 
+internal personnel via the 
+company intranet. 
+No exceptions noted. 
+CC2.2.2 
+U.S.-based employees must sign 
+an employee handbook 
+acknowledgement form after 
+reviewing the employee handbook 
+indicating that they have been 
+given access to the employee 
+manual and understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+Inquired of the compliance 
+manager regarding employee 
+handbook acknowledgement to 
+determine that U.S.-based 
+employees signed and 
+acknowledged the employee 
+handbook to understand their 
+responsibilities for adhering to the 
+policies and procedures contained 
+within the manual. 
+No exceptions noted. 
+Inspected the employee 
+handbook acknowledgment for a 
+sample of U.S.-based employees 
+hired during the period to 
+determine that each employee 
+sampled indicated that they had 
+been given access to the 
+employee manual and understood 
+their responsibilities for adhering 
+to the policies and procedures 
+contained within the manual. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+44 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.2.3 
+Employees are required to 
+complete security awareness 
+training on an annual basis to 
+understand their obligations and 
+responsibilities to comply with the 
+corporate security policies. 
+Inspected the security awareness 
+training materials and the security 
+awareness training completion 
+documentation for a sample of 
+current employees to determine 
+that each employee sampled 
+completed security awareness 
+training during the period to 
+understand their obligations and 
+responsibilities to comply with the 
+corporate security policies. 
+No exceptions noted. 
+CC2.2.4 
+Documented position descriptions 
+are in place to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs. 
+Inspected the documented 
+position descriptions for a sample 
+of employment positions to 
+determine that documented 
+position descriptions were in place 
+to define the skills, 
+responsibilities, and knowledge 
+levels required for particular jobs 
+for each job sampled. 
+No exceptions noted. 
+CC2.2.5 
+Zscaler’s information security 
+policy includes a documented 
+procedure to identify and respond 
+to security breaches, including 
+threats and vulnerabilities, and 
+other incidents.  The policy is 
+annually reviewed and updated. 
+Inspected the information security 
+policy and incident response 
+procedure to determine that 
+Zscaler’s information security 
+policy included a documented 
+procedure to identify and respond 
+to security breaches, including 
+threats and vulnerabilities, and 
+other incidents and that the policy 
+was reviewed and updated during 
+the period. 
+No exceptions noted. 
+CC2.2.6 
+Incident reporting procedures are 
+communicated to internal users 
+through the company’s intranet. 
+Inspected the incident reporting 
+procedures and the list of policies 
+on the company’s intranet to 
+determine that incident reporting 
+procedures were communicated 
+to internal users through the 
+company’s intranet. 
+No exceptions noted. 
+CC2.2.7 
+An automated ticketing system is 
+utilized to document and track 
+incidents and remediation 
+activities. 
+Inquired of the compliance 
+manager regarding the automated 
+ticketing system to determine that 
+an automated ticketing system 
+was in place to document and 
+track incidents and remediation 
+activities.   
+No exceptions noted. 
+Inspected a sample of incident 
+tickets generated during the 
+period to determine that an 
+automated ticketing system was 
+utilized to document and track 
+incidents and remediation 
+activities for each incident 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and / or security 
+breaches identified that impact Zscaler systems and customers. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+45 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.3 COSO Principle 15: The entity communicates with external parties regarding matters affecting the functioning of 
+internal control. 
+CC2.3.1 
+The entity’s security, availability, 
+and confidentiality principal 
+service commitments are 
+documented and communicated 
+to its customers and other 
+external users in product overview 
+documents on the customer-
+facing website.   
+Inspected the end user 
+subscription agreement template 
+and product overview documents 
+on the customer-facing website to 
+determine that the entity’s 
+security, availability, and 
+confidentiality principal service 
+commitments were documented 
+and communicated to its 
+customers and other external 
+users in product overview 
+documents on the customer-
+facing website. 
+No exceptions noted. 
+CC2.3.2 
+The entity's confidentiality, data 
+retention and disposal 
+commitments, and the associated 
+system requirements are 
+documented in customer 
+contracts. 
+Inspected the customer contracts 
+for a sample of customers 
+onboarded during the period to 
+determine that the entity’s 
+confidentiality commitments and 
+the associated system 
+requirements were documented in 
+customer contracts for each 
+customer sampled. 
+No exceptions noted. 
+CC2.3.3 
+Signed nondisclosure agreements 
+of confidentiality and protection 
+are required before sharing 
+information designated as 
+confidential with third parties. 
+Inquired of the compliance 
+manager regarding agreements to 
+determine that vendors were 
+required to sign nondisclosure 
+agreements of confidentiality and 
+protection before sharing 
+information designated as 
+confidential with third parties.   
+No exceptions noted. 
+Inspected the signed non-
+disclosure agreements for a 
+sample of in-scope vendors to 
+determine that signed 
+nondisclosure agreements of 
+confidentiality and protection were 
+required before sharing 
+information designated as 
+confidential with third parties for 
+each vendor sampled. 
+No exceptions noted. 
+CC2.3.4 
+Incident reporting procedures are 
+communicated to external users 
+through the customer-facing 
+website. 
+Inspected the customer-facing 
+incident reporting portal to 
+determine that incident reporting 
+procedures were communicated 
+to external users through the 
+customer-facing website. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and / or security 
+breaches identified that impact Zscaler systems and customers. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+46 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Risk Assessment 
+CC3.1 COSO Principle 6: The entity specifies objectives with sufficient clarity to enable the identification and assessment of 
+risks relating to objectives. 
+CC3.1.1 
+Management formally documents 
+an organizational strategy within 
+the ISMS policies and updates 
+them on an annual basis to align 
+internal control responsibilities, 
+performance measures, and 
+incentives with company business 
+objectives. 
+Inspected the ISMS policies to 
+determine that management 
+formally documented an 
+organizational strategy within the 
+ISMS policies to align internal 
+control responsibilities, 
+performance measures, and 
+incentives with company business 
+objectives and updated them 
+during the period. 
+No exceptions noted. 
+CC3.1.2 
+Management formally documents 
+and reviews the company’s 
+commitments and the operational, 
+reporting, and compliance 
+objectives to ensure they align 
+with the company’s mission and 
+are utilized as part of the annual 
+risk assessment process. 
+Inspected the evidence of the 
+most recent ISMS management 
+review and the most recent risk 
+assessment documentation to 
+determine that management 
+formally documented and 
+reviewed the company’s 
+commitments and the operational, 
+reporting, and compliance 
+objectives to ensure they aligned 
+with the company’s mission and 
+were utilized as part of the risk 
+assessment process during the 
+period. 
+No exceptions noted. 
+CC3.1.3 
+Documented policies and 
+procedures are in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+Inspected the risk assessment 
+methodology to determine that 
+documented policies and 
+procedures were in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+No exceptions noted. 
+CC3.2 COSO Principle 7: The entity identifies risks to the achievement of its objectives across the entity and analyzes risks 
+as a basis for determining how the risks should be managed. 
+CC3.2.1 
+Documented policies and 
+procedures are in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+Inspected the risk assessment 
+methodology to determine that 
+documented policies and 
+procedures were in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+47 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC3.2.2 
+A formal risk assessment is 
+performed on an annual basis.  
+Identified risks are rated using a 
+risk evaluation process and are 
+formally documented, along with 
+mitigation strategies, for 
+management review. 
+Inspected the evidence of the 
+most recent ISMS management 
+review and the most recent risk 
+assessment documentation to 
+determine that a formal risk 
+assessment was performed that 
+identified risks were rated using a 
+risk evaluation process and were 
+formally documented, along with 
+mitigation strategies, for 
+management review during the 
+period. 
+No exceptions noted. 
+CC3.2.3 
+Risk identification includes both 
+internal and external factors and 
+their impact on objectives. 
+Inspected the ISMS objectives 
+and the most recent risk 
+assessment documentation to 
+determine that risk identification 
+included both internal and 
+external factors and their impact 
+on objectives. 
+No exceptions noted. 
+CC3.2.4 
+The annual risk assessment 
+process includes the analysis of 
+potential threats and 
+vulnerabilities introduced from 
+doing business with vendors / 
+business partners. 
+Inspected the most recent risk 
+assessment documentation to 
+determine that the risk 
+assessment process included the 
+analysis of potential threats and 
+vulnerabilities introduced from 
+doing business with vendors / 
+business partners and performed 
+during the period. 
+No exceptions noted. 
+CC3.2.5 
+Management identifies and 
+assesses criticality of information 
+assets, including threats and 
+vulnerabilities, during the annual 
+risk assessment process. 
+Inspected the most recent risk 
+assessment documentation to 
+determine that management 
+identified and assessed criticality 
+of information assets, including 
+threats and vulnerabilities in risk 
+assessment process, and 
+performed during the period. 
+No exceptions noted. 
+CC3.2.6 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+48 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+ 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC3.2.7 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC3.3 COSO Principle 8: The entity considers the potential for fraud in assessing risks to the achievement of objectives. 
+CC3.3.1 
+Documented policies and 
+procedures are in place to guide 
+personnel in identifying the 
+potential for fraud as part of the 
+risk assessment process. 
+Inspected the risk assessment 
+methodology document to 
+determine that documented 
+policies and procedures were in 
+place to guide personnel in 
+identifying the potential for fraud 
+as part of the risk assessment 
+process. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+49 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC3.3.2 
+A formal risk assessment is 
+performed on an annual basis.  
+Identified risks are rated using a 
+risk evaluation process and are 
+formally documented, along with 
+mitigation strategies, for 
+management review. 
+Inspected the evidence of the 
+most recent ISMS management 
+review and the most recent risk 
+assessment documentation to 
+determine that a formal risk 
+assessment was performed that 
+identified risks were rated using a 
+risk evaluation process and were 
+formally documented, along with 
+mitigation strategies, for 
+management review during the 
+period. 
+No exceptions noted. 
+CC3.4 COSO Principle 9: The entity identifies and assesses changes that could significantly impact the system of internal 
+control. 
+CC3.4.1 
+The entity’s IT security group 
+monitors the security impact of 
+emerging technologies, and the 
+impact of applicable laws or 
+regulations are considered by 
+senior management during the 
+annual risk assessment process. 
+Inspected the most recent risk 
+assessment documentation and 
+example security related evidence 
+from the public-facing website to 
+determine that the entity’s IT 
+security group monitored the 
+security impact of emerging 
+technologies, and the impact of 
+applicable laws or regulations 
+were considered by senior 
+management in the risk 
+assessment process and 
+performed during the period. 
+No exceptions noted. 
+CC3.4.2 
+Management identifies and 
+assesses changes that could 
+significantly impact the system of 
+internal control during the annual 
+risk assessment process. 
+Inspected the risk assessment 
+methodology document and the 
+most recent risk assessment 
+documentation to determine that 
+management identified and 
+assessed changes that could 
+significantly impact the system of 
+internal control during the risk 
+assessment process and 
+performed during the period. 
+No exceptions noted. 
+CC3.4.3 
+Management compiles and 
+provides internal control 
+performance metrics to the board 
+of directors on a quarterly basis. 
+Inspected the ISMS management 
+review results for a sample of 
+quarters during the period to 
+determine that management 
+compiled and provided internal 
+control performance metrics to the 
+board of directors for each quarter 
+sampled. 
+No exceptions noted. 
+Monitoring Activities 
+CC4.1 COSO Principle 16: The entity selects, develops, and performs ongoing and/or separate evaluations to ascertain 
+whether the components of internal control are present and functioning. 
+CC4.1.1 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+50 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+ 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC4.1.2 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC4.1.3 
+Internal audits are performed 
+annually in accordance with ISO 
+27001 requirements.  The audit 
+results are documented and 
+reviewed by management. 
+Inspected the most recent internal 
+audit documentation and 
+management review meeting 
+minutes to determine that internal 
+audits were performed in 
+accordance with ISO 27001 
+requirements and that the audit 
+results were documented and 
+reviewed by management during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+51 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC4.1.4 
+The compliance team reviews 
+vendor audit reports on an annual 
+basis to help ensure that third-
+party providers are in compliance 
+with the organization’s 
+requirements. 
+Inspected the most recent vendor 
+audit review performed by the 
+compliance team for a sample of 
+in-scope vendors to determine 
+that the compliance team 
+reviewed vendor audit reports to 
+ensure that third-party providers 
+were in compliance with the 
+organization’s requirements for 
+each vendor sampled during the 
+period. 
+No exceptions noted. 
+CC4.1.5 
+Incident response and escalation 
+procedures are in place to guide 
+personnel in identifying and 
+reporting system failures, 
+incidents, and complaints. 
+Inspected the incident response 
+plan and procedure to determine 
+that incident response and 
+escalation policies were in place 
+to guide personnel in identifying 
+and reporting system failures, 
+incidents, and complaints. 
+No exceptions noted. 
+CC4.1.6 
+An internal collaboration tool is 
+accessible by internal users to 
+report incidents, concerns, and 
+complaints.  Reports of concerns 
+are reviewed by the information 
+security team as issues are 
+reported. 
+Inquired of the compliance 
+manager regarding security 
+incident report reviews to 
+determine that reports of concerns 
+were reviewed by the information 
+security team as issues were 
+reported. 
+No exceptions noted. 
+Inspected the customer escalation 
+dashboard and an example 
+incident ticket resolved during the 
+period to determine that a security 
+channel was accessible by 
+internal users to report incidents, 
+concerns, and complaints, and 
+that reports of concerns were 
+reviewed by the information 
+security team as issues were 
+reported. 
+No exceptions noted. 
+CC4.1.7 
+Management compiles and 
+provides internal control 
+performance metrics to the board 
+of directors on a quarterly basis. 
+Inspected the ISMS management 
+review results for a sample of 
+quarters during the period to 
+determine that management 
+compiled and provided internal 
+control performance metrics to the 
+board of directors for each quarter 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and / or security 
+breaches identified that impact Zscaler systems and customers. 
+CC4.2 COSO Principle 17: The entity evaluates and communicates internal control deficiencies in a timely manner to those 
+parties responsible for taking corrective action, including senior management and the board of directors, as appropriate. 
+CC4.2.1 
+Management compiles and 
+provides internal control 
+performance metrics to the board 
+of directors on a quarterly basis. 
+Inspected the ISMS management 
+review results for a sample of 
+quarters during the period to 
+determine that management 
+compiled and provided internal 
+control performance metrics to the 
+board of directors for each quarter 
+sampled. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+52 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC4.2.2 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC4.2.3 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC4.2.4 
+Internal audits are performed 
+annually in accordance with ISO 
+27001 requirements.  The audit 
+results are documented and 
+reviewed by management. 
+Inspected the most recent internal 
+audit documentation and 
+management review meeting 
+minutes to determine that internal 
+audits were performed in 
+accordance with ISO 27001 
+requirements and that the audit 
+results were documented and 
+reviewed by management during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+53 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Control Activities 
+CC5.1 COSO Principle 10: The entity selects and develops control activities that contribute to the mitigation of risks to the 
+achievement of objectives to acceptable levels. 
+CC5.1.1 
+Documented policies and 
+procedures are in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+Inspected the risk assessment 
+methodology to determine that 
+documented policies and 
+procedures were in place to guide 
+personnel in identifying business 
+objective risks, assessing 
+changes to the system, and 
+developing risk management 
+strategies as a part of the risk 
+assessment process. 
+No exceptions noted. 
+CC5.1.2 
+A formal risk assessment is 
+performed on an annual basis.  
+Identified risks are rated using a 
+risk evaluation process and are 
+formally documented, along with 
+mitigation strategies, for 
+management review. 
+Inspected the evidence of the 
+most recent ISMS management 
+review and the most recent risk 
+assessment documentation to 
+determine that a formal risk 
+assessment was performed that 
+identified risks were rated using a 
+risk evaluation process and were 
+formally documented, along with 
+mitigation strategies, for 
+management review during the 
+period. 
+No exceptions noted. 
+CC5.1.3 
+Risks are formally documented, 
+rated using a risk evaluation 
+process, mitigation strategies and 
+control activities developed for 
+management review. 
+Inspected the most recent risk 
+assessment documentation for 
+identified risks and the most 
+recent ISMS management review 
+meeting minutes to determine that 
+risks were formally documented, 
+rated using a risk evaluation 
+process, and mitigation strategies 
+developed for management 
+review.   
+No exceptions noted. 
+CC5.1.4 
+Assigned risk owners select and 
+develop control activities, 
+documented in the mitigation 
+plans, to mitigate the risks 
+identified during the annual risk 
+assessment process.   
+Inspected the most recent risk 
+assessment documentation to 
+determine that assigned risk 
+owners selected and developed 
+control activities, documented in 
+the mitigation plans, to mitigate 
+the risks identified in risk 
+assessment process and 
+performed during the period.   
+No exceptions noted. 
+CC5.1.5 
+A statement of applicability 
+aligned with the requirements of 
+ISO 27001 is in place to 
+document the linkage to the 
+security controls.  The statement 
+of applicability is updated on an 
+annual basis in conjunction with 
+the risk assessment process. 
+Inspected the statement of 
+applicability to determine that a 
+statement of applicability aligned 
+with the requirements of ISO 
+27001 was in place to document 
+the linkage to the security controls 
+and that the statement of 
+applicability was updated in 
+conjunction with the risk 
+assessment process during the 
+period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+54 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC5.2 COSO Principle 11: The entity also selects and develops general control activities over technology to support the 
+achievement of objectives. 
+CC5.2.1 
+Documented policies and 
+procedures are in place to guide 
+personnel with regard to the 
+design and development of 
+general technology control 
+activities. 
+Inspected the information security 
+policy and ISMS policy to 
+determine that documented 
+policies and procedures were in 
+place to guide personnel with 
+regard to the design and 
+development of general 
+technology control activities. 
+No exceptions noted. 
+CC5.2.2 
+Assigned risk owners select and 
+develop control activities over 
+technology, documented in the 
+mitigation plans, to mitigate the 
+risks identified during the annual 
+risk assessment process.   
+Inspected the most recent risk 
+assessment documentation to 
+determine that assigned risk 
+owners selected and developed 
+control activities over technology, 
+documented in the mitigation 
+plans, to mitigate the risks 
+identified in the risk assessment 
+process and performed during the 
+period.   
+No exceptions noted. 
+CC5.2.3 
+A statement of applicability 
+aligned with the requirements of 
+ISO 27001 is in place to 
+document the linkage to the 
+security controls.  The statement 
+of applicability is updated on an 
+annual basis in conjunction with 
+the risk assessment process. 
+Inspected the statement of 
+applicability to determine that a 
+statement of applicability aligned 
+with the requirements of ISO 
+27001 was in place to document 
+the linkage to the security controls 
+and that the statement of 
+applicability was updated in 
+conjunction with the risk 
+assessment process during the 
+period. 
+No exceptions noted. 
+CC5.3 COSO Principle 12: The entity deploys control activities through policies that establish what is expected and in 
+procedures that put policies into action. 
+CC5.3.1 
+Documented policies and 
+procedures are in place to guide 
+personnel with regards to the 
+design, development, 
+implementation, operation, 
+maintenance, and monitoring of 
+in-scope systems.  These policies 
+and procedures are 
+communicated to internal 
+personnel via the company 
+intranet. 
+Inspected the information security 
+policies and evidence of 
+communication via the company 
+intranet to determine that 
+documented information security 
+policies and procedures were in 
+place to guide personnel with 
+regards to the design, 
+development, implementation, 
+operation, maintenance, and 
+monitoring of in-scope systems 
+and were communicated to 
+internal personnel via the 
+company intranet. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+55 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC5.3.2 
+An information security 
+management system policy and 
+information security policy are 
+formally documented and 
+reviewed on an annual basis that 
+identifies information required to 
+support the functioning of internal 
+control and achievement of 
+objectives and associated 
+protection, access rights, and 
+retention requirements. 
+Inspected the information security 
+policy and information security 
+management system policy to 
+determine that an information 
+security management system 
+policy and information security 
+policy were formally documented 
+and reviewed during the period 
+that identified information required 
+to support the functioning of 
+internal control and achievement 
+of objectives and associated 
+protection, access rights, and 
+retention requirements. 
+No exceptions noted. 
+CC5.3.3 
+Operating policies and procedures 
+are documented, updated on an 
+annual basis, and communicated 
+to relevant stakeholders that 
+define information system 
+baseline requirements, establish, 
+and monitor alarm levels, and 
+select measures, analytic 
+techniques, and tools to be used 
+in managing system security, 
+availability, and confidentiality. 
+Inspected the information security 
+policies and procedures available 
+on the corporate intranet to 
+determine that operating policies 
+and procedures were 
+documented, updated during the 
+period, and communicated to 
+relevant stakeholders that define 
+information system baseline 
+requirements, establish, and 
+monitor alarm levels, and select 
+measures, analytic techniques, 
+and tools to be used in managing 
+system security, availability, and 
+confidentiality. 
+No exceptions noted. 
+CC5.3.4 
+An employee sanction procedure 
+is in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy and / 
+or procedure. 
+Inspected the employee 
+handbook to determine that an 
+employee sanction procedure was 
+in place communicating that an 
+employee may be terminated for 
+noncompliance with a policy and / 
+or procedure. 
+No exceptions noted. 
+Logical and Physical Access Controls 
+CC6.1 The entity implements logical access security software, infrastructure, and architectures over protected information 
+assets to protect them from security events to meet the entity's objectives. 
+CC6.1.1 
+Access requests to systems are 
+documented on a standard 
+access request form. 
+Inspected the access request 
+documentation for a sample of 
+employees hired during the period 
+to determine that access requests 
+to systems were documented on a 
+standard access request form for 
+each employee sampled. 
+No exceptions noted. 
+CC6.1.2 
+The in-scope systems are 
+configured to authenticate users 
+with unique user credentials, 
+enforce minimum password 
+requirements, MFA, or SSH. 
+Inspected the SSH key, 
+password, and authentication 
+configurations for a sample of in-
+scope production systems to 
+determine that each in-scope 
+system sampled was configured 
+to authenticate users with unique 
+user credentials, SSH keys, and 
+enforce predefined user account 
+and minimum password 
+requirements. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+56 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.1.3 
+Administrative access privileges 
+within the in-scope systems are 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+Inspected the listing of 
+administrative users for the in-
+scope systems with the 
+assistance of compliance 
+manager to determine that 
+administrative access privileges 
+within the in-scope systems were 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+CC6.1.4 
+Predefined security groups are 
+utilized to assign role-based 
+access privileges and segregate 
+access to data for the in-scope 
+systems. 
+Inspected the user account 
+listings of the in-scope systems to 
+determine that predefined security 
+groups were utilized to assign 
+role-based access privileges and 
+segregate access to data for the 
+in-scope systems. 
+No exceptions noted. 
+CC6.1.5 
+A centralized logging system is 
+configured to log access related 
+events, which includes the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+Inspected the centralized 
+monitoring system configurations 
+and an example log generated 
+during the period to determine 
+that a centralized logging system 
+was configured to log access 
+related events, which included the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+No exceptions noted. 
+CC6.1.6 
+The in-scope systems are 
+configured to encrypt or tokenize 
+confidential data at rest. 
+Inspected the data encryption 
+configurations of the in-scope 
+systems to determine that the in-
+scope systems were configurated 
+to encrypt confidential data at 
+rest. 
+No exceptions noted. 
+CC6.1.7 
+An information security and 
+acceptable use policy are in place 
+to guide personnel in the use of 
+information assets. 
+Inspected the information security 
+policies to determine that an 
+information security and 
+acceptable use policy were in 
+place to guide personnel in the 
+use of information assets. 
+No exceptions noted. 
+CC6.1.8 
+A public key infrastructure / key 
+management system is in place 
+within the in-scope systems 
+where: 
+• 
+Keys are created on a secure 
+system 
+• 
+Keys access is restricted 
+• 
+Keys are distributed securely 
+Inspected public key infrastructure 
+/ key management system policy 
+and key management 
+configurations for in-scope 
+systems and determined that a 
+key management system was in 
+place within the in-scope systems 
+where: 
+• 
+Keys are created on a secure 
+system 
+• 
+Keys access is restricted 
+• 
+Keys are distributed securely 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+57 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+CC6.2 Prior to issuing system credentials and granting system access, the entity registers and authorizes new internal and 
+external users whose access is administered by the entity.  For those users whose access is administered by the entity, 
+user system credentials are removed when user access is no longer authorized. 
+CC6.2.1 
+Access requests to systems are 
+documented on a standard 
+access request form. 
+Inspected the access request 
+documentation for a sample of 
+employees hired during the period 
+to determine that access requests 
+to systems were documented on a 
+standard access request form for 
+each employee sampled. 
+No exceptions noted. 
+CC6.2.2 
+User access reviews for the in-
+scope systems are performed on 
+at least a quarterly basis to help 
+ensure that access to data is 
+restricted to authorized personnel. 
+Inspected the user access review 
+documentation for a sample of 
+quarters during the period to 
+determine that user access 
+reviews for the in-scope systems 
+were performed to ensure that 
+access to data was restricted to 
+authorized personnel for each 
+quarter sampled. 
+No exceptions noted. 
+CC6.2.3 
+IT personnel revoke terminated 
+employees’ access to the in-
+scope systems as a component of 
+the termination process. 
+Inspected the termination ticketing 
+documentation with the 
+assistance of compliance 
+manager for the in-scope systems 
+for a sample of employees 
+terminated during the period to 
+determine that IT personnel 
+revoked terminated employees’ 
+access to the in-scope systems as 
+a component of the termination 
+process for each employee 
+sampled. 
+No exceptions noted. 
+CC6.2.4 
+Documented access control 
+policies and procedures are in 
+place to guide personnel in the 
+external user access provisioning 
+process. 
+Inspected the access control 
+procedures to determine that 
+documented access control 
+policies and procedures were in 
+place to guide personnel in the 
+external user access provisioning 
+process. 
+No exceptions noted. 
+CC6.2.5 
+A ticketing system is utilized to 
+track the status of customer 
+onboarding activities. 
+Inspected the onboarding ticketing 
+documentation for a sample of 
+customers provisioned during the 
+period to determine that a 
+ticketing system was utilized to 
+track the status of customer 
+onboarding activities for each 
+customer sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+58 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.3 The entity authorizes, modifies, or removes access to data, software, functions, and other protected information 
+assets based on roles, responsibilities, or the system design and changes, giving consideration to the concepts of least 
+privilege and segregation of duties, to meet the entity’s objectives. 
+CC6.3.1 
+Access requests to systems are 
+documented on a standard 
+access request form. 
+Inspected the access request 
+documentation for a sample of 
+employees hired during the period 
+to determine that access requests 
+to systems were documented on a 
+standard access request form for 
+each employee sampled. 
+No exceptions noted. 
+CC6.3.2 
+The in-scope systems are 
+configured to authenticate users 
+with unique user credentials, 
+enforce minimum password 
+requirements, MFA, or SSH keys. 
+Inspected the SSH key, 
+password, and authentication 
+configurations for a sample of in-
+scope production systems to 
+determine that the in-scope 
+systems were configured to 
+authenticate users with unique 
+user credentials, SSH keys, and 
+enforce predefined user account 
+and minimum password 
+requirements. 
+No exceptions noted. 
+CC6.3.3 
+Administrative access privileges 
+within the in-scope systems are 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+Inspected the listing of 
+administrative users to the in-
+scope systems with the 
+assistance of compliance 
+manager to determine that 
+administrative access privileges 
+within the in-scope systems were 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+CC6.3.4 
+Predefined security groups are 
+utilized to assign role-based 
+access privileges and segregate 
+access to data for the in-scope 
+systems. 
+Inspected the user account 
+listings of the in-scope systems to 
+determine that predefined security 
+groups were utilized to assign 
+role-based access privileges and 
+segregate access to data for the 
+in-scope systems. 
+No exceptions noted. 
+CC6.3.5 
+User access reviews for the in-
+scope systems are performed on 
+at least a quarterly basis to help 
+ensure that access to data is 
+restricted to authorized personnel. 
+Inspected the user access review 
+documentation for a sample of 
+quarters during the period to 
+determine that user access 
+reviews for the in-scope systems 
+were performed to ensure that 
+access to data was restricted to 
+authorized personnel for each 
+quarter sampled. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+59 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.3.6 
+IT personnel revoke terminated 
+employees’ access to the in-
+scope systems as a component of 
+the termination process. 
+Inspected the termination ticketing 
+documentation with the 
+assistance of compliance 
+manager for the in-scope systems 
+for a sample of employees 
+terminated during the period to 
+determine that IT personnel 
+revoked terminated employees’ 
+access to the in-scope systems as 
+a component of the termination 
+process for each employee 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+CC6.4 The entity restricts physical access to facilities and protected information assets (for example, data center facilities, 
+back-up media storage, and other sensitive locations) to authorized personnel to meet the entity’s objectives. 
+ 
+The third-party data centers, AWS, and Microsoft Azure are responsible for restricting physical access to 
+data center facilities, backup media, and other system components including routers and servers. 
+CC6.5 The entity discontinues logical and physical protections over physical assets only after the ability to read or recover 
+data and software from those assets has been diminished and is no longer required to meet the entity’s objectives. 
+CC6.5.1 
+Media handling and disposal 
+procedures are in place to guide 
+personnel in the removal of data 
+and software stored on equipment 
+to be removed from the physical 
+control of the entity and to render 
+such data and software 
+unreadable. 
+Inspected the information security 
+policy to determine that media 
+handling and disposal procedures 
+were in place to guide personnel 
+in removal of data and software 
+stored on equipment to be 
+removed from the physical control 
+of the entity and to render such 
+data and software unreadable. 
+No exceptions noted. 
+CC6.5.2 
+A third-party vendor provides a 
+certificate of destruction when 
+physical production assets in the 
+data centers require physical 
+destruction. 
+Inspected an example media 
+destruction certificate to 
+determine that a third-party 
+vendor provided a certificate of 
+destruction when physical 
+production assets in the data 
+centers required physical 
+destruction. 
+No exceptions noted. 
+CC6.5.3 
+Customer data is retained and 
+deleted upon termination or 
+expiration of the subscription term 
+in accordance with the end user 
+subscription agreement. 
+Inquired of the compliance 
+manager regarding the disposal of 
+customer data to determine that 
+customer data was retained and 
+deleted upon termination or 
+expiration of the subscription term 
+in accordance with the end user 
+subscription agreement. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+60 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the customer data 
+retention and deletion process 
+configurations and termination 
+tickets for a sample customers 
+terminated during the period to 
+determine that customer data was 
+retained and deleted upon 
+termination or expiration of the 
+subscription term in accordance 
+with the end user subscription 
+agreement for each customer 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+ 
+The third-party data centers, AWS, and Microsoft Azure are responsible for restricting physical access to 
+data center facilities, backup media, and other system components including routers and servers. 
+CC6.6 The entity implements logical access security measures to protect against threats from sources outside its system 
+boundaries.   
+CC6.6.1 
+Security groups and firewall rules 
+are defined on in-scope systems 
+to filter unauthorized inbound 
+network traffic from the Internet. 
+Inspected the security group 
+configuration to determine that 
+security groups were defined on 
+in-scope systems to filter 
+unauthorized inbound network 
+traffic from the Internet. 
+No exceptions noted. 
+CC6.6.2 
+Web servers utilize TLS 
+encryption for web communication 
+sessions. 
+Inspected the TLS certificate for 
+an example web server to 
+determine that web servers 
+utilized TLS encryption for web 
+communication sessions. 
+No exceptions noted. 
+CC6.6.3 
+Security monitoring tools are 
+utilized to monitor for possible or 
+actual security breaches. 
+Inquired of the compliance 
+manager regarding security 
+monitoring tools to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+Inspected the security monitoring 
+tool alerting configurations and 
+example alerts generated during 
+the period to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+CC6.6.4 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+61 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+ 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC6.6.5 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC6.6.6 
+An encrypted VPN is utilized for 
+remote access to help ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+Inquired of the compliance 
+manager regarding VPN 
+encryption to determine that an 
+encrypted VPN was utilized for 
+remote access to help ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+No exceptions noted. 
+Inspected the VPN system 
+configurations to determine that 
+an encrypted VPN was utilized for 
+remote access to ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+62 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.7 The entity restricts the transmission, movement, and removal of information to authorized internal and external users 
+and processes, and protects it during transmission, movement, or removal to meet the entity’s objectives.   
+CC6.7.1 
+Policies are in place that prohibit 
+the transmission of sensitive 
+information over the Internet or 
+other public communications 
+paths unless it is encrypted. 
+Inspected the information 
+handling policy to determine that 
+policies were in place that 
+prohibited the transmission of 
+sensitive information over the 
+Internet or other public 
+communications paths unless it 
+was encrypted. 
+No exceptions noted. 
+CC6.7.2 
+Security groups and firewall rules 
+are defined on in-scope systems 
+to filter unauthorized inbound 
+network traffic from the Internet. 
+Inspected the security group 
+configuration to determine that 
+security groups were defined on 
+in-scope systems to filter 
+unauthorized inbound network 
+traffic from the Internet. 
+No exceptions noted. 
+CC6.7.3 
+Web servers utilize TLS 
+encryption for web communication 
+sessions. 
+Inspected the TLS certificate for 
+an example web server to 
+determine that web servers 
+utilized TLS encryption for web 
+communication sessions. 
+No exceptions noted. 
+CC6.7.4 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC6.7.5 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+63 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC6.7.6 
+An encrypted VPN is utilized for 
+remote access to help ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+Inquired of the compliance 
+manager regarding VPN 
+encryption to determine that an 
+encrypted VPN was utilized for 
+remote access to help ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+No exceptions noted. 
+Inspected the VPN system 
+configurations to determine that 
+an encrypted VPN was utilized for 
+remote access to ensure the 
+privacy and integrity of the data 
+passing over public networks. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for implementing controls for the transmission, movement, and 
+removal of the underlying storage devices for its cloud hosting services where Zscaler systems reside. 
+CC6.8 The entity implements controls to prevent or detect and act upon the introduction of unauthorized or malicious 
+software to meet the entity’s objectives. 
+CC6.8.1 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+64 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.8.2 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+CC6.8.3 
+Version control software is utilized 
+to restrict access to application 
+source code, provide rollback 
+capabilities, and enforce 
+segregation of duties. 
+Inspected the list of builds on the 
+version control software to 
+determine that version control 
+software was utilized to restrict 
+access to application source 
+code, provide rollback capabilities, 
+and enforce segregation of duties. 
+No exceptions noted. 
+CC6.8.4 
+Write access to the version 
+control software is restricted to 
+user accounts accessible by 
+authorized personnel. 
+Inquired of the senior program 
+manager regarding write access 
+to the version control software to 
+determine that write access to the 
+version control software was 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+Inspected the version control 
+software user account listings to 
+determine that write access to 
+version control software was 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+CC6.8.5 
+The ability to implement changes 
+to the production environment is 
+restricted to authorized personnel. 
+Inquired of the senior program 
+manager regarding the ability to 
+implement changes to the 
+production environment to 
+determine that the ability to 
+implement changes to the 
+production environment was 
+restricted to authorized personnel. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+65 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the user listings for the 
+deployment tools and the code 
+repositories to determine that the 
+ability to implement changes to 
+the production environment was 
+restricted to authorized personnel. 
+No exceptions noted. 
+System Operations 
+CC7.1 To meet its objectives, the entity uses detection and monitoring procedures to identify (1) changes to configurations 
+that result in the introduction of new vulnerabilities, and (2) susceptibilities to newly discovered vulnerabilities. 
+CC7.1.1 
+Enterprise monitoring applications 
+are in place to monitor the 
+performance and availability of the 
+in-scope systems and alert 
+operations personnel via on-
+screen alert when predefined 
+thresholds are exceeded. 
+Inspected the enterprise 
+monitoring configurations and 
+example alerts generated during 
+the period to determine that 
+enterprise monitoring applications 
+were in place to monitor the 
+performance and availability of the 
+in-scope systems and alerted 
+response center and data center 
+operations personnel via on-
+screen alert when predefined 
+thresholds were exceeded. 
+No exceptions noted. 
+CC7.1.2 
+The monitoring tools are 
+configured to send alert 
+notifications to operations 
+personnel when predefined 
+thresholds are exceeded on 
+monitored systems. 
+Inspected the monitoring tools 
+configurations and example e-mail 
+alerts generated during the period 
+to determine that the monitoring 
+tools were configured to send e-
+mail alert notifications to 
+operations personnel when 
+predefined thresholds were 
+exceeded on monitored systems. 
+No exceptions noted. 
+CC7.1.3 
+Operations personnel monitor the 
+enterprise monitoring applications 
+for reported events on a 24x7x365 
+basis. 
+Inquired of the compliance 
+manager regarding enterprise 
+monitoring to determine that 
+operations personnel monitored 
+the enterprise monitoring 
+applications for reported events 
+on a 24x7x365 basis. 
+No exceptions noted. 
+Inspected the enterprise 
+monitoring dashboard and 
+operations personnel shift 
+schedule during the period to 
+determine that operations 
+personnel monitored the 
+enterprise monitoring applications 
+for reported events on a 24x7x365 
+basis. 
+No exceptions noted. 
+CC7.1.4 
+Customer incidents are reported 
+and are tracked within an 
+automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+Inquired of the compliance 
+manager regarding customer 
+incident management to 
+determine that customer incidents 
+were reported and tracked within 
+an automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+66 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the incident reporting 
+tool and a sample of customer 
+incident tickets generated during 
+the period to determine that 
+customer incidents were reported 
+and tracked within an automated 
+ticketing system to manage 
+system incidents, response, and 
+resolution for each incident 
+sampled. 
+No exceptions noted. 
+CC7.1.5 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC7.1.6 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+67 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.1.7 
+A centralized logging system is 
+configured to log access related 
+events, which includes the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+Inspected the centralized 
+monitoring system configurations 
+and an example log generated 
+during the period to determine 
+that a centralized logging system 
+was configured to log access 
+related events, which included the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for monitoring any configuration changes of the logical access 
+controls system for the underlying network, virtualization management, and storage devices where the 
+Zscaler’s applications reside. 
+CC7.2 The entity monitors system components and the operation of those components for anomalies that are indicative of 
+malicious acts, natural disasters, and errors affecting the entity's ability to meet its objectives; anomalies are analyzed to 
+determine whether they represent security events. 
+CC7.2.1 
+Incident response and escalation 
+procedures are in place to guide 
+personnel in identifying and 
+reporting system failures, 
+incidents, and complaints. 
+Inspected the incident response 
+plan and procedure to determine 
+that incident response and 
+escalation policies were in place 
+to guide personnel in identifying 
+and reporting system failures, 
+incidents, and complaints. 
+No exceptions noted. 
+CC7.2.2 
+A centralized logging system is 
+configured to log access related 
+events, which includes the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+Inspected the centralized 
+monitoring system configurations 
+and an example log generated 
+during the period to determine 
+that a centralized logging system 
+was configured to log access 
+related events, which included the 
+following: 
+• 
+Account management 
+• 
+Logon events  
+• 
+Object access 
+• 
+Policy change 
+• 
+Privileged use 
+No exceptions noted. 
+CC7.2.3 
+Enterprise monitoring applications 
+are in place to monitor the 
+performance and availability of the 
+in-scope systems and alert 
+operations personnel via on-
+screen alert when predefined 
+thresholds are exceeded. 
+Inspected the enterprise 
+monitoring configurations and 
+example alerts generated during 
+the period to determine that 
+enterprise monitoring applications 
+were in place to monitor the 
+performance and availability of the 
+in-scope systems and alerted 
+response center and data center 
+operations personnel via on-
+screen alert when predefined 
+thresholds were exceeded. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+68 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.2.4 
+The monitoring tools are 
+configured to send alert 
+notifications to operations 
+personnel when predefined 
+thresholds are exceeded on 
+monitored systems. 
+Inspected the monitoring tools 
+configurations and example e-mail 
+alerts generated during the period 
+to determine that the monitoring 
+tools were configured to send e-
+mail alert notifications to 
+operations personnel when 
+predefined thresholds were 
+exceeded on monitored systems. 
+No exceptions noted. 
+CC7.2.5 
+Security monitoring tools are 
+utilized to monitor for possible or 
+actual security breaches. 
+Inquired of the compliance 
+manager regarding security 
+monitoring tools to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+Inspected the security monitoring 
+tool alerting configurations and 
+example alerts generated during 
+the period to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+CC7.2.6 
+Vulnerability assessments of the 
+production environment are 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the vulnerability assessments and 
+classifies and prioritizes issues 
+identified for remediation. 
+Inquired of the compliance 
+manager regarding the 
+vulnerability assessment reviews 
+to determine that the security 
+department reviewed the results 
+of the vulnerability assessments 
+and classified, and prioritized 
+issues identified for remediation. 
+No exceptions noted. 
+Inspected the vulnerability scan 
+configurations, an example scan 
+report completed during the 
+period, and evidence of 
+management review and 
+prioritization of identified issues 
+for remediation to determine that 
+vulnerability assessments of the 
+production environment were 
+performed on a regular basis to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the vulnerability 
+assessments and classified and 
+prioritized issues identified for 
+remediation. 
+No exceptions noted. 
+CC7.2.7 
+Penetration testing of the 
+perimeter network and application 
+is performed by an independent 
+third-party vendor on an annual 
+basis to identify potential security 
+vulnerabilities.  The security 
+department reviews the results of 
+the penetration test and classifies 
+and prioritizes issues identified for 
+remediation. 
+Inquired of the compliance 
+manager regarding penetration 
+testing to determine that a 
+penetration test of the perimeter 
+network and application was 
+performed, and that the security 
+department reviewed the results 
+of the penetration test and 
+classified, and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+69 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the penetration testing 
+results and remediation ticket to 
+determine that penetration testing 
+of the perimeter network and 
+application was performed by an 
+independent third-party vendor to 
+identify potential security 
+vulnerabilities and that the 
+security department reviewed the 
+results of the penetration test and 
+classified and prioritized issues 
+identified for remediation during 
+the period. 
+No exceptions noted. 
+ 
+The third-party data centers, AWS and Microsoft Azure are responsible for restricting physical access to data 
+center facilities, backup media, and other system components including routers and servers. 
+ 
+AWS and Microsoft Azure are responsible for monitoring and managing the logical access control systems to 
+the underlying network, virtualization management, and storage devices for its cloud hosting services where 
+the Zscaler applications reside. 
+CC7.3 The entity evaluates security events to determine whether they could or have resulted in a failure of the entity to 
+meet its objectives (security incidents) and, if so, takes actions to prevent or address such failures. 
+CC7.3.1 
+Incident response and escalation 
+procedures are in place to guide 
+personnel in identifying and 
+reporting system failures, 
+incidents, and complaints. 
+Inspected the incident response 
+plan and procedure to determine 
+that incident response and 
+escalation policies were in place 
+to guide personnel in identifying 
+and reporting system failures, 
+incidents, and complaints. 
+No exceptions noted. 
+CC7.3.2 
+An automated ticketing system is 
+utilized to document and track 
+incidents and remediation 
+activities. 
+Inquired of the compliance 
+manager regarding the automated 
+ticketing system to determine that 
+an automated ticketing system 
+was in place to document and 
+track incidents and remediation 
+activities.   
+No exceptions noted. 
+Inspected a sample of incident 
+tickets generated during the 
+period to determine that an 
+automated ticketing system was 
+utilized to document and track 
+incidents and remediation 
+activities for each incident 
+sampled. 
+No exceptions noted. 
+CC7.3.3 
+Incidents requiring a change to 
+the system follow the standard 
+change control process. 
+Inquired of the compliance 
+manager regarding incidents 
+requiring changes to the system 
+to determine that incidents 
+requiring a change to the system 
+followed the standard change 
+control process. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+70 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the change ticketing 
+documentation for a sample of 
+incidents that required changes to 
+the system implemented during 
+the period to determine that 
+incidents requiring a change to 
+the system followed the standard 
+change control process for each 
+change sampled. 
+No exceptions noted. 
+CC7.3.4 
+Security monitoring tools are 
+utilized to monitor for possible or 
+actual security breaches. 
+Inquired of the compliance 
+manager regarding security 
+monitoring tools to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+Inspected the security monitoring 
+tool alerting configurations and 
+example alerts generated during 
+the period to determine that 
+security monitoring tools were 
+utilized to monitor for possible or 
+actual security breaches. 
+No exceptions noted. 
+CC7.3.5 
+Customer incidents are reported 
+and are tracked within an 
+automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+Inquired of the compliance 
+manager regarding customer 
+incident management to 
+determine that customer incidents 
+were reported and tracked within 
+an automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+No exceptions noted. 
+Inspected the incident reporting 
+tool and a sample of customer 
+incident tickets generated during 
+the period to determine that 
+customer incidents were reported 
+and tracked within an automated 
+ticketing system to manage 
+system incidents, response, and 
+resolution for each incident 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and/or security 
+breaches identified that impact Zscaler systems and customers. 
+CC7.4 The entity responds to identified security incidents by executing a defined incident response program to understand, 
+contain, remediate, and communicate security incidents, as appropriate.   
+CC7.4.1 
+Incident response and escalation 
+procedures are in place to guide 
+personnel in identifying and 
+reporting system failures, 
+incidents, and complaints. 
+Inspected the incident response 
+plan and procedure to determine 
+that incident response and 
+escalation policies were in place 
+to guide personnel in identifying 
+and reporting system failures, 
+incidents, and complaints. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+71 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.4.2 
+An automated ticketing system is 
+utilized to document and track 
+incidents and remediation 
+activities. 
+Inquired of the compliance 
+manager regarding the automated 
+ticketing system to determine that 
+an automated ticketing system 
+was in place to document and 
+track incidents and remediation 
+activities.   
+No exceptions noted. 
+Inspected a sample of incident 
+tickets generated during the 
+period to determine that an 
+automated ticketing system was 
+utilized to document and track 
+incidents and remediation 
+activities for each incident 
+sampled. 
+No exceptions noted. 
+CC7.4.3 
+Customer incidents are reported 
+and are tracked within an 
+automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+Inquired of the compliance 
+manager regarding customer 
+incident management to 
+determine that customer incidents 
+were reported and tracked within 
+an automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+No exceptions noted. 
+Inspected the incident reporting 
+tool and a sample of customer 
+incident tickets generated during 
+the period to determine that 
+customer incidents were reported 
+and tracked within an automated 
+ticketing system to manage 
+system incidents, response, and 
+resolution for each incident 
+sampled. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and/or security 
+breaches identified that impact Zscaler systems and customers. 
+CC7.5 The entity identifies, develops, and implements activities to recover from identified security incidents. 
+CC7.5.1 
+Incident response and escalation 
+procedures are in place to guide 
+personnel in identifying and 
+reporting system failures, 
+incidents, and complaints. 
+Inspected the incident response 
+plan and procedure to determine 
+that incident response and 
+escalation policies were in place 
+to guide personnel in identifying 
+and reporting system failures, 
+incidents, and complaints. 
+No exceptions noted. 
+CC7.5.2 
+Incidents requiring a change to 
+the system follow the standard 
+change control process. 
+Inquired of the compliance 
+manager regarding incidents 
+requiring changes to the system 
+to determine that incidents 
+requiring a change to the system 
+followed the standard change 
+control process. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+72 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the change ticketing 
+documentation for a sample of 
+incidents that required changes to 
+the system implemented during 
+the period to determine that 
+incidents requiring a change to 
+the system followed the standard 
+change control process for each 
+change sampled. 
+No exceptions noted. 
+CC7.5.3 
+Automated replication systems 
+are configured to perform near 
+real-time replication of production 
+data. 
+Inspected the replication system 
+configurations for a sample of 
+production databases to 
+determine that automated 
+replication systems were 
+configured to perform near real-
+time replication of production data 
+for each database sampled. 
+No exceptions noted. 
+CC7.5.4 
+The automated replication 
+systems are configured to send e-
+mail alert notifications to 
+operations personnel when 
+replication issues are identified. 
+Inquired of the compliance 
+manager regarding replication 
+alerting to determine that the 
+automated replication system was 
+configured to send e-mail alert 
+notifications to operations 
+personnel when replication issues 
+were identified. 
+No exceptions noted. 
+Inspected the replication system 
+alerting configurations and an 
+example e-mail alert notification 
+generated during the period to 
+determine that the automated 
+replication system was configured 
+to send e-mail alert notifications to 
+operations personnel when 
+replication issues were identified. 
+No exceptions noted. 
+CC7.5.5 
+Zscaler has a documented 
+procedure that includes 
+procedures to align the company's 
+disaster recovery and business 
+continuity plans with customer 
+commitments. 
+Inspected the disaster recovery 
+and business continuity plan and 
+the availability commitments to 
+determine that documented 
+procedures were in place that 
+included procedures to align the 
+company’s disaster recovery and 
+business continuity plans with 
+customer commitments. 
+No exceptions noted. 
+CC7.5.6 
+Operations personnel perform 
+disaster recovery tests on an 
+annual basis to help ensure the 
+recoverability of production data. 
+Inspected the most recent 
+disaster recovery testing exercise 
+results to determine that 
+operations personnel performed 
+disaster recovery tests to help 
+ensure the recoverability of 
+production data during the period. 
+No exceptions noted. 
+ 
+AWS and Microsoft Azure are responsible for notifying Zscaler of unusual activity, violations, and/or security 
+breaches identified that impact Zscaler systems and customers. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+73 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Change Management 
+CC8.1 The entity authorizes, designs, develops, or acquires, configures, documents, tests, approves, and implements 
+changes to infrastructure, data, software, and procedures to meet its objectives.   
+CC8.1.1 
+Documented policies and 
+procedures are in place to guide 
+personnel on the in-scope 
+systems change management 
+and system development life cycle 
+(SDLC) process. 
+Inspected the documented 
+change management policies and 
+procedures to determine that 
+documented policies and 
+procedures were in place to guide 
+personnel on the in-scope 
+systems change management 
+and SDLC process. 
+No exceptions noted. 
+CC8.1.2 
+The cloud engineering team 
+meets on a quarterly basis to 
+discuss and communicate the 
+ongoing and upcoming projects 
+that affect the system. 
+Inspected the meeting minutes for 
+a sample of quarters during the 
+period to determine that the cloud 
+engineering team met to discuss 
+and communicate the ongoing 
+and upcoming projects that affect 
+the system for each quarter 
+sampled. 
+No exceptions noted. 
+CC8.1.3 
+An automated ticketing system is 
+utilized to document and track in-
+scope system change requests 
+from development through 
+implementation. 
+Inspected the change ticketing 
+documentation for a sample of 
+application and infrastructure 
+changes implemented during the 
+period to determine that an 
+automated ticketing system was 
+utilized to document and track in-
+scope system change requests 
+from development through 
+implementation for each 
+application and infrastructure 
+change sampled. 
+No exceptions noted. 
+CC8.1.4 
+Application and infrastructure 
+changes are peer reviewed and 
+approved prior to implementation. 
+Inspected the change ticketing 
+documentation for a sample of 
+application and infrastructure 
+changes implemented during the 
+period to determine that 
+application and infrastructure 
+changes were peer reviewed and 
+approved prior to implementation 
+for each application and 
+infrastructure change sampled.   
+No exceptions noted. 
+CC8.1.5 
+Quality assurance (QA) testing 
+efforts are performed for 
+application changes prior to 
+implementation. 
+Inspected evidence of QA testing 
+for a sample of application 
+changes implemented during the 
+period to determine that QA 
+testing was performed for 
+application changes prior to 
+implementation for each 
+application change sampled. 
+No exceptions noted. 
+CC8.1.6 
+Development, testing, and 
+production environments are 
+logically separated. 
+Inspected the segregation of 
+development, testing, and 
+production environments to 
+determine that development, 
+testing, and production 
+environments were logically 
+separated. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+74 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC8.1.7 
+Rollback procedures are 
+documented for application 
+changes to revert to previous 
+versions of code when changes 
+impair system operation. 
+Inspected the version control 
+software configurations and the 
+change tickets for a sample of 
+application changes implemented 
+during the period to determine 
+that rollback procedures were 
+documented for application 
+changes to revert to previous 
+versions of code when changes 
+impaired system operation for 
+each application and 
+infrastructure change sampled. 
+No exceptions noted. 
+CC8.1.8 
+Version control software is utilized 
+to restrict access to application 
+source code, provide rollback 
+capabilities, and enforce 
+segregation of duties. 
+Inspected the list of builds on the 
+version control software to 
+determine that version control 
+software was utilized to restrict 
+access to application source 
+code, provide rollback capabilities, 
+and enforce segregation of duties. 
+No exceptions noted. 
+CC8.1.9 
+Write access to the version 
+control software is restricted to 
+user accounts accessible by 
+authorized personnel. 
+Inquired of the compliance 
+manager regarding write access 
+to the version control software to 
+determine that write access to the 
+version control software was 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+Inspected the version control 
+software user account listings with 
+the assistance of the compliance 
+manager to determine that write 
+access to version control software 
+was restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+CC8.1.10 
+The ability to implement changes 
+to the production environment is 
+restricted to authorized personnel. 
+Inquired of the compliance 
+manager regarding the ability to 
+implement changes to the 
+production environment to 
+determine that the ability to 
+implement changes to the 
+production environment was 
+restricted to authorized personnel. 
+No exceptions noted. 
+Inspected the user listings for the 
+deployment tools and the code 
+repositories with the assistance of 
+the compliance manager to 
+determine that the ability to 
+implement changes to the 
+production environment was 
+restricted to authorized personnel. 
+No exceptions noted. 
+CC8.1.11 
+Production data is not utilized for 
+change development and testing 
+efforts. 
+Inquired of the compliance 
+manager regarding data used in 
+development and testing to 
+determine that production data 
+was not utilized for change 
+development and testing efforts.   
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+75 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the information security 
+policy and the segregation of 
+development, testing, and 
+production environments to 
+determine that production data 
+was not utilized for change 
+management and testing efforts. 
+No exceptions noted. 
+CC8.1.12 
+Emergency changes follow the 
+same change management 
+policies and procedures for 
+regular application and 
+infrastructure changes. 
+Inquired of the compliance 
+manager regarding emergency 
+changes to determine that 
+emergency changes followed the 
+same policies and procedures 
+used for regular application and 
+infrastructure changes. 
+No exceptions noted. 
+Inspected the change tickets for a 
+sample of emergency changes 
+implemented during the period to 
+determine that emergency 
+changes followed the same 
+policies and procedures used for 
+regular application and 
+infrastructure changes. 
+No exceptions noted. 
+Risk Mitigation 
+CC9.1 The entity identifies, selects, and develops risk mitigation activities for risks arising from potential business 
+disruptions. 
+CC9.1.1 
+Documented policies and 
+procedures are in place to guide 
+personnel in the assessment of 
+the potential risks and 
+vulnerabilities and the 
+development of control activities 
+related to the security, availability, 
+and confidentiality of data and 
+service. 
+Inspected the risk assessment 
+methodology document to 
+determine that documented 
+policies and procedure were in 
+place to guide personnel in the 
+assessment of the potential risks 
+and vulnerabilities and the 
+development of control activities 
+related to the security, availability, 
+and confidentiality of data and 
+service. 
+No exceptions noted. 
+CC9.1.2 
+A formal risk assessment is 
+performed on an annual basis.  
+Risks of potential business 
+disruptions that are identified are 
+formally documented for 
+management review, the risk 
+assessment includes clearly 
+documented objectives and 
+associated risks that address the 
+security, availability, and 
+confidentiality of the in-scope 
+systems. 
+Inspected the risk assessment 
+documentation to determine that a 
+formal risk assessment was 
+performed and that risks of 
+potential business disruptions that 
+were identified were formally 
+documented for management 
+review and included clearly 
+documented objectives and 
+associated risks that addressed 
+the security, availability, and 
+confidentiality of the in-scope 
+systems during the period. 
+No exceptions noted. 
+CC9.1.3 
+Risk identification includes both 
+internal and external factors and 
+their impact on objectives. 
+Inspected the ISMS objectives 
+and the most recent risk 
+assessment documentation to 
+determine that risk identification 
+included both internal and 
+external factors and their impact 
+on objectives. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+76 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC9.1.4 
+The annual risk assessment 
+process includes the analysis of 
+potential threats and 
+vulnerabilities introduced from 
+doing business with vendors / 
+business partners. 
+Inspected the most recent risk 
+assessment documentation to 
+determine that the risk 
+assessment process included the 
+analysis of potential threats and 
+vulnerabilities introduced from 
+doing business with vendors / 
+business partners and performed 
+during the period. 
+No exceptions noted. 
+CC9.1.5 
+Management identifies and 
+assesses criticality of information 
+assets, including threats and 
+vulnerabilities, during the annual 
+risk assessment process. 
+Inspected the most recent risk 
+assessment documentation to 
+determine that management 
+identified and assessed criticality 
+of information assets, including 
+threats and vulnerabilities in risk 
+assessment process, and 
+performed during the period. 
+No exceptions noted. 
+CC9.2 The entity assesses and manages risks associated with vendors and business partners. 
+CC9.2.1 
+Documented access control 
+policies and procedures are in 
+place to guide personnel in the 
+external user access provisioning 
+process. 
+Inspected the access control 
+procedures to determine that 
+documented access control 
+policies and procedures were in 
+place to guide personnel in the 
+external user access provisioning 
+process. 
+No exceptions noted. 
+CC9.2.2 
+Signed nondisclosure agreements 
+of confidentiality and protection 
+are required before sharing 
+information designated as 
+confidential with third parties. 
+Inquired of the compliance 
+manager to determine that 
+vendors were required to sign 
+nondisclosure agreements of 
+confidentiality and protection 
+before sharing information 
+designated as confidential with 
+third parties.   
+No exceptions noted. 
+Inspected the signed non-
+disclosure agreements for a 
+sample of in-scope vendors to 
+determine that signed 
+nondisclosure agreements of 
+confidentiality and protection were 
+required before sharing 
+information designated as 
+confidential with third parties for 
+each vendor sampled. 
+No exceptions noted. 
+CC9.2.3 
+The compliance team reviews 
+vendor audit reports on an annual 
+basis to help ensure that third-
+party providers are in compliance 
+with the organization’s 
+requirements. 
+Inspected the most recent vendor 
+audit review performed by the 
+compliance team for a sample of 
+in-scope vendors to determine 
+that the compliance team 
+reviewed vendor audit reports to 
+ensure that third-party providers 
+were in compliance with the 
+organization’s requirements for 
+each vendor sampled during the 
+period. 
+No exceptions noted. 
+ 
+ 
+ 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+77 
+ 
+ 
+ 
+ 
+ADDITIONAL CRITERIA FOR AVAILABILITY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.1 The entity maintains, monitors, and evaluates current processing capacity and use of system components 
+(infrastructure, data, and software) to manage capacity demand and to enable the implementation of additional capacity to 
+help meet its objectives. 
+A1.1.1 
+Members of the cloud operations 
+team meet on a quarterly basis to 
+discuss system capacity events 
+and plan for upcoming projects 
+that could impact the availability of 
+systems. 
+Inquired of the compliance 
+manager regarding the weekly 
+capacity meetings to determine 
+that members of the cloud 
+operations team met on a 
+quarterly basis to discuss system 
+capacity events and planned for 
+upcoming projects that could 
+impact the availability of systems. 
+No exceptions noted. 
+Inspected the capacity 
+management meeting minutes 
+and invite for a sample of quarters 
+during the period to determine 
+that members of the cloud 
+operations team met to discuss 
+system capacity events and 
+planned for upcoming projects 
+that could impact the availability of 
+systems for each quarter 
+sampled. 
+No exceptions noted. 
+A1.1.2 
+Enterprise monitoring applications 
+are in place to monitor the 
+performance and availability of the 
+in-scope systems and alert 
+operations personnel via on-
+screen alert when predefined 
+thresholds are exceeded. 
+Inspected the enterprise 
+monitoring configurations and 
+example alerts generated during 
+the period to determine that 
+enterprise monitoring applications 
+were in place to monitor the 
+performance and availability of the 
+in-scope systems and alerted 
+response center and data center 
+operations personnel via on-
+screen alert when predefined 
+thresholds were exceeded. 
+No exceptions noted. 
+A1.1.3 
+The monitoring tools are 
+configured to send alert 
+notifications to operations 
+personnel when predefined 
+thresholds are exceeded on 
+monitored systems. 
+Inspected the monitoring tools 
+configurations and example e-mail 
+alerts generated during the period 
+to determine that the monitoring 
+tools were configured to send e-
+mail alert notifications to 
+operations personnel when 
+predefined thresholds were 
+exceeded on monitored systems. 
+No exceptions noted. 
+A1.1.4 
+Operations personnel monitor the 
+enterprise monitoring applications 
+for reported events on a 24x7x365 
+basis. 
+Inquired of the compliance 
+manager regarding enterprise 
+monitoring to determine that 
+operations personnel monitored 
+the enterprise monitoring 
+applications for reported events 
+on a 24x7x365 basis. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+78 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the enterprise 
+monitoring dashboard and 
+operations personnel shift 
+schedule during the period to 
+determine that operations 
+personnel monitored the 
+enterprise monitoring applications 
+for reported events on a 24x7x365 
+basis. 
+No exceptions noted. 
+A1.1.5 
+Customer incidents are reported 
+and are tracked within an 
+automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+Inquired of the compliance 
+manager regarding customer 
+incident management to 
+determine that customer incidents 
+were reported and tracked within 
+an automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+No exceptions noted. 
+Inspected the incident reporting 
+tool and a sample of customer 
+incident tickets generated during 
+the period to determine that 
+customer incidents were reported 
+and tracked within an automated 
+ticketing system to manage 
+system incidents, response, and 
+resolution for each incident 
+sampled. 
+No exceptions noted. 
+ 
+The third-party data centers, AWS, and Microsoft Azure, are responsible for monitoring the capacity demand 
+and ensuring capacity resources are available and functioning to meet Zscaler’s availability commitments 
+and requirements. 
+A1.2 The entity authorizes, designs, develops or acquires, implements, operates, approves, maintains, and monitors 
+environmental protections, software, data back-up processes, and recovery infrastructure to meet its objectives. 
+A1.2.1 
+An annual risk assessment is 
+performed to identify threats and 
+vulnerabilities that could impair 
+the availability of the system. 
+Inspected the most recent risk 
+assessment documentation to 
+determine that a risk assessment 
+was performed during the period 
+to identify threats and 
+vulnerabilities that could impair 
+the availability of the system. 
+No exceptions noted. 
+A1.2.2 
+Customer incidents are reported 
+and are tracked within an 
+automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+Inquired of the compliance 
+manager regarding customer 
+incident management to 
+determine that customer incidents 
+were reported and tracked within 
+an automated ticketing system to 
+manage system incidents, 
+response, and resolution. 
+No exceptions noted. 
+Inspected the incident reporting 
+tool and a sample of customer 
+incident tickets generated during 
+the period to determine that 
+customer incidents were reported 
+and tracked within an automated 
+ticketing system to manage 
+system incidents, response, and 
+resolution for each incident 
+sampled. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+79 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.2.3 
+Enterprise monitoring applications 
+are in place to monitor the 
+performance and availability of the 
+in-scope systems and alert 
+operations personnel via on-
+screen alert when predefined 
+thresholds are exceeded. 
+Inspected the enterprise 
+monitoring configurations and 
+example alerts generated during 
+the period to determine that 
+enterprise monitoring applications 
+were in place to monitor the 
+performance and availability of the 
+in-scope systems and alerted 
+response center and data center 
+operations personnel via on-
+screen alert when predefined 
+thresholds were exceeded. 
+No exceptions noted. 
+A1.2.4 
+The monitoring tools are 
+configured to send alert 
+notifications to operations 
+personnel when predefined 
+thresholds are exceeded on 
+monitored systems. 
+Inspected the monitoring tools 
+configurations and example e-mail 
+alerts generated during the period 
+to determine that the monitoring 
+tools were configured to send e-
+mail alert notifications to 
+operations personnel when 
+predefined thresholds were 
+exceeded on monitored systems. 
+No exceptions noted. 
+A1.2.5 
+Documented policies and 
+procedures are in place governing 
+data backup and restoration 
+processes. 
+Inspected the master information 
+security policy and the disaster 
+recovery and business continuity 
+plan to determine that 
+documented policies and 
+procedures were in place 
+governing data backup and 
+restoration processes. 
+No exceptions noted. 
+A1.2.6 
+Automated replication systems 
+are configured to perform near 
+real-time replication of production 
+data. 
+Inspected the replication system 
+configurations for a sample of 
+production databases to 
+determine that automated 
+replication systems were 
+configured to perform near real-
+time replication of production data 
+for each database sampled. 
+No exceptions noted. 
+A1.2.7 
+The automated replication 
+systems are configured to send e-
+mail alert notifications to 
+operations personnel when 
+replication issues are identified. 
+Inquired of the compliance 
+manager regarding replication 
+alerting to determine that the 
+automated replication system was 
+configured to send e-mail alert 
+notifications to operations 
+personnel when replication issues 
+were identified. 
+No exceptions noted. 
+Inspected the replication system 
+alerting configurations and an 
+example e-mail alert notification 
+generated during the period to 
+determine that the automated 
+replication system was configured 
+to send e-mail alert notifications to 
+operations personnel when 
+replication issues were identified. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+80 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.2.8 
+Operations personnel perform 
+disaster recovery tests on an 
+annual basis to help ensure the 
+recoverability of production data. 
+Inspected the most recent 
+disaster recovery testing exercise 
+results to determine that 
+operations personnel performed 
+disaster recovery tests to help 
+ensure the recoverability of 
+production data during the period. 
+No exceptions noted. 
+ 
+The third-party data centers, AWS, and Microsoft Azure, are responsible for ensuring the data center 
+facilities are equipped with environmental security safeguards. 
+A1.3 The entity tests recovery plan procedures supporting system recovery to meet its objectives.   
+A1.3.1 
+Zscaler has a documented 
+procedure that includes 
+procedures to align the company's 
+disaster recovery and business 
+continuity plans with customer 
+commitments. 
+Inspected the disaster recovery 
+and business continuity plan and 
+the availability commitments to 
+determine that documented 
+procedures were in place that 
+included procedures to align the 
+company’s disaster recovery and 
+business continuity plans with 
+customer commitments. 
+No exceptions noted. 
+A1.3.2 
+Operations personnel perform 
+disaster recovery tests on an 
+annual basis to help ensure the 
+recoverability of production data. 
+Inspected the most recent 
+disaster recovery testing exercise 
+results to determine that 
+operations personnel performed 
+disaster recovery tests to help 
+ensure the recoverability of 
+production data during the period. 
+No exceptions noted. 
+ 
+ 
+ 
+ADDITIONAL CRITERIA FOR CONFIDENTIALITY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+C1.1 The entity identifies and maintains confidential information to meet the entity’s objectives related to confidentiality. 
+C1.1.1 
+The entity's confidentiality, data 
+retention and disposal 
+commitments, and the associated 
+system requirements are 
+documented in customer 
+contracts. 
+Inspected the customer contracts 
+for a sample of customers 
+onboarded during the period to 
+determine that the entity’s 
+confidentiality commitments and 
+the associated system 
+requirements were documented in 
+customer contracts for each 
+customer sampled. 
+No exceptions noted. 
+C1.1.2 
+Data retention and disposal 
+commitments, and the associated 
+system requirements are 
+documented in system 
+descriptions available on the 
+company website. 
+Inspected the data retention 
+policies and product sheets 
+communicated via the company 
+website to determine that data 
+retention and disposal 
+commitments, and the associated 
+system requirements were 
+documented in system 
+descriptions available on the 
+company website. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+81 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+C1.1.3 
+A data classification policy is in 
+place to define data categories, 
+protection levels, and handling 
+measures for information utilized 
+within the system. 
+Inspected the data classification 
+policy to determine that a data 
+classification policy was in place 
+to define data categories, 
+protection levels, and handling 
+measures for information utilized 
+within the system. 
+No exceptions noted. 
+C1.1.4 
+Production data is not utilized for 
+change development and testing 
+efforts. 
+Inquired of the compliance 
+manager regarding data used in 
+development and testing to 
+determine that production data 
+was not utilized for change 
+development and testing efforts.   
+No exceptions noted. 
+Inspected the information security 
+policy and the segregation of 
+development, testing, and 
+production environments to 
+determine that production data 
+was not utilized for change 
+management and testing efforts. 
+No exceptions noted. 
+C1.1.5 
+Administrative access privileges 
+within the in-scope systems are 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+Inspected the listing of 
+administrative users for the in-
+scope systems with the 
+assistance of compliance 
+manager to determine that 
+administrative access privileges 
+within the in-scope systems were 
+restricted to user accounts 
+accessible by authorized 
+personnel. 
+No exceptions noted. 
+C1.2 The entity disposes of confidential information to meet the entity’s objectives related to confidentiality.   
+C1.2.1 
+The entity's confidentiality, data 
+retention and disposal 
+commitments, and the associated 
+system requirements are 
+documented in customer 
+contracts. 
+Inspected the customer contracts 
+for a sample of customers 
+onboarded during the period to 
+determine that the entity’s 
+confidentiality commitments and 
+the associated system 
+requirements were documented in 
+customer contracts for each 
+customer sampled. 
+No exceptions noted. 
+C1.2.2 
+Documented data disposal 
+policies are in place to guide 
+personnel on the procedures for 
+retention and disposal of data. 
+Inspected the data disposal 
+policies and the end user 
+subscription agreement to 
+determine that documented data 
+disposal policies were in place to 
+guide personnel on the 
+procedures for retention and 
+disposal of data. 
+No exceptions noted. 
+C1.2.3 
+Customer data is retained and 
+deleted upon termination or 
+expiration of the subscription term 
+in accordance with the end user 
+subscription agreement. 
+Inquired of the compliance 
+manager regarding the disposal of 
+customer data to determine that 
+customer data was retained and 
+deleted upon termination or 
+expiration of the subscription term 
+in accordance with the end user 
+subscription agreement. 
+No exceptions noted. 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598
+ 
+ 
+ 
+ 
+ 
+ 
+82 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the customer data 
+retention and deletion process 
+configurations and termination 
+tickets for a sample customers 
+terminated during the period to 
+determine that customer data was 
+retained and deleted upon 
+termination or expiration of the 
+subscription term in accordance 
+with the end user subscription 
+agreement for each customer 
+sampled. 
+No exceptions noted. 
+ 
+DocuSign Envelope ID: 7D03D07C-B710-415B-8FB4-0735562BD598

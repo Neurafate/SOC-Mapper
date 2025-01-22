@@ -1,0 +1,861 @@
+ 
+Salesforce Services on Hyperforce | 53 
+Controls, Criteria, Tests, and Results of Tests 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+AC-05: Appropriate identification and 
+authentication including multi-factor 
+authentication (MFA) with dynamic 
+password generation or password 
+parameters set in accordance with 
+corporate policy as system 
+functionality allows are required to 
+access the production systems. 
+CC6.1, CC6.2, 
+CC6.3, CC7.1 
+Inspected authentication policy documentation to 
+determine requirements for appropriate identification 
+and authentication credentials, including multi-factor 
+authentication, were defined. 
+No exceptions noted. 
+Observed a user traverse the authentication points 
+required to gain logical access to the production 
+infrastructure to determine appropriate identification 
+and authentication credentials, including multi-factor 
+authentication, were required to perform actions on 
+the production infrastructure. 
+No exceptions noted. 
+Inspected system configurations for the production 
+infrastructure to determine systems were configured 
+to enforce multi-factor authentication with dynamic 
+password generation or password parameters set in 
+accordance with company policy as systems allow. 
+No exceptions noted. 
+AC-07: Secure encryption algorithms 
+are used to remotely manage 
+production infrastructure. 
+CC6.7, CC6.8 
+Observed an administrator log on to each remote 
+access authentication path and inspected the 
+configuration for each path to determine secure 
+encryption algorithms were used when users 
+remotely managed production infrastructure. 
+No exceptions noted. 
+Inspected the production management console TLS 
+certificate to determine TLS cryptographic protocols 
+were used. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 54 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+AC-13a: New access to the production 
+environment is provisioned and 
+enforced using automated 
+mechanisms and to only individuals 
+which have been specifically 
+authorized and approved after the 
+completion of defined prerequisites. 
+CC6.1, CC6.2, 
+CC6.3 
+Inspected the Onboarding requirements to determine 
+prerequisites prior to granting new access to 
+production environment were defined along with 
+access approval requirements. 
+No exceptions noted. 
+Inspected system configurations within the access 
+management console and ILM tool to determine it 
+was configured to enforce completion of required pre-
+requisites and manager approval prior to access 
+being granted. 
+No exceptions noted. 
+Inspected the case history details for a sample new 
+user to determine the required pre-requisites were 
+completed and access was approved by 
+management prior to being granted. 
+No exceptions noted. 
+Observed a user attempt to request access without 
+having completed the required prerequisites to 
+determine the access request was not permitted. 
+No exceptions noted. 
+AC-13b: Pre-defined access roles and 
+permissions are applied to public cloud 
+environments upon creation and the 
+ability to modify the permission 
+boundary rules is restricted. 
+CC6.1, CC6.2, 
+CC6.3 
+Inspected the Public Cloud Security Standard to 
+determine security control requirements for cloud 
+service providers were defined. 
+No exceptions noted. 
+Inspected configurations that applied permission 
+boundaries to AWS accounts to determine IAM 
+policies were enforced based on Salesforce 
+standards. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 55 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+Inspected system configurations within the code 
+repository to determine permission boundary rules 
+were enforced for all public cloud role creations to 
+restrict any role, other than the AccountSetup Role 
+from having the access to create new users and 
+roles, and restrict any role from having permissions to 
+modify or delete permission boundary rules and from 
+creating login profiles that could access the system 
+outside of PCSK. 
+No exceptions noted. 
+Observed a user without the AccountSetup Role 
+attempt to create a new customer user and role and 
+determine the system prevented the actions. 
+No exceptions noted. 
+Observed a user attempt to modify the boundary 
+permissions for a role outside of PCSK to determine 
+the system prevented the actions. 
+No exceptions noted. 
+AC-14: Production user access is 
+revoked timely following the creation of 
+a termination case in accordance with 
+Salesforce Security Standards. 
+CC6.1, CC6.2, 
+CC6.3 
+Inspected termination automation configurations to 
+determine user accounts were automatically 
+disabled/terminated when a termination case was 
+created and alerts were generated in the event of a 
+failure. 
+No exceptions noted. 
+Inspected the termination record for a sample 
+terminated user to determine the users' access to the 
+target production system was systematically removed 
+based on the termination date. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 56 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+Inspected details for a sample of automated 
+termination failures, selected from the ticketing 
+system, to determine the issues were resolved and 
+the user's access was removed within 5 business 
+days. 
+Per inspection of a query from 
+the ticketing system, EY 
+determined there were no 
+termination failures within the 
+examination period. 
+AC-17: Production user access is 
+reviewed for role changes and 
+transfers. Issues identified are 
+investigated and resolved within 30 
+days of transfer. 
+CC5.2, CC5.3, 
+CC6.2, CC6.3 
+Inspected system configuration to determine in the 
+event of a transfer as noted in the HR system, ILM 
+initiates a review of the access and any access not 
+approved after a defined period of time or noted as 
+rejected by the reviewer is systematically removed. 
+No exceptions noted. 
+Inspected the transfer review record in ILM to 
+determine the access was systematically removed 
+when the access was not approved by the reviewer. 
+No exceptions noted. 
+AC-18: Administrative access to 
+approve temporary user access to 
+production infrastructure components 
+and public cloud administration 
+consoles is reviewed on a quarterly 
+basis. Accounts identified as not being 
+appropriate are investigated and 
+resolved. 
+CC6.2 
+Inspected the Access Management policy to 
+determine requirements and guidance to perform 
+user access reviews were defined. 
+No exceptions noted. 
+Inspected the access review ticket details and 
+supporting evidence for a sample quarter for a 
+sample of in-scope service components to determine 
+a quarterly access review of administrative access 
+who can approve temporary user access to 
+production infrastructure components and public 
+cloud administration consoles was performed, and 
+any issues identified were investigated and resolved. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 57 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+AC-19: Production database user 
+accounts are reviewed on a quarterly 
+basis. Accounts identified as not being 
+appropriate are investigated and 
+resolved. 
+CC6.2 
+Inspected Access Management standard 
+documentation to determine requirements for access 
+reviews were defined. 
+No exceptions noted. 
+Inspected quarterly access review ticket details for a 
+sample quarter to determine quarterly access reviews 
+of database access were performed, and any issues 
+identified were investigated and resolved. 
+No exceptions noted. 
+AC-22a: Vendor provided database 
+accounts are locked, removed or the 
+default password is changed. 
+CC6.2, CC6.6 
+Inspected Salesforce’s Vendor Hardening Guide to 
+determine default vendor database account 
+passwords were required to be locked, or removed, 
+or the default password was required to be changed 
+for accounts that were not needed or being used. 
+No exceptions noted. 
+Inspected system configurations within the code 
+repository and the vendor / service account status for 
+a sample database to determine vendor / service 
+accounts were locked or removed, or the default 
+password was changed. 
+No exceptions noted. 
+AC-22b: Passwords for service 
+accounts utilized to manage service 
+integrations are maintained in a secure 
+password vault which is restricted to 
+authorized personnel. 
+CC6.2, CC6.6 
+Inspected password vault configurations to determine 
+passwords for the database service accounts used to 
+manage service integrations were maintained 
+securely, and access was restricted to authorized 
+personnel. 
+No exceptions noted. 
+Inspected the job title, reporting chain, and performed 
+inquiry of the control owner for the list of users with 
+access to the password vault to determine access 
+was restricted to authorized personnel. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 58 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+AC-22c: Passwords for service 
+accounts utilized to manage service 
+integrations are rotated every 90 days. 
+CC6.2, CC6.6 
+Inspected Salesforce’s Authentication Standard to 
+determine it documented the requirements on 
+password rotation for service accounts. 
+No exceptions noted. 
+Inspected the ticket details for a sample quarterly 
+rotation to determine the passwords for services 
+accounts utilized to manage service integrations were 
+rotated on a periodic basis. 
+No exceptions noted. 
+AU-02a: Production cloud 
+administration consoles, servers, and 
+databases are configured to log 
+privileged operations, authorized 
+access, and unauthorized access 
+attempts. 
+CC2.1, CC5.2, 
+CC7.2 
+Inspected baseline configurations for production 
+infrastructure within the configuration management 
+system to determine production infrastructure was 
+configured to log privileged operations, including 
+authorized and unauthorized access attempts. 
+No exceptions noted. 
+Observed an authentication attempt and inspected 
+the corresponding details within the centralized 
+logging system to determine the event was logged. 
+No exceptions noted. 
+AU-02b: Production cloud 
+administration console, server and 
+database logs are transmitted to a 
+centralized logging system. 
+CC2.1, CC5.2, 
+CC7.2 
+Inspected baseline configurations for production 
+infrastructure within the configuration management 
+system to determine production infrastructure was 
+configured to transmit logs to a centralized logging 
+system for monitoring. 
+No exceptions noted. 
+Observed an authentication attempt and inspected 
+the corresponding details within the centralized 
+logging system to determine the event was logged. 
+No exceptions noted. 
+AU-03: Clocks of relevant information 
+processing systems are synchronized 
+with a centralized Network Time 
+Protocol (NTP) server at least hourly. 
+CC2.1, CC7.2 
+Inspected the NTP configuration within the 
+configuration management tool to determine servers 
+were configured to use NTP as the basis for clock 
+synchronization. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 59 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+Inspected NTP configurations for a sample 
+production host to determine production information 
+processing systems were configured to synchronize 
+with a centralized NTP server. 
+No exceptions noted. 
+AU-08: Infrastructure as code 
+deployment pipelines are configured to 
+check changes for security policy 
+violations, and block changes which 
+violate defined policies. 
+CC2.1, CC5.2, 
+CC7.2 
+Inspected system configurations for a sample of 
+policy agents selected from the code repository to 
+determine policy agents were enabled for code 
+deployment pipelines to check for and prevent 
+implementation of code that resulted in defined 
+security policy violations. 
+No exceptions noted. 
+Inspected an attempt to execute an operation which 
+violated the configured security policy and 
+determined the operation was systematically blocked. 
+No exceptions noted. 
+Inspected configurations for a sample of mandatory 
+deny OPA policies selected from the code repository 
+to determine the policy was configured to check 
+changes for security policy violations and block 
+problematic code. 
+No exceptions noted. 
+CM-01: Capacity planning is 
+conducted and monitored so that 
+necessary capacity for long term 
+strategic planning exists. 
+CC4.1, CC7.5, 
+A1.1 
+Inspected meeting invite details and capacity 
+planning agenda for the recurring weekly Capacity 
+Planning meetings to determine the periodic 
+execution of strategic capacity planning. 
+No exceptions noted. 
+Inspected monitoring dashboards to determine that 
+capacity monitoring and capacity planning schedules 
+for production systems were in place. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 60 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+CM-02: A version management 
+system is utilized to maintain current 
+and prior configurations for public 
+cloud environments, control plane 
+systems, and infrastructure 
+components. 
+CC2.1, CC7.1, 
+CC8.1 
+Inspected the version management system to 
+determine current and prior configurations for public 
+cloud environments, control plane systems, and 
+infrastructure components were maintained and 
+could support roll-back if necessary. 
+No exceptions noted. 
+CM-05a: Production code 
+deployments are documented, tested, 
+and peer reviewed and/or approved by 
+management. 
+CC6.1, CC6.8, 
+CC8.1 
+Inspected change management procedures 
+documentation to determine approval requirements, 
+and guidelines for assessing risk and impact of 
+changes based on change type were documented. 
+No exceptions noted. 
+Inspected system configurations within the code 
+repository to determine changes were required to 
+complete peer reviews and testing prior to 
+deployment to production. 
+No exceptions noted. 
+Inspected ticket details for a sample of changes 
+selected from the ticketing system to determine 
+changes were tested, peer reviewed and/or approved 
+by management prior to implementation and were 
+implemented by an individual separate from the 
+approver. 
+No exceptions noted. 
+Observed a user create a new branch without the 
+required peer approval branch protections, and 
+attempted to push a change from the new branch to 
+production without the required approvals to 
+determine the attempt was rejected by the 
+deployment tool. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 61 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+CM-05b: Standard Pre-Approved 
+changes relate to low risk recurring 
+changes that utilize established pre-
+approved templates. 
+CC6.1, CC6.8, 
+CC8.1 
+Inspected change management procedures 
+documentation to determine approval requirements, 
+and guidelines for assessing risk and impact of 
+changes based on change type were documented. 
+No exceptions noted. 
+Inspected the ticket details for a sample of Standard 
+Pre-Approved changes selected from the ticketing 
+system to determine the changes were implemented 
+using a standard pre-approved template or were 
+systematically implemented based on the pre-
+approved change category. 
+No exceptions noted. 
+CM-08: A current asset inventory of 
+production systems is documented 
+and maintained. 
+CC3.2, CC6.1, 
+CC7.1 
+Inspected the inventory list for production systems to 
+determine a system inventory was available. 
+No exceptions noted. 
+CM-09: Documented configuration 
+guidelines for the production 
+environment govern the configuration 
+management process. 
+CC2.1, CC6.8, 
+CC7.1, CC8.1 
+Inspected the configuration standard and supporting 
+documents to determine configuration guidelines for 
+the production environment existed which governed 
+the configuration management process. 
+No exceptions noted. 
+CM-13: A centralized management 
+tool is utilized to configure and 
+manage production infrastructure. 
+CC6.8, CC7.1 
+Inspected system configurations within the code 
+repository to determine a centralized management 
+tool was used to configure and manage production 
+infrastructure. 
+No exceptions noted. 
+CM-14: The production server and 
+container base image is rebuilt and 
+made available once new 
+vulnerabilities are identified in 
+accordance with the Salesforce 
+Vulnerability Ranking Standard. 
+CC7.2 
+Inspected Hyperforce documentation to determine 
+process and requirements for container scanning and 
+image bundle releases were defined. 
+No exceptions noted. 
+Inspected system configurations to determine the 
+production server base image was rebuilt and made 
+available once new vulnerabilities were identified. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 62 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+Inspected the version history from the base image 
+management console to determine new production 
+server base images were made available monthly at 
+a minimum. 
+No exceptions noted. 
+CP-01a: The Contingency Plan 
+outlines the actions to be followed to 
+meet availability and system 
+requirements and is reviewed on an 
+annual basis. 
+CC7.4, CC7.5, 
+CC9.1, A1.2 
+Inspected the Contingency Plan documentation to 
+determine it was reviewed each calendar year and 
+outlined the actions to be followed in the event of a 
+disaster to bring the production infrastructure back 
+online to meet availability and system requirements, 
+including the roles and responsibilities of each key 
+personnel. 
+No exceptions noted. 
+CP-01b: The Disaster Recovery Plan 
+(DRP) outlines the actions to be 
+followed to meet availability and 
+system requirements. The DRP is 
+reviewed annually by relevant 
+stakeholders. 
+CC7.4, CC7.5, 
+CC9.1, A1.2 
+Inspected the Disaster Recovery Plan to determine it 
+outlined the actions to be followed in the event of a 
+disaster to bring the production systems back online 
+to meet availability and system requirements, and 
+was reviewed within the past year. 
+No exceptions noted. 
+CP-04: Contingency documentation is 
+communicated to individuals with 
+contingency roles and responsibilities. 
+CC1.4, CC2.2, 
+CC7.5, CC9.1 
+Inspected supporting evidence from company’s 
+extranet site to determine resiliency and failover 
+documentation was communicated to individuals with 
+contingency roles and responsibilities 
+No exceptions noted. 
+CP-05: A disaster recovery plan is 
+tested at least annually to determine 
+the effectiveness of the plan. The 
+results of testing are reviewed and 
+corrective action is taken as 
+necessary. 
+CC7.5, CC9.1, 
+A1.2, A1.3 
+Inspected the results of the most recent instance of a 
+disaster recovery test to determine effectiveness of 
+the plan was tested within the past year, results were 
+reviewed, and corrective actions required were 
+documented as necessary. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 63 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+CP-06: The system is configured for 
+high availability across multiple 
+availability zones. 
+CC7.5, CC9.1, 
+A1.2, A1.3 
+Inspected system configurations within the code 
+repository and the management console to determine 
+the system was configured for high availability across 
+multiple availability zones. 
+No exceptions noted. 
+CP-07: Production systems are 
+monitored for availability. Customer 
+impacting performance incidents are 
+documented in a ticketing system. 
+CC9.1, A1.1 
+Inspected the monitoring configuration in the 
+centralized configuration management tool to 
+determine production systems were monitored for 
+availability. 
+No exceptions noted. 
+Inspected the availability monitoring dashboard to 
+determine production systems were monitored for 
+availability. 
+No exceptions noted. 
+Inspected the on-call monitoring schedule to 
+determine on-call personnel were assigned for 
+responding to alerts. 
+No exceptions noted. 
+Inspected ticket details for a sample of performance 
+incidents selected from the ticketing system to 
+determine incidents were documented and tracked to 
+resolution. 
+No exceptions noted. 
+CP-12: Database backups are 
+performed and retained in accordance 
+with the defined schedule in the 
+backup procedures. 
+CC9.1, A1.2, 
+C1.1 
+Inspected Salesforce’s Database Backup Procedures 
+and the Security, Privacy and Architecture 
+documentation to determine requirements and 
+procedures for performing system backups were 
+documented. 
+No exceptions noted. 
+Inspected the backup configurations within the code 
+repository to determine backups were configured in 
+accordance with the defined schedule and retention 
+requirements. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 64 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+Inspected the backup monitoring configuration to 
+determine the backup process was monitored and 
+errors identified were requeued for resolution. 
+No exceptions noted. 
+IA-02: Privileged access to the public 
+cloud service provider administrative 
+console and production infrastructure 
+is provided on an as needed basis 
+utilizing ephemeral credentials valid for 
+only that purpose and time of use, and 
+requires documented approval prior to 
+being granted access. 
+CC6.1 
+Inspected configurations within the management 
+console to determine access to the public cloud 
+provider administrative console and production 
+infrastructure was restricted to a defined period of 
+time. 
+No exceptions noted. 
+Observed a user attempt to submit an access request 
+to determine the user could not approve their own 
+access request, a reason for the access request was 
+required, and approval was required prior to the 
+access being granted for the configured duration. 
+No exceptions noted. 
+Inspected the account status details for an example 
+user account to determine the access was removed 
+after the configured duration for the access has 
+expired. 
+No exceptions noted. 
+IR-03: Incident handling capabilities for 
+performance incidents have been 
+implemented. Customer impacting 
+performance incidents are assigned a 
+severity level to prioritize their 
+importance. 
+CC2.1, CC5.1, 
+CC5.3, CC7.4, 
+CC7.5, CC8.1, 
+CC9.1 
+Inspected Incident Response documentation to 
+determine requirements and procedures for handling 
+performance incidents were defined, including 
+assignment of severity levels to prioritize their 
+importance. 
+No exceptions noted. 
+Inspected incident details for a sample of customer 
+impacting performance incidents selected from the 
+ticketing system to determine the incidents were 
+documented and assigned a severity level to 
+prioritize their importance. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 65 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+IR-04: Investigation and corrective 
+actions for customer impacting 
+performance incidents are 
+documented and shared with key 
+personnel. 
+CC5.1, CC5.2, 
+CC7.3, CC7.4, 
+CC7.5, CC9.1 
+Inspected incident details for a sample of customer 
+impacting performance incidents selected from the 
+ticketing system to determine investigation and 
+corrective actions were documented and shared with 
+key personnel. 
+No exceptions noted. 
+RA-02: Production container images 
+stored in the container image registry 
+are regularly scanned for 
+vulnerabilities or after significant 
+change. 
+CC3.2, CC4.1, 
+CC6.8, CC7.1, 
+CC7.2 
+Inspected the vulnerability scanner tool 
+configurations to determine vulnerability scans were 
+scheduled to run on a daily basis. 
+No exceptions noted. 
+Inspected monitoring configurations to determine an 
+alert was configured in the case of vulnerability scan 
+failure. 
+No exceptions noted. 
+Inspected log details within the centralized logging 
+system to determine that production container 
+images were regularly scanned for vulnerabilities. 
+No exceptions noted. 
+RA-06: Annually, Salesforce products 
+complete infrastructure penetration 
+testing for in-scope systems. 
+Remediation of results are tracked to 
+resolution. 
+CC4.1 
+Inspected Salesforce’s Vulnerability Assessment and 
+Identification Process and Vulnerability Ranking 
+Standard to determine requirements for the 
+performance of penetration testing on an annual 
+basis and the vulnerability ranking standards were 
+defined. 
+No exceptions noted. 
+Inspected the most recent penetration test results to 
+determine that the test was performed within the past 
+year and issues identified, if any, were tracked to 
+resolution. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 66 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+SC-03: Internal and external Domain 
+Name Systems (DNS) are redundant 
+and fault-tolerant. 
+A1.1, A1.2 
+Inspected configurations for a sample of internal and 
+external Domain Name Systems selected from the 
+asset inventory to determine they were redundant 
+and fault tolerant. 
+No exceptions noted. 
+SC-06: Production and non-production 
+environments are segregated. 
+CC6.1, CC6.3, 
+CC8.1 
+Inspected network topology diagrams to determine 
+production and non-production environments were 
+segregated. 
+No exceptions noted. 
+Observed a user attempt to establish a connection 
+between the non-production and production networks 
+to determine the environments were separated to 
+prohibit network access and information flow. 
+No exceptions noted. 
+SC-09: Sessions into the production 
+infrastructure (network, servers, and 
+database) and the application are 
+automatically terminated after a period 
+of inactivity and requires 
+reauthentication. 
+CC6.1 
+Inspected the secure virtual gateway configurations 
+to determine they were configured to automatically 
+terminate production sessions after a period of 
+inactivity in accordance with policy. 
+No exceptions noted. 
+SC-10: Network traffic is protected and 
+managed at external network 
+connections by routing through 
+boundary protection mechanisms. 
+CC6.1, CC6.6 
+Inspected network security policies and guidance 
+documentation to determine boundary protection 
+mechanisms were in place to manage inbound and 
+outbound external connections. 
+No exceptions noted. 
+Inspected system configurations for a sample of 
+security groups within the code repository to 
+determine they were configured to restrict access to 
+the production environment. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 67 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+SC-13: Customer Data is encrypted at 
+rest. 
+CC6.1 
+Inspected system configurations within the code 
+repository and the management console to determine 
+production databases were configured to encrypt 
+Customer Data at rest. 
+No exceptions noted. 
+SC-14: Classic cryptographic keys are 
+rotated in accordance with the 
+Cryptographic Key Management 
+Standard. 
+CC6.1 
+Inspected Salesforce’s Cryptographic Key 
+Management Standard to determine it documented 
+the requirements for managing and storing encryption 
+keys and it was reviewed within the past year. 
+No exceptions noted. 
+Inspected configurations within the code repository to 
+determine encryption certificates were managed and 
+stored in accordance with encryption key 
+management policies and procedures, and included 
+alerts in the event of expiring certificates. 
+No exceptions noted. 
+Inspected a sample production environment to 
+determine certificates were set to expire in 
+accordance to the Cryptographic Key Management 
+Standard. 
+No exceptions noted. 
+SC-15: Customer Data at rest 
+encryption keys within the production 
+environment are rotated in accordance 
+with Salesforce Security Standards. 
+CC6.1 
+Inspected Salesforce’s Cryptographic Key 
+Management Standard to determine it documented 
+the requirements for managing and storing encryption 
+keys and it was reviewed within the past year. 
+No exceptions noted. 
+Inspected configurations within the code repository 
+and the management console to determine Customer 
+Managed Keys (CMK) were managed using AWS’s 
+Key Management Services (KMS) and were 
+configured to be rotated in accordance with policy. 
+No exceptions noted. 
+ 
+Salesforce Services on Hyperforce | 68 
+Control Description 
+SOC 2 Criteria 
+Reference 
+EY’s Test Procedures 
+EY’s Test Results 
+SI-02: Salesforce utilizes an intrusion 
+detection tool to monitor network traffic 
+which generates alerts based on pre-
+defined definitions. 
+CC6.6, CC6.8, 
+CC7.1, CC7.2, 
+CC7.4 
+Inspected the configuration of the intrusion detection 
+tool within the production environment to determine 
+network traffic was monitored and logs were 
+forwarded to the centralized logging system. 
+No exceptions noted. 
+Inspected the centralized logging system for a 
+sample event to determine the event was logged and 
+an alert was generated based on pre-defined 
+definitions. 
+No exceptions noted. 

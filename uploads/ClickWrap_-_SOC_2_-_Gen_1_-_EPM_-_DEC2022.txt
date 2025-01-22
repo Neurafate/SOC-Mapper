@@ -1,0 +1,2673 @@
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               36 of 97 
+Administrative and Personnel Procedures 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+1.01: Background checks are performed for 
+new hires as described in the narrative. 
+Inquired of the control owner and ascertained 
+background checks were performed for new hires 
+as described in the narrative. 
+No deviations noted. 
+CC1.1 
+CC1.4 
+Inspected the background check documentation for 
+a sample of new hires selected from the HR 
+Systems and ascertained the background checks 
+were completed. 
+No deviations noted. 
+1.02: Each new employee is required to 
+complete and sign an employment agreement 
+or equivalent and a Proprietary Information 
+Agreement, prior to or on the day of hire (or 
+as otherwise required under applicable law), 
+in accordance with local procedures, laws and 
+regulations. 
+Inquired of the control owner and ascertained each 
+new employee was required to complete and sign 
+an employment agreement or equivalent and a 
+Proprietary Information Agreement, prior to or on 
+the day of hire, in accordance with local 
+procedures, laws, and regulations. 
+No deviations noted. 
+CC1.1 
+CC1.5 
+Inspected the applicable documentation for a 
+sample of new employees selected from the HR 
+Systems and ascertained it was completed in 
+accordance with local procedures, laws and 
+regulations. 
+No deviations noted. 
+1.03: New employees are required to 
+complete the Code of Ethics and Business 
+Conduct, Information Protection Awareness, 
+and Anti-Corruption & Foreign Corrupt 
+Practices Act online e-courses. New 
+employees who do not complete these 
+courses in a timely manner are identified on 
+the exception list for follow-up. 
+Inquired of the control owner and ascertained new 
+employees were required to complete the Code of 
+Ethics and Business Conduct, Information 
+Protection Awareness, and Anti-Corruption & 
+Foreign Corrupt Practices Act online e-courses, 
+and new employees who did not complete these 
+courses in a timely manner were identified on the 
+exception list for follow-up. 
+No deviations noted. 
+CC1.1 
+CC1.4 
+CC2.2 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               37 of 97 
+Administrative and Personnel Procedures 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the course records for a sample of new 
+employees selected from the HR Systems and 
+ascertained the new employees had completed the 
+Ethics and Business Conduct, Information 
+Protection Awareness, and Anti-Corruption & 
+Foreign Corrupt Practices Act online e-courses or 
+were identified on the exception list for follow-up. 
+No deviations noted. 
+1.04: Employees are assigned a job 
+description upon hire that defines their role 
+and the necessary qualifications for their 
+position. 
+Inquired of the control owner and ascertained 
+employees were assigned a job description upon 
+hire that defined their role and the necessary 
+qualifications for their position. 
+No deviations noted. 
+CC1.3 
+CC1.4 
+Inspected the job description for a sample of 
+employees and ascertained a job description 
+existed which defined the necessary qualifications 
+for their position. 
+No deviations noted. 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               38 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+2.01: Documented information security 
+policies are in place to guide personnel in 
+areas that include the following: 
+• 
+Information security 
+• 
+Access management  
+• 
+Password management 
+• 
+Acceptable use 
+• 
+Data retention and classification 
+• 
+Confidentiality of information 
+Inquired of the control owner and ascertained 
+documented information security policies were in 
+place to guide personnel in areas that included the 
+following: 
+• 
+Information security 
+• 
+Access management  
+• 
+Password management 
+• 
+Acceptable use 
+• 
+Data retention and classification 
+• 
+Confidentiality of information 
+No deviations noted. 
+CC2.1 
+CC2.2 
+CC5.3 
+CC6.1 
+C1.1 
+Inspected the information security policies and 
+ascertained documented information security 
+policies were in place to guide personnel in areas 
+that included the following: 
+• 
+Information security 
+• 
+Access management  
+• 
+Password management 
+• 
+Acceptable use 
+• 
+Data retention and classification 
+• 
+Confidentiality of information 
+No deviations noted. 
+2.02: Oracle utilizes OIM for Oracle Cloud 
+personnel to submit user account requests. 
+The system routes the requests to the 
+appropriate approver for approval. Upon 
+approval the access provisioning system 
+creates the user account on the selected 
+environment. 
+Inquired of the control owner and ascertained 
+Oracle utilized OIM for Oracle Cloud personnel to 
+submit user account requests and that the system 
+routed the requests to the appropriate approver 
+and upon approval the access provisioning system 
+created the user account for the selected 
+environment. 
+No deviations noted. 
+CC5.2 
+CC6.1 
+CC6.2 
+CC6.3 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               39 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the access provisioning system 
+configuration and ascertained the system was 
+configured to route access requests to the user's 
+manager for approval. 
+No deviations noted. 
+Inspected the access provisioning system 
+approval for a sample of access requests selected 
+from the access provisioning system and 
+ascertained they had received approval from the 
+appropriate individuals configured within the 
+account provisioning system. 
+No deviations noted. 
+Inspected the source system for a sample of user 
+access requests and ascertained user access 
+provisioned in the source system was the access 
+requested and approved in OIM. 
+No deviations noted. 
+2.03: The OIM system is configured to enforce 
+the following user account and password 
+controls:  
+• 
+Minimum password length 
+• 
+Password complexity 
+Inquired of the control owner and ascertained the 
+OIM system was configured to enforce the 
+following user account and password controls:  
+• 
+Minimum password length 
+• 
+Password complexity 
+No deviations noted. 
+CC6.1 
+CC6.2 
+Inspected the Oracle Password Policy and 
+ascertained it included details regarding the 
+minimum password length and password 
+complexity for user accounts. 
+No deviations noted. 
+Inspected the password settings configured in the 
+account provisioning system and ascertained they 
+were in adherence with the password policy 
+requirements. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               40 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Observed a user attempt to reset their password 
+using characteristics that did not meet the 
+password policy requirements and ascertained the 
+user was unable to create a non-compliant 
+password. 
+No deviations noted. 
+2.04: Authentication to OCNA requires users 
+to connect via two-factor authentication that 
+includes the following: 
+• 
+Authorized user account 
+• 
+PIN 
+• 
+Individual token generator 
+Inquired of the control owner and ascertained 
+authentication to OCNA required users to connect 
+via two-factor authentication which included the 
+following: 
+• 
+Authorized user account 
+• 
+PIN 
+• 
+Individual token generator 
+No deviations noted. 
+CC6.1 
+CC6.2 
+CC6.6 
+Inspected the OCNA configuration and 
+ascertained two-factor authentication was enabled. 
+No deviations noted. 
+Observed a user connect to the OCNA VPN and 
+ascertained the user was required to use multi-
+factor authentication. 
+No deviations noted. 
+2.05: Administrator access within OCNA is 
+restricted to user accounts accessible by 
+authorized network and cloud security 
+operations personnel. 
+Inquired of the control owner and ascertained 
+administrator access within the OCNA system was 
+restricted to user accounts accessible by 
+authorized network and cloud security operations 
+personnel. 
+No deviations noted. 
+CC6.1 
+CC6.3 
+Inspected the list of users with administrator 
+access to the OCNA system and ascertained 
+access was appropriately restricted to user 
+accounts accessible only by network and cloud 
+security operations personnel. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               41 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+2.06: User-level access entitlements granting 
+access to the production environment are 
+configured to expire every 90 days. 
+Inquired of the control owner and ascertained 
+user-level access entitlements granting access to 
+the production environment were configured to 
+expire every 90 days. 
+No deviations noted. 
+CC6.1 
+CC6.2 
+CC6.3 
+Inspected the configuration for user-level access 
+entitlements that grant access to the production 
+environment and ascertained they were configured 
+to expire at least every 90 days. 
+Deviations noted. 
+Two (2) of thirty-two (32) 
+user-level access 
+entitlements were not 
+configured to be revoked 
+automatically after 90 days. 
+Management response: 
+Although the identified entitlements are not configured to expire every 90 days, manager approval is required in order for any user to obtain the 
+access. The users who may be granted the user entitlements cannot make changes to any Oracle Enterprise Performance Management Cloud 
+production environments unless they are also granted the applicable layered PowerBroker policies, which are justified, and approved by a 
+manager prior to provisioning, and are configured to expire at least every 90 days after provisioning. 
+2.07: Dynamic Access Policies are configured 
+to validate that devices are running up-to-date 
+anti-malware software, up-to-date software 
+and have a local firewall installed prior to 
+granting access to the infrastructure 
+supporting the System. The VPN is configured 
+to time out after 24 hours of inactivity. 
+Inquired of the control owner and ascertained 
+Dynamic Access Policies were configured to 
+validate devices were running up-to-date anti-
+malware software, up-to-date software and had a 
+local firewall installed prior to granting access to 
+the infrastructure supporting the System and the 
+VPN was configured to time out after 24 hours of 
+inactivity. 
+No deviations noted. 
+CC6.1 
+CC6.6 
+CC6.8 
+Inspected the Dynamic Access Policies for OCNA 
+and ascertained it was configured to check if end 
+points were running up-to-date anti-malware 
+software, up-to-date software, and had a local 
+firewall installed prior to granting access to the 
+infrastructure supporting the System. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               42 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the VPN configuration and ascertained 
+the VPN was configured to time out after 24 hours 
+of inactivity. 
+No deviations noted. 
+Attempted to connect to OCNA from a mobile 
+device and ascertained the connection was 
+unsuccessful as the device did not meet the 
+requirements of the Dynamic Access Policies. 
+No deviations noted. 
+2.08: PowerBroker policies that grant access 
+to the “root” or "oracle" privileged local 
+account on the production environment, which 
+can be requested by development personnel, 
+are configured to expire 24 hours after being 
+approved and provisioned. 
+ 
+Inquired of the control owner and ascertained 
+PowerBroker policies that granted access to the 
+“root” or "oracle" privileged local account on the 
+production environment, which can be requested 
+by development personnel, were configured to 
+expire 24 hours after being approved and 
+provisioned unless specified otherwise by the 
+customer. 
+No deviations noted. 
+CC6.1 
+CC6.2 
+CC6.3 
+CC8.1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Inspected the configuration in the account 
+provisioning system and ascertained PowerBroker 
+policies that grant access to the “root” or "oracle" 
+privileged local account on the production 
+environment were either configured to restrict 
+access from developers or were configured to 
+expire 24 hours after being approved and 
+provisioned. 
+ 
+Deviations noted.  
+Two (2) of eighteen (18) 
+privileged access 
+entitlements, which can be 
+requested by developers 
+were configured to expire 
+after 30 days.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               43 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Management response: 
+Although the identified entitlements are not configured to restrict developers from requesting access, a justification and manager approval are 
+required in order for the requestor to be granted the access. 
+The identified entitlements are configured to expire every 30 days and will be revoked automatically without a manager's recertification. 
+The testing performed for the control “Access to implement changes into the production environment is appropriately segregated from access to 
+develop changes.” did not identify any users holding the identified entitlements in conjunction with entitlements providing access to the version 
+control software throughout the examination period. 
+ 
+Observed a developer request and obtain access 
+to a PowerBroker policy that granted access to the 
+“root'” and "oracle" privileged local account on the 
+production environment and ascertained the user's 
+access expired after 24 hours and the user was 
+unable to authenticate with the PowerBroker 
+policy. 
+No deviations noted. 
+ 
+Observed a user who did not belong to an 
+authorized organization request access to a 
+PowerBroker policy that grant access to privileged 
+local account on the production environment and 
+ascertained the user's request was denied. 
+No deviations noted. 
+2.09: Privileged access to the production 
+servers is configured to be revoked 
+automatically at least every 90 days. 
+Inquired of the control owner and ascertained 
+privileged access to the production servers was 
+configured to be revoked automatically at least 
+every 90 days. 
+No deviations noted. 
+CC6.1 
+CC6.2 
+CC6.3 
+CC8.1 
+Inspected the configuration for PowerBroker Policy 
+access entitlements that provided privileged 
+access to the production servers and ascertained 
+the access entitlements were configured to be 
+automatically revoked at least every 90 days. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               44 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Observed a user with privileged access 
+entitlement and ascertained the user was unable 
+to authenticate to the production server after the 
+user's access expired per the expiry set for the 
+entitlement. 
+No deviations noted. 
+ 
+2.10: The ability to make changes to the 
+configurations within OIM is limited to 
+appropriate personnel. 
+Inquired of the control owner and ascertained the 
+ability to make changes to the configurations 
+within OIM was limited to appropriate personnel. 
+No deviations noted. 
+CC6.1 
+CC6.2 
+CC6.3 
+Inspected the user access review covering users 
+with access to modify OIM configurations and 
+ascertained the users were reviewed and deemed 
+appropriate. 
+No deviations noted. 
+2.11: Access entitlements are configured to be 
+automatically revoked upon termination of an 
+employee. 
+Inquired of the control owner and ascertained 
+access entitlements were configured to be 
+automatically revoked upon termination of an 
+employee. 
+No deviations noted. 
+CC6.2 
+CC6.3 
+Inspected the termination jobs schedule and 
+ascertained the jobs were scheduled to run on a 
+defined periodic basis to revoke employee access 
+upon termination. 
+No deviations noted. 
+Inspected termination details from OIM for a 
+sample terminated user and ascertained the user's 
+access was terminated timely. 
+No deviations noted. 
+Inspected the company directory for users with 
+ability to modify the termination jobs schedule and 
+ascertained the users were appropriate based on 
+job title and organizational unit. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               45 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+2.12: A quarterly review is performed to 
+identify transactions where the HR transaction 
+was recorded more than 14 days after the 
+effective termination date. 
+Inquired of the control owner and ascertained a 
+quarterly review was performed to identify 
+transactions where the HR transaction was 
+recorded more than 14 days after the effective 
+termination date. 
+No deviations noted. 
+CC6.2 
+CC6.3 
+Inspected the termination review documentation 
+for a sample of quarters and ascertained the 
+reviews were performed completely and timely by 
+an appropriate reviewer and follow-up actions 
+were executed, if applicable. 
+No deviations noted. 
+2.13: Access to the management VPN 
+supporting Cloud Applications environments 
+must be renewed upon a change in manager 
+or transfer of an employee or access is 
+revoked. 
+Inquired of the control owner and ascertained 
+access to the management VPN supporting Cloud 
+Applications environments must be renewed upon 
+a change in manager or transfer of an employee or 
+access is revoked. 
+No deviations noted. 
+CC5.2 
+CC6.1 
+CC6.2 
+CC6.3 
+Inspected the OIM configuration and ascertained 
+OIM was configured to send the user's new 
+manager a request to approve or reject the VPN 
+access and to revoke the VPN access if no 
+response from the new manager was provided 
+within 14 days. 
+No deviations noted. 
+Observed for a user who had a manager change, 
+OIM sent a request to the user's new manager to 
+re-certify the VPN access and ascertained the 
+VPN access was extended upon re-certification 
+from the new manager. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               46 of 97 
+Information Security 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Observed for a user who had a manager change, 
+OIM sent a request to the user's new manager to 
+re-certify the VPN access and ascertained the 
+VPN access was revoked upon rejection of the 
+access extension request submitted to the new 
+manager. 
+No deviations noted. 
+Observed a sample user who had a change in 
+manager and ascertained VPN access is revoked 
+as the user's manager failed to re-certify access 
+within 14 days. 
+No deviations noted. 
+ 
+ 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               47 of 97 
+Change Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+3.01: Documented change management 
+policies and procedures are in place to guide 
+personnel in the documentation and approval 
+of changes, including emergency changes. 
+Inquired of the control owner and ascertained 
+documented change management policies and 
+procedures were in place to guide personnel in the 
+documentation, and approval of changes, 
+including emergency changes. 
+No deviations noted. 
+CC2.2 
+CC5.3 
+CC8.1 
+Inspected the change management policies and 
+procedures document and ascertained it contained 
+details to guide personnel in the documentation 
+and approval of changes, including emergency 
+changes. 
+No deviations noted. 
+3.02: Release notes are available to internal 
+and external users to document and 
+communicate specifications and new features 
+for service packs and new versions of the 
+application. 
+Inquired of the control owner and ascertained 
+release notes were available to internal and 
+external users to document and communicate 
+specifications and new features for service packs 
+and new versions of the application. 
+No deviations noted. 
+CC2.2 
+CC2.3 
+CC8.1 
+Inspected the internal and external sites and 
+ascertained release notes were available to 
+internal and external users to document and 
+communicate specifications and new features for 
+service packs and new versions of the application. 
+No deviations noted. 
+3.03: Development and testing efforts are 
+performed in development and test 
+environments that are logically and physically 
+separate from the production environment. 
+Inquired of the control owner and ascertained 
+development and testing efforts were performed in 
+development and test environments that were 
+logically and physically separate from the 
+production environment. 
+No deviations noted. 
+CC6.1 
+CC8.1 
+Inspected production environment details and 
+ascertained they were logically and physically 
+separate from development and test 
+environments. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               48 of 97 
+Change Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+3.04: Version control software is utilized to 
+restrict the ability to access and implement 
+changes to source code. Users are 
+authenticated via a user account and 
+password before being granted access to the 
+source code in the version control software. 
+Inquired of the control owner and ascertained 
+version control software was utilized to restrict the 
+ability to access and implement changes to source 
+code and users were authenticated via a user 
+account and password before being granted 
+access to the source code in the version control 
+software. 
+No deviations noted. 
+CC6.1 
+CC6.3 
+CC8.1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Observed an authorized user authenticate via a 
+user account and password and ascertained the 
+user was granted access to the source code in the 
+version control software. 
+No deviations noted. 
+Observed an unauthorized user attempt to 
+authenticate to the version control software and 
+ascertained the user was unable to access the 
+source code in the version control software. 
+No deviations noted. 
+3.05: Changes to source code result in the 
+creation of a new version of the application 
+code. Rollback versions exist in the event 
+application code needs to be restored to a 
+previous version. 
+Inquired of the control owner and ascertained 
+changes to source code resulted in the creation of 
+a new version of the application code and rollback 
+versions existed in the event application code 
+needed to be restored to a previous version. 
+No deviations noted. 
+CC8.1 
+ 
+ 
+Inspected a version history for a sample change 
+and ascertained a new version number was 
+created for the code change and a prior version of 
+the change was still available in the event of a 
+rollback. 
+No deviations noted. 
+3.06: Access to the source code repository is 
+set to expire every 90 days. 
+Inquired of the control owner and ascertained 
+access to the source code repository was set to 
+expire every 90 days. 
+No deviations noted. 
+CC6.3 
+CC8.1 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               49 of 97 
+Change Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the configuration of entitlements 
+providing access to the source code repository 
+and ascertained they were set to expire every 90 
+days. 
+No deviations noted. 
+3.07: Testing when required is completed for 
+changes prior to implementation. 
+ 
+Inquired of the control owner and ascertained 
+testing when required was completed for changes 
+prior to implementation. 
+No deviations noted. 
+CC8.1 
+ 
+Inspected the change ticket and testing 
+documentation for a sample of application and 
+infrastructure changes and ascertained testing 
+when required was completed for changes prior to 
+implementation. 
+No deviations noted. 
+3.08: Changes are approved in accordance 
+with the Change Management Policy. 
+Inquired of the control owner and ascertained 
+changes were approved in accordance with the 
+Change Management Policy. 
+No deviations noted. 
+CC8.1 
+Inspected the change ticket approval 
+documentation for a sample of application and 
+infrastructure changes and ascertained changes 
+were approved in accordance with the Change 
+Management Policy. 
+No deviations noted. 
+3.09: Change management meetings are held 
+to discuss application release planning and 
+development activities. 
+ 
+Inquired of the control owner and ascertained 
+change management meetings were held to 
+discuss application release planning and 
+development activities. 
+No deviations noted. 
+CC8.1 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               50 of 97 
+Change Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the minutes from the change 
+management meeting for a sample of weeks and 
+ascertained change management meetings were 
+held to discuss application release planning and 
+development activities. 
+No deviations noted. 
+3.10: Access to implement changes into the 
+production environment is appropriately 
+segregated from access to develop changes. 
+Inquired of the control owner and ascertained 
+access to implement changes into the production 
+environment was appropriately segregated from 
+access to develop changes. 
+No deviations noted. 
+CC8.1 
+Inspected the list of users with the ability to 
+implement changes into the production 
+environment and the list of users with the ability to 
+develop changes throughout the examination 
+period and ascertained access to implement 
+changes into the production environment was 
+appropriately segregated from access to develop 
+changes. 
+No deviations noted. 
+ 
+3.11: Write access to the version control 
+software is restricted to user accounts 
+accessible by authorized development 
+personnel. 
+Inquired of the control owner and ascertained write 
+access to the version control software was 
+restricted to user accounts accessible by 
+authorized development personnel. 
+No deviations noted. 
+CC8.1 
+Inspected a sample of users with write access to 
+the version control software and ascertained the 
+version control software was restricted to 
+authorized development personnel. 
+Deviation noted. 
+One (1) of twenty-five (25) 
+sampled users with write 
+access to the version 
+control software are not 
+authorized development 
+personnel. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               51 of 97 
+Change Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Management response: 
+The identified user's access to the version control software was revoked upon identification of the deviation. System generated activity logs were 
+reviewed; the identified user did not perform any activity in the version control software. 
+3.12: Client data is not utilized for application 
+change control testing. 
+Inquired of the control owner and ascertained 
+client data was not utilized for application change 
+control testing. 
+No deviations noted.  
+CC6.1 
+CC8.1 
+Inspected the Oracle Public Cloud Customer Data 
+Handling Policy document and ascertained Oracle 
+staff were directed to not utilize client data for 
+application change control testing. 
+No deviations noted.  
+Inspected the application change testing 
+environment and ascertained client data was not 
+utilized within the testing environment. 
+No deviations noted.  
+ 
+ 
+ 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               52 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+4.01: An automated script is run daily on EPM 
+Cloud environment to create backup under the 
+following conditions: 
+• 
+At least one user has logged in the 
+environment in the last 24 hours 
+• 
+14 days have elapsed since a backup 
+was created. 
+Inquired of the control owner and ascertained an 
+automated script was run daily on EPM Cloud 
+environment to create backup under the following 
+conditions: 
+• 
+At least one user has logged in the 
+environment in the last 24 hours 
+• 
+14 days have elapsed since a backup 
+was created. 
+No deviations noted. 
+A1.2 
+A1.3 
+ 
+Inspected the centrally configured automated 
+script and ascertained backups occurred when at 
+least one user had logged in the environment in 
+the last 24 hours and when 14 days had elapsed 
+since the backup was created. 
+No deviations noted. 
+Inspected the centrally configured automated 
+script for a sample of production pods and 
+ascertained it was applied on each sample pod 
+for backup to run daily on the EPM Cloud 
+environment. 
+No deviations noted. 
+Inspected the company directory for a sample of 
+users with ability to modify the backup 
+configuration and ascertained the users were 
+appropriate based on job title and organizational 
+unit. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               53 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+4.02: An automated system is configured to 
+raise alerts for failed backup jobs and 
+appropriate IT personnel monitor and resolve 
+failed backups. 
+Inquired of the control owner and ascertained an 
+alerting system was configured to notify Oracle 
+personnel in the event of a backup failure. 
+No deviations noted. 
+CC2.1 
+A1.2 
+A1.3 
+Inspected the centrally configured automated 
+script for a sample of production pods and 
+ascertained it was applied on each sample pod to 
+identify and log failed backups. 
+No deviations noted. 
+Inspected the alerting script and ascertained it 
+was configured to display the failed backup as 
+alerts on a central dashboard. 
+No deviations noted. 
+ 
+Inspected the backup resolution evidence for a 
+sample of logged failed backups and ascertained 
+the backups were resolved or actively worked on. 
+From January 1, 2022 to 
+March 31, 2022: 
+Deviations noted. 
+Evidence demonstrating 
+that failed backups were 
+resolved or actively worked 
+on could not be provided 
+due to the unavailability of 
+data. 
+From April 1, 2022 to 
+December 31, 2022: 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               54 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Management response: 
+Backup logs are retained for 60 days. System logs required to demonstrate that backup failures are resolved timely were not available for the 
+examination period due to the timing of testing the control. 
+The risk of unrecoverable data is addressed through the following mitigating control: 
+- 
+IT personnel perform restores of production data backups to verify that system components can be recovered from system backups upon 
+customer requests.  
+ 
+ 
+Inspected the company directory for a sample of 
+users with ability to modify the script 
+configurations and ascertained the users were 
+appropriate based on job title and organizational 
+unit. 
+No deviations noted. 
+ 
+4.03: Documented policies and procedures are 
+in place to guide personnel in server outage 
+response, escalation, and resolution activities. 
+Inquired of the control owner and ascertained 
+documented incident response policies and 
+procedures were in place to guide personnel in 
+server outage response, escalation, and 
+resolution activities. 
+No deviations noted. 
+CC2.2 
+CC4.1 
+CC4.2 
+CC5.3 
+CC7.3 
+CC7.4 
+CC7.5 
+CC9.1 
+A1.2 
+A1.3 
+Inspected the incident response policies and 
+procedures and ascertained they were in place to 
+guide personnel in server outage response, 
+escalation, and resolution activities. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               55 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+4.04: Documented standard build procedures 
+are utilized for creation, installation and 
+maintenance of production servers. In addition, 
+a configuration management tool is used to 
+manage the servers consistently. 
+Inquired of the control owner and ascertained 
+documented standard build procedures were 
+utilized for creation, installation, and maintenance 
+of production servers and a configuration 
+management tool was used to manage the 
+servers consistently. 
+No deviations noted. 
+CC2.2 
+CC5.3 
+CC7.1 
+CC8.1 
+Inspected the operating system build procedures 
+document and ascertained it detailed procedures 
+relating to the creation, installation, and 
+maintenance of production servers.   
+No deviations noted. 
+Inspected the configuration files for a sample of 
+customer servers and ascertained a configuration 
+management tool was used to manage the 
+servers. 
+Deviation noted. 
+For one (1) of twenty-five 
+(25) sampled production 
+servers, a configuration 
+management tool was not 
+used to manage the server. 
+Management response: 
+The agent was reinstalled to the identified server.  New procedures were implemented on 1/12/2023 to install the standard configuration 
+management tool on servers. 
+System configurations can only be modified by users who have elevated access in the Cloud Application production environment. The risk of 
+unauthorized configuration changes made to production environment is mitigated by the below logical access controls, which are tested to be 
+operating effectively:  
+1) Oracle utilizes OIM for Oracle Cloud personnel to submit user account requests.  The system routes the requests to the appropriate approver 
+for approval.  Upon approval the access provisioning system creates the user account on the selected environment.  
+2) Privileged access to the production servers is configured to be revoked automatically at least every 90 days.  
+3) Access entitlements are configured to be automatically revoked upon termination of an employee. 
+4) Access to implement changes into the production environment is appropriately segregated from access to develop changes. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               56 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+ 
+Inspected the company directory for a sample of 
+users with ability to modify the configurations 
+used to manage the servers and ascertained the 
+users were appropriate based on job title and 
+organizational unit. 
+No deviations noted. 
+ 
+4.05: Monitoring tools are used to monitor the 
+customer production servers for performance 
+and availability metrics. 
+Inquired of the control owner and ascertained the 
+monitoring tools were used to monitor the 
+customer production servers for performance and 
+availability metrics. 
+No deviations noted. 
+CC2.1 
+CC4.1 
+CC4.2 
+CC7.1 
+CC7.2 
+CC7.3 
+A1.1 
+A1.2 
+ 
+Inspected the monitoring tool configuration for a 
+sample of production servers and ascertained a 
+monitoring tool was used to monitor production 
+servers for performance and availability metrics. 
+No deviations noted. 
+Inspected the company directory for a sample of 
+users with ability to modify the threshold 
+configurations set up and ascertained the users 
+were appropriate based on job title and 
+organizational unit. 
+Deviation noted. 
+For one (1) of the seven (7) 
+users selected for testing 
+with access to modify the 
+threshold configurations, 
+their access was deemed 
+inappropriate. 
+Management response: 
+ 
+The identified user was transferred to a new role on June 1, 2022 and was appropriately approved for the access to perform the job 
+responsibilities as of June 1, 2022.  The user's access was revoked on June 29, 2022. 
+4.06: Monitoring tools are configured to notify 
+appropriate personnel when predefined 
+thresholds are exceeded on monitored systems 
+and devices. 
+Inquired of the control owner and ascertained 
+monitoring tools were configured to notify 
+appropriate personnel when predefined 
+thresholds were exceeded on monitoring systems 
+and devices. 
+No deviations noted. 
+CC2.1 
+CC4.1 
+CC4.2 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               57 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the monitoring tool alert notification 
+configuration for a sample of production pods and 
+ascertained they were configured to trigger alerts 
+based on predefined performance and availability 
+metrics. 
+No deviations noted. 
+CC7.1 
+CC7.2 
+CC7.3 
+A1.1 
+Inspected the company directory for a sample of 
+users with ability to modify alert notification 
+configuration setup and ascertained the users 
+were appropriate based on job title and 
+organizational unit. 
+Deviation noted. 
+For one (1) of the seven (7) 
+users selected for testing 
+with access to modify the 
+threshold configurations, 
+their access was deemed 
+inappropriate. 
+Management response: 
+ 
+The identified user was transferred to a new role on June 1, 2022 and was appropriately approved for the access to perform the job 
+responsibilities as of June 1, 2022.  The user's access was revoked on June 29, 2022. 
+ 
+Inspected a sample ticket created in response to 
+a predefined threshold being exceeded and 
+ascertained the ticket was resolved. 
+No deviations noted. 
+ 
+4.07: Backup media is encrypted in accordance 
+with Oracle's policies and procedures. 
+Inquired of the control owner and ascertained 
+backup media was encrypted in accordance with 
+Oracle's policies and procedures. 
+No deviations noted. 
+CC6.1 
+CC6.4 
+CC6.7 
+Inspected the Oracle Key Manager (OKM) 
+configuration agents for a sample of colocations 
+and ascertained OKM was configured to encrypt 
+data written to tape. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               58 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the company directory for a sample of 
+users with access to encrypted backed up data 
+and ascertained the users were appropriate 
+based on job titles and organizational unit. 
+No deviations noted. 
+4.08: Antivirus software is deployed on the 
+bastion servers to detect and prevent the 
+transmission of data or files that contain virus 
+signatures recognized by the antivirus software. 
+The antivirus software is configured to do the 
+following: 
+• 
+Update antivirus definitions on at least 
+a weekly basis 
+• 
+Scan the bastion servers on at least a 
+weekly basis as specified in the Oracle 
+Public Cloud Antivirus Standard 
+Inquired of the control owner and ascertained 
+antivirus software was deployed on the bastion 
+servers to detect and prevent the transmission of 
+data or files that contain virus signatures 
+recognized by the antivirus software. The 
+antivirus software was configured to do the 
+following: 
+• 
+Update antivirus definitions on at least a 
+weekly basis 
+• 
+Scan the bastion servers on at least a 
+weekly basis as specified in the Oracle 
+Public Cloud Antivirus Standard 
+No deviations noted. 
+CC6.6 
+CC6.8 
+CC7.2 
+ 
+Inspected the antivirus configuration for a sample 
+of bastion servers and ascertained the scan for 
+updates to antivirus definitions was configured to 
+run on at least a weekly basis. 
+No deviations noted. 
+Inspected the antivirus scan configuration for a 
+sample of bastion servers and ascertained the 
+scan was configured to run on at least a weekly 
+basis. 
+No deviations noted. 
+Inspected the monthly review performed of users 
+with access to modify the antivirus scan and 
+definition update configurations for a sample of 
+months and ascertained the users were reviewed 
+to ensure appropriateness. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               59 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+4.09: Production databases are encrypted in 
+accordance with Oracle's policies and 
+procedures. 
+Inquired of the control owner and ascertained 
+production databases were encrypted in 
+accordance with Oracle's policies and 
+procedures. 
+No deviations noted. 
+C1.1 
+Inspected the database encryption configurations 
+for a sample of production pods and ascertained 
+the encryption configuration was in accordance 
+with Oracle's policies and procedures. 
+No deviations noted. 
+Inspected the job titles and organizational unit for 
+a sample of users who have access to modify 
+database encryption configurations and 
+ascertained the users were appropriate. 
+No deviations noted.  
+4.10: Disaster recovery plans are in place to 
+guide personnel in procedures to protect 
+against disruptions caused by an unexpected 
+event. 
+Inquired of the control owner and ascertained 
+documented disaster recovery plans were in 
+place to guide personnel in procedures to protect 
+against disruptions caused by an unexpected 
+event. 
+No deviations noted.  
+CC2.2 
+CC5.3 
+CC7.5 
+CC9.1 
+A1.2 
+A1.3 
+Inspected the disaster recovery plan policies and 
+procedures documents and ascertained they 
+contained details to guide personnel in 
+procedures to protect against disruptions caused 
+by an unexpected event. 
+No deviations noted.  
+4.11: Disaster recovery plans are tested on at 
+least an annual basis. 
+Inquired of the control owner and ascertained 
+documented disaster recovery plans were tested 
+on at least an annual basis. 
+No deviations noted.  
+CC7.5 
+CC9.1 
+A1.2 
+A1.3 
+Inspected the disaster recovery plan test results 
+and ascertained disaster recovery plans were 
+performed at least annually and that corrective 
+actions were initiated when necessary. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               60 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+4.12: Customer data is retained in accordance 
+with the Cloud Services Agreement (CSA) until 
+the data is deleted or rendered inaccessible 
+within 6 months after the end of the Services 
+Period defined in the customer order. 
+Exceptions to policy, such as contract renewal 
+negotiations or legal or regulatory holds are 
+actively worked, are tracked and reviewed 
+monthly by Oracle senior management until 
+resolved. 
+Inquired of the control owner and ascertained 
+upon termination agreement, client data was 
+retained in accordance with the Cloud Service 
+Agreement (CSA) until the data was deleted or 
+rendered inaccessible within 6 months after the 
+end of the Services Period defined in the 
+customer order and  that exceptions were actively 
+worked, tracked, and reviewed at least monthly 
+by Oracle senior management until resolved. 
+No deviations noted 
+C1.2 
+Inspected the decommissioning details for a 
+sample of terminated customers and ascertained 
+client data was archived and retained for 60 days 
+post contract termination and then deleted within 
+6 months after the end of the Services Period 
+defined in the customer order, actively monitored, 
+or extended.  
+No deviations noted 
+4.13: Customer data deletion exceptions are 
+reviewed by senior managers monthly. 
+Inquired of the control owner and ascertained 
+deletion exceptions are reviewed by senior 
+managers monthly 
+No deviations noted 
+C1.2 
+Inspected the Monthly Deletion Exceptions 
+Review Meeting minutes and ascertained senior 
+management reviewed customer subscriptions 
+that were exceptions to the policy such as 
+contract renewal negotiations, legal, or regulatory 
+holds. 
+No deviations noted 
+4.14: IT personnel perform restores of the 
+production data backups to verify that system 
+components can be recovered from system 
+backups upon requests from customers. 
+Inquired of the control owner and ascertained IT 
+Operations personnel performed restores of the 
+production data backups to verify that system 
+components could be recovered from system 
+backups upon requests from customers. 
+No deviations noted 
+A1.2 
+A1.3 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               61 of 97 
+Computer Operations 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the ticket details for a sample of artifact 
+snapshot data restore request tickets and 
+ascertained artifact snapshot data restores were 
+performed upon requests from customers. 
+No deviations noted 
+ 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               62 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+5.01: Firewall systems are in place to filter 
+unauthorized inbound network traffic from the 
+Internet. 
+Inquired of the control owner and ascertained 
+firewall systems were in place to filter 
+unauthorized inbound network traffic from the 
+internet. 
+No deviations noted. 
+CC6.1 
+CC6.6 
+CC6.8 
+Inspected the configuration of the security policy 
+used for filtering unauthorized inbound network 
+traffic for a sample of zone firewalls and 
+ascertained firewall systems were in place to filter 
+unauthorized inbound traffic from the internet. 
+No deviations noted. 
+Inspected the firewall configuration for a sample 
+of firewall devices and ascertained radius 
+authentication was set up on the firewall. 
+No deviations noted. 
+Inspected the company directory for a sample of 
+users with ability to modify firewall configuration 
+through radius authentication and ascertained the 
+users were appropriate based on job title and 
+organizational unit. 
+From January 1, 2022 to 
+June 13, 2022: 
+Deviations noted: 
+For three (3) of the fifteen 
+(15) users selected for 
+testing with administrative 
+access to the firewall 
+systems through Radius, 
+their access was deemed 
+inappropriate. 
+From June 14, 2022 to 
+December 31, 2022: 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               63 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Management response: 
+ 
+The identified users' administrator access within the firewall systems were revoked. Access to network devices and servers supporting the 
+service requires users to use multi-factor authentication and traverse three levels of access controls.  The risk of unauthorized access to 
+production data is addressed through the following mitigating controls implemented at the Bastion server, operating system, and database layers: 
+ 
+1) Oracle utilizes OIM for Oracle Cloud personnel to submit user account requests.  The system routes the requests to the appropriate 
+approver for approval.  Upon approval the access provisioning system creates the user account on the selected environment. 
+2) The OIM system is configured to enforce the following user account and password controls:  
+- 
+Minimum password length 
+- 
+Password complexity 
+3) Privileged access to the production servers is configured to be revoked automatically at least every 90 days.  
+4) Access entitlements are configured to be automatically revoked upon termination of an employee. 
+ 
+Inspected the company directory for a sample of 
+users with the ability to modify firewall 
+configuration through local administrator accounts 
+and ascertained the users were appropriate 
+based on job title and organizational unit. 
+No deviations noted. 
+ 
+5.02: The firewall systems are configured to 
+deny any type of network connection that is not 
+explicitly authorized by a firewall rule. 
+Inquired of the control owner and ascertained the 
+firewall systems were configured to deny any type 
+of network connections that were not explicitly 
+authorized by a firewall rule. 
+No deviations noted.  
+CC6.1 
+CC6.6 
+CC6.8 
+Inspected publicly available documents and 
+ascertained default rules for the type of firewall in 
+use were implicitly set to deny traffic. 
+No deviations noted.  
+Observed a user attempt to establish a 
+connection which was not defined by the security 
+policy and ascertained the firewall systems were 
+configured to deny any type of network 
+connection that was not explicitly authorized by a 
+firewall rule. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               64 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Observed a user establish a connection which 
+was defined by the security policy and 
+ascertained the firewall systems were configured 
+to allow any type of network connection that was 
+explicitly authorized by a firewall rule. 
+No deviations noted. 
+Inspected the incident tickets for a sample of 
+incidents and ascertained deviations, problems, 
+and errors relevant to application and system 
+processing reported by customers were 
+responded, escalated, and resolved and a tooling 
+system was used to track progress through 
+resolution. 
+No deviations noted. 
+Inspected the listing of users with administrator 
+access within the firewall systems and 
+ascertained administrator access was restricted 
+to appropriate IT operations personnel. 
+No deviations noted. 
+5.03: Firewall configuration change requests 
+are approved in accordance with the Change 
+Management Policy. 
+Inquired of the control owner and ascertained 
+firewall configuration change requests were 
+approved in accordance with the Change 
+Management Policy. 
+No deviations noted. 
+CC8.1 
+Inspected the firewall configuration tickets for a 
+sample of firewall configuration changes and 
+ascertained the changes were approved in 
+accordance with the Change Management Policy. 
+No deviations noted. 
+5.04: An intrusion detection system (IDS) is in 
+place to analyze network device logs and report 
+possible or actual network security breaches.  
+Inquired of the control owner and ascertained an 
+intrusion detection system (IDS) was in place to 
+analyze network device logs and report possible 
+or actual network security breaches. 
+No deviations noted. 
+CC2.1 
+CC6.1 
+CC6.6 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               65 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the network architecture diagram and 
+ascertained an IDS was in place to analyze 
+network device logs and report possible or actual 
+network security breaches. 
+No deviations noted. 
+CC7.2 
+CC7.3 
+Inspected the IDS central console configurations 
+for a sample of production pods and ascertained 
+an IDS was in place to analyze network device 
+logs and report possible or actual network 
+security breaches. 
+No deviations noted. 
+Inspected the company directory for a sample of 
+users with the ability to modify IDS configurations 
+and ascertained the users were appropriate 
+based on job title and organizational unit. 
+No deviations noted. 
+5.05: An intrusion detection system (IDS) is 
+configured to log network events to the SIEM. 
+Inquired of the control owner and ascertained an 
+IDS was configured to log network events to the 
+SIEM. 
+No deviations noted. 
+CC2.1 
+CC6.1 
+CC6.6 
+CC7.2 
+CC7.3 
+Inspected the IDS sensor configuration for a 
+sample of pods and ascertained the IDS was 
+configured to log network events to the SIEM. 
+No deviations noted. 
+5.06: Access to Cloud Applications 
+environments is restricted to a management 
+VPN and bastion hosts separate from Oracle's 
+corporate network. 
+Inquired of the control owner and ascertained an 
+encrypted VPN was required for remote access to 
+the production environment to help ensure the 
+security and integrity of the data passing over the 
+public network. 
+No deviations noted. 
+CC6.1 
+CC6.6 
+CC6.7 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               66 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Observed a user attempt to access a bastion in 
+the production environment without being 
+authenticated to the OCNA VPN and ascertained 
+the user's access was denied. 
+No deviations noted. 
+CC6.8 
+ 
+Observed a user's successful authentication to a 
+bastion in the production environment using two-
+factor authentication after being connected to the 
+OCNA VPN. 
+ No deviations noted. 
+Inspected the configurations for a sample of 
+bastions and ascertained connection to the 
+production environment was configured to require 
+OCNA VPN connection. 
+No deviations noted. 
+5.07: Web servers utilize TLS encryption for 
+web communication sessions. 
+Inquired of the control owner and ascertained 
+web servers utilized TLS encryption for web 
+communication sessions. 
+No deviations noted. 
+CC6.1 
+CC6.6 
+CC6.7 
+Inspected the TLS certificate for a sample of 
+colocation domains and ascertained connections 
+to web servers were configured to utilize TLS 
+encryption for web communication sessions. 
+No deviations noted. 
+5.08: A vulnerability scan tool is configured to 
+run external vulnerability scans of the 
+production environment on at least a monthly 
+basis. 
+Inquired of the control owner and ascertained a 
+vulnerability scan tool was configured to run 
+vulnerability scans of the production environment 
+on at least a monthly basis.  
+No deviations noted. 
+CC2.1 
+CC3.2 
+CC5.1 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               67 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the vulnerability scan configuration for 
+a sample of colocations and ascertained a 
+vulnerability tool was configured to run external 
+vulnerability scans on at least a monthly basis. 
+No deviations noted. 
+CC5.2 
+CC6.8 
+CC7.1 
+CC7.2 
+CC7.4 
+ 
+Inspected the monthly vulnerability scan reports 
+for a sample of weeks and ascertained the 
+vulnerability scans ran. 
+No deviations noted. 
+Inspected the monitoring documentation for a 
+sample of months relating to vulnerabilities 
+identified by the external vulnerability scans and 
+ascertained vulnerabilities were tracked and 
+monitored. 
+No deviations noted. 
+Inspected the company directory for a sample of 
+users with the ability to modify the scan 
+configurations and ascertained the users were 
+appropriate based on job title and organizational 
+unit. 
+No deviations noted. 
+5.09: A third-party vendor performs an external 
+penetration assessment on an annual basis. 
+Inquired of the control owner and ascertained a 
+third-party vendor performed an external 
+penetration assessment on an annual basis. 
+No deviations noted. 
+CC2.1 
+CC3.2 
+CC4.1 
+CC4.2 
+CC5.1 
+Inspected the third-party penetration assessment 
+report and ascertained external penetration 
+assessment was completed on an annual basis. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               68 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the third-party penetration assessment 
+report and ascertained issues identified were 
+being tracked in the Security Audit Analysis 
+Response report through resolution. 
+No deviations noted.  
+CC5.2 
+CC6.8 
+CC7.1 
+CC7.2 
+CC7.4 
+5.10: Oracle Cloud Service Center (OCSC) 
+personnel are staffed 24 hours per day to 
+monitor alerts. 
+ 
+Inquired of the control owner and ascertained 
+Oracle Cloud Service Center (OCSC) personnel 
+were staffed 24 hours per day to monitor alerts. 
+No deviations noted. 
+CC4.1 
+CC4.2 
+CC7.1 
+CC7.2 
+CC7.3 
+CC7.4 
+A1.1 
+A1.2 
+ 
+Inspected the Oracle personnel schedule for a 
+sample of days and ascertained Oracle personnel 
+were staffed 24 hours per day to monitor alerts 
+for commercial pods. 
+No deviations noted. 
+Inspected the Oracle personnel schedule for a 
+sample of days and ascertained Oracle personnel 
+were staffed 24 hours per day to monitor alerts 
+for UK government pods. 
+No deviations noted. 
+Inspected the Oracle personnel schedule for a 
+sample of days and ascertained Oracle personnel 
+were staffed 24 hours per day to monitor alerts 
+for US government pods. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               69 of 97 
+Network Management 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+5.11: On a monthly basis, vulnerabilities 
+identified as part of vulnerability scans and 
+external penetration tests are reported to the 
+Executive Vice President of Applications 
+Development to track the vulnerabilities through 
+resolution. 
+Inquired of control owner and ascertained on a 
+monthly basis, vulnerabilities identified as part of 
+vulnerability scans and external penetration tests 
+were reported to the Executive Vice President of 
+Applications Development to track the 
+vulnerabilities through resolution. 
+No deviations noted. 
+CC3.2 
+CC4.1 
+CC4.2 
+CC5.1 
+CC5.2 
+CC6.8 
+CC7.1 
+CC7.2 
+CC7.4 
+CC7.5 
+Inspected meeting agendas and calendar 
+invitations for a sample of months and 
+ascertained a monthly meeting occurred to report 
+to the Executive Vice President of Application 
+Development security compliance matters 
+including high and critical vulnerabilities and 
+penetration tests. 
+No deviations noted. 
+5.12: Deviations, problems, and errors relevant 
+to application and system processing reported 
+by customers are responded, escalated, and 
+resolved.  A tooling system is used to track 
+progress through resolution. 
+Inquired of the control owner and ascertained 
+deviations, problems, and errors relevant to 
+application and system processing reported by 
+customers were responded, escalated, and 
+resolved and a ticketing system was used to track 
+progress through resolution. 
+No deviations noted. 
+CC6.8 
+CC7.1 
+CC7.2 
+CC7.3 
+CC7.4 
+Inspected the incident tickets for a sample of 
+customer-identified incidents and ascertained 
+deviations, problems, and errors relevant to 
+application and system processing reported by 
+customers were responded, escalated, and 
+resolved and a tooling system was used to track 
+progress through resolution. 
+No deviations noted. 
+ 
+ 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               70 of 97 
+Policy and Communication 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+6.01: Per the Authority, Enforcement, 
+Exceptions, and Violations Policy, Oracle 
+employees and contingent workers are required 
+to comply with all laws, regulations, contractual 
+obligations, and Oracle policies. Non-
+compliance with laws, regulations, and Oracle 
+policies may result in disciplinary action up to 
+and including termination. Requests for an 
+exception to an information security policy must 
+be made as directed in the Corporate Security 
+Exception Management Process. 
+Inquired of the control owner and ascertained per 
+the Authority, Enforcement, Exceptions, and 
+Violations Policy, Oracle employees and 
+contingent workers are required to comply with all 
+laws, regulations, contractual obligations, and 
+Oracle policies. Non-compliance with laws, 
+regulations, and Oracle policies may result in 
+disciplinary action up to and including termination. 
+Requests for an exception to an information 
+security policy must be made as directed in the 
+Corporate Security Exception Management 
+Process. 
+No deviations noted.  
+CC1.1 
+CC1.5 
+CC5.3 
+ 
+Inspected the Authority, Enforcement, 
+Exceptions, and Violations Policy and ascertained 
+it specified that Oracle employees and contingent 
+workers were required to comply with all laws, 
+regulations, contractual obligations, and Oracle 
+policies and that Non-compliance with laws, 
+regulations, and Oracle policies may result in 
+disciplinary action up to and including termination. 
+No deviations noted.  
+Inspected the Authority, Enforcement, 
+Exceptions, and Violations Policy and ascertained 
+it specified that exceptions to an information 
+security policy must be made as directed in the 
+Corporate Security Exception Management 
+Process. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               71 of 97 
+Policy and Communication 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+6.02: The Supplier Code of Ethics and 
+Business Conduct and the Supplier and 
+Physical Security Standards sets out the 
+requirements that Suppliers and vendors are 
+required to adhere to. 
+Inquired of the control owner and ascertained the 
+Supplier Code of Ethics and Business Conduct 
+and the Supplier and Physical Security Standards 
+sets out the requirements that Suppliers and 
+vendors are required to adhere to. 
+No deviations noted. 
+ 
+ 
+ 
+ 
+CC1.1 
+CC2.3 
+CC5.3 
+CC6.4 
+CC9.2 
+ 
+Inspected the Supplier Code of Ethics and 
+Business Conduct and Oracle Supplier 
+Information and Physical Security Standards and 
+ascertained it defined requirements that Suppliers 
+and vendors are required to adhere to. 
+No deviations noted.  
+6.03: The Oracle Data Processing Agreement 
+describes the parties' respective roles for the 
+processing and control of personal data that 
+customers provide to Oracle. The policy is 
+publicly available and indicates the date of the 
+most recent update. 
+Inquired of the control owner and ascertained the 
+Oracle Data Processing Agreement described the 
+parties' respective roles for the processing and 
+control of personal data that customers provided 
+to Oracle and that the policy was publicly 
+available and indicated the date of the most 
+recent update. 
+No deviations noted. 
+CC2.3 
+CC5.3 
+CC9.2 
+C1.1 
+ 
+Inspected the Oracle Data Processing Agreement 
+and ascertained it described the parties' 
+respective roles for the processing and control of 
+personal data that customers provided to Oracle, 
+was publicly available and indicated the date of 
+the most recent update. 
+No deviations noted. 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               72 of 97 
+Policy and Communication 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+6.04: Organizational charts are in place to 
+communicate the defined key areas of 
+authority, responsibility, and lines of reporting 
+to personnel related to the design, 
+development, implementation, security, 
+operation, maintenance, and monitoring of 
+SaaS services. 
+Inquired of the control owner and ascertained 
+organizational charts were in place to 
+communicate the defined key areas of authority, 
+responsibility and lines of reporting to personnel 
+related to the design, development, 
+implementation, security, operation, maintenance 
+and monitoring of SaaS services. 
+No deviations noted. 
+CC1.3 
+Inspected the organizational chart and 
+ascertained it was in place and communicated 
+the defined key areas of authority, responsibility 
+and lines of reporting to personnel related to the 
+design, development, implementation, security, 
+operation, maintenance and monitoring of SaaS 
+services. 
+No deviations noted. 
+6.05: The security, confidentiality, privacy, and 
+availability commitments for Oracle's Cloud 
+Applications are included in service 
+descriptions and service-level agreements with 
+customers. A summary is published on Oracle's 
+public website. 
+Inquired of the control owner and ascertained the 
+entity's security, availability, and confidentiality 
+commitments and the associated system 
+requirements were documented in externally 
+facing customer documents. 
+No deviations noted.  
+CC2.2 
+CC2.3 
+CC5.3 
+C1.1 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               73 of 97 
+Policy and Communication 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the Oracle Cloud Service Agreement 
+and Oracle Cloud Hosting and Delivery Policies, 
+which were available via an external website to 
+customers and ascertained they contained 
+information defining the entity's security, 
+confidentiality, privacy and availability 
+commitments. 
+No deviations noted.  
+6.06: Documented escalation procedures for 
+reporting security, availability, and 
+confidentiality incidents are provided to internal 
+and external users to guide users in identifying 
+and reporting failures, incidents, concerns, and 
+other complaints. 
+Inquired of the control owner and ascertained 
+documented escalation procedures for reporting 
+security, availability, and confidentiality incidents 
+were provided to internal and external users to 
+guide them in identifying and reporting failures, 
+incidents, concerns, and other complaints. 
+No deviations noted.  
+CC2.2 
+CC2.3 
+CC4.2 
+CC5.3 
+CC7.2 
+CC7.3 
+CC7.4 
+CC7.5 
+CC9.1 
+CC9.2 
+C1.1 
+Inspected the contents of the Information Security 
+Incident Reporting and Response Policy and the 
+Global Information Security page and ascertained 
+they included escalation procedures for reporting 
+security, availability, and confidentiality incidents 
+to guide internal and external users in identifying 
+and reporting failures, incidents, concerns, and 
+other complaints. 
+No deviations noted. 
+6.07: Documented policies and procedures are 
+in place to guide personnel in the retention of 
+client data. 
+Inquired of the control owner and ascertained 
+documented policies and procedures were in 
+place to guide personnel in the retention of client 
+data. 
+No deviations noted. 
+CC1.5 
+CC2.2 
+CC5.3 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               74 of 97 
+Policy and Communication 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the Oracle Information Management 
+and Records Retention Policy and ascertained it 
+included procedures to guide personnel in the 
+retention of client data. 
+No deviations noted. 
+CC6.5 
+C1.1 
+C1.2 
+6.08: Oracle develops, documents, and 
+disseminates an information protection policy 
+which defines the requirements for classifying 
+and handling confidential and customer 
+information. 
+Inquired of the control owner and ascertained 
+Oracle develops, documents, and disseminates 
+an information protection policy which defines the 
+requirements for classifying and handling 
+confidential and customer information. 
+No deviations noted. 
+CC1.1 
+CC2.2 
+CC5.3 
+C1.1 
+C1.2 
+Inspected the Oracle Information Protection 
+Policy and ascertained it included requirements 
+for the classification and handling of confidential 
+information. 
+No deviations noted. 
+ 
+ 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               75 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+7.01: The Oracle Corporate Governance 
+Guidelines and Committee Charters for the 
+Finance and Audit Committee, Independence 
+Committee, Compensation Committee, and the 
+Nomination and Governance Committee are 
+publicly available and indicate the date of their 
+most recent updates. 
+Inquired of the control owner and ascertained the 
+Oracle Corporate Governance Guidelines and 
+Committee Charters for the Finance and Audit 
+Committee, Independence Committee, 
+Compensation Committee, and the Nomination 
+and Governance Committee were publicly 
+available and indicated the date of their most 
+recent updates. 
+No deviations noted.  
+CC1.1 
+CC1.2 
+CC2.3 
+Inspected the corporate website and ascertained 
+the Corporate Governance Guidelines and 
+charters for the Finance and Audit Committee, 
+Independent Committee, Compensation 
+Committee, and Nomination and Governance 
+Committee were posted and available to both 
+internal employees and external customers and 
+included the date of their most recent update. 
+No deviations noted.  
+7.02: Oracle's Integrity Helpline provides a 
+resource for reporting concerns or asking 
+questions regarding compliance and ethics at 
+Oracle. A summary of reported items is 
+presented to the Finance and Audit Committee 
+as appropriate. 
+Inquired of the control owner and ascertained   
+Oracle's Integrity Helpline provided a resource for 
+reporting concerns or asking questions regarding 
+compliance and ethics at Oracle and a summary 
+of reported items was presented to the Finance 
+and Audit Committee as appropriate. 
+No deviations noted.  
+CC1.1 
+CC3.3 
+ 
+Inspected the Oracle internal site and ascertained 
+a link and phone numbers were available to 
+report concerns or violations of the Code of 
+Ethics, Business Conduct, or other issues online 
+or by phone. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               76 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+ 
+Inspected the most recent Finance and Audit 
+Committee meeting agenda and ascertained it 
+included the presentation of reported items. 
+No deviations noted.  
+ 
+7.03: Organizational roles and responsibilities 
+for the development, management, review and 
+approval of information security policies and 
+practices that are identified in the Security 
+Organization Policy. This includes overall 
+responsibility for approving security strategy, 
+policy and initiatives – the Oracle Security 
+Oversight Committee (OSOC); specific 
+responsibilities for information security, physical 
+security, product security and security 
+infrastructure and architecture; and liaison 
+between Line of Business (LoBs) and Global 
+Information Security (GIS) on information 
+security issues by means of LoB Information 
+Security Management/Managers (ISMs). 
+Inquired of the control owner and ascertained 
+organizational roles and responsibilities for the 
+development, management, review and approval 
+of information security policies and practices that 
+were identified in the Security Organization Policy 
+and this included overall responsibility for 
+approving security strategy, policy and initiatives 
+– the Oracle Security Oversight Committee 
+(OSOC); specific responsibilities for information 
+security, physical security, product security and 
+security infrastructure and architecture; and 
+liaison between Line of Business (LoBs) and 
+Global Information Security (GIS) on information 
+security issues by means of LoB Information 
+Security Management/Managers (ISMs). 
+No deviations noted.  
+CC1.2 
+CC1.3 
+CC1.5 
+ 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               77 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the Security Organization Policy and 
+ascertained it contained details of the 
+organizational roles and responsibilities for the 
+development, management, review, and approval 
+of information security policies and practices 
+including overall responsibility for approving 
+security strategy, policy, and initiatives by the 
+Oracle Security Oversight Committee (OSOC) 
+including specific responsibilities for information 
+security, physical security, product security, and 
+security infrastructure and architecture and 
+liaisons between Line of Business (LoBs) and 
+Global Information Security (GIS) on information 
+security issues by means of LoB Information 
+Security Management/Managers (ISMs). 
+No deviations noted.  
+ 
+7.04: Business Assessment & Audit (BA&A) 
+conducts an annual Global Risk Assessment of 
+key business processes at Oracle. Executive 
+management and Committee members assess 
+risk against two factors: likelihood of control / 
+process issues and importance to business 
+strategy. 
+Inquired of the control owner and ascertained 
+Business Assessment & Audit (BA&A) conducted 
+an annual Global Risk Assessment of key 
+business processes at Oracle and that an 
+executive management and Committee members 
+assessed risk against two factors: likelihood of 
+control / process issues and importance to 
+business strategy. 
+No deviations noted.  
+CC3.1 
+CC3.2 
+CC3.4 
+CC5.1 
+CC5.2 
+ 
+Inspected the annual Global Risk Assessment 
+and ascertained it occurred within the past year 
+and included input from executive management 
+and Committee members. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               78 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+7.05: The Oracle supplier agreement templates 
+require its suppliers to adhere to the Supplier 
+Code of Ethics and Business Conduct which is 
+available on the Oracle website. 
+Inquired of the control owner and ascertained 
+Oracle supplier agreement templates required its 
+suppliers to adhere to the Supplier Code of Ethics 
+and Business Conduct which was available on 
+the Oracle website 
+No deviations noted.  
+CC1.1 
+CC2.3 
+CC9.2 
+Inspected the Oracle website and ascertained the 
+Supplier Code of Ethics and Business Conduct 
+was publicly accessible. 
+No deviations noted.  
+Inspected the Oracle supplier agreement 
+templates and ascertained they contained a 
+provision which required suppliers to adhere to 
+the Supplier Code of Ethics and Business 
+Conduct. 
+No deviations noted.  
+7.06: Oracle requires its partners to adhere to 
+the Partner Code of Ethics and Business 
+Conduct which is available on the Oracle 
+website 
+Inquired of the control owner and ascertained 
+Oracle required its partners to adhere to the 
+Partner Code of Ethics and Business Conduct 
+which was available on the Oracle website. 
+No deviations noted.  
+CC1.1 
+CC2.3 
+CC9.2 
+ 
+Inspected the Oracle website and ascertained the 
+Partner Code of Ethics and Business Conduct 
+was publicly accessible. 
+No deviations noted.  
+Inspected the Partner portal for a sample of 
+partners selected from the Partner tool and 
+ascertained the partner agreed to the Partner 
+Code of Ethics and Business Conduct and the 
+partner was in an approved status. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               79 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+7.07: The Oracle Information Security Incident 
+Reporting and Response Policy specifies the 
+process for classification, prioritization and 
+escalation of security incidents including 
+reporting, managing and responding to security 
+incidents including, as applicable, notification of 
+affected customers. This policy also outlines 
+the responsibilities of each team during the 
+process. 
+Inquired of the control owner and ascertained the 
+Oracle Information Security Incident Reporting 
+and Response Policy specifies the process for 
+classification, prioritization and escalation of 
+security incidents including reporting, managing 
+and responding to security incidents including, as 
+applicable, notification of affected customers and 
+the responsibilities of each team during the 
+process. 
+No deviations noted.  
+CC7.3 
+CC7.4 
+ 
+Inspected the Oracle Public Cloud Risk 
+Management Standard and ascertained the policy 
+specifies the process for classification, 
+prioritization and escalation of security incidents 
+including reporting, managing and responding to 
+security incidents including, as applicable, 
+notification of affected customers and the 
+responsibilities of each team during the process. 
+No deviations noted.  
+7.08: Risks mitigation policies and procedures 
+are in place to guide personnel in performing 
+risk assessments and mitigation. 
+Inquired of the control owner and ascertained 
+risks mitigation policies and procedures were in 
+place to guide personnel in performing risk 
+assessments and mitigation. 
+No deviations noted.  
+CC2.1 
+CC2.2 
+CC3.1 
+CC3.2 
+CC3.3 
+CC3.4 
+CC5.1 
+CC5.2 
+CC9.1 
+CC9.2 
+Inspected the Oracle Public Cloud Risk 
+Management Standard and ascertained they 
+contained policies and procedures to guide 
+personnel when performing the risk assessment 
+and mitigation process. 
+No deviations noted.  
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               80 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+7.09: A formal risk assessment is performed 
+annually to identify threats and risks that could 
+impact the security, confidentiality, or 
+availability of the system. 
+Inquired of the control owner and ascertained a 
+formal risk assessment was performed annually 
+to identify threats and risks that could impact the 
+security, confidentiality, or availability of the 
+system. 
+No deviations noted.  
+CC2.1 
+CC3.1 
+CC3.2 
+CC3.3 
+CC5.1 
+CC5.2 
+CC9.1 
+Inspected the risk assessment and ascertained it 
+was performed during the year, the identified 
+risks were rated using a risk evaluation process, 
+and were formally documented with mitigation 
+strategies, for management review. 
+No deviations noted.  
+7.10: The Oracle Corporation Board of 
+Directors maintains a charter for the Committee 
+on Independence Issues, which defines 
+responsibilities and duties for evaluating the 
+independence of members of the Board. 
+Inquired of the control owner and ascertained the 
+Oracle Corporation Board of Directors maintains 
+a charter for the Committee on Independence 
+Issues, which defines responsibilities and duties 
+for evaluating the independence of members of 
+the Board. 
+No deviations noted.  
+CC1.1 
+CC1.2 
+Inspected the charter for the Committee on 
+Independence Issues and ascertained it defines 
+responsibilities and duties for evaluating the 
+independence of members of the Board. 
+No deviations noted.  
+7.11: Oracle establishes and makes readily 
+available to employees, suppliers, and 
+contractors, the rules that describe their 
+responsibilities and expected behavior with 
+regard to information and information system 
+usage. 
+Inquired of the control owner and ascertained 
+Oracle establishes and makes readily available to 
+employees, suppliers, and contractors, the rules 
+that describe their responsibilities and expected 
+behavior with regard to information and 
+information system usage. 
+No deviations noted.  
+CC1.1 
+CC9.2 
+Oracle Control Framework 
+ORACLE CONFIDENTIAL 
+                                                                                      
+ 
+ 
+ 
+               81 of 97 
+Entity-Level Controls 
+Control Description 
+Testing Performed 
+Results of Testing 
+SOC 2 
+Criteria 
+Inspected the Oracle Acceptable Use Policy for 
+Systems and Resources policy and ascertained it 
+details the rules that describe employees, 
+suppliers, and contractors’ responsibilities and 
+expected behavior with regard to information and 
+information system usage. 
+No deviations noted.  
+7.12: Third party assessment organizations are 
+contracted to assess the security controls of 
+Oracle Cloud Applications and its environment 
+of operation. 
+Inquired of the control owner and ascertained 
+third party assessment organizations were 
+contracted to assess the security controls of 
+Oracle Cloud Applications and its environment of 
+operation. 
+No deviations noted.  
+CC2.1 
+CC3.1 
+CC3.2 
+CC4.1 
+CC4.2 
+ 
+Inspected the contractual agreement for a sample 
+of audits and ascertained a third-party 
+auditor/assessor assesses the security controls of 
+Oracle Cloud Applications and its environment of 
+operation. 
+No deviations noted.  

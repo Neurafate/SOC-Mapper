@@ -1,0 +1,5654 @@
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+55 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+1. The organization has 
+implemented a formal 
+reporting structure that is 
+made available to 
+personnel. 
+CC1.3, 
+CC1.4 
+Inquired of the Program Manager and determined 
+the organization has implemented a formal 
+reporting structure that is made available to 
+personnel. 
+No deviations noted. 
+Inspected the organization's intranet and 
+determined organizational charts showing formal 
+reporting structure were made accessible to 
+employees and included drill-down functionality to 
+identify employees within the organizational 
+structure, including employees in their functional 
+teams. 
+No deviations noted. 
+Inspected a sample communication and 
+determined top level management changes were 
+communicated internally and externally. 
+No deviations noted. 
+Inspected the meeting minutes of a sample Board 
+of Directors forum and determined management 
+considered requirements such as integrity and 
+security when defining authorities, structures, 
+reporting lines, and responsibilities. 
+No deviations noted. 
+Inspected procedural documents and determined 
+management planned and prepared for 
+succession by developing contingency plans for 
+assignments of responsibility. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+56 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+2. Company goals and 
+responsibilities are 
+required to be developed 
+and communicated by 
+management on a 
+periodic basis, and 
+amended as needed. 
+Results are evaluated 
+and communicated to 
+employees. 
+CC1.3, 
+CC1.5, 
+CC2.2, 
+CC3.1 
+Inquired of the Program Manager and determined 
+company goals and responsibilities were 
+developed and communicated by management 
+every quarter and amended as needed. Results of 
+previous quarter goals were evaluated and 
+communicated to employees every quarter. 
+No deviations noted. 
+Inspected a sample of quarterly goals and 
+responsibilities and determined they were 
+developed and evaluated by management. 
+No deviations noted. 
+Inspected a sample of quarterly announcements 
+and determined results of previous quarter goals 
+were communicated to employees. 
+No deviations noted. 
+3. The board of directors 
+demonstrate 
+independence from 
+management and 
+exercises oversight of 
+the development and 
+performance of internal 
+control. 
+CC1.2, 
+CC1.5 
+Inquired of the Program Manager and determined 
+the board of directors demonstrated 
+independence from management and had 
+established an audit and compliance committee to 
+exercise oversight of the development and 
+performance of internal control. 
+No deviations noted. 
+Inspected the Alphabet proxy statement and 
+determined that the board of directors, including 
+the members of the audit and compliance 
+committee, demonstrated independence from 
+management. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+57 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the Alphabet proxy statement and 
+determined the board of directors had relevant 
+expertise and exercised oversight over controls 
+and performance of internal control. 
+No deviations noted. 
+Inspected the audit and compliance committee 
+meeting minutes for a sample meeting and 
+determined the committee met on a quarterly 
+basis and relevant information resulting from 
+internal and external assessments over internal 
+control were communicated to the board of 
+directors. 
+No deviations noted. 
+4. Information security is 
+managed by an 
+executive who is 
+dedicated to Security, is 
+independent of 
+Information Technology 
+responsibility, and may 
+escalate to the board 
+level concerning security 
+issues. 
+CC1.5 
+Inquired of the Program Manager and determined 
+information security was managed by an 
+executive who is dedicated to security and 
+privacy, is independent of information technology 
+responsibility, and may escalate security matters 
+to the board level concerning security issues. 
+No deviations noted. 
+Inspected the security organizational structure 
+and determined an executive was dedicated to 
+security and was independent of information 
+technology responsibilities. 
+No deviations noted. 
+Inspected the meeting invites and determined the 
+Security team met with relevant personnel to 
+discuss security issues and escalated security 
+concerns to the board of directors, as necessary. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+58 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+5. The organization has 
+established internal 
+privacy and information 
+security policies as well 
+as a Code of Conduct. 
+CC1.1, 
+CC9.2, C1.1 
+Inquired of the Program Manager and determined 
+the organization established internal privacy and 
+information security policies available in the 
+intranet as well as code of conduct. 
+No deviations noted. 
+Inspected applicable policies and guidelines and 
+determined the privacy and information security 
+as well as code of conduct were in place. 
+No deviations noted. 
+6. The organization has 
+established a disciplinary 
+process to address non-
+compliance with 
+company policies, the 
+code of conduct, or other 
+personnel requirements. 
+CC1.1, 
+CC1.5 
+Inquired of the Program Manager and determined 
+the organization established a disciplinary process 
+to address non-compliance with company policies, 
+code of conduct, or other personnel requirements. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization established a disciplinary process 
+for non-compliance with the company policies, 
+code of conduct, or other personnel requirements 
+which could result in dismissal, lawsuits and/or 
+criminal prosecution. 
+No deviations noted. 
+Inspected the disciplinary procedures undertaken 
+for sample incidents and determined appropriate 
+action was taken in cases of non-compliance with 
+company policies, code of conduct, or other 
+personnel requirements. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+59 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+7. The organization has 
+established an 
+offboarding procedure for 
+personnel, which 
+governs the removal of 
+access and return of 
+assets. 
+CC5.2 
+Inquired of the Program Manager and determined 
+the organization had established offboarding 
+procedures for personnel, which governed the 
+removal of access and return of assets. 
+No deviations noted. 
+Inspected internal guidelines and determined the 
+organization had established offboarding 
+procedures for personnel, which governed the 
+removal of access and return of assets. 
+No deviations noted. 
+Inspected internal guidelines and determined 
+internal and external employees were informed 
+that obligations to comply with relevant laws, 
+regulations, and provisions regarding information 
+security remain valid, even if the area of 
+responsibility changes or the employment 
+relationship is terminated. 
+No deviations noted. 
+8. Personnel of the 
+organization are required 
+to acknowledge the Code 
+of Conduct. 
+CC1.1 
+Inquired of the Program Manager and determined 
+employees and extended workforce personnel 
+were required to acknowledge the Code of 
+Conduct as part of the terms and conditions of 
+employment. 
+No deviations noted. 
+Inspected internal documentation and determined 
+employees and extended workforce personnel 
+were required to acknowledge the Code of 
+Conduct as part of the terms and conditions of 
+employment. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+60 
+Inspected a sample of newly hired employees and 
+extended workforce personnel and determined the 
+Code of Conduct was acknowledged as part of 
+the terms and conditions of their employment. 
+Deviation noted.  
+ 
+For 1 of the 25 samples selected, 
+the Code of Conduct was not 
+acknowledged in a timely manner 
+following the employee's hire date. 
+Additionally, relevant HR Operations 
+personnel were not notified of the 
+unactioned Code of Conduct due to 
+technical system errors. We 
+selected an additional 13 samples 
+and determined that the Code of 
+Conduct was acknowledged in a 
+timely manner for all 13 samples.  
+ 
+Management's Response:  
+ 
+Management acknowledges the 
+delay in signing the Code of 
+Conduct by sampled personnel was 
+caused by a previously unidentified 
+system error in the onboarding 
+tracking system. Management 
+performed an impact analysis to 
+determine that approximately 0.1% 
+of Google employees and interns 
+onboarded during the audit period 
+were impacted by the system error. 
+Management has remediated the 
+system error and completed the 
+signing of the Code of Conduct 
+acknowledgement for affected 
+personnel. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+61 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+9. New hires or internal 
+transfers are required to 
+go through an official 
+recruiting process during 
+which they are screened 
+against detailed job 
+descriptions and 
+interviewed to assess 
+competence. 
+CC1.3, 
+CC1.4 
+Inquired of the Program Manager and determined 
+that new hires and internal transfers were required 
+to go through an official recruiting process during 
+which their qualifications and experience were 
+screened to help ensure that they were competent 
+to fulfill their responsibilities. 
+No deviations noted. 
+Inspected of internal documentation and 
+determined the organization had detailed job 
+descriptions that listed qualifications, such as 
+requisite skills and experience, which candidates 
+need to have met in order to be hired. 
+No deviations noted. 
+Inspected a sample of new hires and internal 
+transfers and determined they went through a 
+formal recruiting process and were screened 
+against detailed job descriptions and interviewed 
+to assess competence. 
+No deviations noted. 
+10. Background checks 
+are performed on new 
+hires as permitted by 
+local laws. 
+CC1.1, 
+CC1.4 
+Inquired of the Program Manager and determined 
+background checks were performed for new hires 
+as permitted by local laws. 
+No deviations noted. 
+Inspected internal guidelines and determined 
+background checks were part of the hiring 
+process. 
+No deviations noted. 
+Inspected a sample of new hires and determined 
+background checks were performed as permitted 
+by local laws. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+62 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+11. The organization 
+establishes 
+confidentiality 
+agreements with 
+extended workforce 
+personnel to define 
+responsibilities and 
+expected behavior for the 
+protection of information. 
+CC9.2, C1.1 
+Inquired of the Program Manager and determined 
+the organization required its extended workforce 
+personnel to sign confidentiality agreements that 
+defined responsibilities and expected behavior for 
+the protection of information. 
+No deviations noted. 
+Inspected the Google confidentiality agreements 
+and determined they defined extended workforce 
+personnel responsibilities and expected behavior 
+for the protection of information. 
+No deviations noted. 
+Inspected a sample of Google extended workforce 
+personnel and determined they signed the 
+confidentiality agreements as part of their service 
+conditions. 
+No deviations noted. 
+12. The organization has 
+established 
+confidentiality 
+agreements that are 
+reviewed and updated as 
+needed. 
+CC9.2, C1.1 
+Inquired of the Program Manager and determined 
+confidentiality agreements (Google NDA, 
+Confidential Information and Invention 
+Assignment Agreement (CIIAA), and the Code of 
+Conduct) for employees and third parties are in 
+place and reviewed and updated as needed. 
+No deviations noted. 
+Inspected the confidentiality agreements and 
+determined they are reviewed and updated as 
+needed. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+63 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+13. The organization 
+conducts periodic 
+Information Security Risk 
+Assessments to identify 
+and evaluate risks. 
+CC3.1, 
+CC3.2, 
+CC3.3, 
+CC3.4, 
+CC5.1, 
+CC5.2, 
+CC7.2, A1.3 
+Inquired of the Program Manager and determined 
+the organization conducted periodic information 
+security risk assessments to identify, evaluate, 
+and mitigate risks to acceptable levels based on 
+risk criteria, including resolution time frames, 
+which were established, documented, and 
+approved by management. 
+No deviations noted. 
+Inspected the risk management guidelines and 
+determined a risk management framework was 
+developed and documented to manage risk to an 
+acceptable level and defined resolution time 
+frames for risks. 
+No deviations noted. 
+Inspected applicable documentation and 
+determined the organization conducted periodic 
+information security risk assessments to identify, 
+evaluate, and mitigate risks to acceptable levels 
+based on risk criteria, including resolution time 
+frames, which were established, documented and 
+approved by management. 
+No deviations noted. 
+14. The organization 
+develops and maintains 
+a risk management 
+framework to manage 
+CC3.1, 
+CC3.2, 
+CC3.3, 
+Inquired of the Program Manager and determined 
+the organization developed and maintained a risk 
+management framework to manage risk to an 
+acceptable level. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+64 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+risk to an acceptable 
+level. 
+CC3.4, 
+CC5.1, 
+CC5.2 
+Inspected the risk management guidelines and 
+determined a risk management framework was 
+developed and documented to manage risk to an 
+acceptable level, define resolution time frames for 
+risks, and to consider the potential for fraud. 
+No deviations noted. 
+Inspected internal documentation and determined 
+management signed off on the risk management 
+framework. 
+No deviations noted. 
+Inspected the organization's risk assessment and 
+determined the organization evaluates qualitative 
+and quantitative factors to identify residual risk in 
+order to manage risk to an acceptable level. 
+No deviations noted. 
+Inspected documentation from the organization's 
+annual risk assessment and determined the 
+organization's operational objectives, potential 
+impacts, and changes to the business model were 
+considered. 
+No deviations noted. 
+Inspected the internal insider risk site and 
+determined the organization considered insider 
+risk in its risk management framework to manage 
+risk to an acceptable level. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+65 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+15. Risks are mitigated to 
+acceptable levels based 
+on risk criteria, including 
+resolution time frames, 
+which are established, 
+documented and 
+approved by 
+management. 
+CC3.1, 
+CC3.2, 
+CC3.3, 
+CC3.4 
+Inquired of the Program Manager and determined 
+the organization conducted periodic information 
+security risk assessments to identify, evaluate, 
+and mitigate risks to acceptable levels based on 
+risk criteria, including resolution time frames, 
+which were established, documented, and 
+approved by management. 
+No deviations noted. 
+Inspected the risk management guidelines and 
+determined a risk management framework was 
+developed and documented to manage risk to an 
+acceptable level and defined resolution time 
+frames for risks. 
+No deviations noted. 
+Inspected applicable documentation and 
+determined the organization conducted periodic 
+information security risk assessments to identify, 
+evaluate, and mitigate risks to acceptable levels 
+based on risk criteria, including resolution time 
+frames, which were established, documented and 
+approved by management. 
+No deviations noted. 
+16. Management 
+performs periodic 
+assessments of internal 
+identity, authentication, 
+and source code 
+management controls. 
+CC4.1, 
+CC4.2 
+Inquired of the Program Managers and Internal 
+Audit and determined the organization had an 
+established internal compliance function which 
+evaluated management's compliance with 
+security, identity, authentication, and source code 
+management controls. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+66 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected evaluations performed by the internal 
+compliance function for a sample of semiannual 
+periods and determined the compliance function 
+performed an evaluation of management's 
+compliance with security, identity, authentication, 
+and source code management controls. 
+No deviations noted. 
+Inspected evaluations performed by management 
+for a sample of quarters and determined 
+management performed an evaluation of their 
+compliance with security, identity, authentication, 
+and source code management controls. 
+No deviations noted. 
+Inspected the meeting invites related to Google's 
+annual organizational risk assessment and 
+determined company's operational objectives, and 
+potential impacts and changes to the 
+organization's business model were considered 
+across various areas related to information 
+security. 
+No deviations noted. 
+17. The organization has 
+an internal audit function 
+and regularly engages 
+third parties to conduct 
+independent reviews of 
+the effectiveness of the 
+CC5.1, 
+CC5.2 
+Inquired of the Program Manager and determined 
+the organization had an internal audit function and 
+regularly engaged third parties to conduct 
+independent reviews of the effectiveness of the 
+organization’s approach to managing information 
+security. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+67 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+organization’s approach 
+to managing information 
+security. 
+Inspected documents related to internal audit and 
+determined the organization had an internal audit 
+function and regularly engaged third parties to 
+conduct independent reviews of the effectiveness 
+of the organization’s approach to managing 
+information security. 
+No deviations noted. 
+Inspected a list of the organization's security 
+compliance certifications and determined the 
+organization regularly engaged third parties to 
+conduct independent reviews of the effectiveness 
+of the organization’s approach to managing 
+information security. 
+No deviations noted. 
+Inspected the meeting invites related to the 
+organization's annual organizational risk 
+assessment and determined the organization's 
+operational objectives, potential impacts, and 
+changes to the organization's business model 
+were considered across various areas related to 
+information security. 
+No deviations noted. 
+18. The organization has 
+an established Internal 
+Audit function which 
+evaluates management's 
+compliance with security 
+controls. 
+CC4.1, 
+CC4.2, 
+CC5.3 
+Inquired of the Program Managers and Internal 
+Audit and determined the organization had an 
+established internal compliance function which 
+evaluated management's compliance with 
+security, identity, authentication, and source code 
+management controls. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+68 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected evaluations performed by the internal 
+compliance function for a sample of semiannual 
+periods and determined the compliance function 
+performed an evaluation of management's 
+compliance with security, identity, authentication, 
+and source code management controls. 
+No deviations noted. 
+Inspected evaluations performed by management 
+for a sample of quarters and determined 
+management performed an evaluation of their 
+compliance with security, identity, authentication, 
+and source code management controls. 
+No deviations noted. 
+Inspected the meeting invites related to Google's 
+annual organizational risk assessment and 
+determined company's operational objectives, and 
+potential impacts and changes to the 
+organization's business model were considered 
+across various areas related to information 
+security. 
+No deviations noted. 
+19. The organization 
+requires external parties 
+(Service Providers) to 
+meet security and 
+privacy requirements for 
+safeguarding user data. 
+Requirements are 
+enforced via the 
+CC9.1 
+Inquired of the Program Manager and determined 
+the organization requires external parties (Service 
+Providers) to meet security and privacy 
+requirements for safeguarding user data and the 
+requirements are enforced via the “Information 
+Protection Addendum (IPA)” or “Partner 
+Information Protection Addendum (PIPA)” for 
+providers and partners, respectively. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+69 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+“Information Protection 
+Addendum (IPA)” or 
+“Partner Information 
+Protection Addendum 
+(PIPA)” for providers and 
+partners, respectively. 
+Inspected the Third-Party Data Protection internal 
+site and determined the organization had a formal 
+due diligence process in place for engaging with 
+third parties. 
+No deviations noted. 
+Inspected the Information Protection Addendum 
+(IPA) template and determined appropriate 
+information security and data protection terms 
+were documented within the IPA. 
+No deviations noted. 
+Inspected the Partner Information Protection 
+Addendum (PIPA) template and determined 
+appropriate information security and data 
+protection terms were documented within the 
+PIPA. 
+No deviations noted. 
+20. The organization 
+requires subprocessors 
+to meet security and 
+privacy requirements for 
+safeguarding user data. 
+Requirements are 
+enforced via the 
+“Subprocessor Data 
+Protection Agreement 
+(SDPA)” addendum to 
+contractual agreements. 
+CC9.2, C1.1, 
+P6.1, P6.4, 
+P6.5, P6.6 
+Inquired of the Program Manager and determined 
+the organization required subprocessors to meet 
+security and privacy requirements for 
+safeguarding user data and the requirements 
+were enforced via the "Subprocessor Data 
+Protection Agreement (SDPA)" addendum to 
+contractual agreements. 
+No deviations noted. 
+Observed the latest addendum template and 
+determined it had defined the security and privacy 
+obligations that subprocessors must meet to 
+satisfy the organization's obligation regarding 
+customer data. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+70 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of subprocessors and 
+determined that the subprocessors had a signed 
+SDPA in place in addition to their contractual 
+agreements to enforce security and privacy 
+requirements. 
+No deviations noted. 
+Inspected a sample of addendum confirming that 
+appropriate exception handling procedures for 
+service or product issues related to vendors are in 
+place. 
+No deviations noted. 
+21. The Security 
+Engineering Org takes a 
+risk based approach to 
+reviewing the security 
+practices of vendors and 
+the security posture of 
+vendor products. 
+Reviews may include 
+automated and manual 
+assessment as 
+determined by the 
+sensitivity of data being 
+processed or access 
+being granted. 
+CC9.2, C1.1 
+Inquired of the Program Manager and determined 
+the Security Engineering Org took a risk based 
+approach to reviewing the security practices of 
+vendors and the security posture of vendor 
+products. Reviews may include automated and 
+manual assessment as determined by the 
+sensitivity of data being processed or access 
+being granted. 
+No deviations noted. 
+Inspected the relevant documentation and 
+determined the Security Engineering Org took a 
+risk based approach to reviewing the security 
+practices of vendors and the security posture of 
+vendor products. Reviews may include automated 
+and manual assessment as determined by the 
+sensitivity of data being processed or access 
+being granted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+71 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the security audit performed for a 
+sample of vendors and determined the security 
+practices of vendors and the security posture of 
+vendor products were reviewed. 
+No deviations noted. 
+22. Cloud subprocessor 
+security and privacy risk 
+is assessed via periodic 
+assessment of sub-
+processor control 
+environment. 
+CC9.2, P6.1, 
+P6.4 
+Inquired of the Program Manager and determined 
+Cloud subprocessor security and privacy risk was 
+assessed via periodic assessment of 
+subprocessor control environment. 
+No deviations noted. 
+Inspected documentation of a review for a sample 
+of subprocessors and determined that 
+assessments of their security and privacy controls 
+were performed on a periodic basis. 
+No deviations noted. 
+23. Subprocessor 
+performance is regularly 
+assessed and monitored 
+via periodic business 
+reviews. 
+CC9.2 
+Inquired of the Program Manager and determined 
+subprocessor performance was regularly 
+assessed and monitored via periodic business 
+reviews. 
+No deviations noted. 
+Inspected documentation for a sample of 
+subprocessors and determined that subprocessor 
+performance was regularly assessed and 
+monitored via periodic business reviews. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+72 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+24. The organization 
+establishes agreements, 
+including nondisclosure 
+agreements, for 
+preserving confidentiality 
+of information and 
+software exchanges with 
+external parties. 
+CC9.2, C1.1 
+Inquired of the Program Manager and determined 
+the organization had established agreements, 
+including non-disclosure agreements, for 
+preserving confidentiality of information and 
+software exchanges with external parties, such as 
+third-party vendors. 
+No deviations noted. 
+Inspected the latest non-disclosure agreement 
+template and determined the organization had 
+established agreements with external parties for 
+preserving confidentiality of information and 
+software exchanges. 
+No deviations noted. 
+Inspected agreements for a sample of external 
+parties and determined the organization had 
+signed non-disclosure agreements for preserving 
+confidentiality of information and software 
+exchanges with external parties. 
+No deviations noted. 
+25. The organization 
+maintains policies 
+regarding the return, 
+transfer, and disposal of 
+user data and makes 
+these policies available 
+to customers. 
+P1.1, P2.1, 
+P4.2, P4.3 
+Inquired of the Program Manager and determined 
+the organization maintained policies regarding the 
+return, transfer, and disposal of user data and 
+made these policies available to customers. 
+No deviations noted. 
+Inspected the Cloud Data Processing Addendum 
+and determined the organization had policies 
+regarding the return, transfer, and disposal of user 
+data and made these policies available to 
+customers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+73 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of deleted files and 
+determined an automated deletion mechanism 
+was implemented and confidential information 
+was disposed of as per the guidelines. 
+No deviations noted. 
+26. The organization only 
+processes customer data 
+in accordance with the 
+applicable data 
+processing terms and 
+does not process 
+customer data for any 
+other purpose. 
+P1.1, P3.1, 
+P4.1 
+Inquired of the Program Manager and determined 
+that customer data was only processed in 
+accordance with the data processing terms and 
+not for any other purpose. 
+No deviations noted. 
+Inspected the Cloud Data Processing and 
+Security Terms and determined that Google only 
+processed customer data in accordance with the 
+applicable data processing terms and not for any 
+other purpose. 
+No deviations noted. 
+Observed a user upload data to Google Cloud 
+Platform Services and determined that Google did 
+not use the customer provided content for 
+purposes not specified in the data processing 
+amendments (e.g., advertising). 
+No deviations noted. 
+Inquired of Product Counsel and determined 
+Counsel reviewed new products and features prior 
+to launch to confirm products and services were 
+designed to only process customer data in 
+accordance with the data processing amendment 
+and not for any other purpose. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+74 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+27. Customers are 
+notified of data requests 
+from government 
+agencies in accordance 
+with the procedure and 
+time period agreed upon 
+in the contract, unless 
+such notification is 
+otherwise prohibited. 
+P6.1, P6.7 
+Inquired the Program Manager and determined 
+that customers were notified of data requests from 
+government agencies in accordance with the 
+procedure and time period agreed upon in the 
+contract, unless such notification was otherwise 
+prohibited. 
+No deviations noted. 
+Inspected the Google Workspace Terms of 
+Service and other publicly available 
+documentation and determined they outlined the 
+procedures the company followed to notify 
+customers when disclosure of customer data was 
+legally required. 
+No deviations noted. 
+Inspected Google's internal website and 
+determined Google had established mechanisms 
+to ensure customers were notified in accordance 
+with the terms of service when a disclosure of 
+customer data was legally required. 
+No deviations noted. 
+Inspected a sample of disclosure requests and 
+determined notification was sent to the customers 
+in accordance with contractual requirements. 
+No deviations noted. 
+Inspected the Google Cloud Platform Terms of 
+Service and other publicly available 
+documentation and determined they outlined the 
+procedures the company followed to notify 
+customers when disclosure of customer data was 
+legally required. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+75 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+28. Where the 
+organization is a data 
+processor, the 
+organization maintains 
+and makes available a 
+list of subprocessors and 
+updates that list, as 
+contractually required. 
+P6.1, P6.4 
+Inquired of the Program Manager and determined 
+that where the organization is a data processor, 
+the organization maintained and made available a 
+list of subprocessors and updated that list, as 
+contractually required. 
+No deviations noted. 
+Inspected GCP's public-facing website and 
+determined an updated list of all subprocessors 
+was publicly available. 
+No deviations noted. 
+Inspected a sample email notification and 
+determined notice of subprocessor changes were 
+sent to customers. 
+No deviations noted. 
+29. The organization 
+provides mechanisms to 
+notify customers in the 
+event its confidentiality 
+practices are 
+discontinued, or changed 
+to be less restrictive. 
+CC2.3, C1.1 
+Inquired of the Program Manager and determined 
+the organization provided mechanisms to notify 
+customers should Google's confidentiality 
+practices be discontinued or changed to be less 
+restrictive. 
+No deviations noted. 
+Inspected Google's Terms of Service and 
+determined Google provided mechanisms to notify 
+customers should Google's confidentiality 
+practices be discontinued or changed to be less 
+restrictive. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+76 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected GCP's Terms of Service and 
+determined Google provided mechanisms to notify 
+customers should Google's confidentiality 
+practices be discontinued or changed to be less 
+restrictive. 
+No deviations noted. 
+Inspected Google's Privacy Policy and determined 
+updates to the policy were communicated to the 
+users. 
+No deviations noted. 
+30. Descriptions of the 
+organization's system 
+and its boundaries are 
+available to authorized 
+external users via 
+ongoing communications 
+with customers or via its 
+official blog postings. 
+CC2.3 
+Inquired of the Program Manager and determined 
+descriptions of the organization's system and its 
+boundaries were available to authorized external 
+users via ongoing communications with customers 
+or via its official blog postings. 
+No deviations noted. 
+Inspected Google's official blog postings and 
+determined descriptions of Google's system and 
+its boundaries were communicated. 
+No deviations noted. 
+31. Customer 
+responsibilities are 
+described on the 
+organization's product 
+websites or in system 
+documentation. 
+CC2.2, 
+CC2.3 
+Inquired of the Program Manager and determined 
+customer responsibilities were described on 
+product websites or in system documentation. 
+No deviations noted. 
+Inspected the GCP website or in system 
+documentation accessible by external customers 
+and determined customer responsibilities were 
+described. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+77 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+32. Changes to customer 
+facing services that may 
+affect confidentiality, 
+processing integrity and / 
+or availability are 
+communicated to 
+relevant personnel and 
+impacted customers. 
+CC2.2, 
+CC2.3 
+Inquired of the Program Manager and determined 
+confidentiality agreements (Google NDA, 
+Confidential Information and Invention 
+Assignment Agreement (CIIAA), and the Code of 
+Conduct) for employees and third parties are in 
+place and reviewed and updated as needed. 
+No deviations noted. 
+Inspected the confidentiality agreements and 
+determined they are reviewed and updated as 
+needed. 
+No deviations noted. 
+33. The organization's 
+commitments to security, 
+availability, processing 
+integrity, and 
+confidentiality are 
+communicated to 
+external users via 
+publications such as the 
+Terms of Service (ToS). 
+CC2.3 
+Inquired of the Program Manager and determined 
+Google publishes its commitments to security, 
+availability, processing integrity, and 
+confidentiality to external users via Terms of 
+Service (ToS). 
+No deviations noted. 
+Inspected Google Cloud Platform's Terms of 
+Service and product websites and determined 
+Google's commitments to security, availability and 
+confidentiality are published for external users. 
+No deviations noted. 
+Inspected Google Cloud Platform's Terms of 
+Service and product websites and determined that 
+Google establishes secure disposal verification 
+procedures for live instances / snapshots, 
+dormant virtual machines, and backups. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+78 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+34. The organization has 
+an established policy 
+specifying the security 
+requirements for new 
+information systems, or 
+enhancements to 
+existing information 
+systems. 
+CC5.2, 
+CC5.3 
+Inquired of the Program Manager and determined 
+Google had an established policy specifying the 
+security requirements for new information 
+systems, or enhancements to existing information 
+systems. 
+No deviations noted. 
+Inspected internal policies and determined 
+security requirements were specified for new 
+information systems, or enhancements to existing 
+information systems. 
+No deviations noted. 
+Inspected publicly available documentation and 
+determined Google outlined security requirements 
+for new information systems, or enhancements to 
+existing information systems related to its 
+services. 
+No deviations noted. 
+35. The organization has 
+developed policies and 
+procedures governing 
+the secure development 
+lifecycle. 
+CC8.1 
+Inquired of the Program Manager and determined 
+the organization had policies and procedures 
+which govern the secure development lifecycle. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization had policies and procedures 
+which govern the secure development lifecycle. 
+No deviations noted. 
+36. The organization has 
+developed policies and 
+CC9.2 
+Inquired of the Program Manager and determined 
+the organization developed policies and 
+procedures that govern third party relationships. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+79 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+procedures that govern 
+third party relationships. 
+Inspected internal documentation and determined 
+policies and procedures were in place to govern 
+third party relationships. 
+No deviations noted. 
+Inspected Google Cloud third party policy and 
+determined policies and procedures were in place 
+to govern third party relationships for Google 
+Cloud Products. 
+No deviations noted. 
+37. The organization has 
+established policies and 
+procedures that govern 
+access to information 
+systems. 
+CC5.3 
+Inquired of the Program Manager and determined 
+the organization established policies and 
+procedures that govern access to information 
+systems. 
+No deviations noted. 
+Inspected the internal documentation and 
+determined Google established policies and 
+procedures that govern access to information 
+systems. 
+No deviations noted. 
+38. The organization has 
+policies addressing 
+confidentiality, integrity, 
+and availability that have 
+been approved and 
+communicated. 
+CC2.2, 
+CC5.3 
+Inquired of the Program Manager and determined 
+the organization had security policies addressing 
+confidentiality, integrity, and availability that were 
+approved by management and published on the 
+intranet which is accessible to employees. 
+No deviations noted. 
+Inspected internal documentation and determined 
+security policies addressing confidentiality, 
+integrity and availability had been approved by 
+management. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+80 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected internal documentation and determined 
+the organization had security policies addressing 
+confidentiality, integrity and availability 
+communicated and published on the intranet and 
+accessible to employees. 
+No deviations noted. 
+39. The organization 
+establishes security 
+policies and procedures, 
+which clearly define 
+information security 
+responsibilities for all 
+employees. Within the 
+information security 
+policies and procedures, 
+the organization assigns 
+responsibilities to the 
+Information Security 
+team. The organization 
+manages operational risk 
+by delegating decisions 
+on risk identification and 
+resource prioritization to 
+the various engineering 
+groups that directly 
+support the operation of 
+products and services. 
+CC2.1, 
+CC2.2 
+Inquired of the Program Manager and determined 
+the organization established security policies and 
+procedures, which clearly defined information 
+security responsibilities for all employees, 
+including the Information Security team. The 
+organization managed operational risk by 
+delegating decisions on risk identification and 
+resource prioritization. 
+No deviations noted. 
+Inspected relevant security policies and 
+procedures and determined they defined 
+information security responsibilities of employees 
+and the Information Security Team. 
+No deviations noted. 
+Inspected Google's risk assessment and 
+determined the organization managed operational 
+risk by delegating decisions on risk identification 
+and resource prioritization to the various 
+engineering groups that directly support the 
+operation of Google products and services. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+81 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+40. The organization has 
+established policies and 
+procedures that govern 
+the acceptable use of 
+information assets. 
+CC3.2, 
+CC6.1 
+Inquired of the Program Manager and determined 
+the organization established policies and 
+procedures that govern the acceptable use of 
+information assets. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization established policies and 
+procedures that govern the acceptable use of 
+information assets. 
+No deviations noted. 
+41. Google has a User 
+Data Retention and 
+Deletion Policy. 
+CC6.1, C1.1, 
+C1.2, P4.2, 
+P4.3 
+Inquired of the Program Manager and determined 
+Google had a User Data Retention and Deletion 
+Policy. 
+No deviations noted. 
+Inspected the User Data Retention and Deletion 
+Policy and other related documentation, and 
+determined it established guidelines to govern the 
+retention and deletion of user data. 
+No deviations noted. 
+42. Physical protection 
+and guidelines are 
+described in the Physical 
+Security Policy, Data 
+Security Policy, Google 
+Photography Policy, and 
+the Data Center Access 
+policy. 
+CC6.4, 
+CC6.7 
+Inquired of the Data Center Security Manager and 
+determined physical protection and guidelines 
+were described in the Physical Security Policy, 
+Data Security Policy, Google Photography Policy, 
+and the Data Center Access policy. 
+No deviations noted. 
+Inspected the Physical Security Policy, Data 
+Security Policy, Google Photography Policy, and 
+the Data Center Access Policy and determined 
+that physical protection guidelines were specified 
+within each document. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+82 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+43. The organization 
+maintains policies that 
+define the requirements 
+for the use of 
+cryptography. 
+CC6.7 
+Inquired of the Program Manager and determined 
+the organization established policies and 
+procedures that govern the internal and external 
+use of cryptographic controls. 
+No deviations noted. 
+Inspected the security policies and procedures 
+and determined they covered governance of the 
+internal and external use of cryptographic 
+controls. 
+No deviations noted. 
+Inspected a Google Cloud Platform relevant 
+documentation and determined they covered 
+governance of the internal and external use of 
+cryptographic controls. 
+No deviations noted. 
+44. The organization 
+maintains policies for 
+securing mobile devices 
+used to access corporate 
+network and systems. 
+CC6.7 
+Inquired of the Program Manager and determined 
+the organization maintained policies for securing 
+mobile devices used to access corporate network 
+and systems. 
+No deviations noted. 
+Inspected relevant policies and documentation 
+and determined the organization maintained 
+policies for securing mobile devices used to 
+access corporate network and systems. 
+No deviations noted. 
+45. The organization has 
+established policies and 
+guidelines to govern data 
+CC6.1, C1.1, 
+P4.1 
+Inquired of the Program Manager and determined 
+policies and guidelines were established to govern 
+data classification, labeling and security. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+83 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+classification, labeling 
+and security. 
+Inspected internal documentation and determined 
+entity level policies and guidelines were 
+established to govern data classification, labeling 
+and security. 
+No deviations noted. 
+Inspected internal documentation for Google 
+Cloud Platform and determined policies and 
+guidelines were specifically established to govern 
+data classification, labeling and security. 
+No deviations noted. 
+46. Change Management 
+policies, including 
+security code reviews, 
+are in place, and 
+procedures for tracking, 
+testing, approving, and 
+validating changes are 
+documented. 
+CC5.3, 
+CC7.5 
+Inquired of the Program Manager and determined 
+change management policies, including security 
+code reviews, were in place, and procedures for 
+tracking, testing, approving, and validating 
+changes were documented. 
+No deviations noted. 
+Inspected internal policies and determined 
+practices for security code review, tracking, 
+testing, approving, and validating changes were 
+documented. 
+No deviations noted. 
+47. Google has 
+established the policy 
+exception process to 
+ensure a formal approval 
+and risk evaluation are 
+performed. 
+CC2.1, 
+CC2.2 
+Inquired of the Program Manager and determined 
+Google has a policy exception process to ensure 
+a formal approval and risk evaluation are 
+performed. 
+No deviations noted. 
+Inspected applicable policies and determined the 
+process to request and process policy exceptions 
+is documented. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+84 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of policy exceptions and 
+determined they followed the process as 
+described in the policy. 
+No deviations noted. 
+48. The organization has 
+established guidelines for 
+governing the installation 
+of software on 
+organization-owned 
+assets. 
+CC6.7, 
+CC8.1 
+Inquired of the Program Manager and determined 
+the organization established guidelines for 
+governing the installation of software on 
+organization-owned assets. Further determined 
+that a standard production image was utilized for 
+the installation and maintenance of each 
+production server. Deployment of software in 
+production was restricted to authorized personnel 
+and mechanisms were utilized to identify and 
+correct deviations from pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected Google's security policies and 
+determined Google had implemented rules to 
+govern the installation of software by users. 
+No deviations noted. 
+Inspected the monitoring tool configurations and 
+determined the tools were configured to monitor 
+production machines and detect deviations from 
+pre-defined OS configurations and correct them. 
+No deviations noted. 
+Inspected the log of the tool used to monitor the 
+replication of the standard production image and 
+determined the tool was running in accordance 
+with the schedule defined in the configuration. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+85 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a Software Engineer insert a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer modify a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer deleted a test file 
+in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected the deleted test file and corrected the 
+production machine back to the pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected the code configuration and determined 
+access to deploy software was restricted to 
+authorized engineers. 
+No deviations noted. 
+49. The organization 
+prohibits the use of 
+removable media for the 
+CC6.7, P4.3 
+Inquired of the Program Manager and determined 
+PII and SPII on removable media leaving Google 
+facilities was approved and encrypted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+86 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+storage of PII and SPII 
+unless the data has been 
+encrypted. 
+Inspected relevant policies and determined 
+Google outlined and communicated the process 
+for the secure handling and transportation of 
+customer data. 
+No deviations noted. 
+Inspected the ticketing tool and determined 
+requests to use removable media were approved 
+under the condition that the removable media was 
+encrypted. 
+No deviations noted. 
+50. Security policies are 
+reviewed at least 
+annually. Policies and 
+supporting procedures 
+and guidelines are 
+created/updated as 
+needed. 
+CC4.1, 
+CC5.3 
+Inquired of the Program Manager and determined 
+security policies were reviewed at least annually, 
+and policies, procedures and guidelines were 
+updated as needed. 
+No deviations noted. 
+Inspected internal documentation and determined 
+security policies must be annually evaluated and 
+authorized before they are implemented. 
+No deviations noted. 
+Inspected the most recent security policy reviews 
+and determined security policies were approved 
+by authorized personnel or committee, reviewed 
+at least annually, and updated as needed. 
+No deviations noted. 
+51. The organization has 
+established a privacy and 
+information security 
+training program and 
+CC1.1, 
+CC1.4, 
+CC2.2 
+Inquired of the Program Manager and determined 
+privacy and information security training program 
+was in place and relevant personnel were 
+required to complete this training annually. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+87 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+requires relevant 
+personnel to complete 
+this training annually. 
+Inspected internal documentation and determined 
+privacy and information security training program 
+was in place and relevant personnel were 
+required to complete the training annually. 
+No deviations noted. 
+Inspected a sample email notification sent to 
+Google personnel and determined reminders were 
+sent to complete the privacy and information 
+security training within a specified time. 
+No deviations noted. 
+Inspected the completion rate for the privacy and 
+information security training for Google personnel 
+and determined relevant personnel completed the 
+trainings in the last 12 months or were actively 
+being monitored until completion of training. 
+No deviations noted. 
+Inspected the privacy and information security 
+training material and determined that Google has 
+outlined the importance of information security 
+and maintaining user, customer and employee 
+privacy. 
+No deviations noted. 
+Inspected the continuing education documents 
+and determined that the entity provided training 
+programs to help ensure skill sets and technical 
+competencies of existing employees and 
+contractors were developed and maintained. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+88 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the training activity dashboard and 
+determined that the privacy and information 
+security training was mandatory and required to 
+be completed annually. 
+No deviations noted. 
+52. Logical access to 
+organization owned 
+network devices is 
+authenticated via user 
+ID, password, security 
+key, and/or certificate. 
+CC6.1 
+Inquired of the Program Manager and determined 
+access to network devices was authenticated via 
+user ID, password, security key, and/or certificate. 
+No deviations noted. 
+Inspected the access configuration for production 
+network devices and determined it required 
+authentication via user ID, password, security key, 
+and/or certificate. 
+No deviations noted. 
+Observed a user attempt to obtain access to 
+network devices after authenticating via user ID, 
+password, security key, and/or certificate and 
+determined that the user successfully obtained 
+access. 
+No deviations noted. 
+Observed a user attempt to obtain access to 
+network devices without first authenticating via 
+user ID, password, security key, and/or certificate 
+and determined that the user failed to obtain 
+access. 
+No deviations noted. 
+53. Wireless connections 
+to corporate resources 
+CC6.1 
+Inquired of the Program Manager and determined 
+wireless connections to corporate resources at the 
+organization's facilities were encrypted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+89 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+at organization's facilities 
+are encrypted. 
+Inspected internal documentation and determined 
+wireless connections to corporate resources at the 
+organization's facilities were encrypted. 
+No deviations noted. 
+Inspected a remote wireless connection to 
+corporate resources and determined that remote 
+access to the corporate network was encrypted. 
+No deviations noted. 
+54. The organization has 
+dedicated teams who are 
+responsible for 
+monitoring, maintaining, 
+managing and securing 
+the network. 
+CC7.1 
+Inquired of the Program Manager and determined 
+the organization had dedicated teams who are 
+responsible for monitoring, maintaining, managing 
+and securing the network. 
+No deviations noted. 
+Inspected the internal documentation and 
+determined the organization had dedicated teams 
+who are responsible for monitoring, maintaining, 
+managing and securing the network. 
+No deviations noted. 
+55. Mechanisms are in 
+place to detect attempts, 
+and prevent connections 
+to the organization's 
+network by unauthorized 
+devices. 
+CC6.1, 
+CC6.2 
+Inquired of the Program Manager and determined 
+mechanisms were in place to detect attempts and 
+prevent connections to the organization's network 
+by unauthorized devices. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+mechanisms were in place to detect attempts and 
+prevent connections to the organization's network 
+by unauthorized devices. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+90 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected relevant configurations and determined 
+mechanisms were in place to detect attempts and 
+prevent connections to the organization's network 
+by unauthorized devices. 
+No deviations noted. 
+Observed a user with an authorized device 
+attempt to connect to the Google network and 
+determined the connection was successful. 
+No deviations noted. 
+Observed an unauthorized user attempt to 
+connect to the Google network and determined 
+access was denied. 
+No deviations noted. 
+Observed a user attempt to connect to the 
+production network with a valid certificate and 
+determined the connection was successful. 
+No deviations noted. 
+Observed a user attempt to connect to the 
+production network without a valid certificate and 
+determined that access was denied. 
+No deviations noted. 
+Observed a user modify their certificate and 
+determined that access was disconnected. 
+No deviations noted. 
+56. Logical access to 
+network devices is 
+restricted to authorized 
+CC7.1 
+Inquired of the Program Manager and determined 
+that access to network devices was restricted to 
+authorized personnel and periodically reviewed. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+91 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+personnel and is 
+periodically reviewed. 
+Inspected the network device access 
+management policy and determined access to 
+network devices was restricted to authorized 
+personnel. 
+No deviations noted. 
+Inspected a sample user provisioned and 
+deprovisioned access and determined that logical 
+access was restricted to authorized personnel. 
+No deviations noted. 
+Inspected a sample of quarterly user access 
+reviews performed for network devices and 
+determined the users were periodically reviewed. 
+No deviations noted. 
+57. The organization 
+segments networks 
+based on the nature of 
+services, users, and 
+information systems 
+being accessed. 
+CC6.1 
+Inquired of the Program Manager and determined 
+networks were segregated based on the types of 
+services, users and information systems. 
+No deviations noted. 
+Inspected documentation and determined 
+networks were logically or physically segregated. 
+No deviations noted. 
+Inspected documentation and determined 
+networks used for migration and generation of 
+virtual machines were physically and logically 
+segregated from other networks. 
+No deviations noted. 
+Inspected documentation and determined 
+networks for the management of the infrastructure 
+and for the operation of management consoles 
+were separated. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+92 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected documentation and determined 
+processes were defined to maintain separate 
+development, testing and production 
+environments. 
+No deviations noted. 
+Inspected a sample of request tickets to 
+determine a process was in place to approve 
+requests to use production data in non-production 
+environments and a data anonymization strategy 
+was communicated. 
+No deviations noted. 
+Inspected network diagrams and determined high-
+risk environments and data flow network 
+architecture were identified and protected. 
+No deviations noted. 
+58. The organization has 
+implemented perimeter 
+devices to protect the 
+corporate network from 
+external network attacks. 
+CC6.6 
+Inquired the Program Manager and determined 
+that the organization implemented perimeter 
+devices to protect the corporate network from 
+external network attacks. 
+No deviations noted. 
+Inspected the policies and documents related to 
+the perimeter devices and determined that the 
+organization implemented perimeter devices to 
+protect the corporate network from external 
+network attacks. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+93 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the configurations related to the 
+perimeter devices and determined that the 
+organization implemented perimeter devices to 
+protect the corporate network from external 
+network attacks. 
+No deviations noted. 
+59. The organization has 
+a security guideline that 
+requires users to lock 
+their workstations and 
+mobile devices when 
+unattended. Access to 
+unattended workstations 
+is prevented by a 
+password protected 
+screen-saver 
+after 15 minutes of 
+inactivity. 
+CC6.1 
+Inquired of the Program Manager and determined 
+a security guideline was in place that required 
+users to lock workstations and mobile devices 
+when unattended. 
+No deviations noted. 
+Inspected internal policies and determined the 
+organization required users to lock their 
+workstations and mobile devices when 
+unattended. 
+No deviations noted. 
+Inspected the idle time configurations propagated 
+to workstations and determined they were 
+configured to enforce password standards. 
+No deviations noted. 
+Performed on-site inspections for a sample of 
+offices and determined that employees followed 
+appropriate office security practices including 
+securing any paper and removable media, and 
+locking workstations when unattended. 
+No deviations noted. 
+Observed a sample of corporate machines and 
+determined users were locked out after 
+reasonable amount of time of inactivity. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+94 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+60. The organization has 
+established mechanisms 
+governing the 
+configuration and 
+security of corporate-
+managed devices 
+providing privileged 
+access. 
+CC6.1 
+Inquired of the Program Manager and determined 
+the organization established mechanisms 
+governing the configuration and security of 
+corporate-managed devices providing privileged 
+access. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+that policies are in place to govern the device 
+management, security, and baseline requirements 
+of corporate-managed mobile devices providing 
+privileged access. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+that policies are in place to govern the use of 
+encryption for corporate-managed mobile devices 
+providing privileged access. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+policies are in place for access protection and 
+identity management for corporate-managed 
+mobile devices. 
+No deviations noted. 
+Inspected relevant policies and documentation 
+and determined unofficial operating systems are 
+prohibited on corporate-managed mobile devices. 
+No deviations noted. 
+Inspected relevant policies and documentation 
+and determined requirements for BYOD mobile 
+devices for use in the corporate environment are 
+established. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+95 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the configuration for corporate-
+managed devices with privileged access and 
+determined the organization implemented access 
+protection and identity and authorization 
+management protections. 
+No deviations noted. 
+61. The organization has 
+implemented 
+mechanisms to protect 
+its information assets 
+against malicious activity 
+(e.g. malware, spam, 
+phishing). 
+CC6.8 
+Inquired of the Program Manager and determined 
+the organization has implemented mechanisms to 
+protect its information assets against malicious 
+activity. 
+No deviations noted. 
+Inspected Google's internal guidelines and 
+determined the organization has implemented 
+mechanisms to protect its information assets 
+against malicious activity. 
+No deviations noted. 
+Inspected the antivirus and antimalware 
+mechanisms and determined that the tools were 
+in place to protect the organization's information 
+assets. 
+No deviations noted. 
+Inspected internal documentation and determined 
+antivirus software in place was configured to have 
+a function to roll-back to a previous state in case 
+of malfunction of an anti-virus system update. 
+No deviations noted. 
+62. Encryption is used to 
+protect user 
+authentication and 
+administrator sessions 
+CC6.1, 
+CC6.6, 
+CC6.7 
+Inquired of the Program Manager and determined 
+encryption was used to protect user authentication 
+and administrator sessions transmitted over the 
+internet. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+96 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+transmitted over the 
+Internet. 
+Inspected internal policies regarding encryption 
+mechanisms at Google and determined Google 
+used encryption to protect user authentication and 
+administrator sessions transmitted over the 
+internet. 
+No deviations noted. 
+Inspected externally available documentation and 
+determined Google communicated to how user 
+authentication and administrator sessions 
+transmitted over the internet were encrypted. 
+No deviations noted. 
+Inspected encryption mechanism configurations 
+and determined user authentication and 
+administrator sessions transmitted over the 
+internet were encrypted. 
+No deviations noted. 
+Observed a user's and an administrator's 
+connection settings to Google's external websites 
+and determined encryption was used to protect 
+user authentication and administrator sessions 
+transmitted over the internet. 
+No deviations noted. 
+Inspected the server scan results and determined 
+Google used encryption mechanisms to protect 
+user authentication and administrator sessions 
+transmitted over the internet. 
+No deviations noted. 
+63. Encryption is used for 
+traffic traversing fiber 
+between the 
+CC6.7 
+Inquired of the Program Manager and determined 
+encryption was used for traffic traversing fiber 
+between the organization's production facilities. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+97 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+organization's production 
+facilities. 
+Inspected internal documentation and determined 
+encryption was used for traffic traversing fiber 
+between the organization's production facilities. 
+No deviations noted. 
+Inspected the encryption configuration and 
+determined encryption was used for traffic 
+traversing fiber between the organization's 
+production facilities. 
+No deviations noted. 
+64. Deviations from pre-
+defined operating system 
+(OS) configurations 
+running on production 
+machines are detected 
+and corrected. 
+CC6.8 
+Inquired of the Program Manager and determined 
+the organization established guidelines for 
+governing the installation of software on 
+organization-owned assets. Further determined 
+that a standard production image was utilized for 
+the installation and maintenance of each 
+production server. Deployment of software in 
+production was restricted to authorized personnel 
+and mechanisms were utilized to identify and 
+correct deviations from pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected Google's security policies and 
+determined Google had implemented rules to 
+govern the installation of software by users. 
+No deviations noted. 
+Inspected the monitoring tool configurations and 
+determined the tools were configured to monitor 
+production machines and detect deviations from 
+pre-defined OS configurations and correct them. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+98 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the log of the tool used to monitor the 
+replication of the standard production image and 
+determined the tool was running in accordance 
+with the schedule defined in the configuration. 
+No deviations noted. 
+Observed a Software Engineer insert a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer modify a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer deleted a test file 
+in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected the deleted test file and corrected the 
+production machine back to the pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected the code configuration and determined 
+access to deploy software was restricted to 
+authorized engineers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+99 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+65. Changes to network 
+configurations are 
+reviewed and approved 
+prior to deployment. 
+CC8.1 
+Inquired of the Program Manager and determined 
+changes to network configurations were reviewed, 
+approved, and tested prior to deployment. 
+No deviations noted. 
+Inspected a sample of manual network 
+configuration changes and determined it was 
+reviewed by a separate technical resource to 
+validate quality and accuracy. 
+No deviations noted. 
+Inspected a sample of manual network 
+configuration changes and determined it was 
+tested prior to deployment. 
+No deviations noted. 
+Inspected a sample automated change and 
+determined it was made by an automated tool 
+based on the pre-configured ruleset. 
+No deviations noted. 
+Inspected a sample change made to the 
+automated tool and determined it was reviewed by 
+a separate technical resource to validate quality 
+and accuracy and tested prior to deployment. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+100 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+66. A standard image is 
+utilized for the installation 
+and maintenance of each 
+production server. 
+CC8.1 
+Inquired of the Program Manager and determined 
+the organization established guidelines for 
+governing the installation of software on 
+organization-owned assets. Further determined 
+that a standard production image was utilized for 
+the installation and maintenance of each 
+production server. Deployment of software in 
+production was restricted to authorized personnel 
+and mechanisms were utilized to identify and 
+correct deviations from pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected Google's security policies and 
+determined Google had implemented rules to 
+govern the installation of software by users. 
+No deviations noted. 
+Inspected the monitoring tool configurations and 
+determined the tools were configured to monitor 
+production machines and detect deviations from 
+pre-defined OS configurations and correct them. 
+No deviations noted. 
+Inspected the log of the tool used to monitor the 
+replication of the standard production image and 
+determined the tool was running in accordance 
+with the schedule defined in the configuration. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+101 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a Software Engineer insert a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer modify a test file in 
+the directory of a haphazardly selected production 
+machine and determined the tool detected the test 
+file and corrected the production machine back to 
+the pre-defined OS configurations. 
+No deviations noted. 
+Observed a Software Engineer deleted a test file 
+in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected the deleted test file and corrected the 
+production machine back to the pre-defined OS 
+configurations. 
+No deviations noted. 
+Inspected the code configuration and determined 
+access to deploy software was restricted to 
+authorized engineers. 
+No deviations noted. 
+67. Only users with a 
+valid user certificate, 
+corresponding private 
+key and appropriate 
+CC6.6, 
+CC6.7 
+Inquired of the Program Manager and determined 
+only users with a valid certificate, corresponding 
+private key and appropriate authorization (per 
+host) could access production machines via SSH. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+102 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+authorization (per host) 
+can access production 
+machines via SSH. 
+Inspected the configuration enforcing authorized 
+key authentication and determined it was set up to 
+restrict access to production machines from 
+unauthorized users without a valid digital 
+certificate. 
+No deviations noted. 
+Inspected the configuration that enforced the 
+authentication of users prior to granting a private 
+key and determined digital certificates were only 
+generated after a user was authenticated using 
+two-factor authentication. 
+No deviations noted. 
+Observed a user attempt to access the production 
+machines with an authorized private key by using 
+a valid SSH certificate and determined access 
+was allowed. 
+No deviations noted. 
+Observed a user attempt to access the production 
+machines without an authorized private key by 
+using an invalid SSH certificate and determined 
+access was denied. 
+No deviations noted. 
+68. The organization has 
+an established key 
+management process in 
+place to support the 
+organization’s use of 
+cryptographic 
+techniques. 
+CC6.1 
+Inquired of the Program Manager and determined 
+Google had an established key management 
+process in place to support the organization’s 
+internal and external use of cryptographic 
+techniques. 
+No deviations noted. 
+Inspected internal documentation and determined 
+key management procedures were in place. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+103 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the code configuration enforcing 
+encryption and certificate authentication and 
+determined internal and external use of 
+cryptographic techniques conformed to Google 
+policies and procedures. 
+No deviations noted. 
+Observed an engineer attempt to request a 
+certificate and determined the key management 
+process was followed to support the organization's 
+internal and external use of cryptographic 
+techniques. 
+No deviations noted. 
+Inspected the code configuration for certificate 
+revocations and determined certificate revocations 
+used proper authorizations and changes to the list 
+of certificate revocations were restricted. 
+No deviations noted. 
+Inspected a sample of certificate revocation 
+requests and determined certificates were 
+revoked timely. 
+No deviations noted. 
+69. The organization 
+maintains formal user 
+registration and de-
+registration procedures 
+for granting and revoking 
+access. 
+CC6.2, 
+CC6.3 
+Inquired of the Program Manager and determined 
+the organization maintained formal user 
+registration and de-registration procedures for 
+granting and revoking access. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+the organization had formal procedures for 
+granting and revoking user access to the 
+corporate network. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+104 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected relevant documentation and determined 
+the organization had formal procedures for 
+granting and revoking user access to the 
+production network. 
+No deviations noted. 
+Inspected system configurations and determined 
+the system was configured to enforce approval 
+from a group administrator prior to modifying user 
+access to production machines, support tools, and 
+network devices. 
+No deviations noted. 
+Observed an attempt to modify user access to a 
+group with the appropriate approval and 
+determined access was granted. 
+No deviations noted. 
+Observed an attempt to modify user access to a 
+group without the appropriate approval and 
+determined access was not granted. 
+No deviations noted. 
+Inspected a sample system generated log for 
+access to production machines, support tools, and 
+network devices and determined access 
+approvals and modifications to the access lists 
+were recorded. 
+No deviations noted. 
+Inspected the relevant guidelines and determined 
+organization maintained formal user de-
+registration procedures for revoking access. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+105 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a terminated user's access to 
+production machines, support tools, network 
+devices and corporate assets and determined 
+access was automatically removed by the 
+automated tool used to revoke access upon 
+submission of a termination request. 
+No deviations noted. 
+70. The organization has 
+established formal 
+guidelines for passwords 
+to govern the 
+management and use of 
+authentication 
+mechanisms. 
+CC6.1 
+Inquired of the Program Manager and determined 
+Google had established password guidelines to 
+govern the management and use of authentication 
+mechanisms. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+formal guidelines for passwords were established 
+to govern the management and use of 
+authentication mechanisms. 
+No deviations noted. 
+Inspected the relevant configurations and 
+determined passwords were transmitted and 
+stored in an encrypted manner. 
+No deviations noted. 
+Inspected the password and idle time 
+configurations propagated to servers and 
+determined they were configured to enforce 
+password requirements. 
+No deviations noted. 
+Inspected the configuration for default password 
+and determined users were required to change 
+their default password. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+106 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a user attempt to change their 
+password and determined an error message was 
+shown and the password change was 
+unsuccessful when password requirements were 
+not met. 
+No deviations noted. 
+Observed corporate endpoint devices and 
+determined users were locked out after specified 
+amount of time of inactivity. 
+No deviations noted. 
+Observed a user change their default password 
+and determined such change was verified by 
+Google's technical support personnel. 
+No deviations noted. 
+71. The organization has 
+an established policy 
+specifying that access to 
+information resources, 
+including data and the 
+systems which store or 
+process data, is 
+authorized based on the 
+principle of least 
+privilege. 
+CC6.1 
+Inquired of the Program Manager and determined 
+the organization had an established policy to 
+ensure access to information resources, including 
+data and the systems which store or process data, 
+was authorized based on the principle of least 
+privilege. 
+No deviations noted. 
+Inspected internal policies and determined access 
+to information resources, including data and the 
+systems which store or process data, was 
+provisioned based on the principle of least 
+privilege. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+107 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+72. Personnel access to 
+sensitive systems and 
+applications requires 
+two-factor authentication 
+in the form of a distinct 
+user ID and password 
+with a security key or 
+certificate. 
+CC6.1, 
+CC6.6 
+Inquired of the Program Manager and determined 
+access to sensitive systems and applications 
+requires two-factor authentication in the form of 
+user ID, password, security key, and/or certificate. 
+No deviations noted. 
+Inspected the applicable policy and determined 
+access to sensitive systems and applications 
+required two-factor authentication in the form of 
+user ID, password, security key and/or certificate. 
+No deviations noted. 
+Inspected relevant policy documentation and 
+determined Google has an established policy that 
+specifies the use of emergency credentials. 
+No deviations noted. 
+Inspected the code that enforced the 
+authentication of users prior to the granting of a 
+certificate and determined certificates that were 
+required for access to production machines were 
+only generated after a user is authenticated to 
+single sign-on using two-factor authentication. 
+No deviations noted. 
+Observed a user attempt to gain access to a 
+production machine with a valid user ID, 
+password, security key, and certificate and 
+determined access was granted. 
+No deviations noted. 
+Observed a user attempt to gain access to a 
+production machine without a valid certificate and 
+determined access was not granted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+108 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a user attempt to gain access to a 
+production machine with valid emergency access 
+credentials and determined access was granted. 
+No deviations noted. 
+Observed a user attempt to gain access to a 
+production machine without valid emergency 
+access credentials and determined access was 
+not granted. 
+No deviations noted. 
+Inspect evidence to determine that the user who 
+performed authentication to production using 
+emergency access credentials had appropriate 
+access approvals prior to obtaining access. 
+No deviations noted. 
+73. The organization 
+separates duties of 
+individuals by granting 
+users access based on 
+job responsibilities and 
+least privilege, and 
+limiting access to only 
+authorized users. 
+CC5.1 
+Inquired of the Program Manager and determined 
+the organization separated duties of individuals by 
+granting users access based on job 
+responsibilities and least privilege, and limiting 
+access to only authorized users. 
+No deviations noted. 
+Inspected relevant policies and guidelines, and 
+determined the organization separated duties of 
+individuals by granting users access based on job 
+responsibilities and least privilege, and limiting 
+access to only authorized users. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+109 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of critical access group user 
+membership reviews approved by group 
+administrators, and determined group 
+membership was reviewed at regular intervals to 
+ensure access granted was based on job 
+responsibilities, least privilege and segregation of 
+duties, and that appropriate action was taken to 
+resolve inappropriate access, if applicable. 
+No deviations noted. 
+Observed an attempt to grant user access to a 
+group with appropriate approval and determined 
+access was granted. 
+No deviations noted. 
+Observed an attempt to grant user access to a 
+group without appropriate approval and 
+determined access was not granted. 
+No deviations noted. 
+Inspected a sample system generated log for 
+access to production machines, support tools, and 
+network devices and determined access 
+approvals and modifications to the access lists 
+were recorded. 
+No deviations noted. 
+74. Access to production 
+machines, support tools, 
+and network devices is 
+managed via access 
+control lists. Modification 
+CC5.2, 
+CC6.2, 
+CC6.3, 
+CC6.6 
+Inquired of the Program Manager and determined 
+that access to production machines, support tools, 
+and network devices is managed via access 
+control lists. Modification to access control lists 
+are recorded and approved by administrators. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+110 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+to access control lists are 
+recorded and approved 
+by administrators. 
+Inspected relevant documentation and determined 
+the organization has formal procedures for 
+managing user access to production machines, 
+support tools, and network devices via access 
+control lists. 
+No deviations noted. 
+Inspected the configurations within the source 
+code management system and determined that 
+the relevant access control list systems were 
+configured to enforce approval from a group 
+administrator prior to a user receiving access to 
+production machines, support tools, and network 
+devices. 
+No deviations noted. 
+Observed an attempt to grant user access to a 
+group with the appropriate approval from the 
+group administrator and determined access was 
+granted. 
+No deviations noted. 
+Observed an attempt to grant user access to a 
+group without the appropriate approval from the 
+group administrator and determined access was 
+not granted. 
+No deviations noted. 
+Inspected a sample of system generated logs for 
+access to production machines, support tools, and 
+network devices and determined access 
+approvals and modifications to the access lists 
+were recorded. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+111 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+75. Access to corporate 
+network, production 
+machines, network 
+devices, and support 
+tools requires a unique 
+ID, password, and/or 
+machine certificate. 
+CC6.1, 
+CC6.2 
+Inquired of the Program Manager and determined 
+access to the corporate network, which further 
+provides access to production machines, network 
+devices, and support tools, required a unique ID 
+and verified credentials. 
+No deviations noted. 
+Inspected the configuration for access to 
+corporate network, network devices, production 
+machines, and support tools and determined a 
+unique ID and verified credentials were required. 
+No deviations noted. 
+Observed a user attempt to create a user with a 
+username belonging to another user and 
+determined that a duplicate username could not 
+be assigned. 
+No deviations noted. 
+Observed a user attempt to create, delete, and 
+recreate an account with the same username and 
+determined the accounts were assigned unique 
+IDs. 
+No deviations noted. 
+Observed a user attempt to access the corporate 
+network without verified credentials and 
+determined access was denied. 
+No deviations noted. 
+Observed a user attempt to access the corporate 
+network with verified credentials and determined 
+access was granted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+112 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+76. Access to production 
+machines, support tools, 
+network devices and 
+corporate assets is 
+automatically removed in 
+a timely basis upon 
+submission of a 
+termination request by 
+Human Resources or a 
+manager. 
+CC5.2, 
+CC6.2, 
+CC6.3 
+Inquired of the Program Manager and determined 
+access to production machines, support tools, 
+network devices and corporate assets was 
+automatically removed in a timely basis upon 
+submission of a termination request by Human 
+Resources or a manager. 
+No deviations noted. 
+Inspected internal documentation and determined 
+requirements for terminating users with access to 
+production machines, support tools, network 
+devices and corporate assets were documented. 
+No deviations noted. 
+Inspected the configuration of the automated tools 
+used to revoke access to production machines, 
+support tools, network devices, and corporate 
+assets and determined it was configured to 
+remove access upon submission of a termination 
+request by Human Resources or a manager. 
+No deviations noted. 
+Inspected a terminated user's access to 
+production machines, support tools, network 
+devices and corporate assets and determined 
+access was automatically removed in a timely 
+manner post termination. 
+No deviations noted. 
+77. Access to internal 
+support tools is restricted 
+to authorized personnel 
+CC6.6 
+Inquired of the Program Manager and determined 
+access to internal support tools was restricted to 
+authorized personnel through the use of approved 
+credentials. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+113 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+through the use of 
+approved credentials. 
+Observed a user attempt to access an internal 
+support tool with approved credentials and 
+determined access was granted. 
+No deviations noted. 
+Observed a user attempt to access an internal 
+support tool without approved credentials and 
+determined access was not granted. 
+No deviations noted. 
+78. External system 
+users are identified 
+and authenticated via the 
+Google Accounts 
+authentication system 
+before access is granted. 
+CC6.1 
+Inquired of the Program Manager and determined 
+external system users were identified and 
+authenticated via the Google Accounts 
+authentication system before access was granted. 
+No deviations noted. 
+Inspected the configuration supporting the login 
+functionality and determined users were identified 
+and authenticated via the Google Accounts 
+authentication system before access was granted. 
+No deviations noted. 
+Observed an external user access a sample 
+product and determined access was only granted 
+after successful authentication with their Google 
+account. 
+No deviations noted. 
+79. Where "on demand 
+request" mechanisms are 
+implemented to restrict 
+human access to 
+production resources, 
+access requests are 
+reviewed and approved 
+CC6.2, 
+CC6.3 
+Inquired of the Program Manager and determined 
+that "on demand request" mechanisms were 
+implemented to restrict human access to 
+production resources, and access on demand 
+requests were reviewed and approved by a 
+second individual prior to being granted and the 
+events were logged. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+114 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+by a second individual 
+prior to being granted 
+and the event is logged. 
+Inspected the documentation and determined that 
+access on demand requests were reviewed and 
+approved by a second individual prior to being 
+granted and the events were logged. 
+No deviations noted. 
+Inspected the access on demand configuration 
+supporting the functionality and determined 
+changes to the approver group were identified and 
+recorded and access can only be granted for a 
+limited number of hours. 
+No deviations noted. 
+Observed a user attempt to gain access to an on-
+demand group and determined after the request 
+received appropriate approval from a second 
+individual, temporary access was granted. 
+No deviations noted. 
+Observed a user attempt to gain access to an on-
+demand group and determined access was 
+denied as the appropriate approval from a second 
+individual, with valid credentials, was not 
+obtained. 
+No deviations noted. 
+80. Critical access 
+groups are reviewed on a 
+periodic basis and 
+inappropriate access is 
+removed. 
+CC6.2, 
+CC6.3 
+Inquired of the Program Manager and determined 
+critical access groups were reviewed on a periodic 
+basis and inappropriate access was removed. 
+No deviations noted. 
+Inspected the code configuration that 
+automatically generates a ticket for the review of 
+in scope critical access groups. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+115 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of critical access group 
+reviews and determined group membership was 
+reviewed on a semiannual basis and appropriate 
+action was taken to resolve inappropriate access, 
+if applicable. 
+No deviations noted. 
+Inspected a sample of critical access group 
+reviews for supporting tools and determined 
+supporting tool group membership was reviewed 
+on a semiannual basis and appropriate action was 
+taken to resolve inappropriate access, if 
+applicable. 
+No deviations noted. 
+81. The organization has 
+established guidelines for 
+protecting against the 
+risks of teleworking 
+activities. Users can only 
+access the system 
+remotely through the use 
+of encrypted 
+communication systems. 
+CC6.1, 
+CC6.7 
+Inquired of the Program Manager and determined 
+Google has established guidelines for protecting 
+against the risk of teleworking activities. Users 
+can only access the system remotely through the 
+use of encrypted communication systems. Google 
+also requires two-factor authentication and valid 
+certificates to be installed on the connecting 
+device. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+guidelines and policies were implemented to 
+protect information accessed and govern the use 
+of system encryption for communication. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+116 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected authentication settings and determined 
+access to the system required two-factor 
+authentication and valid certificates to be installed 
+on the connecting device. 
+No deviations noted. 
+Inspected connection settings for a user 
+connecting to the Google network and determined 
+that encryption mechanisms were used. 
+No deviations noted. 
+Observed a user attempt to gain access to the 
+environment using valid two-factor authentication 
+and with valid Google issued digital certificates 
+installed on the connecting device and determined 
+access was successful. 
+No deviations noted. 
+Observed a user attempt to gain access to the 
+environment with a device that did not use valid 
+two-factor authentication and did not have valid 
+Google issued digital certificates installed on the 
+connecting device and determined access was 
+denied. 
+No deviations noted. 
+82. Remote access to 
+corporate machines 
+requires a digital 
+certificate issued by the 
+organization installed on 
+the connecting device, 
+CC6.1, 
+CC6.6 
+Inquired of the Program Manager and determined 
+remote access to corporate machines required a 
+digital certificate issued by the organization 
+installed on the connecting device, and two-factor 
+authentication in the form of user ID, password, 
+security key, and/or certificate. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+117 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+and two-factor 
+authentication in the form 
+of user ID, password, 
+security key, and/or 
+certificate. 
+Inspected relevant documentation and determined 
+remote access to corporate machines required a 
+digital certificate issued by the organization 
+installed on the connecting device, and two-factor 
+authentication in the form of user ID, password, 
+security key, and/or certificates. 
+No deviations noted. 
+Inspected the remote access configuration and 
+determined it required a Google issued digital 
+certificate to be installed on the connecting 
+device. 
+No deviations noted. 
+Inspected the authentication settings for remote 
+access to corporate machines and determined 
+two-factor authentication was required. 
+No deviations noted. 
+Observed a user attempt to gain remote access to 
+a corporate machine with a device that had a 
+Google issued digital certificate installed and two-
+factor authentication and determined remote 
+access to the corporate environment was 
+successful. 
+No deviations noted. 
+Observed a user attempt to gain remote access to 
+a corporate machine with a device that did not 
+have a Google issued digital certificate installed or 
+without two-factor authentication and determined 
+remote access to the corporate environment was 
+denied. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+118 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+83. Critical power and 
+telecommunications 
+equipment in data 
+centers is physically 
+protected from disruption 
+and damage. 
+A1.2 
+Inquired of the Operations Manager and 
+determined critical power and telecommunications 
+equipment in data centers were physically 
+protected from disruption and damage. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that power and telecommunications 
+equipment in data centers were physically 
+protected from disruption and damage. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that temperature and humidity of data 
+halls were within the configured thresholds. 
+No deviations noted. 
+84. Storage media used 
+for off-site redundancy 
+are protected and 
+controlled during 
+transport outside of 
+controlled areas using 
+secure storage 
+containers. 
+C1.2 
+Inquired of the Operations Manager and 
+determined storage media used for off-site 
+redundancy were protected and controlled during 
+transport outside of controlled areas using secure 
+storage containers. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that backup tapes were protected and 
+controlled during transport outside of controlled 
+areas using secure storage containers and that 
+backup tapes were unmarked. 
+No deviations noted. 
+Inspected the relevant configuration and 
+determined that backup tapes were encrypted. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+119 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the relevant configuration and 
+determined alerts were configured to generate if 
+thresholds for Google's sanitization or 
+transportation processes were exceeded. 
+No deviations noted. 
+Inspected a sample of alerts and determined the 
+alerts were appropriately generated and resolved 
+in a timely manner. 
+No deviations noted. 
+85. Data center server 
+floors, network rooms, 
+and security systems are 
+physically isolated from 
+public spaces and/or 
+delivery areas. 
+CC6.4 
+Inquired of the Operations Manager and 
+determined information systems and equipment 
+were safeguarded against unauthorized entry and 
+removal from data centers and data center server 
+floors, network rooms, and security systems are 
+physically isolated from public spaces and/or 
+delivery areas. 
+No deviations noted. 
+Inspected internal documentation and determined 
+that the organization maintains policies and 
+guidelines around the security of storage devices 
+during delivery and movement throughout the 
+data center. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that Google had safeguards in place 
+to protect information systems and equipment 
+from unauthorized entry and removal from data 
+centers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+120 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a sample of data centers and 
+determined that dedicated receiving and shipping 
+areas were isolated from the main data center 
+floor, network rooms and security systems. 
+No deviations noted. 
+Inspected a sample of tickets created for data 
+center equipment entering and exiting data 
+centers and determined Google authorized, 
+monitored, and controlled the shipments and 
+maintained a record of the items. 
+No deviations noted. 
+86. The organization 
+sanitizes storage media 
+prior to disposal, release 
+from organizational 
+control, or release for 
+reuse. 
+CC6.5, P4.3 
+Inquired of the Operations or Facilities Managers 
+at each site and determined the organization 
+sanitized storage media prior to disposal, release 
+out of organizational control, or release for reuse. 
+No deviations noted. 
+Inspected the data destruction and transportation 
+policies and determined the organization had 
+policies in place regarding the sanitization of 
+storage media prior to disposal, release out of 
+organizational control, or release for reuse. 
+No deviations noted. 
+Inspected a sample destroyed equipment leaving 
+Google’s data centers and determined the 
+equipment was subject to Google's sanitization 
+and destruction process. 
+No deviations noted. 
+Inspected the relevant configuration and 
+determined USB ports were disabled at a global 
+level for data centers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+121 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the relevant configuration and 
+determined alerts were configured to generate if 
+thresholds for Google's sanitization processes 
+were exceeded. 
+No deviations noted. 
+Inspected a sample of alerts generated when 
+thresholds for Google's sanitization processes 
+were exceeded and determined the alerts were 
+appropriately generated and resolved in a timely 
+manner. 
+No deviations noted. 
+87. Access to sensitive 
+data center zones 
+requires approval from 
+authorized personnel and 
+is controlled via badge 
+readers, secondary 
+identification 
+mechanisms, and/or 
+physical locks. 
+CC6.4 
+Inquired of the Data Center Security Manager and 
+determined data center perimeters were defined 
+and secured via physical barriers. Access to 
+sensitive data center zones required approval 
+from authorized personnel and was controlled via 
+badge readers, biometric identification 
+mechanisms, or physical locks. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that access to sensitive data center 
+facilities required approval from authorized 
+personnel, and required two-factor authentication 
+using badge readers, biometric identification 
+mechanisms or physical locks. 
+No deviations noted. 
+Inspected the Data Center Physical Access Policy 
+and determined access was provisioned on a 
+least-privileged basis and the facilities had 
+segregated security zones. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+122 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a sample of data centers and 
+determined that facilities had segregated security 
+zones. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that data center perimeters were 
+defined and secured via physical barriers. 
+No deviations noted. 
+88. Redundant power is 
+utilized to support the 
+continued operation of 
+critical data center 
+equipment in the event of 
+a loss of the primary 
+power source(s). 
+CC6.2, A1.1, 
+A1.2 
+Inquired of the Data Center Operations Manager 
+and determined redundant power was utilized to 
+support the continued operation of critical data 
+center equipment in the event of a loss of the 
+primary power sources. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that network rooms were connected to 
+an UPS system and emergency generator power 
+was available for at least 24 hours in the event of 
+a loss of power. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that data centers were equipped with 
+redundant network connections via different 
+physical connections. 
+No deviations noted. 
+Inspected maintenance records for in-scope data 
+centers and observed that equipment was 
+continuously monitored and periodically tested. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+123 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+89. PII on removable 
+media leaving the 
+organization's facilities is 
+approved and encrypted. 
+CC6.7, P4.3 
+Inquired of the Program Manager and determined 
+PII and SPII on removable media leaving Google 
+facilities was approved and encrypted. 
+No deviations noted. 
+Inspected relevant policies and determined 
+Google outlined and communicated the process 
+for the secure handling and transportation of 
+customer data. 
+No deviations noted. 
+Inspected the ticketing tool and determined 
+requests to use removable media were approved 
+under the condition that the removable media was 
+encrypted. 
+No deviations noted. 
+90. Visitors to data 
+center facilities must gain 
+approval from authorized 
+personnel, have their 
+identity verified at the 
+perimeter, and remain 
+with an escort for the 
+duration of their visit. 
+CC6.4 
+Inquired of the Data Center Security Manager and 
+determined visitors were required to gain approval 
+from authorized personnel, have their identity 
+verified and remain with an escort during the 
+duration of their visit. 
+No deviations noted. 
+Inspected the physical security policies and 
+determined Google required visitors to gain 
+approval from authorized personnel, have their 
+identity verified at the perimeter and remain with 
+an escort during the duration of their visit. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that individuals on-site had their 
+identities verified before entering the data center 
+floors. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+124 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of access requests to visit 
+data centers and determined approvals were 
+obtained from authorized personnel prior to the 
+visits, and visitors remained with an escort during 
+the duration of their visits. 
+No deviations noted. 
+91. Data center 
+perimeters are defined 
+and secured via physical 
+barriers. 
+CC6.4 
+Inquired of the Data Center Security Manager and 
+determined data center perimeters were defined 
+and secured via physical barriers. Access to 
+sensitive data center zones required approval 
+from authorized personnel and was controlled via 
+badge readers, biometric identification 
+mechanisms, or physical locks. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that access to sensitive data center 
+facilities required approval from authorized 
+personnel, and required two-factor authentication 
+using badge readers, biometric identification 
+mechanisms or physical locks. 
+No deviations noted. 
+Inspected the Data Center Physical Access Policy 
+and determined access was provisioned on a 
+least-privileged basis and the facilities had 
+segregated security zones. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that facilities had segregated security 
+zones. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+125 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a sample of data centers and 
+determined that data center perimeters were 
+defined and secured via physical barriers. 
+No deviations noted. 
+92. Automated 
+mechanisms are utilized 
+to track inventory of 
+production machines. 
+CC6.7 
+Inquired of the Data Center Operations Manager 
+and determined automated mechanisms were 
+utilized to track inventory of production machines. 
+No deviations noted. 
+Inspected the records from the inventory system 
+for a sample of production machines selected 
+during data center inspections and determined the 
+selected machines existed in the inventory 
+system. 
+No deviations noted. 
+Observed a sample of production machines 
+selected from the inventory system prior to the 
+data center inspection and determined that the 
+selected machines existed at the data centers. 
+No deviations noted. 
+93. Data centers are 
+equipped with fire 
+detection alarms and 
+protection equipment. 
+A1.2 
+Inquired of the Data Center Operations Facilities 
+Manager and determined data centers were 
+equipped with fire detection alarms and protection 
+equipment. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that they were equipped with fire 
+detection alarms and protection equipment. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+126 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a sample of data centers and 
+determined that potential environmental threats to 
+the data centers were anticipated and 
+countermeasures were established based on the 
+nature and geographical location of the data 
+centers. 
+No deviations noted. 
+94. Critical data center 
+equipment supporting 
+Google products and 
+services are continuously 
+monitored and subject to 
+routine preventative and 
+regular maintenance 
+processes (including ad-
+hoc repairs) in 
+accordance with 
+organizational 
+requirements. 
+CC5.2 
+Inquired of the Operations Manager and 
+determined critical data center equipment 
+supporting Google products and services were 
+continuously monitored and subject to routine 
+preventative and regular maintenance processes 
+(including ad-hoc repairs) in accordance with 
+organizational requirements. 
+No deviations noted. 
+Inspected a sample of maintenance records for 
+the UPS, generators, fire suppression systems, 
+fire extinguishers, emergency lighting systems, 
+and HVAC systems, and determined Google 
+performed and recorded routine preventative and 
+regular maintenance in accordance with 
+organizational requirements over critical data 
+center equipment. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+127 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+95. The organization 
+authorizes, monitors, and 
+controls all information 
+systems and data center 
+equipment entering and 
+exiting data centers and 
+maintains records of 
+those items. 
+CC6.7 
+Inquired of the Operations Manager and 
+determined information systems and equipment 
+were safeguarded against unauthorized entry and 
+removal from data centers and data center server 
+floors, network rooms, and security systems are 
+physically isolated from public spaces and/or 
+delivery areas. 
+No deviations noted. 
+Inspected internal documentation and determined 
+that the organization maintains policies and 
+guidelines around the security of storage devices 
+during delivery and movement throughout the 
+data center. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that Google had safeguards in place 
+to protect information systems and equipment 
+from unauthorized entry and removal from data 
+centers. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that dedicated receiving and shipping 
+areas were isolated from the main data center 
+floor, network rooms and security systems. 
+No deviations noted. 
+Inspected a sample of tickets created for data 
+center equipment entering and exiting data 
+centers and determined Google authorized, 
+monitored, and controlled the shipments and 
+maintained a record of the items. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+128 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+96. Access lists to high-
+security areas in data 
+centers are reviewed on 
+a periodic basis and 
+inappropriate access is 
+removed in a timely 
+manner. 
+CC6.4 
+Inquired of the Program Manager and determined 
+user access to high-security areas in data centers 
+was reviewed on a quarterly basis and 
+inappropriate access was removed in a timely 
+manner. 
+No deviations noted. 
+Inspected the internal policies and determined 
+user access to high-security areas in data centers 
+should be reviewed on a quarterly basis. 
+No deviations noted. 
+Inspected a sample of quarterly data center 
+access reviews and determined user access to 
+high-security areas in data centers was reviewed 
+and inappropriate access was removed in a timely 
+manner. 
+No deviations noted. 
+97. Security measures 
+utilized in data centers 
+are assessed annually 
+and the results are 
+reviewed by executive 
+management. 
+CC6.4 
+Inquired of the Program Manager and determined 
+security measures utilized in data centers were 
+assessed periodically and the results were 
+reviewed by executive management. 
+No deviations noted. 
+Inspected a sample of the reviews performed and 
+determined security measures utilized in all data 
+centers were assessed periodically and the 
+results were reviewed by executive management. 
+No deviations noted. 
+98. Data centers are 
+continuously staffed and 
+monitored by security 
+personnel through the 
+CC6.4 
+Inquired of the Data Center Facilities Manager 
+and determined that physical security measures 
+were in place as described and are reviewed 
+through the annual data center security review. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+129 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+use of real-time video 
+surveillance and/or alerts 
+generated by security 
+systems. 
+Inspected a sample data center security review 
+performed for the production facilities and 
+determined that management reviewed the 
+physical security measures at the facilities. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that visitors obtained approvals from 
+authorized personnel prior to their visits, had their 
+identities verified before entering the data center 
+floors, and remained with an escort during the 
+duration of their visits. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that data centers were continuously 
+staffed and monitored by security personnel 
+through the use of real-time video surveillance 
+and/or alerts generated by security systems. 
+No deviations noted. 
+Observed a sample of data centers and 
+determined that data centers were secured 
+through the use of badge reader and biometric 
+control systems. 
+No deviations noted. 
+Inspected the badge reader activity logs for a 
+sample of data centers and determined access to 
+Google spaces was logged and monitored. 
+No deviations noted. 
+Inspected the badge reader activity logs for a 
+sample of data centers and determined logs were 
+retained for at least 3 months. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+130 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+99. Visitors to corporate 
+offices must be 
+authenticated upon 
+arrival and remain with 
+an escort for the duration 
+of their visit. 
+CC6.4 
+Inquired of the Security Officer and determined 
+that visitors to corporate offices  were required to 
+authenticate upon arrival and remain with an 
+escort for the duration of their visit. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization maintained policies for visitor 
+access to corporate offices. 
+No deviations noted. 
+Performed inspections for a sample of offices and 
+determined that the reception area was isolated 
+from the office space. 
+No deviations noted. 
+Observed an on-site sign in of a visitor to Google 
+offices and determined visitors to corporate offices 
+were required to authenticate upon arrival and 
+remain with an escort for the duration of their visit. 
+No deviations noted. 
+100. The organization 
+uses a version control 
+system, to manage 
+source code, 
+documentation, release 
+labeling, and other 
+functions. Access to the 
+system must be 
+approved. 
+CC6.1, 
+CC8.1 
+Inquired of the Program Manager and determined 
+the organization used a version control system to 
+manage source code, documentation, release 
+labeling, and that access to the system had to be 
+approved. 
+No deviations noted. 
+Inspected a sample code release configuration to 
+determine that when created, the code release 
+generated a name based on a set of predefined 
+logic. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+131 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected code change management tools and 
+determined that there was a version control 
+system in place to manage source code, 
+documentation, and release labeling. 
+No deviations noted. 
+Inspected the system configurations for the code 
+management system and determined the system 
+was configured to require an approval prior to 
+granting access to the version control system. 
+No deviations noted. 
+Observed a positive and a negative test for 
+requesting access and determined access to the 
+code management system had to be approved 
+before it was granted. 
+No deviations noted. 
+101. Changes to the 
+organization's systems 
+are tested before being 
+deployed. 
+CC8.1 
+Inquired of the Program Manager to obtain an 
+understanding of the change management 
+process in place along with the associated tools 
+used to make changes to in-scope products. 
+No deviations noted. 
+Inquired of the Program Manager and determined 
+that application and configuration changes in the 
+code management system were tested, validated, 
+and documented prior to implementation to 
+production. 
+No deviations noted. 
+Inspected the associated ticket details for a 
+sample of changes and determined that the 
+change was tested, validated, and documented 
+prior to implementation to production. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+132 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of monthly reviews of 
+changes that did not follow the automated 
+deployment process and determined the review 
+was performed completely and accurately and 
+action items identified as part of the review were 
+addressed. 
+No deviations noted. 
+102. System changes 
+are reviewed and 
+approved by a separate 
+technical resource before 
+moving into production. 
+CC2.1, 
+CC8.1 
+Inquired of the Program Manager and determined 
+system changes were reviewed by a separate 
+technical resource before migration to production. 
+No deviations noted. 
+Inspected the approval configuration and 
+determined system changes require a review by a 
+separate technical resource before migration to 
+production. 
+No deviations noted. 
+Inspected evidence of positive and negative 
+testing and determined the system required 
+changes to be reviewed by a separate technical 
+resource before migration to production. 
+No deviations noted. 
+103. Git-on-Borg code 
+changes are monitored 
+for approvals on a 
+periodic basis. 
+CC8.1 
+Inquired of the Program Manager and determined 
+the organization monitored changes for approvals 
+on a periodic basis. 
+No deviations noted. 
+Inspected control monitoring configurations and 
+determined that changes included in weekly 
+change reviews are completely and accurately 
+extracted from change management systems. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+133 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of weeks and determined 
+changes were reviewed by the product owner. 
+No deviations noted. 
+104. The descriptions of 
+the organization's 
+systems (including their 
+scope and boundaries) 
+are made available to 
+internal teams. 
+CC2.2 
+Inquired of the Program Manager and determined 
+that descriptions of the organization's systems, 
+including their scope and boundaries, were made 
+available to internal teams. 
+No deviations noted. 
+Inspected the internal product website and 
+determined a description of the organization's 
+system and its boundaries were available to the 
+organization's internal product teams. 
+No deviations noted. 
+105. Design 
+documentation is 
+required to be completed 
+and be reviewed before a 
+feature launch which 
+introduces new 
+collection, processing, or 
+sharing of user data. 
+C1.1 
+Inquired of the Program Manager and determined 
+design documentation and privacy reviews, where 
+applicable, were required to be completed prior to 
+a product or feature launch. Any changes to 
+customer facing services were communicated to 
+relevant personnel and impacted customers. 
+No deviations noted. 
+Inspected documentation and determined the 
+organization had defined procedures and 
+requirements for a product or feature launch. 
+No deviations noted. 
+Inspected a sample of launches and determined a 
+design document and privacy review, where 
+applicable, were completed prior to the launch. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+134 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected a sample of official product blogs for 
+system changes and determined relevant 
+personnel and impacted customers were notified. 
+No deviations noted. 
+106. The organization 
+has implemented a 
+vulnerability 
+management program to 
+detect and remediate 
+system vulnerabilities. 
+CC3.2, 
+CC3.3, 
+CC6.8, 
+CC7.1, 
+CC7.2 
+Inquired of the Program Manager and determined 
+the organization had a vulnerability management 
+program to detect and remediate system 
+vulnerabilities. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization had a vulnerability management 
+program to identify/detect, report, prioritize, and 
+remediate system vulnerabilities. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+there was a framework to classify vulnerabilities 
+based on the priority level. 
+No deviations noted. 
+Inspected relevant configurations and determined 
+vulnerabilities were tracked in an internal ticketing 
+system. 
+No deviations noted. 
+Inspected a sample of vulnerabilities identified 
+and determined they were tracked through 
+remediation through an internal ticketing system. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+135 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+107. There are 
+mechanisms in place to 
+protect the Production 
+environment against a 
+variety of denial of 
+service attacks. 
+CC7.2 
+Inquired of the Program Manager and the Security 
+Reliability Engineer and determined there were 
+mechanisms in place to protect the production 
+environment against a variety of denial of service 
+attacks. 
+No deviations noted. 
+Inspected the documentation for mechanisms that 
+are used to protect against denial of service 
+attacks and determined they were in place to 
+protect the production environment. 
+No deviations noted. 
+Inspected playbooks used by the incident 
+management teams and determined mechanisms 
+were in place to classify, escalate and triage 
+denial of service attacks. 
+No deviations noted. 
+Inspected the DOS server configuration and 
+determined configurations were in place to protect 
+the production environment against a variety of 
+denial of service attacks. 
+No deviations noted. 
+Inspected a sample of denial of service attacks 
+and determined mechanisms were in place to 
+protect the production environment against a 
+variety of denial of service attacks. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+136 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the dashboards for a sample of in-
+scope applications and determined monitoring 
+mechanisms were in place to protect the 
+production environment against a variety of denial 
+of service attacks. 
+No deviations noted. 
+108. Penetration tests 
+are performed at least 
+annually. 
+CC4.1 
+Inquired of the Program Manager and determined 
+the organization performed penetration tests by 
+qualified internal personnel or an external service 
+provider at least annually. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+the organization has policies and guidelines in 
+place for penetration tests performed by qualified 
+internal personnel or an external service provider. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+a penetration test, which included critical 
+infrastructure components, occurred within the 
+past year and results were documented 
+comprehensively. 
+No deviations noted. 
+Inspected the penetration test report and related 
+documentation and determined that identified 
+deficiencies were assessed, prioritized, followed 
+up and addressed based on their criticality. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+137 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+109. The organization 
+has an established 
+incident response policy 
+that is reviewed on a 
+periodic basis and 
+outlines management 
+responsibilities and 
+procedures to ensure a 
+quick, effective, and 
+orderly response to 
+information security 
+incidents. 
+CC2.2, 
+CC7.3 
+Inquired of the Program Manager and determined 
+the organization had an established incident 
+response policy that was reviewed on a periodic 
+basis and outlines management responsibilities 
+and procedures to ensure a quick, effective, and 
+orderly response to information security incidents. 
+No deviations noted. 
+Inspected the organization's incident response 
+policy and determined policies and procedures 
+were in place which outline a quick, effective, and 
+orderly response to information security incidents. 
+In addition, classification, prioritization, 
+consolidation, and escalation of security incidents 
+per criticality were also identified and mechanisms 
+were defined to measure and monitor the type 
+and scope of security incidents and interface with 
+business continuity management. 
+No deviations noted. 
+Inspected a sample of security incidents and 
+determined incidents were resolved timely and 
+incident management procedures were 
+performed. 
+No deviations noted. 
+110. The organization 
+maintains a framework 
+that defines how to 
+organize a response to 
+CC7.3, 
+CC7.4, P6.3 
+Inquired of the Program Manager and determined 
+the organization maintained a framework that 
+defined how to organize a response to security 
+and privacy incidents. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+138 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+security and privacy 
+incidents. 
+Inspected the organization's internal incident 
+response websites and determined incident 
+response teams and procedures were established 
+to handle security and privacy incidents. 
+No deviations noted. 
+Inspected internal documentation and determined 
+a process was in place for incident response 
+teams to quantify, manage and monitor incidents. 
+No deviations noted. 
+111. Information security 
+incidents are 
+documented per the 
+organization's Incident 
+Response Policy. 
+Information from these 
+events are used to 
+prevent future incidents 
+and can be used as 
+examples for information 
+security training. 
+CC7.5 
+Inquired of the Program Manager and determined 
+information security incidents were documented 
+per the organization's Incident Response Policy. 
+Information from these events could be used to 
+prevent future incidents and as examples for 
+information security training. 
+No deviations noted. 
+Inspected the organization's Incident Response 
+Policy and determined it documented the process 
+for reporting, responding to, and monitoring 
+information security incidents. 
+No deviations noted. 
+Inspected relevant internal documentation and 
+determined information security trainings were 
+implemented and information from past security 
+incidents were used as examples for the trainings 
+to help ensure these events are identified, 
+responded to, monitored and resolved in a timely 
+manner. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+139 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+112. The organization 
+has established a 
+dedicated security team 
+engaging in security and 
+privacy of customer data 
+and managing security 
+24 x 7 worldwide. 
+CC3.2 
+Inquired of the Program Manager and determined 
+that the organization established a dedicated 
+security team to engage in security and privacy of 
+customer data and manage security 24 x 7 
+worldwide. 
+No deviations noted. 
+Inspected relevant policies and guidelines and 
+determined that the organization established a 
+dedicated security team to engage in security and 
+privacy of customer data. 
+No deviations noted. 
+Inspected internal documentation and determined 
+that a dedicated security team engaged in security 
+and privacy of customer data managed security 
+24 x 7 worldwide. 
+No deviations noted. 
+Inspected the on-call calendar configuration and 
+determined that the on-call calendar was 
+maintained according to a defined set of rules. 
+No deviations noted. 
+Inspected the on-call calendar configuration and 
+determined that on-call rotation schedules were 
+automated and any change in the schedule was 
+subject to the management’s approval process. 
+No deviations noted. 
+Inspected the Incident Response team's on-call 
+schedule and determined that the security team 
+engaged in security and privacy was available 24 
+x 7. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+140 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+113. The organization 
+maintains policies and 
+procedures regarding the 
+notification of data 
+breaches, in accordance 
+with applicable laws. 
+CC7.3, 
+CC7.4, P6.3, 
+P6.6 
+Inquired of the Program Manager and determined 
+the organization maintained policies and 
+procedures regarding the notification of data 
+breaches in accordance with applicable laws. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+procedures existed for users to prepare for, 
+report, and investigate security and privacy 
+incidents. 
+No deviations noted. 
+Inspected the Cloud Data Processing Addendum 
+and determined policies and procedures existed 
+to notify customers of an incident in a timely 
+manner and in accordance with applicable laws or 
+contractual agreements. 
+No deviations noted. 
+Inspected a sample of data incidents and 
+determined customers were notified of data 
+incidents in a timely manner when required by 
+applicable laws or contractual agreements. 
+No deviations noted. 
+Inspected the public dashboards and tools 
+available to customers and determined customers 
+were notified of outages and incidents that impact 
+relevant services. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+141 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+114. The organization 
+has a dedicated team 
+responsible for managing 
+security and privacy 
+incidents. 
+CC7.2, 
+CC7.3, 
+CC7.4, 
+CC7.5, A1.3, 
+P6.3 
+Inquired of the Program Manager and determined 
+the organization established a dedicated team 
+responsible for managing security and privacy 
+incidents involving security, availability, 
+processing integrity and confidentiality, and 
+provided internal personnel (employees and 
+extended workforce) with instructions and 
+mechanisms for reporting potential security and 
+privacy concerns or incidents to the responsible 
+team(s). 
+No deviations noted. 
+Inspected the organization's internal incident 
+response websites and determined incident 
+response teams and procedures were established 
+to handle security and privacy incidents. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+a process was in place for incident response 
+teams to quantify, manage and monitor incidents. 
+No deviations noted. 
+Observed the organization's incident management 
+ticketing system and determined that mechanisms 
+were in place to track internal and external 
+reported security and privacy incidents through 
+investigation and resolution. 
+No deviations noted. 
+Inspected a sample of incident tickets and 
+determined the incident response team quantified 
+and monitored incidents. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+142 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+115. The organization 
+provides monitoring tools 
+to relevant personnel to 
+facilitate the detection 
+and reporting of 
+operational issues. 
+CC6.8, 
+CC7.1, 
+CC7.3, A1.1 
+Inquired of the program manager and determined 
+the organization provided monitoring tools to 
+facilitate the detection and reporting of operational 
+issues and the monitoring tools sent automated 
+alerts to operational personnel based on 
+predetermined criteria and are escalated per 
+policy. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+there were tools in place to detect and report 
+operational issues to operational personnel. 
+No deviations noted. 
+Inspected a sample of alerts and determined 
+monitoring tools were in place to detect, report, 
+escalate and resolve operational issues. 
+No deviations noted. 
+116. The organization 
+provides internal 
+personnel (employees 
+and extended workforce) 
+with instructions and 
+mechanisms for reporting 
+potential security and 
+privacy concerns or 
+incidents to the 
+responsible team(s). 
+CC7.3, 
+CC7.4, P6.3 
+Inquired of the Program Manager and determined 
+the organization established a dedicated team 
+responsible for managing security and privacy 
+incidents involving security, availability, 
+processing integrity and confidentiality, and 
+provided internal personnel (employees and 
+extended workforce) with instructions and 
+mechanisms for reporting potential security and 
+privacy concerns or incidents to the responsible 
+team(s). 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+143 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the organization's internal incident 
+response websites and determined incident 
+response teams and procedures were established 
+to handle security and privacy incidents. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+a process was in place for incident response 
+teams to quantify, manage and monitor incidents. 
+No deviations noted. 
+Observed the organization's incident management 
+ticketing system and determined that mechanisms 
+were in place to track internal and external 
+reported security and privacy incidents through 
+investigation and resolution. 
+No deviations noted. 
+Inspected a sample of incident tickets and 
+determined the incident response team quantified 
+and monitored incidents. 
+No deviations noted. 
+117. The organization 
+provides external users 
+with mechanisms to 
+report security issues, 
+incidents, and concerns. 
+CC2.3 
+Inquired of the Program Manager and determined 
+that the organization provides external users with 
+mechanisms to report security issues, incidents, 
+and concerns. 
+No deviations noted. 
+Inspected the organization’s websites and 
+determined mechanisms were available for 
+external users to report security issues, incidents, 
+and concerns. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+144 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the organization's websites and 
+determined separate communication channels 
+were in place to enable anonymous or confidential 
+communication when normal channels were 
+inoperative or ineffective. 
+No deviations noted. 
+118. Security event logs 
+are protected and access 
+is restricted to authorized 
+personnel. 
+CC6.1, 
+CC6.2 
+Inquired of the Program Manager and determined 
+security event logs were protected and access 
+was restricted to authorized personnel. 
+No deviations noted. 
+Inspected the system configuration related to 
+audit logs and determined log files were not 
+modifiable. 
+No deviations noted. 
+Inspected internal documentation and determined 
+policies and procedures for restriction of logical 
+access to audit logs to authorized personnel were 
+in place. 
+No deviations noted. 
+Inspected a sample of members with access to 
+audit logs and determined they were appropriate 
+to have access to audit logs. 
+No deviations noted. 
+Inspected a sample semiannual user access 
+review and determined access to audit logs was 
+reviewed on a periodic basis and that appropriate 
+action was taken to resolve inappropriate access, 
+if applicable. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+145 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+119. Monitoring tools 
+send automated alerts to 
+operational personnel 
+based on predetermined 
+criteria. Incidents are 
+escalated per policy. 
+CC6.8, 
+CC7.2, 
+CC7.3, 
+CC7.4, 
+CC7.5, 
+CC8.1, A1.1 
+Inquired of the program manager and determined 
+that the organization provides monitoring tools to 
+relevant personnel to facilitate the detection and 
+reporting of operational issues and the monitoring 
+tools send automated alerts to operational 
+personnel based on predetermined criteria and 
+are escalated per policy. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+that there were tools in place to detect and report 
+operational issues and security incidents to an 
+incident response team. 
+No deviations noted. 
+Inspected a sample of alerts and determined 
+monitoring tools were in place to detect, report, 
+escalate and resolve operational issues. 
+No deviations noted. 
+120. Audit logs are 
+continuously monitored 
+for events related to 
+security, availability, 
+processing integrity, and 
+confidentiality threats. 
+Alerts are generated for 
+further investigation. 
+CC7.2, 
+CC7.3, 
+CC7.4, C1.1 
+Inquired of the Security Engineering Manager and 
+determined audit logs are continuously monitored 
+for events related to security, availability, 
+processing integrity and confidentiality threats and 
+alerts are generated for further investigation. 
+No deviations noted. 
+Observed Google's internal documentation and 
+determined there are guidelines used by the 
+Security Surveillance Team to classify, prioritize, 
+perform cause analysis, and triage the security 
+incidents. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+146 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed Google's internal documentation and 
+determined Google provides logging capabilities 
+to its customers and customers can only access 
+records related to their own activities. 
+No deviations noted. 
+Observed a sample configuration and determined 
+log sources were monitored and maintained. 
+No deviations noted. 
+Observed a sample of alerts for events related to 
+security, availability, processing integrity and 
+confidentiality and determined the alerts were 
+generated when the pre-defined threshold was 
+met or exceeded. 
+No deviations noted. 
+Observed the dashboard of monitoring tools and 
+determined that alerts related to security, 
+availability, processing integrity and confidentiality 
+were monitored. 
+No deviations noted. 
+121. The organization 
+has procedures in place 
+to dispose of confidential 
+information according to 
+the data retention and 
+deletion policy. 
+CC6.1, C1.1, 
+C1.2, P4.2, 
+P4.3 
+Inquired of the Program Manager and determined 
+procedures were in place to dispose of 
+confidential information according to Google User 
+Data Retention and Deletion policy. 
+No deviations noted. 
+Inspected the organization's internal policies and 
+determined guidelines were established to govern 
+the retention and deletion of user data. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+147 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the deletion monitoring dashboard and 
+configuration for a sample product and 
+determined the monitoring dashboard was used to 
+manage the timeliness of deletion of confidential 
+information as outlined in the User Data Wipeout 
+Policy and the User Data Retention and Deletion 
+Guidelines. 
+No deviations noted. 
+Inspected a sample of deleted products and 
+determined an automated deletion mechanism 
+was implemented and confidential information 
+was disposed of as per the guidelines. 
+No deviations noted. 
+Inspected a sample product and determined data 
+deletion tools verified that backup data was 
+deleted following the configured retention period, 
+as part of the deletion mechanism process. 
+No deviations noted. 
+122. Customers of the 
+organization's services 
+are provided a 
+mechanism to access, 
+correct, and erase PII 
+created by their 
+accounts. 
+P5.1, P5.2 
+Inquired of the Program Manager and determined 
+that Customers of the organization's services 
+were provided a mechanism to access, correct, 
+and erase PII created by their accounts. 
+No deviations noted. 
+Inspected the Google Cloud Data Processing 
+Terms and relevant technical guides and 
+determined that Customers of the organization's 
+services were provided a mechanism to access, 
+correct, and erase PII created by their accounts. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+148 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a sample GCP product and determined 
+users have the ability to access, correct, and 
+erase PII created by their account. 
+No deviations noted. 
+123. A Google service 
+administrator is provided 
+a mechanism to facilitate 
+a Google service users 
+right to access, correct, 
+and erase PII pertaining 
+to the user. 
+P5.1, P5.2 
+Inquired of the Program Manager and determined 
+a Google service administrator was provided a 
+mechanism to facilitate a Google service user’s 
+right to access, correct, and erase PII pertaining 
+to the user. 
+No deviations noted. 
+Inspected the Data Processing Terms and Terms 
+of Service and determined that Google provided 
+customers with the ability to access, correct, and 
+erase PII pertaining to the user. 
+No deviations noted. 
+Observed a sample GCP product and determined 
+service administrators had a mechanism to 
+facilitate a user's ability to access, correct, and 
+erase PII pertaining to the user. 
+No deviations noted. 
+124. The organization's 
+information processing 
+resources are distributed 
+across distinct, 
+geographically dispersed 
+CC7.4, A1.1, 
+A1.2, A1.3 
+Inquired of the Program Manager and determined 
+the organization's information processing 
+resources were distributed across distinct, 
+geographically dispersed processing facilities to 
+support service redundancy, and availability. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+149 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+processing facilities to 
+support service 
+redundancy, and 
+availability. 
+Inspected a sample datastore configuration for a 
+Google Cloud Platform product and determined 
+the product was configured to replicate across 
+distinct, geographically dispersed processing 
+facilities to support service redundancy, and 
+availability. 
+No deviations noted. 
+Inspected a Google Cloud Platform product's 
+monitoring dashboard and determined resources 
+were distributed across distinct, geographically 
+dispersed processing facilities to support service 
+redundancy. 
+No deviations noted. 
+Inspected a Google Cloud Platform product's 
+monitoring dashboard and determined resources 
+were distributed across distinct, geographically 
+dispersed processing facilities to support service 
+availability. 
+No deviations noted. 
+125. Customer data that 
+is uploaded or created is 
+encrypted at rest. 
+CC6.1 
+Inquired of the Program Manager and determined 
+customer data that was uploaded or created was 
+encrypted at rest. 
+No deviations noted. 
+Inspected the policies surrounding customer data 
+encryption at Google and determined guidelines 
+and policies were implemented to protect 
+customer data. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+150 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the encryption configuration for storage 
+devices with customer data at rest and 
+determined that encryption was enabled to protect 
+customer data. 
+No deviations noted. 
+Inspected a sample of storage devices with 
+customer data and determined they displayed an 
+encrypted state. 
+No deviations noted. 
+126. Integrity checks are 
+in place at the application 
+level to ensure data 
+integrity. 
+CC6.7, 
+CC7.1 
+Inquired of the Program Manager and determined 
+integrity checks were in place via checksum 
+verifications at the application level to help ensure 
+data integrity. 
+No deviations noted. 
+Inspected the application level configurations and 
+determined they were configured to use integrity 
+checks via checksum verification. 
+No deviations noted. 
+Observed a user attempt to upload files to a 
+sample application and determined application 
+level integrity checks via checksum verification 
+were in place to help ensure data integrity. 
+No deviations noted. 
+127. Procedures related 
+to the management of 
+information processing 
+resources are made 
+available by the 
+organization. Procedures 
+include guidance on 
+CC7.1, 
+CC7.2, 
+CC7.3, 
+CC7.4, 
+CC7.5 
+Inquired of the Program Manager and determined 
+the organization made available procedures 
+related to the management of information 
+processing resources. Procedures include 
+guidance on requesting, monitoring and 
+maintaining resources, and guidance around 
+evaluating capacity demand. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+151 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+requesting, monitoring 
+and maintaining 
+resources, and guidance 
+around evaluating 
+capacity demand. 
+Inspected the organization's resource 
+management documentation and determined an 
+overview on how best to monitor, maintain and 
+evaluate storage and processing capacity demand 
+had been provided. 
+No deviations noted. 
+Inspected the resource monitoring site and 
+determined the dashboards monitor the use of 
+resources and have the capability of projecting 
+future capacity requirements. 
+No deviations noted. 
+Inspected a sample of automated notifications 
+related to critical resource capacity utilization and 
+determined alerts were appropriately set. 
+No deviations noted. 
+128. Teams within the 
+organization document 
+standard operating 
+procedures and make 
+them available to 
+authorized personnel. 
+CC2.1 
+Inquired of the Program Manager and determined 
+that teams within the organization document 
+standard operating procedures and make them 
+available to authorized personnel. 
+No deviations noted. 
+Inspected internal team handbooks for a sample 
+Google Cloud Platform product team and 
+determined that documented standard operating 
+procedures were in place and available to 
+authorized personnel. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+152 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+129. The organization 
+conducts disaster 
+resiliency testing (DiRT) 
+which covers reliability, 
+survivability, and 
+recovery on an ongoing 
+basis (and at least 
+annually). 
+CC9.1, A1.2, 
+A1.3 
+Inquired of the Program Manager and determined 
+that the organization conducted disaster resiliency 
+testing (DiRT) which covered reliability, 
+survivability, and recovery on an ongoing basis 
+(and at least annually). 
+No deviations noted. 
+Inspected a sample of the functional disaster 
+resiliency testing documentation and determined 
+that it was conducted on a periodic basis and 
+testing included communication plans, failover 
+scenarios, operational transition, and other 
+emergency responses. 
+No deviations noted. 
+Inspected testing documentation and determined 
+that product teams developed testing plans and 
+postmortems which documented the results and 
+lessons learned from disaster resiliency testing. 
+No deviations noted. 
+130. Google has 
+implemented business 
+continuity measures to 
+maintain the availability 
+of Google's production 
+infrastructure and 
+services. 
+CC9.1, A1.2, 
+A1.3 
+Inquired of the Program Manager and determined 
+that Google had implemented business continuity 
+measures to maintain the availability of Google's 
+production infrastructure and services. 
+No deviations noted. 
+Inspected internal documentation and determined 
+Google defined the risks and recovery objectives, 
+as input, to establish the BCP. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+153 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the BCP document and other internal 
+documentation and determined Google had 
+established a framework to develop and maintain 
+business continuity, and assigned each area to 
+the executives within respective departments. 
+No deviations noted. 
+Inspected the documentation and determined 
+BCP and Disaster Recovery (DR) were tested on 
+interval basis or upon significant organizational or 
+environmental changes. 
+No deviations noted. 
+Inspected a sample team guideline available and 
+determined it included the procedures which need 
+to be followed in an emergency. 
+No deviations noted. 
+Inspected a sample emergency ticket and 
+determined recovery activities were outlined. 
+No deviations noted. 
+131. The organization 
+maintains business 
+continuity plans to define 
+how personnel should 
+respond to disruptions. 
+CC9.1, A1.2, 
+A1.3 
+Inquired of the Program Manager and determined 
+the organization maintains business continuity 
+plans to define how personnel should respond to 
+disruptions. 
+No deviations noted. 
+Inspected internal websites and determined that 
+business continuity plans were maintained and 
+made available to corresponding data center 
+teams for Google-owned and third-party data 
+centers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+154 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected the business continuity plans related to 
+natural disasters, weather events, and personnel 
+threats for a sample of Google-owned data 
+centers and determined the required actions and 
+risk mitigation activities for recovering business 
+operations due to potential business disruptions 
+were defined. 
+No deviations noted. 
+Inspected the business continuity plans related to 
+natural disasters, weather events, and personnel 
+threats for a sample third-party data center and 
+determined the required actions and risk 
+mitigation activities for recovering business 
+operations due to potential business disruptions 
+were defined. 
+No deviations noted. 
+132. The organization's 
+privacy program is 
+periodically reviewed for 
+appropriateness. 
+P8.1 
+Inquired of the Program Manager and determined 
+the organization's privacy program was 
+periodically reviewed for appropriateness. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization's privacy program was 
+periodically reviewed for appropriateness. 
+No deviations noted. 
+Inspected the Internal Audit report and determined 
+the organization's privacy program was 
+periodically reviewed by Internal Audit for 
+effectiveness. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+155 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+133. Google has 
+established feedback 
+processes that give 
+external users the ability 
+to voice privacy 
+concerns, which are 
+monitored. 
+P8.1 
+Inquired of the Program Manager and determined 
+Google had an established feedback processes 
+that gave external users the ability to voice 
+privacy concerns, which are monitored. 
+No deviations noted. 
+Inspected Google's publicly available Help and 
+Support page and determined external users had 
+the option to voice privacy concerns to Google. 
+No deviations noted. 
+Observed Google's internal website and 
+determined Google had established guidelines 
+that customer support employees used to provide 
+feedback to external users. 
+No deviations noted. 
+Inspected a sample of inquiries, complaints, and 
+disputes, and determined the cases were 
+addressed and resolutions were monitored 
+through to resolution. 
+No deviations noted. 
+134. The organization 
+records government 
+agency requests to 
+disclose customer data. 
+The organization’s 
+records of government 
+agency requests for 
+customer data include 
+P6.2 
+Inquired of the Program Manager and determined 
+the organization reviewed government agency 
+requests for customer data to determine if 
+disclosure is required; subsequent disclosure was 
+then limited only to that which was necessary to 
+fulfill the request. The organization recorded and 
+tracked transfers and disclosures of user data to 
+third parties. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+156 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+information regarding 
+when the request was 
+submitted, the identity of 
+the requester, customer 
+data that was requested, 
+any data that had been 
+disclosed, and when 
+disclosure had occurred. 
+Inspected the Google Cloud Platform Terms of 
+Service and determined the organization reviewed 
+government agency requests for customer data to 
+determine if disclosure was required; subsequent 
+disclosure was then limited only to that which was 
+necessary to fulfill the request. 
+No deviations noted. 
+Inspected a sample of disclosure requests in the 
+legal request management tool and determined 
+the organization recorded and tracked transfers 
+and disclosure of data to third parties, and the 
+disclosures were limited to only that which was 
+necessary to fulfill the request. 
+No deviations noted. 
+135. Where the 
+organization is a data 
+processor, the 
+organization has policies 
+regarding its obligations 
+to customers' ability to 
+access, correct and/or 
+erase their user data. 
+P5.1, P5.2, 
+P6.7, P7.1 
+Inquired of the Program Manager and determined 
+the organization had policies regarding its 
+obligations to customers' ability to access, correct, 
+and/or erase their user data. 
+No deviations noted. 
+Inspected relevant documentation and determined 
+the organization had policies regarding its 
+obligations to customers' ability to access, correct, 
+and/or erase their user data. 
+No deviations noted. 
+136. Where the 
+organization is a data 
+processor, the 
+P1.1, P2.1, 
+P3.1, P3.2, 
+Inquired of the Program Manager and determined 
+the organization limited the scope of processing to 
+what was specified in contracts with the controller. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+157 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+organization limits scope 
+of processing to what is 
+specified in contracts 
+with the controller. 
+P4.1, P4.2, 
+P7.1 
+Inspected externally published documentation and 
+determined the organization provided notice to 
+data subjects about its privacy practices with 
+consent obtained for the use of personal 
+information and the organization limited the scope 
+of processing to what was specified in contracts 
+with controller. 
+No deviations noted. 
+Inspected internal documentation and determined 
+the organization limited the scope of processing to 
+what was specified in contracts with the controller. 
+No deviations noted. 
+137. Where the 
+organization is a data 
+processor, the 
+organization maintains 
+the necessary records of 
+processing in 
+accordance with 
+contractual obligations to 
+controllers. 
+P6.7 
+Inquired of the Program Manager and determined 
+where the organization was a data processor, the 
+organization maintained the necessary records of 
+processing in accordance with contractual 
+obligations to controllers. 
+No deviations noted. 
+Inspected the Cloud Data Processing Addendum 
+and other internal documentation and determined 
+where the organization was a data processor, the 
+organization maintained the necessary records of 
+processing in accordance with contractual 
+obligations to controllers. 
+No deviations noted. 
+Inspected a sample processor record of 
+processing and determined the organization 
+maintained the necessary records of processing in 
+accordance with contractual obligations to 
+controllers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+158 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+138. The organization 
+reviews government 
+agency requests for 
+customer data to 
+determine if disclosure is 
+required; subsequent 
+disclosure is then limited 
+only to that which is 
+necessary to fulfill the 
+request. 
+P6.1, P6.4 
+Inquired of the Program Manager and determined 
+the organization reviewed government agency 
+requests for customer data to determine if 
+disclosure is required; subsequent disclosure was 
+then limited only to that which was necessary to 
+fulfill the request. The organization recorded and 
+tracked transfers and disclosures of user data to 
+third parties. 
+No deviations noted. 
+Inspected the Google Cloud Platform Terms of 
+Service and determined the organization reviewed 
+government agency requests for customer data to 
+determine if disclosure was required; subsequent 
+disclosure was then limited only to that which was 
+necessary to fulfill the request. 
+No deviations noted. 
+Inspected a sample of disclosure requests in the 
+legal request management tool and determined 
+the organization recorded and tracked transfers 
+and disclosure of data to third parties, and the 
+disclosures were limited to only that which was 
+necessary to fulfill the request. 
+No deviations noted. 
+139. The organization 
+performs privacy reviews 
+prior to product launch. 
+C1.1, P3.1 
+Inquired of the Program Manager and determined 
+design documentation and privacy reviews, where 
+applicable, were required to be completed prior to 
+a product or feature launch. Any changes to 
+customer facing services were communicated to 
+relevant personnel and impacted customers. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+159 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Inspected documentation and determined the 
+organization had defined procedures and 
+requirements for a product or feature launch. 
+No deviations noted. 
+Inspected a sample of launches and determined a 
+design document and privacy review, where 
+applicable, were completed prior to the launch. 
+No deviations noted. 
+Inspected a sample of official product blogs for 
+system changes and determined relevant 
+personnel and impacted customers were notified. 
+No deviations noted. 
+140. The organization 
+conducts periodic privacy 
+risk assessments to 
+identify and evaluate 
+risks related to the 
+handling of user data. 
+CC3.1, 
+CC3.2, 
+CC3.3, 
+CC3.4, 
+CC5.1, 
+CC5.2, A1.3 
+Inquired of the Program Manager and determined 
+the organization conducted periodic privacy risk 
+assessments to identify and evaluate risks related 
+to the handling of user data. 
+No deviations noted. 
+Inspected the privacy risk assessment and 
+determined the organization identified and 
+evaluated risks related to the handling of user 
+data. 
+No deviations noted. 
+141. The organization 
+has an incident response 
+program for responding 
+to privacy incidents. 
+Privacy incidents are 
+P6.3, P6.5 
+Inquired of the Program Manager and determined 
+the organization had an incident response 
+program in place for responding to privacy 
+incidents. Privacy incidents were monitored and 
+tracked in accordance with internal policy. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+160 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+monitored and tracked in 
+accordance with internal 
+policy. 
+Inspected internal documentation and determined 
+the organization had an incident response 
+program in place for responding to privacy 
+incidents. 
+No deviations noted. 
+Inspected a sample incident and determined that 
+the organization had tools and dashboards 
+available and used them to monitor and track 
+incidents in accordance with internal policy. 
+No deviations noted. 
+142. Internal Audit 
+performs a periodic 
+assessment of privacy 
+controls. Results are 
+shared as necessary and 
+are considered for 
+ongoing improvement of 
+the privacy program. 
+P8.1 
+Inquired of the Program Manager and determined 
+Internal Audit performed a periodic assessment of 
+privacy controls. Results were shared as 
+necessary and were considered for ongoing 
+improvement of the privacy program. 
+No deviations noted. 
+Inspected internal documentation and determined 
+Internal Audit was responsible for performing a 
+periodic assessment or annual testing of Google's 
+processes, IT systems, and privacy controls. 
+No deviations noted. 
+Inspected the Internal Audit report and determined 
+Internal Audit performed a periodic assessment of 
+privacy controls. Results were shared as 
+necessary and were considered for ongoing 
+improvement of the privacy program. 
+No deviations noted. 
+143. Integrity checks are 
+in place at the file system 
+CC7.1 
+Inquired of the Program Manager and determined 
+integrity checks were in place at the file system 
+level to ensure data integrity. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+161 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+level to ensure data 
+integrity. 
+Inspected Google's security policies and 
+determined integrity checks are in place at the file 
+system level to ensure data integrity. 
+No deviations noted. 
+Inspected the monitoring tool configurations and 
+determined the tools were configured to monitor 
+production machines and detect deviations to 
+ensure data integrity at the file system level. 
+No deviations noted. 
+Inspected the log of the tool used to monitor the 
+replication of the standard production image and 
+determined the tool was running in accordance 
+with the schedule defined in the configuration. 
+No deviations noted. 
+Observed a Software Engineer insert a sample file 
+in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected and corrected the sample file, confirming 
+that integrity checks are in place at the file system 
+level. 
+No deviations noted. 
+Observed a Software Engineer modify a sample 
+file in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected and corrected the sample file, confirming 
+that integrity checks are in place at the file system 
+level. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information
+ 
+Google LLC | Description of Criteria, Controls, Tests and Results of Tests 
+162 
+Criteria, Controls, Tests and Results of Tests 
+Control Description 
+SOC 2 
+Criteria 
+Reference 
+Tests Performed by EY 
+Results 
+Observed a Software Engineer delete a sample 
+file in the directory of a haphazardly selected 
+production machine and determined the tool 
+detected and corrected the deleted sample file, 
+confirming that integrity checks are in place at the 
+file system level. 
+No deviations noted. 
+144. Action items 
+identified from the results 
+of internal audit control 
+testing are assigned an 
+owner and tracked to 
+ensure remediation. 
+P8.1 
+Inquired of the Program Manager and determined 
+action items identified from the results of internal 
+audit control testing were assigned an owner and 
+tracked to ensure remediation. 
+No deviations noted. 
+Inspected internal documentation and determined 
+action items identified from the results of internal 
+audit control testing were assigned an owner and 
+tracked to ensure remediation. 
+No deviations noted. 
+cladmin-hcl-0101@unilever.com
+Google Confidental Information

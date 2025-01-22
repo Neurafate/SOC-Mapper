@@ -1,0 +1,3458 @@
+ 
+ 
+ 
+ 
+ 
+ 
+25 
+ 
+ 
+ 
+ 
+System-generated population listings were obtained whenever possible to ensure completeness prior to selecting 
+samples.  In some instances, full populations were tested in cases including but not limited to, the uniqueness of 
+the event or low overall population size. 
+ 
+ 
+Reliability of Information Provided by the Service Organization 
+ 
+Observation and inspection procedures were performed related to certain system-generated reports, listings, and 
+queries to assess the accuracy and completeness (reliability) of the information used in the performance of our 
+testing of the controls.  
+ 
+ 
+Test Results 
+ 
+The results of each test applied are listed alongside each respective test applied within the Testing Matrices.  Test 
+results not deemed as control deviations are noted by the phrase “No exceptions noted.” in the test result column 
+of the Testing Matrices.  Any phrase other than the aforementioned constitutes either a test result that is the result 
+of non-occurrence, a change in the application of the control activity, or a deficiency in the operating effectiveness 
+of the control activity.  Testing deviations identified within the Testing Matrices are not necessarily weaknesses in 
+the total system of controls, as this determination can only be made after consideration of controls in place at user 
+entities and subservice organizations, if applicable, and other factors.  Control considerations that should be 
+implemented by subservice organizations in order to complement the control activities and achieve the applicable 
+trust services criteria are presented in the “Subservice Organizations” section within Section 3. 
+ 
+ 
+ 
+SECURITY CATEGORY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Control Environment 
+CC1.1 COSO Principle 1: The entity demonstrates a commitment to integrity and ethical values. 
+CC1.1.1 
+(PR-079) 
+New hires are required to 
+acknowledge and agree to 
+Cloudflare policies and 
+procedures as a condition of their 
+employment. 
+Inspected the policy 
+acknowledgement for a sample of 
+employees hired during the period 
+to determine that each sampled 
+employee acknowledged and 
+agreed to Cloudflare policies and 
+procedures as a condition of their 
+employment. 
+No exceptions noted. 
+CC1.1.2 
+(TA-132) 
+Employees complete business 
+code of conduct training annually. 
+Inspected the training completion 
+record for a sample of current 
+employees to determine that each 
+sampled employee completed 
+business code of conduct training 
+during the period. 
+No exceptions noted. 
+CC1.1.3 
+(PR-077) 
+New hires are required to pass a 
+background check as a condition 
+of their employment.  Any 
+exceptions are approved by the 
+Security team. 
+Inspected background checks for 
+a sample of employees hired 
+during the period to determine 
+that each sampled employee 
+passed a background check as a 
+condition of their employment and 
+that any exceptions were 
+approved by the security team, if 
+applicable. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+26 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.2 COSO Principle 2: The board of directors demonstrates independence from management and exercises oversight of 
+the development and performance of internal control. 
+CC1.2.1 
+(SG-160) 
+The board of directors, which is 
+composed of Cloudflare 
+management and independent 
+directors, meets quarterly to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+Inspected the board of directors 
+member listing on Cloudflare's 
+public governance website to 
+determine that the board of 
+directors included independent 
+directors. 
+No exceptions noted. 
+Inspected the board meeting 
+minutes for a sample of quarters 
+during the period to determine 
+that the board of directors met 
+during each sampled quarter to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+No exceptions noted. 
+CC1.2.2 
+(SG-151) 
+Cloudflare security leadership 
+meets at least monthly to: 
+• 
+Monitor and allocate 
+resources to critical projects 
+• 
+Review information security 
+related issues, inquiries, 
+complaints, and disputes 
+Inspected the security leadership 
+meeting invite and minutes for a 
+sample of months during the 
+period to determine that 
+Cloudflare security leadership met 
+during each sampled month to: 
+• 
+Monitor and allocate 
+resources to critical projects 
+• 
+Review information security 
+related issues, inquiries, 
+complaints, and disputes 
+No exceptions noted. 
+CC1.3 COSO Principle 3: Management establishes, with board oversight, structures, reporting lines, and appropriate 
+authorities and responsibilities in the pursuit of objectives. 
+CC1.3.1 
+(PR-170) 
+Cloudflare has established a 
+formal organizational structure to 
+help ensure that reporting lines, 
+authorities, and responsibilities 
+are assigned to support 
+Cloudflare's security, availability, 
+and confidentiality commitments. 
+Inspected Cloudflare’s 
+organizational chart to determine 
+that Cloudflare had established a 
+formal organizational structure to 
+ensure that reporting lines, 
+authorities, and responsibilities 
+were assigned to support 
+Cloudflare's security, availability, 
+and confidentiality commitments. 
+No exceptions noted. 
+CC1.3.2 
+(SG-100) 
+Roles and responsibilities for the 
+governance of information 
+security within Cloudflare are 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+Inspected the information security 
+management standard on 
+Cloudflare’s intranet to determine 
+that roles and responsibilities for 
+the governance of information 
+security within Cloudflare were 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+27 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.4 COSO Principle 4: The entity demonstrates a commitment to attract, develop, and retain competent individuals in 
+alignment with objectives. 
+CC1.4.1 
+(PR-077) 
+New hires are required to pass a 
+background check as a condition 
+of their employment.  Any 
+exceptions are approved by the 
+Security team. 
+Inspected background checks for 
+a sample of employees hired 
+during the period to determine 
+that each sampled employee 
+passed a background check as a 
+condition of their employment and 
+that any exceptions were 
+approved by the security team, if 
+applicable. 
+No exceptions noted. 
+CC1.4.2 
+(PR-161) 
+Candidates’ abilities to meet the 
+requirements detailed in job 
+descriptions are evaluated and 
+documented during the hiring 
+process. 
+Inspected the candidate 
+evaluation for a sample of 
+employees hired during the period 
+to determine that candidates' 
+abilities to meet the requirements 
+detailed in job descriptions were 
+evaluated during the hiring 
+process for each sampled 
+employee. 
+No exceptions noted. 
+CC1.4.3 
+(TA-131) 
+Employees complete security 
+awareness training upon hire and 
+annually thereafter, which 
+includes information on threats, 
+vulnerabilities, best practices, and 
+how to report security events to 
+the detection and response team.  
+Records of training completion are 
+documented and retained for 
+tracking purposes.   
+Inspected the security awareness 
+training records for a sample of 
+employees hired during the period 
+and current employees to 
+determine that each sampled 
+employee completed security 
+awareness training upon hire and 
+during the period, respectively. 
+No exceptions noted. 
+CC1.4.4 
+(TA-168) 
+Cloudflare uses bi-weekly all-
+hands presentations to develop 
+and retain personnel.  Training 
+courses are also available to 
+employees via a company-wide 
+learning management system. 
+Inspected the recurring all-hands 
+meeting calendar invite and an 
+example meeting agenda for a 
+meeting held during the period to 
+determine that Cloudflare used bi-
+weekly all-hands presentations to 
+develop and retain personnel. 
+No exceptions noted. 
+Inspected the learning 
+management system dashboard 
+to determine that training courses 
+were available to employees via 
+the company-wide learning 
+management system. 
+No exceptions noted. 
+CC1.5 COSO Principle 5: The entity holds individuals accountable for their internal control responsibilities in the pursuit of 
+objectives. 
+CC1.5.1 
+(PR-170) 
+Cloudflare has established a 
+formal organizational structure to 
+help ensure that reporting lines, 
+authorities, and responsibilities 
+are assigned to support 
+Cloudflare's security, availability, 
+and confidentiality commitments. 
+Inspected Cloudflare’s 
+organizational chart to determine 
+that Cloudflare had established a 
+formal organizational structure to 
+ensure that reporting lines, 
+authorities, and responsibilities 
+were assigned to support 
+Cloudflare's security, availability, 
+and confidentiality commitments. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+28 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC1.5.2 
+(RM-083) 
+Control owners review the design 
+of internal controls at least 
+annually.  Corrective actions 
+related to identified deficiencies 
+are tracked to resolution. 
+Inspected the most recent control 
+attestation tickets to determine 
+that control owners reviewed the 
+design of internal controls during 
+the period and that corrective 
+actions related to identified 
+deficiencies were tracked to 
+resolution. 
+No exceptions noted. 
+CC1.5.3 
+(SG-100) 
+Roles and responsibilities for the 
+governance of information 
+security within Cloudflare are 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+Inspected the information security 
+management standard on 
+Cloudflare’s intranet to determine 
+that roles and responsibilities for 
+the governance of information 
+security within Cloudflare were 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+No exceptions noted. 
+Communication and Information 
+CC2.1 COSO Principle 13: The entity obtains or generates and uses relevant, quality information to support the functioning 
+of internal control. 
+CC2.1.1 
+(RM-083) 
+Control owners review the design 
+of internal controls at least 
+annually.  Corrective actions 
+related to identified deficiencies 
+are tracked to resolution. 
+Inspected the most recent control 
+attestation tickets to determine 
+that control owners reviewed the 
+design of internal controls during 
+the period and that corrective 
+actions related to identified 
+deficiencies were tracked to 
+resolution. 
+No exceptions noted. 
+CC2.2 COSO Principle 14: The entity internally communicates information, including objectives and responsibilities for 
+internal control, necessary to support the functioning of internal control. 
+CC2.2.1 
+(PR-079) 
+New hires are required to 
+acknowledge and agree to 
+Cloudflare policies and 
+procedures as a condition of their 
+employment.   
+Inspected the policy 
+acknowledgement for a sample of 
+employees hired during the period 
+to determine that each sampled 
+employee acknowledged and 
+agreed to Cloudflare policies and 
+procedures as a condition of their 
+employment. 
+No exceptions noted. 
+CC2.2.2 
+(PR-162) 
+Cloudflare has established an 
+anonymous reporting hotline 
+which is communicated to 
+employees in the employee 
+guidebook. 
+Inspected the employee 
+guidebook and anonymous 
+reporting hotline website to 
+determine that Cloudflare had 
+established an anonymous 
+reporting hotline and 
+communicated the process to 
+employees in the employee 
+guidebook. 
+No exceptions noted. 
+CC2.2.3 
+(SG-092) 
+Cloudflare maintains information 
+security policies and standards 
+that are reviewed, approved by 
+management, and communicated 
+to personnel annually. 
+Inspected the information security 
+policies and standards on the 
+Cloudflare intranet to determine 
+that Cloudflare maintained 
+information security policies and 
+standards that were reviewed, 
+approved by management, and 
+communicated to authorized 
+personnel during the period. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+29 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.2.4 
+(SG-094) 
+Security management conducts 
+monthly staff meeting to 
+communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+Inspected the security 
+management recurring meeting 
+invite and meeting agenda for a 
+sample of months during the 
+period to determine that security 
+management conducted staff 
+meetings for each sampled month 
+to communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+No exceptions noted. 
+CC2.2.5 
+(SG-100) 
+Roles and responsibilities for the 
+governance of information 
+security within Cloudflare are 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+Inspected the information security 
+management standard on 
+Cloudflare’s intranet to determine 
+that roles and responsibilities for 
+the governance of information 
+security within Cloudflare were 
+formally documented within the 
+information security management 
+standard and communicated via 
+the Cloudflare intranet. 
+No exceptions noted. 
+CC2.3 COSO Principle 15: The entity communicates with external parties regarding matters affecting the functioning of 
+internal control. 
+CC2.3.1 
+(IR-062) 
+The customer support team has 
+established policies and 
+procedures for handling customer- 
+reported incidents.  Cloudflare 
+provides a contact method for 
+external parties to submit 
+complaints and inquiries and 
+report incidents. 
+Inspected Cloudflare's customer 
+incident management policy to 
+determine that the customer 
+support team has established 
+policies and procedures for 
+handling customer-reported 
+incidents. 
+No exceptions noted. 
+Inspected Cloudflare's website 
+support page to determine that 
+Cloudflare provided a contact 
+method for external parties to 
+submit complaints and inquiries 
+and report incidents. 
+No exceptions noted. 
+CC2.3.2 
+(SDD-091) 
+Cloudflare has documented, and 
+made available on their website, 
+security-related documents that 
+describe user accessibility, 
+security features, and methods for 
+user interaction. 
+Inspected the Cloudflare support 
+webpage and the Cloudflare 
+system status webpage to 
+determine that Cloudflare had 
+documented, and made available 
+on their website, security-related 
+documents that described user 
+accessibility, security features, 
+and methods for user interaction. 
+No exceptions noted. 
+CC2.3.3 
+(SG-169) 
+When new enterprise customers 
+sign-up to use Cloudflare's 
+products, the enterprise customer 
+is required to sign a master 
+subscription agreement which 
+includes considerations for 
+protecting the security, availability, 
+and confidentiality of the data and 
+indicates the responsibilities of the 
+users and Cloudflare's 
+responsibilities and commitments. 
+Inspected the master subscription 
+agreement for a sample of new 
+enterprise customers during the 
+period to determine that each 
+sampled enterprise customer 
+signed the master subscription 
+agreement during the period 
+which included considerations for 
+protecting the security, availability, 
+and confidentiality of data and 
+indicated the responsibilities of 
+the users and Cloudflare's 
+responsibilities and commitments. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+30 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC2.3.4 
+(SG-182) 
+When new Free, Business, and 
+Professional plan customers sign-
+up to use one of Cloudflare's 
+products, the customer digitally 
+consents to the Self-Serve 
+Subscription Agreement which 
+includes considerations for 
+protecting the security, availability, 
+and confidentiality of the data and 
+indicates the responsibilities of the 
+customers. 
+Inspected the customer sign-up 
+page on Cloudflare's website and 
+the self-serve subscription 
+agreement to determine that when 
+new Free, Business, and 
+Professional plan customers sign-
+up to use one of Cloudflare's 
+products, the customer digitally 
+consented to the self-serve 
+subscription agreement which 
+included considerations for 
+protecting the security, availability, 
+and confidentiality of the data and 
+indicated the responsibilities of 
+the customers. 
+No exceptions noted. 
+Risk Assessment 
+CC3.1 COSO Principle 6: The entity specifies objectives with sufficient clarity to enable the identification and assessment of 
+risks relating to objectives. 
+CC3.1.1 
+(BC-009) 
+Cloudflare identifies the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions.  Recovery 
+objectives are established for 
+critical business functions. 
+Inspected the most recent risk 
+assessment performed during the 
+period to determine that 
+Cloudflare identified the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions and 
+established recovery objectives 
+for critical business functions. 
+No exceptions noted. 
+CC3.1.2 
+(SG-094) 
+Security management conducts 
+monthly staff meeting to 
+communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+Inspected the security 
+management recurring meeting 
+invite and meeting agenda for a 
+sample of months during the 
+period to determine that security 
+management conducted staff 
+meetings for each sampled month 
+to communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+No exceptions noted. 
+CC3.1.3 
+(SG-160) 
+The board of directors, which is 
+composed of Cloudflare 
+management and independent 
+directors, meets quarterly to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+Inspected the board of directors 
+member listing on Cloudflare's 
+public governance website to 
+determine that the board of 
+directors included independent 
+directors. 
+No exceptions noted. 
+Inspected the board meeting 
+minutes for a sample of quarters 
+during the period to determine 
+that the board of directors met 
+during each sampled quarter to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+31 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC3.2 COSO Principle 7: The entity identifies risks to the achievement of its objectives across the entity and analyzes risks 
+as a basis for determining how the risks should be managed. 
+CC3.2.1 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually.  Results 
+from risk assessment activities 
+are reviewed by management to 
+prioritize mitigation of identified 
+risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+CC3.2.2 
+(RM-086) 
+Cloudflare has internal and 
+external audits performed on 
+information systems and 
+processes at least annually.  
+Findings identified from the audits 
+are tracked to resolution. 
+Inspected the internal audit 
+program, audit calendar, and 
+internal audit executive summary 
+report to determine that Cloudflare 
+had internal and external audits 
+performed on information systems 
+and processes during the period. 
+No exceptions noted. 
+Inspected the most recent risk 
+assessment and risk register to 
+determine that findings identified 
+from the audits were tracked to 
+resolution. 
+No exceptions noted. 
+CC3.2.3 
+(RM-087) 
+Cloudflare prepares a remediation 
+plan to formally manage the 
+resolution of findings identified in 
+risk assessment activities. 
+Inspected the most recent risk 
+assessment, risk register, and risk 
+treatment procedures to 
+determine that Cloudflare 
+prepared a remediation plan to 
+formally manage the resolution of 
+findings identified in risk 
+assessment activities. 
+No exceptions noted. 
+CC3.2.4 
+(VM-153) 
+Cloudflare assigns a risk rating to 
+identified vulnerabilities and 
+prioritizes remediation of 
+legitimate vulnerabilities according 
+to the assigned risk.  Critical and 
+high-risk vulnerabilities are 
+mitigated within 30 days, 
+moderate-risk within 90 days, and 
+low-risk vulnerabilities within 180 
+days. 
+Inspected the vulnerability 
+management policy and observed 
+the risk register with the 
+assistance of the technical 
+program manager to determine 
+that Cloudflare assigned a risk 
+rating to identified vulnerabilities 
+and prioritized remediation of 
+legitimate vulnerabilities according 
+to the assigned risk and critical 
+and high-risk vulnerabilities were 
+mitigated within 30 days, 
+moderate-risk within 90 days, and 
+low-risk vulnerabilities within 180 
+days. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+32 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC3.3 COSO Principle 8: The entity considers the potential for fraud in assessing risks to the achievement of objectives. 
+CC3.3.1 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually that 
+considers the potential for fraud.  
+Results from risk assessment 
+activities are reviewed by 
+management to prioritize 
+mitigation of identified risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+CC3.4 COSO Principle 9: The entity identifies and assesses changes that could significantly impact the system of internal 
+control. 
+CC3.4.1 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually.  Results 
+from risk assessment activities 
+are reviewed by management to 
+prioritize mitigation of identified 
+risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+CC3.4.2 
+(RM-083) 
+Control owners review the design 
+of internal controls at least 
+annually.  Corrective actions 
+related to identified deficiencies 
+are tracked to resolution. 
+Inspected the most recent control 
+attestation tickets to determine 
+that control owners reviewed the 
+design of internal controls during 
+the period and that corrective 
+actions related to identified 
+deficiencies were tracked to 
+resolution. 
+No exceptions noted. 
+CC3.4.3 
+(RM-086) 
+Cloudflare has internal and 
+external audits performed on 
+information systems and 
+processes at least annually.  
+Findings identified from the audits 
+are tracked to resolution. 
+Inspected the internal audit 
+program, audit calendar, and 
+internal audit executive summary 
+report to determine that Cloudflare 
+had internal and external audits 
+performed on information systems 
+and processes during the period. 
+No exceptions noted. 
+Inspected the most recent risk 
+assessment and risk register to 
+determine that findings identified 
+from the audits were tracked to 
+resolution. 
+No exceptions noted. 
+CC3.4.4 
+(RM-087) 
+Cloudflare prepares a remediation 
+plan to formally manage the 
+resolution of findings identified in 
+risk assessment activities. 
+Inspected the most recent risk 
+assessment, risk register, and risk 
+treatment procedures to 
+determine that Cloudflare 
+prepared a remediation plan to 
+formally manage the resolution of 
+findings identified in risk 
+assessment activities. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+33 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Monitoring Activities 
+CC4.1 COSO Principle 16: The entity selects, develops, and performs ongoing and/or separate evaluations to ascertain 
+whether the components of internal control are present and functioning. 
+CC4.1.1 
+(RM-083) 
+Control owners review the design 
+of internal controls at least 
+annually.  Corrective actions 
+related to identified deficiencies 
+are tracked to resolution. 
+Inspected the most recent control 
+attestation tickets to determine 
+that control owners reviewed the 
+design of internal controls during 
+the period and that corrective 
+actions related to identified 
+deficiencies were tracked to 
+resolution. 
+No exceptions noted. 
+CC4.1.2 
+(RM-086) 
+Cloudflare has internal and 
+external audits performed on 
+information systems and 
+processes at least annually.  
+Findings identified from the audits 
+are tracked to resolution. 
+Inspected the internal audit 
+program, audit calendar, and 
+internal audit executive summary 
+report to determine that Cloudflare 
+had internal and external audits 
+performed on information systems 
+and processes during the period. 
+No exceptions noted. 
+Inspected the most recent risk 
+assessment and risk register to 
+determine that findings identified 
+from the audits were tracked to 
+resolution. 
+No exceptions noted. 
+CC4.1.3 
+(SO-228) 
+Annually, Cloudflare selects a 
+sample of data centers to assess 
+based on a risk methodology.  
+Assessments include control 
+review and physical inspection of 
+the data center facilities.  Findings 
+are managed through Cloudflare's 
+risk register. 
+Inspected the most recent data 
+center assessment and risk 
+register to determine that during 
+the period, Cloudflare selected a 
+sample of data centers to assess 
+based on a risk methodology that 
+included control review and 
+physical inspection of the data 
+center facilities and that findings 
+were managed through 
+Cloudflare's risk register. 
+No exceptions noted. 
+CC4.1.4 
+(TPM-134) 
+Cloudflare performs an annual 
+review of third-party attestation 
+reports, security questionnaires, 
+or service provider reported 
+information security controls for 
+critical impact service providers.  
+If control gaps are identified, 
+action is taken to address impact 
+on the organization. 
+Inspected the management 
+review documentation for a 
+sample of impact service 
+providers to determine that 
+Cloudflare reviewed third-party 
+attestation reports, security 
+questionnaires, or service 
+provider reported information 
+security controls for critical impact 
+service providers during the 
+period and that action was taken 
+on control gaps to address impact 
+on the organization. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+34 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC4.1.5 
+(TPM-135) 
+Prior to engagement, Cloudflare 
+reviews the security impact of 
+third-party service providers in 
+accordance with a defined third-
+party risk management process.  
+For moderate, high, and critical 
+impact service providers, 
+Cloudflare reviews third-party 
+attestation reports, security 
+questionnaires, or service 
+provider reported information 
+security controls.  If control gaps 
+are identified, action is taken to 
+address impact on the 
+organization. 
+Inspected the vendor security 
+review tickets for a sample of 
+moderate, high, and critical impact 
+third-party service providers 
+onboarded during the period to 
+determine that prior to 
+engagement, Cloudflare reviewed 
+the security impact of third-party 
+service providers in accordance 
+with a defined third-party risk 
+management process and for 
+moderate, high, and critical impact 
+service providers, Cloudflare 
+reviewed third-party attestation 
+reports, security questionnaires, 
+or service provider reported 
+information security controls and 
+that if control gaps were identified, 
+actions were taken for identified 
+control gaps to address the 
+impact on the organization for 
+each third-party service provider 
+sampled. 
+No exceptions noted. 
+CC4.2 COSO Principle 17: The entity evaluates and communicates internal control deficiencies in a timely manner to those 
+parties responsible for taking corrective action, including senior management and the board of directors, as appropriate. 
+CC4.2.1 
+(SG-094) 
+Security management conducts 
+monthly staff meeting to 
+communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+Inspected the security 
+management recurring meeting 
+invite and meeting agenda for a 
+sample of months during the 
+period to determine that security 
+management conducted staff 
+meetings for each sampled month 
+to communicate and align on 
+relevant security threats, program 
+performance, policy review, and 
+best practices. 
+No exceptions noted. 
+CC4.2.2 
+(SG-160) 
+The board of directors, which is 
+composed of Cloudflare 
+management and independent 
+directors, meets quarterly to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+Inspected the board of directors 
+member listing on Cloudflare's 
+public governance website to 
+determine that the board of 
+directors included independent 
+directors. 
+No exceptions noted. 
+Inspected the board meeting 
+minutes for a sample of quarters 
+during the period to determine 
+that the board of directors met 
+during each sampled quarter to 
+provide oversight, evaluate 
+security risk and compliance 
+initiatives, and provide guidance 
+to meet ongoing business 
+objectives. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+35 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC4.2.3 
+(SG-151) 
+Cloudflare security leadership 
+meets at least monthly to: 
+• 
+Monitor and allocate 
+resources to critical projects 
+• 
+Review information security 
+related issues, inquiries, 
+complaints, and disputes 
+Inspected the security leadership 
+meeting invite and minutes for a 
+sample of months during the 
+period to determine that 
+Cloudflare security leadership met 
+during each sampled month to: 
+• 
+Monitor and allocate 
+resources to critical projects 
+• 
+Review information security 
+related issues, inquiries, 
+complaints, and disputes 
+No exceptions noted. 
+Control Activities 
+CC5.1 COSO Principle 10: The entity selects and develops control activities that contribute to the mitigation of risks to the 
+achievement of objectives to acceptable levels. 
+CC5.1.1 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually.  Results 
+from risk assessment activities 
+are reviewed by management to 
+prioritize mitigation of identified 
+risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+CC5.1.2 
+(RM-087) 
+Cloudflare prepares a remediation 
+plan to formally manage the 
+resolution of findings identified in 
+risk assessment activities. 
+Inspected the most recent risk 
+assessment, risk register, and risk 
+treatment procedures to 
+determine that Cloudflare 
+prepared a remediation plan to 
+formally manage the resolution of 
+findings identified in risk 
+assessment activities. 
+No exceptions noted. 
+CC5.1.3 
+(RM-227) 
+A suite of controls is maintained to 
+help comply with external laws, 
+regulations, industry 
+requirements, and internal 
+information security policies. 
+Observed the Cloudflare controls 
+matrix with the assistance of the 
+senior manager, information 
+security governance, risk, and 
+compliance, to determine that a 
+suite of controls was maintained 
+to help comply with external laws, 
+regulations, industry 
+requirements, and internal 
+information security policies. 
+No exceptions noted. 
+CC5.2 COSO Principle 11: The entity also selects and develops general control activities over technology to support the 
+achievement of objectives. 
+CC5.2.1 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually.  Results 
+from risk assessment activities 
+are reviewed by management to 
+prioritize mitigation of identified 
+risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+36 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC5.2.2 
+(RM-087) 
+Cloudflare prepares a remediation 
+plan to formally manage the 
+resolution of findings identified in 
+risk assessment activities. 
+Inspected the most recent risk 
+assessment, risk register, and risk 
+treatment procedures to 
+determine that Cloudflare 
+prepared a remediation plan to 
+formally manage the resolution of 
+findings identified in risk 
+assessment activities. 
+No exceptions noted. 
+CC5.2.3 
+(RM-227) 
+A suite of controls is maintained to 
+help comply with external laws, 
+regulations, industry 
+requirements, and internal 
+information security policies. 
+Observed the Cloudflare controls 
+matrix with the assistance of the 
+senior manager, information 
+security governance, risk, and 
+compliance, to determine that a 
+suite of controls was maintained 
+to help comply with external laws, 
+regulations, industry 
+requirements, and internal 
+information security policies. 
+No exceptions noted. 
+CC5.3 COSO Principle 12: The entity deploys control activities through policies that establish what is expected and in 
+procedures that put policies into action. 
+CC5.3.1 
+(PR-079) 
+New hires are required to 
+acknowledge and agree to 
+Cloudflare policies and 
+procedures as a condition of their 
+employment.   
+Inspected the policy 
+acknowledgement for a sample of 
+employees hired during the period 
+to determine that each sampled 
+employee acknowledged and 
+agreed to Cloudflare policies and 
+procedures as a condition of their 
+employment. 
+No exceptions noted. 
+CC5.3.2 
+(SG-092) 
+Cloudflare maintains information 
+security policies and standards 
+that are reviewed, approved by 
+management, and communicated 
+to personnel annually. 
+Inspected the information security 
+policies and standards on the 
+Cloudflare intranet to determine 
+that Cloudflare maintained 
+information security policies and 
+standards that were reviewed, 
+approved by management, and 
+communicated to authorized 
+personnel during the period. 
+No exceptions noted. 
+Logical and Physical Access Controls 
+CC6.1 The entity implements logical access security software, infrastructure, and architectures over protected information 
+assets to protect them from security events to meet the entity's objectives. 
+CC6.1.1 
+(DM-029) 
+Sensitive data transmitted over 
+public networks is encrypted. 
+Inspected Cloudflare's encryption 
+certificates on the customer portal 
+to determine that sensitive data 
+transmitted over public networks 
+and internally were encrypted. 
+No exceptions noted. 
+CC6.1.2 
+(DM-030) 
+Customer data is encrypted at 
+rest. 
+Inspected the encryption 
+configurations for a sample of 
+databases during the period to 
+determine that sensitive data at 
+rest was encrypted for each 
+database sampled. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+37 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.1.3 
+(DM-179) 
+Customer keys are encrypted and 
+stored on encrypted drives. 
+Inspected the customer key 
+encryption configuration and the 
+drive in which the keys were 
+stored to determine that customer 
+keys were encrypted and stored 
+on encrypted drives. 
+No exceptions noted. 
+CC6.1.4 
+(IAM-056) 
+Access to the cryptographic 
+keystores is limited to authorized 
+personnel. 
+Inspected the user account listing 
+with access to the cryptographic 
+keystores and their associated job 
+titles with the assistance of the 
+security compliance manager to 
+determine that access to the 
+cryptographic keystores was 
+limited to authorized personnel. 
+No exceptions noted. 
+CC6.1.5 
+(DM-180) 
+End user HTTP requests are 
+processed in memory and never 
+written to disk. 
+Inspected the source and logging 
+code configurations to determine 
+that end user HTTP requests 
+were processed in memory and 
+not written to disk. 
+No exceptions noted. 
+CC6.1.6 
+(IAM-044) 
+Cloudflare requires unique 
+identifiers for user accounts and 
+prevents identifier reuse. 
+Inspected the user account listing 
+to determine that Cloudflare used 
+unique identifiers for user 
+accounts and prevented identifier 
+reuse. 
+No exceptions noted. 
+CC6.1.7 
+(IAM-045) 
+User and device authentication to 
+information systems is protected 
+by passwords that meet 
+Cloudflare's password complexity 
+and multi-factor requirements. 
+Inspected the SSO configurations 
+to determine that user and device 
+authentication to information 
+systems was protected by 
+passwords that met Cloudflare's 
+password complexity and multi-
+factor requirements. 
+No exceptions noted. 
+CC6.1.8 
+(IAM-047) 
+Multi-factor authentication is 
+required for remote sessions and 
+access to the production 
+environment. 
+Observed a Cloudflare employee 
+log onto production systems 
+during the period to determine 
+that multi-factor authentication 
+was required for remote sessions 
+and access to the production 
+environment. 
+No exceptions noted. 
+Inspected the logon procedures to 
+determine that multi-factor 
+authentication was used for 
+remote sessions and access to 
+the production environment. 
+No exceptions noted. 
+CC6.1.9 
+(IAM-156) 
+The use of utility programs that 
+might be capable of overriding 
+system and application controls 
+shall be restricted and tightly 
+controlled. 
+Inspected the user account listing 
+with access to modify endpoint 
+utility programs with the 
+assistance of the security 
+compliance manager to determine 
+that the use of utility programs 
+was limited to authorized 
+personnel. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+38 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.1.10 
+(IAM-183) 
+To prevent unauthorized changes 
+to customer accounts, enterprise 
+customers may authorize 
+Cloudflare employees to make 
+changes on their behalf.  In the 
+event of an emergency, 
+authorized Cloudflare employees 
+may use the break glass feature 
+to make a customer change.  
+Break glass actions are logged 
+and account super admins are 
+notified.  Employees with access 
+to make changes to customer 
+accounts are restricted only to 
+authorized personnel. 
+ 
+Inspected the editing permissions, 
+logging configurations, e-mail 
+configurations, and an example 
+log generated during the period to 
+determine that to prevent 
+unauthorized changes to 
+customer accounts, enterprise 
+customers authorized Cloudflare 
+employees to make changes on 
+their behalf and in the event of an 
+emergency, authorized Cloudflare 
+employees used the break glass 
+feature to make a customer 
+change. 
+No exceptions noted. 
+Inspected the user account listing 
+with access to make changes to 
+customer accounts with the 
+assistance of the security 
+compliance manager to determine 
+that employees with access to 
+make changes to customer 
+accounts was restricted to 
+authorized personnel. 
+No exceptions noted. 
+CC6.1.11 
+(DM-178) 
+Cloudflare has the ability to 
+restrict the decryption of customer 
+HTTPS traffic for data processing 
+to designated geolocations. 
+Inspected the customer traffic 
+decryption configuration to 
+determine that Cloudflare had the 
+ability to restrict the decryption of 
+customer HTTPS traffic for data 
+processing to designated 
+geolocations. 
+No exceptions noted. 
+ 
+Azure, Google, and AWS are responsible for implementing controls that ensure logical access to the 
+underlying network, virtualization management, and storage devices is managed for its cloud hosting 
+services where in-scope systems reside. 
+CC6.2 Prior to issuing system credentials and granting system access, the entity registers and authorizes new internal and 
+external users whose access is administered by the entity.  For those users whose access is administered by the entity, 
+user system credentials are removed when user access is no longer authorized. 
+CC6.2.1 
+(IAM-038) 
+Logical access provisioning to 
+information systems is based on 
+default job groups.  Additional 
+approval is required for access 
+provisioned outside of the default 
+job groups. 
+Inspected the access provisioning 
+ticket for a sample of employees 
+hired during the period to 
+determine that logical access to 
+information systems was 
+provisioned based on the default 
+job group and additional approval 
+was obtained for access 
+provisioned outside of the default 
+job groups of each employee 
+sampled. 
+No exceptions noted. 
+CC6.2.2 
+(IAM-039) 
+Logical access that is no longer 
+required in the event of a 
+termination is documented, 
+communicated to IT, and revoked 
+within one business day. 
+Inspected the termination ticket 
+and in-scope system user account 
+listings for a sample of employees 
+terminated during the period to 
+determine that logical access that 
+was no longer required in the 
+event of a termination was 
+documented, communicated to IT, 
+and revoked within one business 
+day for each terminated employee 
+sampled. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+39 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.2.3 
+(IAM-040) 
+Cloudflare performs account and 
+access reviews at least quarterly; 
+corrective action is taken where 
+applicable. 
+Inspected the in-scope system 
+user accounts and access review 
+ticket for a sample of quarters 
+during the period to determine 
+that Cloudflare performed account 
+and access reviews at least 
+quarterly and corrective action 
+was taken, where applicable, for 
+each quarter sampled. 
+No exceptions noted. 
+CC6.2.4 
+(IAM-041) 
+Upon an employee's 
+reassignment or transfer, access 
+that is no longer required is 
+revoked and documented. 
+Inspected the transfer ticket for a 
+sample of employee reassigned 
+or transferred during the period to 
+determine that upon an 
+employee's reassignment or 
+transfer, access that was no 
+longer required was revoked and 
+documented for each reassigned 
+or transferred employee sampled. 
+No exceptions noted. 
+ 
+Azure, Google, and AWS are responsible for implementing controls that ensure logical access to the 
+underlying network, virtualization management, and storage devices is managed for its cloud hosting 
+services where in-scope systems reside. 
+CC6.3 The entity authorizes, modifies, or removes access to data, software, functions, and other protected information 
+assets based on roles, responsibilities, or the system design and changes, giving consideration to the concepts of least 
+privilege and segregation of duties, to meet the entity’s objectives. 
+CC6.3.1 
+(IAM-038) 
+Logical access provisioning to 
+information systems is based on 
+default job groups.  Additional 
+approval is required for access 
+provisioned outside of the default 
+job groups. 
+Inspected the access provisioning 
+ticket for a sample of employees 
+hired during the period to 
+determine that logical access to 
+information systems was 
+provisioned based on the default 
+job group and additional approval 
+was obtained for access 
+provisioned outside of the default 
+job groups of each employee 
+sampled. 
+No exceptions noted. 
+CC6.3.2 
+(IAM-039) 
+Logical access that is no longer 
+required in the event of a 
+termination is documented, 
+communicated to IT, and revoked 
+within one business day. 
+Inspected the termination ticket 
+and in-scope system user account 
+listings for a sample of employees 
+terminated during the period to 
+determine that logical access that 
+was no longer required in the 
+event of a termination was 
+documented, communicated to IT, 
+and revoked within one business 
+day for each terminated employee 
+sampled. 
+No exceptions noted. 
+CC6.3.3 
+(IAM-040) 
+Cloudflare performs account and 
+access reviews at least quarterly; 
+corrective action is taken where 
+applicable. 
+Inspected the in-scope system 
+user accounts and access review 
+ticket for a sample of quarters 
+during the period to determine 
+that Cloudflare performed account 
+and access reviews at least 
+quarterly and corrective action 
+was taken, where applicable, for 
+each quarter sampled. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+40 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.3.4 
+(IAM-041) 
+Upon an employee's 
+reassignment or transfer, access 
+that is no longer required is 
+revoked and documented. 
+Inspected the transfer ticket for a 
+sample of employee reassigned 
+or transferred during the period to 
+determine that upon an 
+employee's reassignment or 
+transfer, access that was no 
+longer required was revoked and 
+documented for each reassigned 
+or transferred employee sampled. 
+No exceptions noted. 
+ 
+Azure, Google, and AWS are responsible for implementing controls that ensure logical access to the 
+underlying network, virtualization management, and storage devices is managed for its cloud hosting 
+services where in-scope systems reside. 
+CC6.4 The entity restricts physical access to facilities and protected information assets (for example, data center facilities, 
+back-up media storage, and other sensitive locations) to authorized personnel to meet the entity’s objectives. 
+CC6.4.1 
+(SO-123) 
+Physical access provisioning to a 
+third-party colocation data center 
+requires approval. 
+Inspected the access request 
+ticket for a sample of employees 
+granted physical access during 
+the period to determine that 
+physical access provisioning to a 
+Cloudflare data center required 
+approval from a data center 
+administrator and documented 
+specification for each employee 
+sampled. 
+No exceptions noted. 
+CC6.4.2 
+(SO-124) 
+Cloudflare maintains a list of 
+authorized users that can request 
+access to third-party colocation 
+data centers.  The list is updated 
+and provided to the data centers 
+quarterly. 
+Inspected the access review ticket 
+and e-mail sent to third-party 
+colocation data centers for a 
+sample of quarters during the 
+period to determine that 
+Cloudflare maintained a list of 
+authorized users that could 
+request access to third-party 
+colocation data centers and that 
+the list was updated and provided 
+to the data centers for each 
+quarter sampled.   
+No exceptions noted. 
+ 
+Azure, Google, AWS, and the third-party colocation providers are responsible for implementing controls that 
+ensure physical access to data center facilities is restricted. 
+CC6.5 The entity discontinues logical and physical protections over physical assets only after the ability to read or recover 
+data and software from those assets has been diminished and is no longer required to meet the entity’s objectives. 
+CC6.5.1 
+(AM-005) 
+Cloudflare maintains policies and 
+procedures for the secure 
+handling of media including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+Inspected the media protection 
+policy and the hardware recycling 
+process document to determine 
+that Cloudflare maintained 
+policies and procedures for the 
+secure handling of media 
+including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+No exceptions noted. 
+ 
+Azure, Google, AWS, and the third-party colocation providers are responsible for implementing controls that 
+ensure physical access to data center facilities is restricted. 
+ 
+ 
+ 
+ 
+ 
+ 
+41 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+ 
+Azure, Google, and AWS are responsible for implementing controls that ensure logical access to the 
+underlying network, virtualization management, and storage devices is managed for its cloud hosting 
+services where in-scope systems reside. 
+CC6.6 The entity implements logical access security measures to protect against threats from sources outside its system 
+boundaries.   
+CC6.6.1 
+(IAM-047) 
+Multi-factor authentication is 
+required for remote sessions and 
+access to the production 
+environment. 
+Observed a Cloudflare employee 
+log onto production systems 
+during the period to determine 
+that multi-factor authentication 
+was required for remote sessions 
+and access to the production 
+environment. 
+No exceptions noted. 
+CC6.6.2 
+(NO-065) 
+Network traffic to and from 
+untrusted networks passes 
+through a policy enforcement 
+point. 
+Inspected the firewall rulesets to 
+determine that network traffic to 
+and from untrusted networks 
+passed through a policy 
+enforcement point. 
+No exceptions noted. 
+CC6.6.3 
+(VM-154) 
+Cloudflare utilizes a web 
+application firewall in front of 
+public-facing web applications to 
+detect and prevent web-based 
+attacks. 
+Inspected the web application 
+firewall configuration to determine 
+that Cloudflare utilized a web 
+application firewall in front of 
+public-facing web applications to 
+detect and prevent web-based 
+attacks. 
+No exceptions noted. 
+ 
+Azure, Google, and AWS are responsible for implementing controls that ensure logical access to the 
+underlying network, virtualization management, and storage devices is managed for its cloud hosting 
+services where in-scope systems reside. 
+CC6.7 The entity restricts the transmission, movement, and removal of information to authorized internal and external users 
+and processes, and protects it during transmission, movement, or removal to meet the entity’s objectives.   
+CC6.7.1 
+(AM-005) 
+Cloudflare maintains policies and 
+procedures for the secure 
+handling of media including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+Inspected the media protection 
+policy and the hardware recycling 
+process document to determine 
+that Cloudflare maintained 
+policies and procedures for the 
+secure handling of media 
+including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+No exceptions noted. 
+CC6.7.2 
+(DM-029) 
+Sensitive data transmitted over 
+public networks is encrypted. 
+Inspected Cloudflare's encryption 
+certificates on the customer portal 
+to determine that sensitive data 
+transmitted over public networks 
+and internally were encrypted. 
+No exceptions noted. 
+CC6.7.3 
+(DM-030) 
+Customer data is encrypted at 
+rest. 
+Inspected database and disk 
+encryption configurations to 
+determine that customer data was 
+encrypted at rest. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+42 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC6.7.4 
+(MDM-064) 
+Employee workstations are 
+protected with full disk encryption. 
+Inspected the encryption 
+configurations for a sample of 
+employee workstations to 
+determine that each sampled 
+employee workstation was 
+protected with full disk encryption. 
+No exceptions noted. 
+CC6.8 The entity implements controls to prevent or detect and act upon the introduction of unauthorized or malicious 
+software to meet the entity’s objectives. 
+CC6.8.1 
+(CFM-013) 
+Cloudflare ensures security 
+hardening and baseline 
+configuration standards have 
+been established according to 
+industry standards and are 
+reviewed and updated at least 
+annually. 
+Inspected the security hardening 
+and baseline configuration 
+standards and the most recent 
+review to determine that security 
+hardening and baseline 
+configuration standards were 
+established and were reviewed 
+and updated during the period. 
+No exceptions noted. 
+CC6.8.2 
+(CFM-016) 
+Cloudflare uses automated 
+mechanisms to detect deviations 
+from baseline configurations in 
+production environments. 
+Inspected the monitoring and 
+alerting configurations and an 
+example alert triggered during the 
+period to determine that 
+Cloudflare used automated 
+mechanisms to detect deviations 
+from baseline configurations in 
+production environments. 
+No exceptions noted. 
+CC6.8.3 
+(IAM-156) 
+The use of utility programs that 
+might be capable of overriding 
+system and application controls 
+shall be restricted and tightly 
+controlled. 
+Inspected the user account listing 
+with access to modify endpoint 
+utility programs with the 
+assistance of the security 
+compliance manager to determine 
+that the use of utility programs 
+was limited to authorized 
+personnel. 
+No exceptions noted. 
+CC6.8.4 
+(VM-146) 
+Cloudflare installs security-
+relevant patches, including 
+software or firmware updates.  
+High impact updates are installed 
+within 30 days of their release. 
+Inspected the device 
+management tool configurations 
+and patching history logged 
+during the period to determine 
+that Cloudflare installed security-
+relevant patches, including 
+software or firmware updates and 
+high impact updates were 
+installed within 30 days of their 
+release. 
+No exceptions noted. 
+CC6.8.5 
+(VM-147) 
+Cloudflare has enterprise antivirus 
+deployments for systems 
+commonly affected by malicious 
+software and ensures the 
+following:  
+• 
+Signature definitions are 
+updated  
+• 
+Real-time scans are enabled 
+• 
+Alerts are reviewed and 
+resolved by authorized 
+personnel 
+Inspected the antivirus software 
+configurations for a sample of 
+employee workstations to 
+determine that Cloudflare had 
+enterprise antivirus deployments 
+for systems commonly affected by 
+malicious software and ensured 
+the following:  
+• 
+Signature definitions were 
+updated  
+• 
+Real-time scans were 
+enabled 
+• 
+Alerts were reviewed and 
+resolved by authorized 
+personnel 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+43 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Inspected the anti-malware 
+configurations and the anti-
+malware system update 
+configurations for a sample of 
+servers utilized during the period 
+to determine that protection 
+programs were configured with 
+signature and behavior-based 
+malware detection and removal, 
+these protection programs were 
+update at least daily for each 
+server sampled. 
+No exceptions noted. 
+CC6.8.6 
+(VM-164) 
+Security patches are released 
+automatically to in-scope servers 
+through a configuration system to 
+help ensure current patches are 
+implemented. 
+Inspected the security patching 
+configurations and an example log 
+recorded during the period to 
+determine that security patches 
+were released automatically to in-
+scope servers through a 
+configuration system to help 
+ensure current patches were 
+implemented. 
+No exceptions noted. 
+System Operations 
+CC7.1 To meet its objectives, the entity uses detection and monitoring procedures to identify (1) changes to configurations 
+that result in the introduction of new vulnerabilities, and (2) susceptibilities to newly discovered vulnerabilities. 
+CC7.1.1 
+(CFM-013) 
+Cloudflare ensures security 
+hardening and baseline 
+configuration standards have 
+been established according to 
+industry standards and are 
+reviewed and updated at least 
+annually. 
+Inspected the security hardening 
+and baseline configuration 
+standards and the most recent 
+review to determine that security 
+hardening and baseline 
+configuration standards were 
+established and were reviewed 
+and updated during the period. 
+No exceptions noted. 
+CC7.1.2 
+(CFM-016) 
+Cloudflare uses automated 
+mechanisms to detect deviations 
+from baseline configurations in 
+production environments. 
+Inspected the monitoring and 
+alerting configurations and an 
+example alert triggered during the 
+period to determine that 
+Cloudflare used automated 
+mechanisms to detect deviations 
+from baseline configurations in 
+production environments. 
+No exceptions noted. 
+CC7.1.3 
+(VM-142) 
+Cloudflare conducts internal 
+vulnerability scans at least 
+quarterly to identify potential 
+critical and high vulnerabilities 
+which are researched and 
+resolved. 
+Inspected the vulnerability scan 
+report and remediation tickets for 
+a sample of quarters during the 
+period to determine that 
+Cloudflare conducted internal 
+vulnerability scans for each 
+sampled quarter to identify 
+potential critical and high 
+vulnerabilities which were 
+researched and resolved. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+44 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.1.4 
+(VM-144) 
+Cloudflare utilizes an independent 
+assessor or penetration team to 
+perform penetration tests at least 
+annually.  Issues identified are 
+tracked through resolution. 
+Inspected the most recent 
+penetration test results and 
+remediation tickets to determine 
+that Cloudflare utilized an 
+independent assessor or 
+penetration team to perform 
+penetration tests at least annually 
+and issues identified were tracked 
+through resolution. 
+No exceptions noted. 
+CC7.1.5 
+(VM-167) 
+Cloudflare contracts a third-party 
+ethical hacking company to help 
+identify external vulnerabilities.  
+Vulnerabilities are logged and 
+tracked for remediations steps. 
+Inspected the bug bounty program 
+description, the third-party ethical 
+dashboard, and an example 
+remediated vulnerability ticket to 
+determine that Cloudflare 
+contracted a third-party ethical 
+hacking company to help identify 
+external vulnerabilities and that 
+vulnerabilities were logged and 
+tracked through remediation. 
+No exceptions noted. 
+CC7.2 The entity monitors system components and the operation of those components for anomalies that are indicative of 
+malicious acts, natural disasters, and errors affecting the entity's ability to meet its objectives; anomalies are analyzed to 
+determine whether they represent security events. 
+CC7.2.1 
+(SM-105) 
+Cloudflare logs critical information 
+system activity to a secure 
+repository.  The number of 
+administrators with access to 
+audit logs is limited. 
+Inspected the audit logs and 
+administrative user account listing 
+with access to the audit logs with 
+the assistance of the systems 
+engineer to determine that 
+Cloudflare logged critical system 
+activity to a secure repository and 
+the number of administrators with 
+access to audit logs was limited. 
+No exceptions noted. 
+CC7.2.2 
+(SM-117) 
+Production systems are monitored 
+in accordance with predefined 
+security criteria and alerts are 
+sent to authorized personnel.  
+Confirmed incidents are tracked to 
+resolution. 
+Inspected the security monitoring 
+tool configurations and an 
+example incident ticket 
+remediated during the period to 
+determine that production 
+systems were monitored in 
+accordance with predefined 
+security criteria and alerts were 
+sent to authorized personnel and 
+confirmed incidents were tracked 
+to resolution. 
+No exceptions noted. 
+CC7.2.3 
+(SM-119) 
+Cloudflare defines availability 
+monitoring alert criteria, how alert 
+criteria will be flagged, and 
+identifies authorized personnel for 
+flagged system alerts. 
+Inspected the availability 
+monitoring configurations, 
+example alerts, and remediation 
+tickets to determine that 
+Cloudflare defined availability 
+monitoring alert criteria, how alert 
+criteria would be flagged, and 
+identified authorized personnel for 
+flagged system alerts. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+45 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.3 The entity evaluates security events to determine whether they could or have resulted in a failure of the entity to 
+meet its objectives (security incidents) and, if so, takes actions to prevent or address such failures. 
+CC7.3.1 
+(IR-058) 
+Cloudflare maintains an incident 
+response plan that defines the 
+type of incidents that need to be 
+managed, tracked, and reported. 
+Inspected the incident response 
+plan to determine that Cloudflare 
+maintained an incident response 
+plan that defines the type of 
+incidents that need to be 
+managed, tracked, and reported. 
+No exceptions noted. 
+CC7.3.2 
+(IR-060) 
+Confirmed incidents are assigned 
+a priority level and managed to 
+resolution.  The incident response 
+team performs a postmortem 
+review for incidents classified as 
+P0 or P1. 
+Inspected the incident ticket for a 
+sample of incidents identified 
+during the period to determine 
+that confirmed incidents were 
+assigned a priority level and 
+managed to resolution and the 
+incident response team performed 
+postmortem reviews on incidents 
+that were classified as P0 or P1. 
+No exceptions noted. 
+CC7.3.3 
+(SM-105) 
+Cloudflare logs critical information 
+system activity to a secure 
+repository.  The number of 
+administrators with access to 
+audit logs is limited. 
+Inspected the audit logs and 
+administrative user account listing 
+with access to the audit logs with 
+the assistance of the systems 
+engineer to determine that 
+Cloudflare logged critical system 
+activity to a secure repository and 
+the number of administrators with 
+access to audit logs was limited. 
+No exceptions noted. 
+CC7.3.4 
+(SM-117) 
+Production systems are monitored 
+in accordance with predefined 
+security criteria and alerts are 
+sent to authorized personnel.  
+Confirmed incidents are tracked to 
+resolution. 
+Inspected the security monitoring 
+tool configurations and an 
+example incident ticket 
+remediated during the period to 
+determine that production 
+systems were monitored in 
+accordance with predefined 
+security criteria and alerts were 
+sent to authorized personnel and 
+confirmed incidents were tracked 
+to resolution. 
+No exceptions noted. 
+CC7.4 The entity responds to identified security incidents by executing a defined incident response program to understand, 
+contain, remediate, and communicate security incidents, as appropriate.   
+CC7.4.1 
+(IR-058) 
+Cloudflare maintains an incident 
+response plan that defines the 
+type of incidents that need to be 
+managed, tracked, and reported. 
+Inspected the incident response 
+plan to determine that Cloudflare 
+maintained an incident response 
+plan that defines the type of 
+incidents that need to be 
+managed, tracked, and reported. 
+No exceptions noted. 
+CC7.4.2 
+(IR-060) 
+Confirmed incidents are assigned 
+a priority level and managed to 
+resolution.  The incident response 
+team performs a postmortem 
+review for incidents classified as 
+P0 or P1. 
+Inspected the incident ticket for a 
+sample of incidents identified 
+during the period to determine 
+that confirmed incidents were 
+assigned a priority level and 
+managed to resolution and the 
+incident response team performed 
+postmortem reviews on incidents 
+that were classified as P0 or P1. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+46 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC7.4.3  
+(IR-061) 
+Cloudflare defines external 
+communication requirements for 
+incidents, including: 
+• 
+Information about external 
+party dependencies  
+• 
+Criteria for notification to 
+external parties as required 
+by Cloudflare policy in the 
+event of a security breach 
+Inspected the security incident 
+response policy to determine that 
+Cloudflare defined external 
+communication requirements for 
+incidents, including: 
+• 
+Information about external 
+party dependencies 
+• 
+Criteria for notification to 
+external parties as required 
+by Cloudflare policy in the 
+event of a security breach 
+No exceptions noted. 
+CC7.5 The entity identifies, develops, and implements activities to recover from identified security incidents. 
+CC7.5.1 
+(BC-007) 
+Cloudflare's business continuity 
+and disaster recovery plan is 
+reviewed, approved by 
+management, and communicated 
+to relevant team members 
+annually. 
+Inspected the business continuity 
+and disaster recovery plan to 
+determine that the plan was 
+reviewed, approved by 
+management, and communicated 
+to relevant team members during 
+the period. 
+No exceptions noted. 
+CC7.5.2 
+(BC-181) 
+Cloudflare maintains emergency 
+management documentation.  
+Emergency management 
+documentation is reviewed and 
+communicated to employees as 
+needed. 
+Inspected the Cloudflare 
+emergency management page 
+and an e-mail communication 
+related to emergency procedures 
+sent during the period to 
+determine that Cloudflare 
+maintained emergency 
+management documentation 
+which was reviewed and 
+communicated to employees 
+during the period. 
+No exceptions noted. 
+CC7.5.3 
+(BM-010) 
+Cloudflare configures redundant 
+systems and performs daily 
+backups of databases containing 
+customer and end user data to 
+resume system operations in the 
+event of a system failure. 
+Inspected the database backup 
+and replication configuration and 
+example backup log for a 
+database containing end-user 
+and/or customer data to 
+determine that Cloudflare 
+configured redundant systems 
+and performed daily backups of 
+databases containing customer 
+and end user data to resume 
+system operations in the event of 
+a system failure. 
+No exceptions noted. 
+CC7.5.4 
+(BM-011) 
+Cloudflare performs backup 
+restoration and failover tests 
+annually to confirm the reliability 
+and integrity of system backups 
+and recovery operations. 
+Inspected the most recent backup 
+restoration and failover test 
+results to determine that 
+Cloudflare performed backup 
+restoration and failover tests to 
+ensure the reliability and integrity 
+of system backups and recovery 
+operations during the period. 
+No exceptions noted. 
+CC7.5.5 
+(IR-058) 
+Cloudflare maintains an incident 
+response plan that defines the 
+type of incidents that need to be 
+managed, tracked, and reported. 
+Inspected the incident response 
+plan to determine that Cloudflare 
+maintained an incident response 
+plan that defines the type of 
+incidents that need to be 
+managed, tracked, and reported. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+47 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+Change Management 
+CC8.1 The entity authorizes, designs, develops, or acquires, configures, documents, tests, approves, and implements 
+changes to infrastructure, data, software, and procedures to meet its objectives.   
+CC8.1.1 
+(CM-022) 
+Change management policies and 
+procedures are documented to 
+guide employees in making 
+changes to production systems.  
+Change scope, type, and roles 
+and responsibilities are pre-
+established and documented in a 
+change control workflow; 
+notification and approval 
+requirements are also pre-
+established based on risk 
+associated with change scope 
+and type. 
+Inspected the SDLC and change 
+management policy to determine 
+that change management policies 
+and procedures were documented 
+to guide employees in making 
+changes to production systems. 
+No exceptions noted. 
+CC8.1.2 
+(CM-023) 
+Application and infrastructure 
+changes are tracked in a ticketing 
+system and prior to introducing 
+changes into the production 
+environment, review and approval 
+from authorized personnel is 
+required based on the following: 
+• 
+Change description 
+• 
+Impact of change  
+• 
+Test results 
+Inspected the change tickets for a 
+sample of changes implemented 
+during the period to determine 
+that each sampled change was 
+reviewed and approved by 
+authorized personnel prior 
+implementation based on the 
+following: 
+• 
+Change description 
+• 
+Impact of change 
+• 
+Test results 
+No exceptions noted. 
+CC8.1.3 
+(SL-103) 
+The Cloudflare SDLC policy and 
+procedure is defined to manage 
+the software / system release 
+procedures for application and 
+configuration changes. 
+Inspected the SDLC and change 
+management policy to determine 
+that the Cloudflare SDLC policy 
+and procedure was defined to 
+manage the software / system 
+release procedures for application 
+and configuration changes. 
+No exceptions noted. 
+CC8.1.4 
+(VM-149) 
+Cloudflare conducts source code 
+reviews for vulnerabilities before 
+code is pushed to production. 
+Inspected the source code 
+vulnerability scanning tool 
+configurations to determine that 
+Cloudflare conducted source code 
+reviews for vulnerabilities before 
+code was pushed to production. 
+No exceptions noted. 
+CC8.1.5 
+(SL-104) 
+The version control software is 
+configured to require independent 
+code review and approval by an 
+individual other than the one who 
+initiated the pull request. 
+Inspected the versions control 
+software branch protection 
+configurations and an example 
+change ticket to determine that 
+the version control software was 
+configured to require independent 
+code review and approval by an 
+individual other than the one who 
+initiated the pull request. 
+No exceptions noted. 
+CC8.1.6 
+(SL-358) 
+Branch protections are enabled to 
+prevent a user from circumventing 
+the approval requirements 
+enforced by the version control 
+software. 
+Inspected the branch protections 
+configurations to determine that 
+branch protections were enabled 
+to prevent a user from 
+circumventing the approval 
+requirements enforced by the 
+version control software. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+48 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC8.1.7 
+(NO-071) 
+Production environments are 
+logically segregated from non-
+production environments. 
+Inspected the test and production 
+environments to determine that 
+production environments were 
+logically segregated from non-
+production environments. 
+No exceptions noted. 
+Risk Mitigation 
+CC9.1 The entity identifies, selects, and develops risk mitigation activities for risks arising from potential business 
+disruptions. 
+CC9.1.1 
+(BC-007) 
+Cloudflare's business continuity 
+and disaster recovery plan is 
+reviewed, approved by 
+management, and communicated 
+to relevant team members 
+annually. 
+Inspected the business continuity 
+and disaster recovery plan to 
+determine that the plan was 
+reviewed, approved by 
+management, and communicated 
+to relevant team members during 
+the period. 
+No exceptions noted. 
+CC9.1.2 
+(BC-008) 
+Cloudflare performs business 
+continuity and disaster recovery 
+tests annually and ensures the 
+following: 
+• 
+Tests are executed with 
+relevant contingency teams 
+• 
+Test results are documented 
+• 
+Corrective actions are taken 
+for exceptions noted 
+• 
+Plans are updated based on 
+results 
+Inspected the most recent 
+business contingency and 
+disaster recovery plan test to 
+determine that Cloudflare 
+performed a test of the business 
+continuity and disaster recovery 
+plan during period and ensured 
+the following:  
+• 
+Tests were executed with 
+relevant contingency teams 
+• 
+Test results were 
+documented 
+• 
+Corrective actions were taken 
+for exceptions noted 
+• 
+Plans were updated based on 
+results 
+No exceptions noted. 
+CC9.1.3 
+(BC-009) 
+Cloudflare identifies the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions.  Recovery 
+objectives are established for 
+critical business functions. 
+Inspected the most recent risk 
+assessment performed during the 
+period to determine that 
+Cloudflare identified the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions and 
+established recovery objectives 
+for critical business functions. 
+No exceptions noted. 
+CC9.1.4 
+(BM-010) 
+Cloudflare configures redundant 
+systems and performs daily 
+backups of databases containing 
+customer and end user data to 
+resume system operations in the 
+event of a system failure. 
+Inspected the database backup 
+and replication configuration and 
+example backup log for a 
+database containing end-user 
+and/or customer data to 
+determine that Cloudflare 
+configured redundant systems 
+and performed daily backups of 
+databases containing customer 
+and end user data to resume 
+system operations in the event of 
+a system failure. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+49 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC9.1.5 
+(BM-011) 
+Cloudflare performs backup 
+restoration and failover tests 
+annually to confirm the reliability 
+and integrity of system backups 
+and recovery operations. 
+Inspected the most recent backup 
+restoration and failover test 
+results to determine that 
+Cloudflare performed backup 
+restoration and failover tests to 
+ensure the reliability and integrity 
+of system backups and recovery 
+operations during the period. 
+No exceptions noted. 
+CC9.1.6 
+(RM-082) 
+Cloudflare performs a risk 
+assessment annually.  Results 
+from risk assessment activities 
+are reviewed by management to 
+prioritize mitigation of identified 
+risks. 
+Inspected the most recent risk 
+assessment and security 
+leadership risk assessment 
+meeting agenda performed during 
+the period to determine that 
+Cloudflare performed a risk 
+assessment during the period and 
+that results from risk assessment 
+activities were reviewed by 
+management and prioritized to 
+mitigate identified risks. 
+No exceptions noted. 
+CC9.1.7 
+(RM-087) 
+Cloudflare prepares a remediation 
+plan to formally manage the 
+resolution of findings identified in 
+risk assessment activities. 
+Inspected the most recent risk 
+assessment, risk register, and risk 
+treatment procedures to 
+determine that Cloudflare 
+prepared a remediation plan to 
+formally manage the resolution of 
+findings identified in risk 
+assessment activities. 
+No exceptions noted. 
+CC9.2 The entity assesses and manages risks associated with vendors and business partners. 
+CC9.2.1 
+(SO-228) 
+Annually, Cloudflare selects a 
+sample of data centers to assess 
+based on a risk methodology.  
+Assessments include control 
+review and physical inspection of 
+the data center facilities.  Findings 
+are managed through Cloudflare's 
+risk register. 
+Inspected the most recent data 
+center assessment and risk 
+register to determine that, during 
+the period, Cloudflare selected a 
+sample of data centers to assess 
+based on a risk methodology that 
+included control review and 
+physical inspection of the data 
+center facilities and that findings 
+were managed through 
+Cloudflare's risk register. 
+No exceptions noted. 
+CC9.2.2 
+(TPM-134) 
+Cloudflare performs an annual 
+review of third-party attestation 
+reports, security questionnaires, 
+or service provider reported 
+information security controls for 
+critical impact service providers.  
+If control gaps are identified, 
+action is taken to address impact 
+on the organization. 
+Inspected the management 
+review documentation for a 
+sample of impact service 
+providers to determine that 
+Cloudflare reviewed third-party 
+attestation reports, security 
+questionnaires, or service 
+provider reported information 
+security controls for critical impact 
+service providers during the 
+period and that action was taken 
+on control gaps to address impact 
+on the organization. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+50 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+CC9.2.3 
+(TPM-135) 
+Prior to engagement, Cloudflare 
+reviews the security impact of 
+third-party service providers in 
+accordance with a defined third-
+party risk management process.  
+For moderate, high, and critical 
+impact service providers, 
+Cloudflare reviews third-party 
+attestation reports, security 
+questionnaires, or service 
+provider reported information 
+security controls.  If control gaps 
+are identified, action is taken to 
+address impact on the 
+organization. 
+Inspected the vendor security 
+review tickets for a sample of 
+moderate, high, and critical impact 
+third-party service providers 
+onboarded during the period to 
+determine that prior to 
+engagement, Cloudflare reviewed 
+the security impact of third-party 
+service providers in accordance 
+with a defined third-party risk 
+management process and for 
+moderate, high, and critical impact 
+service providers, Cloudflare 
+reviewed third-party attestation 
+reports, security questionnaires, 
+or service provider reported 
+information security controls and 
+that if control gaps were identified, 
+actions were taken for identified 
+control gaps to address the 
+impact on the organization for 
+each third-party service provider 
+sampled. 
+No exceptions noted. 
+CC9.2.4 
+(TPM-139) 
+Agreements containing 
+information security requirements 
+and confidentiality obligations are 
+in place with moderate, high, and 
+critical impact third-party service 
+providers. 
+Inspected agreements in place for 
+a sample of third-party service 
+providers classified by Cloudflare 
+as moderate, high, and critical 
+impact to determine that 
+agreements containing 
+information security requirements 
+and confidentiality obligations 
+were in place for each sampled 
+service provider. 
+No exceptions noted. 
+ 
+ 
+ 
+ADDITIONAL CRITERIA FOR AVAILABILITY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.1 The entity maintains, monitors, and evaluates current processing capacity and use of system components 
+(infrastructure, data, and software) to manage capacity demand and to enable the implementation of additional capacity to 
+help meet its objectives. 
+A1.1.1 
+(SM-119) 
+Cloudflare defines availability 
+monitoring alert criteria, how alert 
+criteria will be flagged, and 
+identifies authorized personnel for 
+flagged system alerts. 
+Inspected the availability 
+monitoring configurations, 
+example alerts, and remediation 
+tickets to determine that 
+Cloudflare defined availability 
+monitoring alert criteria, how alert 
+criteria would be flagged, and 
+identified authorized personnel for 
+flagged system alerts. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+51 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.2 The entity authorizes, designs, develops or acquires, implements, operates, approves, maintains, and monitors 
+environmental protections, software, data back-up processes, and recovery infrastructure to meet its objectives. 
+A1.2.1 
+(BC-007) 
+Cloudflare's business continuity 
+and disaster recovery plan is 
+reviewed, approved by 
+management, and communicated 
+to relevant team members 
+annually. 
+Inspected the business continuity 
+and disaster recovery plan to 
+determine that the plan was 
+reviewed, approved by 
+management, and communicated 
+to relevant team members during 
+the period. 
+No exceptions noted. 
+A1.2.2 
+(BC-009) 
+Cloudflare identifies the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions.  Recovery 
+objectives are established for 
+critical business functions. 
+Inspected the most recent risk 
+assessment performed during the 
+period to determine that 
+Cloudflare identified the business 
+impact of relevant threats to 
+assets, infrastructure, and 
+resources that support core 
+business functions and 
+established recovery objectives 
+for critical business functions. 
+No exceptions noted. 
+A1.2.3 
+(BC-181) 
+Cloudflare maintains emergency 
+management documentation.  
+Emergency management 
+documentation is reviewed and 
+communicated to employees as 
+needed. 
+Inspected the Cloudflare 
+emergency management page 
+and an e-mail communication 
+related to emergency procedures 
+sent during the period to 
+determine that Cloudflare 
+maintained emergency 
+management documentation 
+which was reviewed and 
+communicated to employees 
+during the period. 
+No exceptions noted. 
+A1.2.4 
+(BM-010) 
+Cloudflare configures redundant 
+systems and performs daily 
+backups of databases containing 
+customer and end user data to 
+resume system operations in the 
+event of a system failure. 
+Inspected the database backup 
+and replication configuration and 
+example backup log for a 
+database containing end-user 
+and/or customer data to 
+determine that Cloudflare 
+configured redundant systems 
+and performed daily backups of 
+databases containing customer 
+and end user data to resume 
+system operations in the event of 
+a system failure. 
+No exceptions noted. 
+A1.2.5 
+(BM-011) 
+Cloudflare performs backup 
+restoration and failover tests 
+annually to confirm the reliability 
+and integrity of system backups 
+and recovery operations. 
+Inspected the most recent backup 
+restoration and failover test 
+results to determine that 
+Cloudflare performed backup 
+restoration and failover tests to 
+ensure the reliability and integrity 
+of system backups and recovery 
+operations during the period. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+52 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+A1.2.6 
+(SM-119) 
+Cloudflare defines availability 
+monitoring alert criteria, how alert 
+criteria will be flagged, and 
+identifies authorized personnel for 
+flagged system alerts. 
+Inspected the availability 
+monitoring configurations, 
+example alerts, and remediation 
+tickets to determine that 
+Cloudflare defined availability 
+monitoring alert criteria, how alert 
+criteria would be flagged, and 
+identified authorized personnel for 
+flagged system alerts. 
+No exceptions noted. 
+ 
+Azure, Google, AWS, and the third-party colocation providers are responsible for implementing controls that 
+ensure the data center facilities are equipped with physical and environmental security safeguards. 
+A1.3 The entity tests recovery plan procedures supporting system recovery to meet its objectives.   
+A1.3.1 
+(BC-008) 
+Cloudflare performs business 
+continuity and disaster recovery 
+tests annually and ensures the 
+following: 
+• 
+Tests are executed with 
+relevant contingency teams 
+• 
+Test results are documented 
+• 
+Corrective actions are taken 
+for exceptions noted 
+• 
+Plans are updated based on 
+results 
+Inspected the most recent 
+business contingency and 
+disaster recovery plan test to 
+determine that Cloudflare 
+performed a test of the business 
+continuity and disaster recovery 
+plan during the period and 
+ensured the following:  
+• 
+Tests were executed with 
+relevant contingency teams 
+• 
+Test results were 
+documented 
+• 
+Corrective actions were taken 
+for exceptions noted 
+• 
+Plans were updated based on 
+results 
+No exceptions noted. 
+ 
+ 
+ 
+ADDITIONAL CRITERIA FOR CONFIDENTIALITY 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+C1.1 The entity identifies and maintains confidential information to meet the entity’s objectives related to confidentiality. 
+C1.1.1 
+(DM-025) 
+Cloudflare has a data 
+classification policy where data 
+classification criteria are reviewed, 
+approved by management, and 
+communicated to authorized 
+personnel at least annually.  Data 
+classification levels are reviewed 
+for compliance with the data 
+classification policy. 
+Inspected the data classification 
+policy on the policy hub to 
+determine that Cloudflare had a 
+data classification policy where 
+data classification criteria were 
+reviewed, approved by 
+management, and communicated 
+to authorized personnel at least 
+annually. 
+No exceptions noted. 
+C1.1.2 
+(DM-036) 
+Cloudflare has a data retention 
+policy which establishes 
+guidelines for the minimum and 
+maximum retention periods, 
+including customer and end user 
+data. 
+Inspected the data retention policy 
+to determine that Cloudflare had a 
+data retention policy which 
+established guidelines for the 
+minimum and maximum retention 
+periods, including customer and 
+end user data. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+53 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+C1.1.3 
+(IAM-040) 
+Cloudflare performs account and 
+access reviews at least quarterly; 
+corrective action is taken where 
+applicable. 
+Inspected the in-scope system 
+user accounts and access review 
+ticket for a sample of quarters 
+during the period to determine 
+that Cloudflare performed account 
+and access reviews at least 
+quarterly and corrective action 
+was taken, where applicable, for 
+each quarter sampled. 
+No exceptions noted. 
+C1.1.4 
+(IAM-056) 
+Access to the cryptographic 
+keystores is limited to authorized 
+personnel. 
+Inspected the user account listing 
+with access to the cryptographic 
+keystores and their associated job 
+titles with the assistance of the 
+security compliance manager to 
+determine that access to the 
+cryptographic keystores was 
+limited to authorized personnel. 
+No exceptions noted. 
+C1.1.5 
+(IAM-183) 
+To prevent unauthorized changes 
+to customer accounts, enterprise 
+customers may authorize 
+Cloudflare employees to make 
+changes on their behalf.  In the 
+event of an emergency, 
+authorized Cloudflare employees 
+may use the break glass feature 
+to make a customer change.  
+Break glass actions are logged 
+and account super admins are 
+notified.  Employees with access 
+to make changes to customer 
+accounts are restricted only to 
+authorized personnel. 
+ 
+Inspected the editing permissions, 
+logging configurations, e-mail 
+configurations, and an example 
+log generated during the period to 
+determine that to prevent 
+unauthorized changes to 
+customer accounts, enterprise 
+customers authorized Cloudflare 
+employees to make changes on 
+their behalf and in the event of an 
+emergency, authorized Cloudflare 
+employees used the break glass 
+feature to make a customer 
+change. 
+No exceptions noted. 
+Inspected the user account listing 
+with access to make changes to 
+customer accounts with the 
+assistance of the security 
+compliance manager to determine 
+that employees with access to 
+make changes to customer 
+accounts was restricted to 
+authorized personnel. 
+No exceptions noted. 
+C1.1.6 
+(DM-226) 
+Cloudflare redacts or deletes 
+customer and end user data 
+according to data subject 
+requests, retention periods 
+pursuant to the data retention 
+policy, and legal obligations. 
+Inspected the data retention 
+policy, the privacy policy, the 
+enterprise customer master 
+subscription agreement, and the 
+data deletion request process to 
+determine that Cloudflare 
+redacted or deleted customer and 
+end user data according to data 
+subject requests, retention 
+periods pursuant to the data 
+retention policy, and legal 
+obligations. 
+No exceptions noted. 
+ 
+ 
+ 
+ 
+ 
+ 
+54 
+ 
+ 
+ 
+ 
+Control # 
+Control Activity Specified 
+by the Service Organization 
+Test Applied by  
+the Service Auditor 
+Test Results  
+C1.2 The entity disposes of confidential information to meet the entity’s objectives related to confidentiality.   
+C1.2.1 
+(AM-005) 
+Cloudflare maintains policies and 
+procedures for the secure 
+handling of media including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+Inspected the media protection 
+policy and the hardware recycling 
+process document to determine 
+that Cloudflare maintained 
+policies and procedures for the 
+secure handling of media 
+including: 
+• 
+Secure access and storage 
+• 
+Secure transport 
+• 
+Secure erasure of media 
+• 
+Secure handling of media 
+• 
+Management of removable 
+media 
+No exceptions noted. 
+C1.2.2 
+(DM-036) 
+Cloudflare has a data retention 
+policy which establishes 
+guidelines for the minimum and 
+maximum retention periods, 
+including customer and end user 
+data. 
+Inspected the data retention policy 
+to determine that Cloudflare had a 
+data retention policy which 
+established guidelines for the 
+minimum and maximum retention 
+periods, including customer and 
+end user data. 
+No exceptions noted. 
+C1.2.3 
+(DM-226) 
+Cloudflare redacts or deletes 
+customer and end user data 
+according to data subject 
+requests, retention periods 
+pursuant to the data retention 
+policy, and legal obligations. 
+Inspected the data retention 
+policy, the privacy policy, the 
+enterprise customer master 
+subscription agreement, and the 
+data deletion request process to 
+determine that Cloudflare 
+redacted or deleted customer and 
+end user data according to data 
+subject requests, retention 
+periods pursuant to the data 
+retention policy, and legal 
+obligations. 
+No exceptions noted. 
+ 
