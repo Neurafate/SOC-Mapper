@@ -1,15 +1,13 @@
+# qualifiers.py
+
 import os
 import logging
 import pandas as pd
+import datetime
+import re
 from rag import retrieve_answers_for_controls, load_faiss_index
 from llm_analysis import call_ollama_api
 from sentence_transformers import SentenceTransformer
-import datetime
-import re
-from openpyxl import load_workbook
-from openpyxl.styles import PatternFill, Font
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def is_report_latest(df_chunks, model, index, top_k=3):
     """
@@ -258,13 +256,6 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         # Define color fills
         status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")  # Light green
         status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")  # Light red
-        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")    # Gold
-
-        # Apply color to header row (Row 1)
-        for col in range(1, 4):  # Assuming three columns: A, B, C
-            header_cell = ws.cell(row=1, column=col)
-            header_cell.fill = header_fill
-            header_cell.font = Font(bold=True)
 
         # Apply color coding to Status column (Column B)
         for row in range(data_start_row, ws.max_row + 1):
@@ -305,11 +296,47 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         logging.error("Error formatting Excel file: %s", e)
         return
 
-if __name__ == "__main__":
-    # Example usage (you can remove or adjust this as needed)
-    pdf_path = "path/to/soc2_report.pdf"
-    df_chunks_path = "path/to/df_chunks.csv"
-    faiss_index_path = "path/to/faiss_index"
-    excel_output_path = "path/to/output.xlsx"
+def evaluate_soc_report_minimal(df_chunks_path, faiss_index_path, top_k=3):
+    """
+    Minimal version of qualifier checks that:
+      1) Loads the chunked text and FAISS index for qualifiers.
+      2) Calls the three checks (is_report_latest, are_trust_principles_covered, is_audit_period_sufficient).
+      3) Returns a simple dictionary with pass/fail (True/False) for each check + an 'overall' key.
 
-    qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path)
+    DOES NOT write anything to Excel (used only to see if SOC is valid enough to continue).
+    """
+
+    try:
+        # 1. Load model, data, and index
+        model = SentenceTransformer('all-mpnet-base-v2')
+        df_chunks = pd.read_csv(df_chunks_path)
+        index = load_faiss_index(faiss_index_path)
+
+        # 2. Perform the checks
+        latest_result = is_report_latest(df_chunks, model, index, top_k=top_k)
+        trust_principles_result = are_trust_principles_covered(df_chunks, model, index, top_k=top_k)
+        audit_period_result = is_audit_period_sufficient(df_chunks, model, index, top_k=top_k)
+
+        # 3. Parse each result to a boolean pass/fail
+        latest_pass = latest_result.strip().lower().startswith("yes.")
+        trust_pass = trust_principles_result.strip().lower().startswith("yes.")
+        audit_pass = audit_period_result.strip().lower().startswith("yes.")
+
+        overall = (latest_pass and trust_pass and audit_pass)
+
+        return {
+            "latest": latest_pass,
+            "trust_principles": trust_pass,
+            "audit_period": audit_pass,
+            "overall": overall
+        }
+
+    except Exception as e:
+        logging.error(f"Error in minimal qualifier checks: {e}")
+        # If error, treat as fail or return a safe default
+        return {
+            "latest": False,
+            "trust_principles": False,
+            "audit_period": False,
+            "overall": False
+        }
