@@ -1,5 +1,3 @@
-# main.py
-
 import os
 import logging
 import threading
@@ -294,165 +292,7 @@ def format_compliance_sheet(excel_path):
 
         # Header styling
         header_fill = PatternFill(start_color="FFCCFF", end_color="FFCCFF", fill_type="solid")
-        bold_font = Font(bold=True)
-        for cell in ws[1]:
-            cell.fill = header_fill
-            cell.font = bold_font
-            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
-
-        wb.save(excel_path)
-        logging.info("Compliance Score sheet formatted successfully.")
-    except Exception as e:
-        logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
-
-def create_executive_summary(input_excel_path, output_excel_path):
-    """
-    Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
-    The summary includes:
-      - Legend explaining compliance score colors
-      - SOC Usability status
-      - Overall Compliance Percentage
-      - Domain-wise Compliance Breakdown
-      - Sub-Domain-wise Compliance Breakdown
-      - Count of fully met, partially met, and not met controls per domain and sub-domain
-    """
-    try:
-        logging.info("Generating Executive Summary...")
-
-        # Read the "Control Assessment" sheet using pandas
-        df = pd.read_excel(input_excel_path, sheet_name='Control Assessment')
-
-        # Debug: Print available columns to confirm naming
-        logging.info(f"Columns in 'Control Assessment': {list(df.columns)}")
-
-        # Expected column names
-        expected_columns = [
-            'Sr. No.',
-            'User Org Control Domain',
-            'User Org Control Sub-Domain',
-            'User Org Control Statement',
-            'Service Org Control IDs',
-            'Service Org Controls',
-            'Compliance Score',
-            'Detailed Analysis Explanation',
-            'Control Status'
-        ]
-
-        # Ensure all required columns exist
-        for col in expected_columns:
-            if col not in df.columns:
-                raise ValueError(f"Column '{col}' not found in 'Control Assessment'.")
-
-        # Data Cleaning: Trim whitespace and standardize capitalization in 'User Org Control Domain' and 'User Org Control Sub-Domain'
-        df['User Org Control Domain'] = df['User Org Control Domain'].astype(str).str.strip().str.title()
-        df['User Org Control Sub-Domain'] = df['User Org Control Sub-Domain'].astype(str).str.strip().str.title()
-
-        # Debug: Log unique domains and sub-domains
-        unique_domains = df['User Org Control Domain'].unique()
-        logging.info(f"Unique Domains ({len(unique_domains)}): {unique_domains}")
-
-        unique_subdomains = df['User Org Control Sub-Domain'].unique()
-        logging.info(f"Unique Sub-Domains ({len(unique_subdomains)}): {unique_subdomains}")
-
-        # Compute domain-wise compliance scores
-        domain_avg = df.groupby("User Org Control Domain")["Compliance Score"].mean().reset_index()
-        domain_avg["Compliance Score"] = domain_avg["Compliance Score"] / 100.0  # Convert to percentage
-
-        # Compute overall compliance score as the mean of domain-wise averages
-        overall_avg = domain_avg["Compliance Score"].mean()
-
-        # Count fully met, partially met, and not met controls per domain
-        domain_status_counts = df.groupby(["User Org Control Domain", "Control Status"]).size().unstack(fill_value=0).reset_index()
-
-        # Ensure all categories exist
-        for status in ["Fully Met", "Partially Met", "Not Met"]:
-            if status not in domain_status_counts.columns:
-                domain_status_counts[status] = 0
-
-        # Merge compliance score and control status counts
-        domain_summary = domain_avg.merge(domain_status_counts, on="User Org Control Domain", how="left")
-
-        # Verify that all domains are included after merging
-        if len(domain_summary) != len(unique_domains):
-            missing_domains = set(unique_domains) - set(domain_summary['User Org Control Domain'])
-            logging.warning(f"Missing Domains after merging: {missing_domains}")
-            # Optionally, add missing domains with default values
-            for domain in missing_domains:
-                domain_summary = domain_summary.append({
-                    "User Org Control Domain": domain,
-                    "Compliance Score": 0.0,
-                    "Fully Met": 0,
-                    "Partially Met": 0,
-                    "Not Met": 0
-                }, ignore_index=True)
-
-        # Compute sub-domain-wise compliance scores
-        subdomain_avg = df.groupby("User Org Control Sub-Domain")["Compliance Score"].mean().reset_index()
-        subdomain_avg["Compliance Score"] = subdomain_avg["Compliance Score"] / 100.0  # Convert to percentage
-
-        # Count fully met, partially met, and not met controls per sub-domain
-        subdomain_status_counts = df.groupby(["User Org Control Sub-Domain", "Control Status"]).size().unstack(fill_value=0).reset_index()
-
-        # Ensure all categories exist
-        for status in ["Fully Met", "Partially Met", "Not Met"]:
-            if status not in subdomain_status_counts.columns:
-                subdomain_status_counts[status] = 0
-
-        # Merge compliance score and control status counts for sub-domains
-        subdomain_summary = subdomain_avg.merge(subdomain_status_counts, on="User Org Control Sub-Domain", how="left")
-
-        # Verify that all sub-domains are included after merging
-        if len(subdomain_summary) != len(unique_subdomains):
-            missing_subdomains = set(unique_subdomains) - set(subdomain_summary['User Org Control Sub-Domain'])
-            logging.warning(f"Missing Sub-Domains after merging: {missing_subdomains}")
-            # Optionally, add missing sub-domains with default values
-            for subdomain in missing_subdomains:
-                subdomain_summary = subdomain_summary.append({
-                    "User Org Control Sub-Domain": subdomain,
-                    "Compliance Score": 0.0,
-                    "Fully Met": 0,
-                    "Partially Met": 0,
-                    "Not Met": 0
-                }, ignore_index=True)
-
-        # Load workbook with openpyxl
-        wb = load_workbook(input_excel_path)
-
-        # If an 'Executive Summary' sheet exists, remove it
-        if "Executive Summary" in wb.sheetnames:
-            del wb["Executive Summary"]
-
-        # Create a new sheet for the summary
-        ws = wb.create_sheet("Executive Summary")
-
-        # Insert Executive Summary as the first sheet
-        wb._sheets.insert(0, wb._sheets.pop(wb.sheetnames.index("Executive Summary")))
-
-        # Define styles using good color theory principles
-        # Use colorblind-friendly palette and ensure good contrast
-        legend_colors = {
-            ">90%": "CCFFCC",         # Very Light Green
-            "<90% & >75%": "FFF2CC",  # Very Light Amber/Orange
-            "<75%": "FFCCCC"          # Very Light Red
-        }
-
-        fill_legend = {
-            ">90%": PatternFill(start_color=legend_colors[">90%"], end_color=legend_colors[">90%"], fill_type="solid"),
-            "<90% & >75%": PatternFill(start_color=legend_colors["<90% & >75%"], end_color=legend_colors["<90% & >75%"], fill_type="solid"),
-            "<75%": PatternFill(start_color=legend_colors["<75%"], end_color=legend_colors["<75%"], fill_type="solid")
-        }
-
-        # Use the same colors for compliance_fill_colors to ensure consistency
-        compliance_fill_colors = {
-            "high": legend_colors[">90%"],            # Very Light Green
-            "medium": legend_colors["<90% & >75%"],  # Very Light Amber/Orange
-            "low": legend_colors["<75%"]             # Very Light Red
-        }
-
-        # **Updated Header Fill Color to Gold (#FFD700)**
-        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
-        # **Updated Header Font Color to Black (#000000)**
-        header_font = Font(bold=True, color="000000")  # Black
+        header_font = Font(bold=True)
         thin_border = Border(
             left=Side(border_style="thin"),
             right=Side(border_style="thin"),
@@ -472,9 +312,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # Define legend items
         legend_items = [
-            { "text": ">90%", "fill": fill_legend[">90%"] },
-            { "text": "<90% & >75%", "fill": fill_legend["<90% & >75%"] },
-            { "text": "<75%", "fill": fill_legend["<75%"] }
+            { "text": ">90%", "fill": PatternFill(start_color="CCFFCC", end_color="CCFFCC", fill_type="solid") },         # Very Light Green
+            { "text": "<90% & >75%", "fill": PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid") },  # Very Light Amber/Orange
+            { "text": "<75%", "fill": PatternFill(start_color="FFCCCC", end_color="FFCCCC", fill_type="solid") }          # Very Light Red
         ]
 
         # Write legend items starting from B3
@@ -487,7 +327,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
             ws[f'C{idx}'].border = thin_border
 
         # Apply borders to legend section
-        for row in range(2, 6):
+        for row in range(2, 5):
             for col in ['B', 'C']:
                 ws[f'{col}{row}'].border = thin_border
 
@@ -539,11 +379,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Color code the Overall Compliance Percentage based on the legend
         compliance_percentage_overall = overall_avg * 100  # Convert to percentage
         if compliance_percentage_overall >= 90:
-            fill_color_overall = compliance_fill_colors["high"]  # Very Light Green
+            fill_color_overall = "CCFFCC"  # Very Light Green
         elif 75 <= compliance_percentage_overall < 90:
-            fill_color_overall = compliance_fill_colors["medium"]  # Very Light Amber/Orange
+            fill_color_overall = "FFF2CC"  # Very Light Amber/Orange
         else:
-            fill_color_overall = compliance_fill_colors["low"]  # Very Light Red
+            fill_color_overall = "FFCCCC"  # Very Light Red
 
         ws['C10'].fill = PatternFill(start_color=fill_color_overall, end_color=fill_color_overall, fill_type="solid")
 
@@ -591,11 +431,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Very Light Green
+                fill_color = "CCFFCC"  # Very Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Very Light Amber/Orange
+                fill_color = "FFF2CC"  # Very Light Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Very Light Red
+                fill_color = "FFCCCC"  # Very Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -647,11 +487,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Sub-Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Very Light Green
+                fill_color = "CCFFCC"  # Very Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Very Light Amber/Orange
+                fill_color = "FFF2CC"  # Very Light Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Very Light Red
+                fill_color = "FFCCCC"  # Very Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -679,447 +519,448 @@ def create_executive_summary(input_excel_path, output_excel_path):
         wb.close()
 
         logging.info(f"Executive Summary created and saved to {output_excel_path}.")
+
     except Exception as e:
-        logging.error(f"Error creating Executive Summary: {e}", exc_info=True)
+        logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
 
-    def detect_control_id_pages(pdf_path, regex_to_cids):
-        """
-        Detects the pages where each Control ID appears in the PDF.
-        Groups Control IDs by their regex patterns and assigns the earliest page
-        where any Control ID in the group appears as the start page for all in the group.
+def detect_control_id_pages(pdf_path, regex_to_cids):
+    """
+    Detects the pages where each Control ID appears in the PDF.
+    Groups Control IDs by their regex patterns and assigns the earliest page
+    where any Control ID in the group appears as the start page for all in the group.
 
-        :param pdf_path: Path to the PDF file.
-        :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
-        :return: Dictionary mapping Control IDs to list of page numbers where they appear.
-        """
-        control_id_pages = {cid: [] for cids in regex_to_cids.values() for cid in cids}
-        try:
-            logging.info(f"Detecting pages for Control IDs in {pdf_path}.")
-            reader = PyPDF2.PdfReader(pdf_path)
-            for page_num, page in enumerate(reader.pages, start=1):
-                text = page.extract_text()
-                if text:
-                    for regex, cids in regex_to_cids.items():
-                        if re.search(regex, text, re.IGNORECASE):
-                            for cid in cids:
-                                if page_num not in control_id_pages[cid]:
-                                    control_id_pages[cid].append(page_num)
-                                    logging.debug(f"Found Control ID '{cid}' on page {page_num}.")
-            logging.info(f"Control ID pages detected: {control_id_pages}")
-            return control_id_pages
-        except Exception as e:
-            logging.error(f"Error in detect_control_id_pages: {e}", exc_info=True)
-            return control_id_pages  # Return what has been found so far
+    :param pdf_path: Path to the PDF file.
+    :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
+    :return: Dictionary mapping Control IDs to list of page numbers where they appear.
+    """
+    control_id_pages = {cid: [] for cids in regex_to_cids.values() for cid in cids}
+    try:
+        logging.info(f"Detecting pages for Control IDs in {pdf_path}.")
+        reader = PyPDF2.PdfReader(pdf_path)
+        for page_num, page in enumerate(reader.pages, start=1):
+            text = page.extract_text()
+            if text:
+                for regex, cids in regex_to_cids.items():
+                    if re.search(regex, text, re.IGNORECASE):
+                        for cid in cids:
+                            if page_num not in control_id_pages[cid]:
+                                control_id_pages[cid].append(page_num)
+                                logging.debug(f"Found Control ID '{cid}' on page {page_num}.")
+        logging.info(f"Control ID pages detected: {control_id_pages}")
+        return control_id_pages
+    except Exception as e:
+        logging.error(f"Error in detect_control_id_pages: {e}", exc_info=True)
+        return control_id_pages  # Return what has been found so far
 
-    def determine_page_range(control_id_pages, regex_to_cids):
-        """
-        Determines the start and end pages based on Control IDs' page occurrences, 
-        prioritizing the order of regex patterns.
+def determine_page_range(control_id_pages, regex_to_cids):
+    """
+    Determines the start and end pages based on Control IDs' page occurrences, 
+    prioritizing the order of regex patterns.
 
-        :param control_id_pages: Dictionary mapping Control IDs to list of page numbers.
-        :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
-        :return: Tuple (start_page, end_page)
-        """
-        start_pages = []
-        for regex, cids in regex_to_cids.items():
-            # Find the earliest page among all Control IDs in this regex group
-            pages = [min(control_id_pages[cid]) for cid in cids if control_id_pages.get(cid)]
-            if pages:
-                earliest_page = min(pages)
-                start_pages.append(earliest_page)
-                logging.info(f"Earliest page for regex '{regex}': {earliest_page}")
+    :param control_id_pages: Dictionary mapping Control IDs to list of page numbers.
+    :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
+    :return: Tuple (start_page, end_page)
+    """
+    start_pages = []
+    for regex, cids in regex_to_cids.items():
+        # Find the earliest page among all Control IDs in this regex group
+        pages = [min(control_id_pages[cid]) for cid in cids if control_id_pages.get(cid)]
+        if pages:
+            earliest_page = min(pages)
+            start_pages.append(earliest_page)
+            logging.info(f"Earliest page for regex '{regex}': {earliest_page}")
 
-        # The overall start_page is the minimum of all earliest_pages
-        start_page = min(start_pages) if start_pages else 1
-        logging.info(f"Overall start_page determined: {start_page}")
+    # The overall start_page is the minimum of all earliest_pages
+    start_page = min(start_pages) if start_pages else 1
+    logging.info(f"Overall start_page determined: {start_page}")
 
-        # The end_page is the maximum page across all Control IDs
-        all_pages = [p for pages in control_id_pages.values() for p in pages]
-        end_page = max(all_pages) if all_pages else 1
-        logging.info(f"Overall end_page determined: {end_page}")
+    # The end_page is the maximum page across all Control IDs
+    all_pages = [p for pages in control_id_pages.values() for p in pages]
+    end_page = max(all_pages) if all_pages else 1
+    logging.info(f"Overall end_page determined: {end_page}")
 
-        return (start_page, end_page)
+    return (start_page, end_page)
 
-    def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename):
-        """
-        The long-running background process that extracts PDF text,
-        builds a RAG system, processes the controls with LLM, merges
-        the analysis with the user-provided framework, performs qualifiers,
-        and finally creates an Executive Summary in the final Excel file.
-        """
-        try:
-            logging.info(f"Background processing started for task_id: {task_id}.")
+def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename):
+    """
+    The long-running background process that extracts PDF text,
+    builds a RAG system, processes the controls with LLM, merges
+    the analysis with the user-provided framework, performs qualifiers,
+    and finally creates an Executive Summary in the final Excel file.
+    """
+    try:
+        logging.info(f"Background processing started for task_id: {task_id}.")
 
-            # Validate page numbers
-            if start_page < 1 or end_page < start_page:
-                raise ValueError("Invalid page range: ensure that 1 <= start_page <= end_page.")
+        # Validate page numbers
+        if start_page < 1 or end_page < start_page:
+            raise ValueError("Invalid page range: ensure that 1 <= start_page <= end_page.")
 
-            # Adjust qualifiers' page range
-            qualifiers_start_page = 1
-            qualifiers_end_page = start_page - 1 if start_page > 1 else 1
+        # Adjust qualifiers' page range
+        qualifiers_start_page = 1
+        qualifiers_end_page = start_page - 1 if start_page > 1 else 1
 
-            # Timings
-            pre_llm_time = 40  # Updated total time for pre-LLM steps in seconds
-            pre_llm_steps = 6
-            pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Approximately 6.67 seconds per step
+        # Timings
+        pre_llm_time = 40  # Updated total time for pre-LLM steps in seconds
+        pre_llm_steps = 6
+        pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Approximately 6.67 seconds per step
 
-            # Determine qualifier_time based on model_name
-            if model_name.lower() == 'phi4':
-                qualifier_time = 21  # Qualifier processing time for Phi4
-                logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
-            else:
-                qualifier_time = 9   # Qualifier processing time for Llama3.1
-                logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
+        # Determine qualifier_time based on model_name
+        if model_name.lower() == 'phi4':
+            qualifier_time = 21  # Qualifier processing time for Phi4
+            logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
+        else:
+            qualifier_time = 9   # Qualifier processing time for Llama3.1
+            logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
 
-            # Determine LLM processing time per control
-            llm_time_per_control = 7 if model_name.lower() == 'phi4' else 3  # Phi4:7s, Llama3.1:3s
+        # Determine LLM processing time per control
+        llm_time_per_control = 7 if model_name.lower() == 'phi4' else 3  # Phi4:7s, Llama3.1:3s
 
-            num_controls = count_controls(excel_path)
-            llm_time = num_controls * llm_time_per_control  # Total LLM processing time
+        num_controls = count_controls(excel_path)
+        llm_time = num_controls * llm_time_per_control  # Total LLM processing time
 
-            # Total ETA includes pre_llm_time, llm_time, and qualifier_time
-            total_eta = pre_llm_time + llm_time + qualifier_time
-            progress_data[task_id]['eta'] = int(total_eta)
-            progress_data[task_id]['progress'] = 0.0
-            progress_data[task_id]['status'] = "Initializing..."
-            progress_data[task_id]['download_url'] = None
-            progress_data[task_id]['error'] = None
-            progress_data[task_id]['num_controls'] = num_controls
-            progress_data[task_id]['continue_processing'] = False  # New flag to continue after invalid
-            progress_data[task_id]['cancelled'] = False
+        # Total ETA includes pre_llm_time, llm_time, and qualifier_time
+        total_eta = pre_llm_time + llm_time + qualifier_time
+        progress_data[task_id]['eta'] = int(total_eta)
+        progress_data[task_id]['progress'] = 0.0
+        progress_data[task_id]['status'] = "Initializing..."
+        progress_data[task_id]['download_url'] = None
+        progress_data[task_id]['error'] = None
+        progress_data[task_id]['num_controls'] = num_controls
+        progress_data[task_id]['continue_processing'] = False  # New flag to continue after invalid
+        progress_data[task_id]['cancelled'] = False
 
-            # Progress increments
-            progress_increment_pre_llm = 20.0 / pre_llm_steps  # 20% divided by 6 steps ≈ 3.33% per step
-            progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0  # 70% allocated for LLM
-            progress_increment_qualifier = 10.0  # 10% allocated for qualifiers
+        # Progress increments
+        progress_increment_pre_llm = 20.0 / pre_llm_steps  # 20% divided by 6 steps ≈ 3.33% per step
+        progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0  # 70% allocated for LLM
+        progress_increment_qualifier = 10.0  # 10% allocated for qualifiers
 
-            # Thread-safe lock for progress_data
-            from threading import Lock
-            progress_lock = Lock()
+        # Thread-safe lock for progress_data
+        from threading import Lock
+        progress_lock = Lock()
 
-            # Helper function to check for cancellation
-            def check_cancel(tid):
-                if progress_data[tid].get('cancelled'):
-                    logging.info(f"Task {tid} has been cancelled.")
-                    with progress_lock:
-                        progress_data[tid]['status'] = "Cancelled"
-                        progress_data[tid]['progress'] = 0
-                        progress_data[tid]['eta'] = 0
-                        progress_data[tid]['error'] = "Task was cancelled by the user."
-                    raise Exception("Task cancelled by user.")
-
-            # -------------- Pre-LLM phases --------------
-            pre_llm_phase_descriptions = [
-                "Extracting full text for qualifiers...",
-                "Chunking full text for qualifiers...",
-                "Building RAG system for qualifiers...",
-                "Extracting controls' text...",
-                "Chunking controls' text...",
-                "Building RAG system for controls..."
-            ]
-
-            # Ensure Control IDs are provided
-            if not control_id.strip():
-                raise ValueError("No Control IDs were selected. Please provide Control IDs before continuing.")
-
-            for idx, step_description in enumerate(pre_llm_phase_descriptions):
-                check_cancel(task_id)
+        # Helper function to check for cancellation
+        def check_cancel(tid):
+            if progress_data[tid].get('cancelled'):
+                logging.info(f"Task {tid} has been cancelled.")
                 with progress_lock:
-                    progress_data[task_id]['status'] = step_description
-                logging.info(f"Task {task_id}: {step_description}, ETA: {format_eta(progress_data[task_id]['eta'])}")
+                    progress_data[tid]['status'] = "Cancelled"
+                    progress_data[tid]['progress'] = 0
+                    progress_data[tid]['eta'] = 0
+                    progress_data[tid]['error'] = "Task was cancelled by the user."
+                raise Exception("Task cancelled by user.")
 
-                if idx == 0:
-                    # 1: Extracting full text for qualifiers
-                    full_text_output_path = os.path.join(app.config['RAG_OUTPUTS'], f"full_text_{task_id}.txt")
-                    full_extracted_text = extract_text_from_pdf(pdf_path, qualifiers_start_page, qualifiers_end_page, full_text_output_path)
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(full_text_output_path):
-                        raise FileNotFoundError(f"Extracted full text file not found at {full_text_output_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
+        # -------------- Pre-LLM phases --------------
+        pre_llm_phase_descriptions = [
+            "Extracting full text for qualifiers...",
+            "Chunking full text for qualifiers...",
+            "Building RAG system for qualifiers...",
+            "Extracting controls' text...",
+            "Chunking controls' text...",
+            "Building RAG system for controls..."
+        ]
 
-                elif idx == 1:
-                    # 2: Chunking full text for qualifiers
-                    chunk_size = app.config['CHUNK_SIZE']
-                    full_text_chunks = chunk_text_without_patterns(full_extracted_text, chunk_size)
-                    df_qualifier_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
-                    pd.DataFrame({"Content": full_text_chunks}).to_csv(df_qualifier_chunks_path, index=False)
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(df_qualifier_chunks_path):
-                        raise FileNotFoundError(f"Qualifier chunks file not found at {df_qualifier_chunks_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
+        # Ensure Control IDs are provided
+        if not control_id.strip():
+            raise ValueError("No Control IDs were selected. Please provide Control IDs before continuing.")
 
-                elif idx == 2:
-                    # 3: Building RAG system for qualifiers
-                    faiss_index_qualifiers_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx")
-                    build_rag_system_with_parser(
-                        pdf_path=pdf_path,
-                        start_page=qualifiers_start_page,
-                        end_page=qualifiers_end_page,
-                        control_patterns=None,
-                        output_text_path=full_text_output_path,
-                        df_chunks_path=df_qualifier_chunks_path,
-                        faiss_index_path=faiss_index_qualifiers_path,
-                        chunk_size=chunk_size
-                    )
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(faiss_index_qualifiers_path):
-                        raise FileNotFoundError(f"Qualifiers FAISS index not found at {faiss_index_qualifiers_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
-
-                elif idx == 3:
-                    # 4: Extracting controls' text
-                    controls_output_text_path = os.path.join(app.config['RAG_OUTPUTS'], f"controls_text_{task_id}.txt")
-                    controls_extracted_text = extract_text_from_pdf(pdf_path, start_page, end_page, controls_output_text_path)
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(controls_output_text_path):
-                        raise FileNotFoundError(f"Controls extracted text file not found at {controls_output_text_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
-
-                elif idx == 4:
-                    # 5: Chunking controls' text
-                    control_ids_raw = control_id
-                    control_ids = [cid.strip() for cid in control_ids_raw.split(',') if cid.strip()]
-
-                    # Generate regex patterns
-                    control_patterns = [generate_regex_from_sample(cid) for cid in control_ids]
-                    logging.info(f"Generated regex patterns: {control_patterns}")
-
-                    # Chunk text using the generated regex patterns
-                    control_text_chunks = chunk_text_by_multiple_patterns(controls_extracted_text, control_patterns)
-                    df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
-                    control_text_chunks.to_csv(df_control_chunks_path, index=False)
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(df_control_chunks_path):
-                        raise FileNotFoundError(f"Control chunks file not found at {df_control_chunks_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
-
-                elif idx == 5:
-                    # 6: Building RAG system for controls
-                    faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
-                    # Reuse 'control_patterns' from chunking
-                    build_rag_system_with_parser(
-                        pdf_path=pdf_path,
-                        start_page=start_page,
-                        end_page=end_page,
-                        control_patterns=control_patterns,
-                        output_text_path=controls_output_text_path,
-                        df_chunks_path=df_control_chunks_path,
-                        faiss_index_path=faiss_index_controls_path,
-                        chunk_size=app.config['CHUNK_SIZE']
-                    )
-                    sleep_seconds(task_id, pre_llm_step_time)
-                    if not os.path.exists(faiss_index_controls_path):
-                        raise FileNotFoundError(f"Controls FAISS index not found at {faiss_index_controls_path}")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += progress_increment_pre_llm
-
-            # ------------------------------------------
-            # NEW: Evaluate SOC at the start (lightweight check)
-            # ------------------------------------------
+        for idx, step_description in enumerate(pre_llm_phase_descriptions):
+            check_cancel(task_id)
             with progress_lock:
-                progress_data[task_id]['status'] = "Evaluating SOC report validity..."
-            logging.info(f"Task {task_id}: Evaluating SOC report validity.")
+                progress_data[task_id]['status'] = step_description
+            logging.info(f"Task {task_id}: {step_description}, ETA: {format_eta(progress_data[task_id]['eta'])}")
 
-            # Perform minimal qualifier check
-            qualifiers_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
-            qualifiers_faiss_index_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx")
-            qualifier_results = evaluate_soc_report_minimal(qualifiers_chunks_path, qualifiers_faiss_index_path, top_k=3)
+            if idx == 0:
+                # 1: Extracting full text for qualifiers
+                full_text_output_path = os.path.join(app.config['RAG_OUTPUTS'], f"full_text_{task_id}.txt")
+                full_extracted_text = extract_text_from_pdf(pdf_path, qualifiers_start_page, qualifiers_end_page, full_text_output_path)
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(full_text_output_path):
+                    raise FileNotFoundError(f"Extracted full text file not found at {full_text_output_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
 
-            if qualifier_results["overall"]:
-                logging.info(f"Task {task_id}: SOC report is valid. Proceeding with further processing.")
+            elif idx == 1:
+                # 2: Chunking full text for qualifiers
+                chunk_size = app.config['CHUNK_SIZE']
+                full_text_chunks = chunk_text_without_patterns(full_extracted_text, chunk_size)
+                df_qualifier_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
+                pd.DataFrame({"Content": full_text_chunks}).to_csv(df_qualifier_chunks_path, index=False)
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(df_qualifier_chunks_path):
+                    raise FileNotFoundError(f"Qualifier chunks file not found at {df_qualifier_chunks_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
+
+            elif idx == 2:
+                # 3: Building RAG system for qualifiers
+                faiss_index_qualifiers_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx")
+                build_rag_system_with_parser(
+                    pdf_path=pdf_path,
+                    start_page=qualifiers_start_page,
+                    end_page=qualifiers_end_page,
+                    control_patterns=None,
+                    output_text_path=full_text_output_path,
+                    df_chunks_path=df_qualifier_chunks_path,
+                    faiss_index_path=faiss_index_qualifiers_path,
+                    chunk_size=chunk_size
+                )
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(faiss_index_qualifiers_path):
+                    raise FileNotFoundError(f"Qualifiers FAISS index not found at {faiss_index_qualifiers_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
+
+            elif idx == 3:
+                # 4: Extracting controls' text
+                controls_output_text_path = os.path.join(app.config['RAG_OUTPUTS'], f"controls_text_{task_id}.txt")
+                controls_extracted_text = extract_text_from_pdf(pdf_path, start_page, end_page, controls_output_text_path)
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(controls_output_text_path):
+                    raise FileNotFoundError(f"Controls extracted text file not found at {controls_output_text_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
+
+            elif idx == 4:
+                # 5: Chunking controls' text
+                control_ids_raw = control_id
+                control_ids = [cid.strip() for cid in control_ids_raw.split(',') if cid.strip()]
+
+                # Generate regex patterns
+                control_patterns = [generate_regex_from_sample(cid) for cid in control_ids]
+                logging.info(f"Generated regex patterns: {control_patterns}")
+
+                # Chunk text using the generated regex patterns
+                control_text_chunks = chunk_text_by_multiple_patterns(controls_extracted_text, control_patterns)
+                df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
+                control_text_chunks.to_csv(df_control_chunks_path, index=False)
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(df_control_chunks_path):
+                    raise FileNotFoundError(f"Control chunks file not found at {df_control_chunks_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
+
+            elif idx == 5:
+                # 6: Building RAG system for controls
+                faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
+                # Reuse 'control_patterns' from chunking
+                build_rag_system_with_parser(
+                    pdf_path=pdf_path,
+                    start_page=start_page,
+                    end_page=end_page,
+                    control_patterns=control_patterns,
+                    output_text_path=controls_output_text_path,
+                    df_chunks_path=df_control_chunks_path,
+                    faiss_index_path=faiss_index_controls_path,
+                    chunk_size=app.config['CHUNK_SIZE']
+                )
+                sleep_seconds(task_id, pre_llm_step_time)
+                if not os.path.exists(faiss_index_controls_path):
+                    raise FileNotFoundError(f"Controls FAISS index not found at {faiss_index_controls_path}")
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
+
+        # ------------------------------------------
+        # NEW: Evaluate SOC at the start (lightweight check)
+        # ------------------------------------------
+        with progress_lock:
+            progress_data[task_id]['status'] = "Evaluating SOC report validity..."
+        logging.info(f"Task {task_id}: Evaluating SOC report validity.")
+
+        # Perform minimal qualifier check
+        qualifiers_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
+        qualifiers_faiss_index_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx")
+        qualifier_results = evaluate_soc_report_minimal(qualifiers_chunks_path, qualifiers_faiss_index_path, top_k=3)
+
+        if qualifier_results.get("overall", False):
+            logging.info(f"Task {task_id}: SOC report is valid. Proceeding with further processing.")
+            with progress_lock:
+                progress_data[task_id]['progress'] += 5.0  # Increment progress
+                progress_data[task_id]['status'] = "SOC report is valid. Continuing processing..."
+        else:
+            logging.warning(f"Task {task_id}: SOC report is INVALID. Waiting for user decision to continue or cancel.")
+            with progress_lock:
+                progress_data[task_id]['status'] = "SOC report is INVALID. Awaiting user decision to continue or cancel."
+            # Wait until the user sets 'continue_processing' or 'cancelled'
+            while not progress_data[task_id].get('continue_processing', False) and not progress_data[task_id].get('cancelled', False):
+                time.sleep(1)  # Wait for 1 second before checking again
+
+            if progress_data[task_id].get('cancelled', False):
+                logging.info(f"Task {task_id} was cancelled by the user after SOC report invalidity.")
+                return  # Exit the background_process
+
+            if progress_data[task_id].get('continue_processing', False):
+                logging.info(f"Task {task_id}: User chose to continue despite SOC report invalidity.")
                 with progress_lock:
                     progress_data[task_id]['progress'] += 5.0  # Increment progress
-                    progress_data[task_id]['status'] = "SOC report is valid. Continuing processing..."
-            else:
-                logging.warning(f"Task {task_id}: SOC report is INVALID. Waiting for user decision to continue or cancel.")
-                with progress_lock:
-                    progress_data[task_id]['status'] = "SOC report is INVALID. Awaiting user decision to continue or cancel."
-                # Wait until the user sets 'continue_processing' or 'cancelled'
-                while not progress_data[task_id].get('continue_processing', False) and not progress_data[task_id].get('cancelled', False):
-                    time.sleep(1)  # Wait for 1 second before checking again
+                    progress_data[task_id]['status'] = "User chose to continue processing despite SOC report invalidity."
 
-                if progress_data[task_id].get('cancelled', False):
-                    logging.info(f"Task {task_id} was cancelled by the user after SOC report invalidity.")
-                    return  # Exit the background_process
+        # ---------------------- LLM Analysis ----------------------
+        # Determine Control IDs order
+        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
 
-                if progress_data[task_id].get('continue_processing', False):
-                    logging.info(f"Task {task_id}: User chose to continue despite SOC report invalidity.")
-                    with progress_lock:
-                        progress_data[task_id]['progress'] += 5.0  # Increment progress
-                        progress_data[task_id]['status'] = "User chose to continue processing despite SOC report invalidity."
+        # Detect Control IDs and their pages
+        # To handle shared regex patterns, group Control IDs by their regex
+        repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
+        regex_to_cids = {}
+        for pattern_dict in repeating_patterns:
+            regex = pattern_dict.get("Regex Pattern")
+            cid = pattern_dict.get("Example Control ID")
+            if regex and cid and cid in control_ids_order:
+                regex_to_cids.setdefault(regex, []).append(cid)
 
-            # ---------------------- LLM Analysis ----------------------
-            # Determine Control IDs order
-            control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
-            logging.info(f"Control IDs order for page range determination: {control_ids_order}")
+        if not regex_to_cids:
+            raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
 
-            # Detect Control IDs and their pages
-            # To handle shared regex patterns, group Control IDs by their regex
-            repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
-            regex_to_cids = {}
-            for pattern_dict in repeating_patterns:
-                regex = pattern_dict.get("Regex Pattern")
-                cid = pattern_dict.get("Example Control ID")
-                if regex and cid and cid in control_ids_order:
-                    regex_to_cids.setdefault(regex, []).append(cid)
+        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
 
-            if not regex_to_cids:
-                raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
+        # Determine page range based on Control IDs with prioritization
+        start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
+        logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
 
-            control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+        # Process control framework with RAG
+        check_cancel(task_id)
+        with progress_lock:
+            progress_data[task_id]['status'] = "Processing control framework with RAG..."
+        logging.info(f"Task {task_id}: Processing control framework with RAG. ETA: {format_eta(progress_data[task_id]['eta'])}")
+        processed_framework_path = os.path.join(app.config['RAG_OUTPUTS'], f"cybersecurity_framework_with_answers_{task_id}.xlsx")
+        faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
+        df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
 
-            # Determine page range based on Control IDs with prioritization
-            start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
-            logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
+        process_cybersecurity_framework_with_rag(
+            excel_input_path=excel_path,
+            output_path=processed_framework_path,
+            faiss_index_path=faiss_index_controls_path,
+            df_chunks_path=df_control_chunks_path,
+            top_k=3
+        )
+        check_cancel(task_id)
+        if not os.path.exists(processed_framework_path):
+            raise FileNotFoundError(f"Processed framework file not found at {processed_framework_path}")
 
-            # Process control framework with RAG
+        # ---------------------- LLM Processing ----------------------
+        # Analyze controls with LLM
+        with progress_lock:
+            progress_data[task_id]['status'] = "Analyzing controls with LLM..."
+        logging.info(f"Task {task_id}: Analyzing controls with LLM. ETA: {format_eta(progress_data[task_id]['eta'])}")
+        analysis_df = load_responses(processed_framework_path)
+        analyzed_rows = []
+
+        for i, row in analysis_df.iterrows():
             check_cancel(task_id)
             with progress_lock:
-                progress_data[task_id]['status'] = "Processing control framework with RAG..."
-            logging.info(f"Task {task_id}: Processing control framework with RAG. ETA: {format_eta(progress_data[task_id]['eta'])}")
-            processed_framework_path = os.path.join(app.config['RAG_OUTPUTS'], f"cybersecurity_framework_with_answers_{task_id}.xlsx")
-            faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
-            df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
+                progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
+            logging.info(f"Task {task_id}: Analyzing control {i+1}/{num_controls}. ETA: {format_eta(progress_data[task_id]['eta'])}")
 
-            process_cybersecurity_framework_with_rag(
-                excel_input_path=excel_path,
-                output_path=processed_framework_path,
-                faiss_index_path=faiss_index_controls_path,
-                df_chunks_path=df_control_chunks_path,
-                top_k=3
+            # Sleep for LLM processing time per control
+            sleep_seconds(task_id, llm_time_per_control)
+
+            # Process exactly one control at a time, passing the chosen model
+            processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
+            analyzed_rows.append(processed_row)
+            with progress_lock:
+                progress_data[task_id]['progress'] += progress_increment_llm
+
+        analyzed_df = pd.concat(analyzed_rows, ignore_index=True) if analyzed_rows else pd.DataFrame()
+
+        # **Call remove_not_met_controls after LLM analysis and Explanation is populated**
+        analyzed_df = remove_not_met_controls(analyzed_df)
+
+        # Save analyzed_df to Excel
+        analysis_output_path = os.path.join(app.config['RESULTS_FOLDER'], f"Framework_Analysis_Completed_{task_id}.xlsx")
+        analyzed_df.to_excel(analysis_output_path, index=False)
+        logging.info(f"Task {task_id}: LLM analysis completed at {analysis_output_path}")
+        check_cancel(task_id)
+
+        # ---------------------- Merge and Finalize ----------------------
+        # Merge and finalize
+        framework_df = load_excel_file(excel_path)
+        framework_df, error = map_columns_by_position(framework_df)
+        if error:
+            raise ValueError(error)
+        
+        merged_df = merge_dataframes(framework_df, analyzed_df)
+        final_df, error = create_final_dataframe(merged_df)
+        if error:
+            raise ValueError(error)
+
+        final_output_path = os.path.join(app.config['EXCEL_FOLDER'], f"Final_Control_Status_{task_id}.xlsx")
+        save_to_excel(final_df, final_output_path)
+        logging.info(f"Task {task_id}: Final control status saved to {final_output_path}")
+        with progress_lock:
+            progress_data[task_id]['progress'] = 90.0
+        rename_sheet_to_soc_mapping(final_output_path)
+        check_cancel(task_id)
+
+        # ---------------------- Qualifier Checks ----------------------
+        # Qualifier checks
+        with progress_lock:
+            progress_data[task_id]['status'] = "Performing qualifier checks..."
+        logging.info(f"Task {task_id}: Performing qualifier checks. ETA: {format_eta(progress_data[task_id]['eta'])}")
+        try:
+            qualify_soc_report(
+                pdf_path=pdf_path,
+                df_chunks_path=os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv"),
+                faiss_index_path=os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx"),
+                excel_output_path=final_output_path
             )
-            check_cancel(task_id)
-            if not os.path.exists(processed_framework_path):
-                raise FileNotFoundError(f"Processed framework file not found at {processed_framework_path}")
+            logging.info(f"Task {task_id}: Qualifier checks completed.")
+        except Exception as q_ex:
+            logging.error(f"Error during qualifier checks: {q_ex}", exc_info=True)
 
-            # ---------------------- LLM Processing ----------------------
-            # Analyze controls with LLM
+        format_qualifier_sheet(final_output_path)
+
+        # ---------------------- Qualifier Time Processing ----------------------
+        # Sleep for qualifier_time to account for processing time
+        with progress_lock:
+            progress_data[task_id]['status'] = "Finalizing qualifier processing..."
+        logging.info(f"Task {task_id}: Finalizing qualifier processing. ETA: {format_eta(progress_data[task_id]['eta'])}")
+        sleep_seconds(task_id, qualifier_time)
+        with progress_lock:
+            progress_data[task_id]['eta'] -= qualifier_time
+            progress_data[task_id]['progress'] += progress_increment_qualifier
+        check_cancel(task_id)
+
+        # ---------------------- Executive Summary ----------------------
+        # Create Executive Summary in a new final file
+        with progress_lock:
+            progress_data[task_id]['status'] = "Creating Executive Summary..."
+        logging.info(f"Task {task_id}: Creating Executive Summary. ETA: {format_eta(progress_data[task_id]['eta'])}")
+
+        # Generate the final filename based on input filenames
+        soc_report_basename = os.path.splitext(os.path.basename(soc_report_filename))[0]
+        framework_basename = os.path.splitext(os.path.basename(framework_filename))[0]
+        final_filename = f"{soc_report_basename}_Baselined_Vs_{framework_basename}.xlsx"
+        summary_output_path = os.path.join(app.config['EXCEL_FOLDER'], final_filename)
+
+        create_executive_summary(final_output_path, summary_output_path)
+        logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
+
+        # Set the download URL to the final summarized Excel file
+        with progress_lock:
+            progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
+
+        with progress_lock:
+            progress_data[task_id]['progress'] = 100.0
+            progress_data[task_id]['eta'] = 0
+            progress_data[task_id]['status'] = "Task completed successfully."
+        logging.info(f"Task {task_id}: Task completed successfully.")
+
+    except Exception as e:
+        logging.error(f"Error in background_process (task_id: {task_id}): {e}", exc_info=True)
+        if "cancelled" in str(e).lower():
+            # Mark the task as cancelled
             with progress_lock:
-                progress_data[task_id]['status'] = "Analyzing controls with LLM..."
-            logging.info(f"Task {task_id}: Analyzing controls with LLM. ETA: {format_eta(progress_data[task_id]['eta'])}")
-            analysis_df = load_responses(processed_framework_path)
-            analyzed_rows = []
-
-            for i, row in analysis_df.iterrows():
-                check_cancel(task_id)
-                with progress_lock:
-                    progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
-                logging.info(f"Task {task_id}: Analyzing control {i+1}/{num_controls}. ETA: {format_eta(progress_data[task_id]['eta'])}")
-
-                # Sleep for LLM processing time per control
-                sleep_seconds(task_id, llm_time_per_control)
-
-                # Process exactly one control at a time, passing the chosen model
-                processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
-                analyzed_rows.append(processed_row)
-                with progress_lock:
-                    progress_data[task_id]['progress'] += progress_increment_llm
-
-            analyzed_df = pd.concat(analyzed_rows, ignore_index=True) if analyzed_rows else pd.DataFrame()
-
-            # **Call remove_not_met_controls after LLM analysis and Explanation is populated**
-            analyzed_df = remove_not_met_controls(analyzed_df)
-
-            # Save analyzed_df to Excel
-            analysis_output_path = os.path.join(app.config['RESULTS_FOLDER'], f"Framework_Analysis_Completed_{task_id}.xlsx")
-            analyzed_df.to_excel(analysis_output_path, index=False)
-            logging.info(f"Task {task_id}: LLM analysis completed at {analysis_output_path}")
-            check_cancel(task_id)
-
-            # ---------------------- Merge and Finalize ----------------------
-            # Merge and finalize
-            framework_df = load_excel_file(excel_path)
-            framework_df, error = map_columns_by_position(framework_df)
-            if error:
-                raise ValueError(error)
-
-            merged_df = merge_dataframes(framework_df, analyzed_df)
-            final_df, error = create_final_dataframe(merged_df)
-            if error:
-                raise ValueError(error)
-
-            final_output_path = os.path.join(app.config['EXCEL_FOLDER'], f"Final_Control_Status_{task_id}.xlsx")
-            save_to_excel(final_df, final_output_path)
-            logging.info(f"Task {task_id}: Final control status saved to {final_output_path}")
-            with progress_lock:
-                progress_data[task_id]['progress'] = 90.0
-            rename_sheet_to_soc_mapping(final_output_path)
-            check_cancel(task_id)
-
-            # ---------------------- Qualifier Checks ----------------------
-            # Qualifier checks
-            with progress_lock:
-                progress_data[task_id]['status'] = "Performing qualifier checks..."
-            logging.info(f"Task {task_id}: Performing qualifier checks. ETA: {format_eta(progress_data[task_id]['eta'])}")
-            try:
-                qualify_soc_report(
-                    pdf_path=pdf_path,
-                    df_chunks_path=os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv"),
-                    faiss_index_path=os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx"),
-                    excel_output_path=final_output_path
-                )
-                logging.info(f"Task {task_id}: Qualifier checks completed.")
-            except Exception as q_ex:
-                logging.error(f"Error during qualifier checks: {q_ex}", exc_info=True)
-
-            format_qualifier_sheet(final_output_path)
-
-            # ---------------------- Qualifier Time Processing ----------------------
-            # Sleep for qualifier_time to account for processing time
-            with progress_lock:
-                progress_data[task_id]['status'] = "Finalizing qualifier processing..."
-            logging.info(f"Task {task_id}: Finalizing qualifier processing. ETA: {format_eta(progress_data[task_id]['eta'])}")
-            sleep_seconds(task_id, qualifier_time)
-            with progress_lock:
-                progress_data[task_id]['eta'] -= qualifier_time
-                progress_data[task_id]['progress'] += progress_increment_qualifier
-            check_cancel(task_id)
-
-            # ---------------------- Executive Summary ----------------------
-            # Create Executive Summary in a new final file
-            with progress_lock:
-                progress_data[task_id]['status'] = "Creating Executive Summary..."
-            logging.info(f"Task {task_id}: Creating Executive Summary. ETA: {format_eta(progress_data[task_id]['eta'])}")
-
-            # Generate the final filename based on input filenames
-            soc_report_basename = os.path.splitext(os.path.basename(soc_report_filename))[0]
-            framework_basename = os.path.splitext(os.path.basename(framework_filename))[0]
-            final_filename = f"{soc_report_basename}_Baselined_Vs_{framework_basename}.xlsx"
-            summary_output_path = os.path.join(app.config['EXCEL_FOLDER'], final_filename)
-
-            create_executive_summary(final_output_path, summary_output_path)
-            logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
-
-            # Set the download URL to the final summarized Excel file
-            with progress_lock:
-                progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
-
-            with progress_lock:
-                progress_data[task_id]['progress'] = 100.0
+                progress_data[task_id]['cancelled'] = True
+                progress_data[task_id]['status'] = "Cancelled"
+                progress_data[task_id]['progress'] = 0
                 progress_data[task_id]['eta'] = 0
-                progress_data[task_id]['status'] = "Task completed successfully."
-            logging.info(f"Task {task_id}: Task completed successfully.")
-
-        except Exception as e:
-            logging.error(f"Error in background_process (task_id: {task_id}): {e}", exc_info=True)
-            if "cancelled" in str(e).lower():
-                # Mark the task as cancelled
-                with progress_lock:
-                    progress_data[task_id]['cancelled'] = True
-                    progress_data[task_id]['status'] = "Cancelled"
-                    progress_data[task_id]['progress'] = 0
-                    progress_data[task_id]['eta'] = 0
-                    progress_data[task_id]['error'] = "Task was cancelled by the user."
-            else:
-                with progress_lock:
-                    progress_data[task_id]['status'] = "Error occurred."
-                    progress_data[task_id]['error'] = str(e)
-                    progress_data[task_id]['eta'] = 0
+                progress_data[task_id]['error'] = "Task was cancelled by the user."
+        else:
+            with progress_lock:
+                progress_data[task_id]['status'] = "Error occurred."
+                progress_data[task_id]['error'] = str(e)
+                progress_data[task_id]['eta'] = 0
 
 # -------------------------------------------------------
 # NEW ENDPOINT: /detect_control_ids
@@ -1352,7 +1193,6 @@ def sse_progress(task_id):
     response.headers['X-Accel-Buffering'] = 'no'  # ✅ Disables buffering
 
     return response
-
 
 @app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
