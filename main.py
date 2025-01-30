@@ -744,9 +744,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         qualifiers_end_page = start_page - 1 if start_page > 1 else 1
         
         # Timings
-        pre_llm_time = 20  # Total time for pre-LLM steps in seconds
+        pre_llm_time = 40  # Updated total time for pre-LLM steps in seconds
         pre_llm_steps = 6
-        pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Approximately 3.33 seconds per step
+        pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Approximately 6.67 seconds per step
         
         # Determine qualifier_time based on model_name
         if model_name.lower() == 'phi4':
@@ -962,8 +962,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             
             # Sleep for LLM processing time per control
             sleep_seconds(task_id, llm_time_per_control)
-            with progress_lock:
-                progress_data[task_id]['eta'] -= llm_time_per_control
+            # **Removed redundant ETA decrement**
+            # progress_data[task_id]['eta'] -= llm_time_per_control  # Removed to prevent double decrement
             
             # Process exactly one control at a time, passing the chosen model
             processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
@@ -1020,6 +1020,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         
         format_qualifier_sheet(final_output_path)
         
+        # ---------------------- Qualifier Time Processing ----------------------
         # Sleep for qualifier_time to account for processing time
         with progress_lock:
             progress_data[task_id]['status'] = "Finalizing qualifier processing..."
