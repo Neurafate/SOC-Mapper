@@ -306,12 +306,6 @@ def format_compliance_sheet(excel_path):
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
 
-import pandas as pd
-import logging
-from openpyxl import load_workbook
-from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
-from openpyxl.utils import get_column_letter
-
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
@@ -438,9 +432,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Define styles using good color theory principles
         # Use colorblind-friendly palette and ensure good contrast
         legend_colors = {
-            ">90%": "00B050",         # Green
-            "<90% & >75%": "FFC000",  # Amber/Orange
-            "<75%": "FF0000"          # Red
+            ">90%": "92D050",         # Light Green
+            "<90% & >75%": "FFD966",  # Light Amber/Orange
+            "<75%": "FF9999"          # Light Red
         }
 
         fill_legend = {
@@ -451,9 +445,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # Use the same colors for compliance_fill_colors to ensure consistency
         compliance_fill_colors = {
-            "high": legend_colors[">90%"],            # Green
-            "medium": legend_colors["<90% & >75%"],  # Amber/Orange
-            "low": legend_colors["<75%"]             # Red
+            "high": legend_colors[">90%"],            # Light Green
+            "medium": legend_colors["<90% & >75%"],  # Light Amber/Orange
+            "low": legend_colors["<75%"]             # Light Red
         }
 
         header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")  # Blue
@@ -522,11 +516,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Color code the Overall Compliance Percentage based on the legend
         compliance_percentage_overall = overall_avg * 100  # Convert to percentage
         if compliance_percentage_overall >= 90:
-            fill_color_overall = compliance_fill_colors["high"]  # Green
+            fill_color_overall = compliance_fill_colors["high"]  # Light Green
         elif 75 <= compliance_percentage_overall < 90:
-            fill_color_overall = compliance_fill_colors["medium"]  # Amber/Orange
+            fill_color_overall = compliance_fill_colors["medium"]  # Light Amber/Orange
         else:
-            fill_color_overall = compliance_fill_colors["low"]  # Red
+            fill_color_overall = compliance_fill_colors["low"]  # Light Red
 
         ws['C10'].fill = PatternFill(start_color=fill_color_overall, end_color=fill_color_overall, fill_type="solid")
 
@@ -574,11 +568,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Green
+                fill_color = compliance_fill_colors["high"]  # Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Amber/Orange
+                fill_color = compliance_fill_colors["medium"]  # Light Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Red
+                fill_color = compliance_fill_colors["low"]  # Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -630,11 +624,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Sub-Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Green
+                fill_color = compliance_fill_colors["high"]  # Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Amber/Orange
+                fill_color = compliance_fill_colors["medium"]  # Light Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Red
+                fill_color = compliance_fill_colors["low"]  # Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
