@@ -8,134 +8,24 @@ from llm_analysis import call_ollama_api
 from sentence_transformers import SentenceTransformer
 import datetime
 import re
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font
 
-def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
-    """
-    Performs qualifier checks on the SOC report and appends results to the Excel output.
-    This function can be used for both initial checks (without saving to Excel) and final checks.
-    """
-    logging.info("Starting qualifier checks for SOC report.")
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    try:
-        # Load the RAG system and embeddings if paths are provided
-        if df_chunks_path and faiss_index_path:
-            model = SentenceTransformer('all-mpnet-base-v2')
-            df_chunks = pd.read_csv(df_chunks_path)
-            index = load_faiss_index(faiss_index_path)
-        else:
-            model = None
-            df_chunks = None
-            index = None
-
-    except Exception as e:
-        logging.error("Error loading resources: %s", e)
-        return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
-
-    # Perform specific qualifier checks
-    try:
-        # Initialize results
-        qualifier_results = []
-
-        if model and index and df_chunks:
-            # 1. Check if the report is latest
-            latest_report_result = is_report_latest(df_chunks, model, index)
-            qualifier_results.append({
-                "Question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
-                "Answer": latest_report_result
-            })
-
-            # 2. Check if trust principles are covered
-            trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
-            qualifier_results.append({
-                "Question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
-                "Answer": trust_principles_result
-            })
-
-            # 3. Check if audit period is sufficient
-            audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
-            qualifier_results.append({
-                "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
-                "Answer": audit_period_result
-            })
-
-            # If excel_output_path is provided, save to Excel
-            if excel_output_path:
-                qualifier_df = pd.DataFrame(qualifier_results)
-
-                # Add Status column
-                qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
-
-                # Reorder columns: Question, Status, Answer
-                qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
-
-                # Save results to the Excel file
-                if os.path.exists(excel_output_path):
-                    with pd.ExcelWriter(excel_output_path, mode='a', engine='openpyxl') as writer:
-                        # Check if "Qualifying Questions" sheet exists
-                        try:
-                            existing_df = pd.read_excel(excel_output_path, sheet_name="Qualifying Questions")
-                            # If exists, append without overwriting
-                            startrow = existing_df.shape[0] + 1
-                            qualifier_df.to_excel(
-                                writer, 
-                                sheet_name="Qualifying Questions", 
-                                index=False, 
-                                header=False, 
-                                startrow=startrow
-                            )
-                        except ValueError:
-                            # If "Qualifying Questions" sheet does not exist, create it
-                            qualifier_df.to_excel(
-                                writer, 
-                                sheet_name="Qualifying Questions", 
-                                index=False
-                            )
-                else:
-                    with pd.ExcelWriter(excel_output_path, mode='w', engine='openpyxl') as writer:
-                        qualifier_df.to_excel(
-                            writer, 
-                            sheet_name="Qualifying Questions", 
-                            index=False
-                        )
-        else:
-            # If model or index is not provided, perform minimal checks or skip
-            logging.warning("Model, index, or df_chunks not provided. Skipping qualifier checks.")
-            return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
-
-        # Determine overall SOC viability
-        all_pass = all(qr['Status'] == "Pass" for qr in qualifier_results)
-        overall_viability = "Pass" if all_pass else "Fail"
-        overall_message = "Yes. The SOC is valid." if all_pass else "No. The SOC is not valid."
-
-        return overall_message
-
-    except Exception as e:
-        logging.error("Error during qualifier checks: %s", e)
-        return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
-
-def determine_status(answer):
-    if answer.strip().startswith("Yes."):
-        return "Pass"
-    else:
-        return "Fail"
 
 def is_report_latest(df_chunks, model, index, top_k=3):
     """
-    Determines if the SOC 2 Type 2 Report is the latest by extracting the publication date
-    and comparing it with the current date.
+    Determines if the SOC 2 Type 2 Report is the latest (published within last 12 months)
+    by extracting the publication date from the retrieved text chunks.
     """
     query = "What is the publication date of the SOC 2 Type 2 Report?"
     query_emb = model.encode([query], show_progress_bar=False).astype('float32')
 
-    # Retrieve answers from RAG
-    try:
-        distances, indices = index.search(query_emb, top_k)
-        retrieved_answers = retrieve_answers_for_controls(
-            pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
-        )
-    except Exception as e:
-        logging.error("Error retrieving answers for 'is_report_latest': %s", e)
-        return "No. Unable to determine the publication date."
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
 
     current_date = datetime.datetime.now().date()
 
@@ -158,31 +48,21 @@ def is_report_latest(df_chunks, model, index, top_k=3):
     '''
 
     logging.debug("Prompt for 'is_report_latest': %s", prompt)
-
-    try:
-        response = call_ollama_api(prompt)
-    except Exception as e:
-        logging.error("Error calling LLM for 'is_report_latest': %s", e)
-        return "No. Unable to determine the publication date."
-
+    response = call_ollama_api(prompt)
     return response
+
 
 def are_trust_principles_covered(df_chunks, model, index, top_k=3):
     """
-    Checks if the SOC 2 Type 2 Report covers the three Trust Principles: Security, Availability, and Confidentiality.
+    Checks if the SOC 2 Type 2 Report explicitly covers Security, Availability, Confidentiality.
     """
     query = "Does the SOC 2 Type 2 Report cover the principles of Security, Availability, and Confidentiality?"
     query_emb = model.encode([query], show_progress_bar=False).astype('float32')
 
-    # Retrieve answers from RAG
-    try:
-        distances, indices = index.search(query_emb, top_k)
-        retrieved_answers = retrieve_answers_for_controls(
-            pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
-        )
-    except Exception as e:
-        logging.error("Error retrieving answers for 'are_trust_principles_covered': %s", e)
-        return "No. Unable to determine coverage of Trust Principles."
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
 
     prompt = f'''
     You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether the SOC 2 Type 2 Report covers all three Trust Principles: Security, Availability, and Confidentiality.
@@ -206,31 +86,21 @@ def are_trust_principles_covered(df_chunks, model, index, top_k=3):
     '''
 
     logging.debug("Prompt for 'are_trust_principles_covered': %s", prompt)
-
-    try:
-        response = call_ollama_api(prompt)
-    except Exception as e:
-        logging.error("Error calling LLM for 'are_trust_principles_covered': %s", e)
-        return "No. Unable to determine coverage of Trust Principles."
-
+    response = call_ollama_api(prompt)
     return response
+
 
 def is_audit_period_sufficient(df_chunks, model, index, top_k=3):
     """
-    Checks if the SOC 2 Type 2 Report covers an audit period of at least 9 months.
+    Checks if the audit period is at least 9 months by extracting start/end from the text.
     """
     query = "Does the SOC 2 Type 2 Report cover an audit period of at least 9 months?"
     query_emb = model.encode([query], show_progress_bar=False).astype('float32')
 
-    # Retrieve answers from RAG
-    try:
-        distances, indices = index.search(query_emb, top_k)
-        retrieved_answers = retrieve_answers_for_controls(
-            pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
-        )
-    except Exception as e:
-        logging.error("Error retrieving answers for 'is_audit_period_sufficient': %s", e)
-        return "No. Unable to determine the audit period."
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
 
     prompt = f'''
     You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether the audit period covered in the SOC 2 Type 2 Report is at least 9 months.
@@ -264,14 +134,9 @@ def is_audit_period_sufficient(df_chunks, model, index, top_k=3):
     '''
 
     logging.debug("Prompt for 'is_audit_period_sufficient': %s", prompt)
+    response = call_ollama_api(prompt)
 
-    try:
-        response = call_ollama_api(prompt)
-    except Exception as e:
-        logging.error("Error calling LLM for 'is_audit_period_sufficient': %s", e)
-        return "No. Unable to determine the audit period."
-
-    # Automated Parsing of the Response
+    # Attempt basic parse to ensure we have consistent results
     match = re.search(r'covers an audit period of (\d+) months', response)
     if match:
         duration = int(match.group(1))
@@ -280,12 +145,138 @@ def is_audit_period_sufficient(df_chunks, model, index, top_k=3):
         else:
             expected_response = f"No. The SOC 2 Type 2 Report covers an audit period of {duration} months, which does not meet the requirement of at least 9 months."
 
-        # Validate the LLM's response matches the expected response
+        # If the LLM gave the exact expected response, good; otherwise we do a fallback
         if response.strip() == expected_response:
             return response
         else:
-            logging.warning("LLM response does not match expected format. Response: %s", response)
+            logging.warning("LLM response does not match the exact expected format. Using the expected format.")
             return expected_response
     else:
-        logging.error("Failed to parse the LLM response for audit period duration.")
+        logging.error("Failed to parse the LLM response for audit period duration. Returning fallback.")
         return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
+
+
+def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
+    """
+    Performs the same 3 qualifier checks, then appends them to the Excel file under a "Qualifying Questions" sheet.
+    Finally, appends an 'Overall SOC Viability' row at the bottom.
+    """
+    logging.info("Starting qualifier checks for SOC report.")
+
+    try:
+        model = SentenceTransformer('all-mpnet-base-v2')
+        df_chunks = pd.read_csv(df_chunks_path)
+        index = load_faiss_index(faiss_index_path)
+    except Exception as e:
+        logging.error("Error loading resources for qualifiers: %s", e)
+        return
+
+    # Perform the checks
+    try:
+        latest_report_result = is_report_latest(df_chunks, model, index)
+        trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
+        audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
+    except Exception as e:
+        logging.error("Error during qualifier checks: %s", e)
+        return
+
+    qualifier_results = [
+        {
+            "Question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
+            "Answer": latest_report_result
+        },
+        {
+            "Question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
+            "Answer": trust_principles_result
+        },
+        {
+            "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
+            "Answer": audit_period_result
+        }
+    ]
+
+    def determine_status(answer):
+        if answer.strip().lower().startswith("yes."):
+            return "Pass"
+        return "Fail"
+
+    qualifier_df = pd.DataFrame(qualifier_results)
+    qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
+    qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
+
+    # Save results to the Excel
+    try:
+        if os.path.exists(excel_output_path):
+            wb = load_workbook(excel_output_path)
+            if "Qualifying Questions" in wb.sheetnames:
+                ws = wb["Qualifying Questions"]
+                last_row = ws.max_row
+                for _, row in qualifier_df.iterrows():
+                    ws.append(row.tolist())
+                wb.save(excel_output_path)
+            else:
+                with pd.ExcelWriter(excel_output_path, engine='openpyxl', mode='a') as writer:
+                    qualifier_df.to_excel(writer, sheet_name="Qualifying Questions", index=False)
+        else:
+            with pd.ExcelWriter(excel_output_path, mode='w', engine='openpyxl') as writer:
+                qualifier_df.to_excel(writer, sheet_name="Qualifying Questions", index=False)
+        logging.info("Qualifier checks appended to Excel.")
+    except Exception as e:
+        logging.error("Error saving qualifiers to Excel: %s", e)
+        return
+
+    # Format in Excel
+    try:
+        wb = load_workbook(excel_output_path)
+        ws = wb["Qualifying Questions"]
+
+        data_start_row = 2
+        status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
+        status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
+        header_fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+
+        for col in range(1, 4):
+            cell = ws.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = Font(bold=True)
+
+        for row in range(data_start_row, ws.max_row + 1):
+            status_cell = ws.cell(row=row, column=2)
+            if status_cell.value == "Pass":
+                status_cell.fill = status_fill_pass
+            elif status_cell.value == "Fail":
+                status_cell.fill = status_fill_fail
+
+        # Overall viability row
+        statuses = [ws.cell(row=r, column=2).value for r in range(data_start_row, ws.max_row + 1)]
+        overall_viability = "Pass" if all(s == "Pass" for s in statuses) else "Fail"
+
+        summary_question = "Overall SOC Viability"
+        summary_status = overall_viability
+        summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
+
+        ws.append([summary_question, summary_status, summary_answer])
+        summary_row = ws.max_row
+
+        summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
+        ws.cell(row=summary_row, column=2).fill = summary_fill
+
+        bold_font = Font(bold=True)
+        for col in range(1, 4):
+            ws.cell(row=summary_row, column=col).font = bold_font
+
+        wb.save(excel_output_path)
+        logging.info("Excel formatting and summary row added.")
+    except Exception as e:
+        logging.error("Error formatting Excel for qualifiers: %s", e)
+        return
+
+
+if __name__ == "__main__":
+    # Example usage (debug/test):
+    pdf_path = "path/to/soc2_report.pdf"
+    df_chunks_path = "path/to/df_qualifier_chunks.csv"
+    faiss_index_path = "path/to/faiss_index_qualifiers.idx"
+    excel_output_path = "path/to/output.xlsx"
+
+    qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path)
