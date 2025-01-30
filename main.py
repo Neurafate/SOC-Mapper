@@ -305,13 +305,6 @@ def format_compliance_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
-
-import logging
-import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
-from openpyxl.utils import get_column_letter
-
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
@@ -456,7 +449,8 @@ def create_executive_summary(input_excel_path, output_excel_path):
             "low": legend_colors["<75%"]             # Very Light Red
         }
 
-        header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")  # Blue
+        # **Updated Header Fill Color to Gold (#FFD700)**
+        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
         header_font = Font(bold=True, color="FFFFFF")
         thin_border = Border(
             left=Side(border_style="thin"),
@@ -503,9 +497,31 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws['B7'].fill = header_fill
         ws['B7'].border = thin_border
 
-        ws['C7'] = "Yes"  # This can be dynamic based on your data
+        # **Dynamic SOC Usability Status**
+        # Replace the following line with dynamic data retrieval if available
+        soc_usability_status = "Yes"  # Example: "Yes" or "No"
+
+        ws['C7'] = soc_usability_status  # This should be set dynamically based on your data
+        ws['C7'].number_format = "@"  # Text format to ensure proper display
         ws['C7'].alignment = center_alignment
         ws['C7'].border = thin_border
+
+        # **Apply Color Coding to SOC Usability Status**
+        soc_usability_colors = {
+            "yes": "CCFFCC",  # Very Light Green
+            "no": "FFCCCC"    # Very Light Red
+        }
+
+        # Retrieve the SOC Usability value and apply corresponding fill
+        soc_usability_value = ws['C7'].value
+        if soc_usability_value:
+            soc_usability_key = soc_usability_value.strip().lower()
+            fill_color_soc = soc_usability_colors.get(soc_usability_key, None)
+            if fill_color_soc:
+                ws['C7'].fill = PatternFill(start_color=fill_color_soc, end_color=fill_color_soc, fill_type="solid")
+            else:
+                # Optional: Apply no fill or a default fill if value is neither "Yes" nor "No"
+                pass
 
         # 3. Overall Compliance Percentage
         ws['B10'] = "Overall Compliance Percentage"
