@@ -3,11 +3,121 @@
 import os
 import logging
 import pandas as pd
-import datetime
-import re
 from rag import retrieve_answers_for_controls, load_faiss_index
 from llm_analysis import call_ollama_api
 from sentence_transformers import SentenceTransformer
+import datetime
+import re
+
+def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
+    """
+    Performs qualifier checks on the SOC report and appends results to the Excel output.
+    This function can be used for both initial checks (without saving to Excel) and final checks.
+    """
+    logging.info("Starting qualifier checks for SOC report.")
+
+    try:
+        # Load the RAG system and embeddings if paths are provided
+        if df_chunks_path and faiss_index_path:
+            model = SentenceTransformer('all-mpnet-base-v2')
+            df_chunks = pd.read_csv(df_chunks_path)
+            index = load_faiss_index(faiss_index_path)
+        else:
+            model = None
+            df_chunks = None
+            index = None
+
+    except Exception as e:
+        logging.error("Error loading resources: %s", e)
+        return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
+
+    # Perform specific qualifier checks
+    try:
+        # Initialize results
+        qualifier_results = []
+
+        if model and index and df_chunks:
+            # 1. Check if the report is latest
+            latest_report_result = is_report_latest(df_chunks, model, index)
+            qualifier_results.append({
+                "Question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
+                "Answer": latest_report_result
+            })
+
+            # 2. Check if trust principles are covered
+            trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
+            qualifier_results.append({
+                "Question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
+                "Answer": trust_principles_result
+            })
+
+            # 3. Check if audit period is sufficient
+            audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
+            qualifier_results.append({
+                "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
+                "Answer": audit_period_result
+            })
+
+            # If excel_output_path is provided, save to Excel
+            if excel_output_path:
+                qualifier_df = pd.DataFrame(qualifier_results)
+
+                # Add Status column
+                qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
+
+                # Reorder columns: Question, Status, Answer
+                qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
+
+                # Save results to the Excel file
+                if os.path.exists(excel_output_path):
+                    with pd.ExcelWriter(excel_output_path, mode='a', engine='openpyxl') as writer:
+                        # Check if "Qualifying Questions" sheet exists
+                        try:
+                            existing_df = pd.read_excel(excel_output_path, sheet_name="Qualifying Questions")
+                            # If exists, append without overwriting
+                            startrow = existing_df.shape[0] + 1
+                            qualifier_df.to_excel(
+                                writer, 
+                                sheet_name="Qualifying Questions", 
+                                index=False, 
+                                header=False, 
+                                startrow=startrow
+                            )
+                        except ValueError:
+                            # If "Qualifying Questions" sheet does not exist, create it
+                            qualifier_df.to_excel(
+                                writer, 
+                                sheet_name="Qualifying Questions", 
+                                index=False
+                            )
+                else:
+                    with pd.ExcelWriter(excel_output_path, mode='w', engine='openpyxl') as writer:
+                        qualifier_df.to_excel(
+                            writer, 
+                            sheet_name="Qualifying Questions", 
+                            index=False
+                        )
+        else:
+            # If model or index is not provided, perform minimal checks or skip
+            logging.warning("Model, index, or df_chunks not provided. Skipping qualifier checks.")
+            return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
+
+        # Determine overall SOC viability
+        all_pass = all(qr['Status'] == "Pass" for qr in qualifier_results)
+        overall_viability = "Pass" if all_pass else "Fail"
+        overall_message = "Yes. The SOC is valid." if all_pass else "No. The SOC is not valid."
+
+        return overall_message
+
+    except Exception as e:
+        logging.error("Error during qualifier checks: %s", e)
+        return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
+
+def determine_status(answer):
+    if answer.strip().startswith("Yes."):
+        return "Pass"
+    else:
+        return "Fail"
 
 def is_report_latest(df_chunks, model, index, top_k=3):
     """
@@ -154,189 +264,284 @@ def is_audit_period_sufficient(df_chunks, model, index, top_k=3):
         logging.error("Failed to parse the LLM response for audit period duration.")
         return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
 
-def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
+# -------------------------------------------------------
+# NEW ENDPOINT: /qualify_soc_report
+# -------------------------------------------------------
+@app.route('/qualify_soc_report', methods=['POST'])
+def qualify_soc_report_endpoint():
     """
-    Performs qualifier checks on the SOC report and appends results to the Excel output.
+    Endpoint to perform qualifier checks at the start of processing.
+    This allows the user to decide whether to proceed based on the qualifiers.
     """
-    logging.info("Starting qualifier checks for SOC report.")
-
+    logging.info("Received request to /qualify_soc_report endpoint.")
     try:
-        # Load the RAG system and embeddings
-        model = SentenceTransformer('all-mpnet-base-v2')
-        df_chunks = pd.read_csv(df_chunks_path)
-        index = load_faiss_index(faiss_index_path)
-    except Exception as e:
-        logging.error("Error loading resources: %s", e)
-        return
+        pdf_file = request.files.get('pdf_file')
+        if not pdf_file:
+            raise ValueError("Missing required file: pdf_file")
 
-    # Perform specific qualifier checks
-    try:
-        latest_report_result = is_report_latest(df_chunks, model, index)
-        trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
-        audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
-    except Exception as e:
-        logging.error("Error during qualifier checks: %s", e)
-        return
+        # Secure filename and save
+        filename_pdf = secure_filename(pdf_file.filename)
+        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
+        pdf_file.save(pdf_path)
+        logging.info(f"PDF file saved to {pdf_path}")
 
-    # Compile results
-    qualifier_results = [
-        {
-            "Question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
-            "Answer": latest_report_result
-        },
-        {
-            "Question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
-            "Answer": trust_principles_result
-        },
-        {
-            "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
-            "Answer": audit_period_result
+        # Generate a unique task ID for qualifier checks
+        task_id = str(uuid.uuid4())
+        progress_data[task_id] = {
+            'progress': 0.0,
+            'status': 'Performing initial qualifier checks...',
+            'download_url': None,
+            'error': None,
+            'eta': 30,  # Estimated time for qualifiers
+            'cancelled': False
         }
-    ]
 
-    # Convert to DataFrame
-    qualifier_df = pd.DataFrame(qualifier_results)
+        # Start background thread for qualifier checks
+        thread = threading.Thread(
+            target=background_qualifier_process,
+            args=(task_id, pdf_path)
+        )
+        thread.start()
 
-    # Define function to determine Pass/Fail
-    def determine_status(answer):
-        if answer.strip().startswith("Yes."):
-            return "Pass"
+        return jsonify({"message": "Qualifier checks started", "task_id": task_id}), 202
+
+    except Exception as e:
+        logging.error(f"Error in /qualify_soc_report endpoint: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 400
+
+def background_qualifier_process(task_id, pdf_path):
+    """
+    Background process to perform qualifier checks at the start.
+    """
+    try:
+        logging.info(f"Background qualifier processing started for task_id: {task_id}.")
+
+        # Perform qualifier checks without saving to Excel
+        with progress_lock:
+            progress_data[task_id]['status'] = "Performing initial qualifier checks..."
+        logging.info(f"Task {task_id}: Performing initial qualifier checks.")
+
+        # Perform qualifier checks
+        qualifier_result = qualify_soc_report(
+            pdf_path=pdf_path,
+            df_chunks_path=None,          # No need to save chunks for initial check
+            faiss_index_path=None,        # No need to build index for initial check
+            excel_output_path=None        # Do not save to Excel
+        )
+
+        # Determine Pass/Fail based on qualifier_result
+        if "Yes." in qualifier_result:
+            status = "Pass"
+            message = "The SOC 2 Type 2 Report is valid."
         else:
-            return "Fail"
+            status = "Fail"
+            message = "The SOC 2 Type 2 Report is not valid."
 
-    # Add Status column
-    qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
+        with progress_lock:
+            progress_data[task_id]['status'] = message
+            progress_data[task_id]['progress'] = 100.0
+            progress_data[task_id]['download_url'] = None
 
-    # Reorder columns: Question, Status, Answer
-    qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
+        logging.info(f"Task {task_id}: Qualifier checks completed with status: {status}")
 
-    # Save results to the Excel file
-    try:
-        if os.path.exists(excel_output_path):
-            # Load existing workbook
-            wb = load_workbook(excel_output_path)
-            if "Qualifying Questions" in wb.sheetnames:
-                ws = wb["Qualifying Questions"]
-                # Find the last row
-                last_row = ws.max_row
-                # Append new data without headers
-                for index, row in qualifier_df.iterrows():
-                    ws.append(row.tolist())
-                # Save workbook after appending
-                wb.save(excel_output_path)
-            else:
-                # If "Qualifying Questions" sheet does not exist, create it
-                with pd.ExcelWriter(excel_output_path, engine='openpyxl', mode='a') as writer:
-                    qualifier_df.to_excel(
-                        writer, 
-                        sheet_name="Qualifying Questions", 
-                        index=False
-                    )
-        else:
-            # Create new Excel file with "Qualifying Questions" sheet
-            with pd.ExcelWriter(excel_output_path, mode='w', engine='openpyxl') as writer:
-                qualifier_df.to_excel(
-                    writer, 
-                    sheet_name="Qualifying Questions", 
-                    index=False
-                )
-        logging.info("Qualifier checks completed and saved to Excel.")
     except Exception as e:
-        logging.error("Error saving results to Excel: %s", e)
-        return
+        logging.error(f"Error in background_qualifier_process (task_id: {task_id}): {e}", exc_info=True)
+        with progress_lock:
+            progress_data[task_id]['status'] = "Error occurred during qualifier checks."
+            progress_data[task_id]['error'] = str(e)
+            progress_data[task_id]['progress'] = 0.0
+            progress_data[task_id]['eta'] = 0
 
-    # Open the workbook for formatting
+# -------------------------------------------------------
+# Existing Endpoint: /process_all
+# -------------------------------------------------------
+@app.route('/process_all', methods=['POST'])
+def process_all_endpoint():
+    logging.info("Received request to /process_all endpoint.")
     try:
-        wb = load_workbook(excel_output_path)
-        ws = wb["Qualifying Questions"]
+        pdf_file = request.files.get('pdf_file')
+        excel_file = request.files.get('excel_file')
 
-        # Determine the start row for data (assuming headers are in the first row)
-        data_start_row = 2
+        if not pdf_file or not excel_file:
+            raise ValueError("Missing required files: pdf_file or excel_file")
 
-        # Define color fills
-        status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")  # Light green
-        status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")  # Light red
+        # Control IDs are mandatory
+        control_id = request.form.get('control_id', '').strip()
+        if not control_id:
+            logging.error("No Control IDs provided in the request.")
+            return jsonify({"error": "No Control IDs were provided."}), 400
 
-        # Apply color coding to Status column (Column B)
-        for row in range(data_start_row, ws.max_row + 1):
-            status_cell = ws.cell(row=row, column=2)  # Column B
-            if status_cell.value == "Pass":
-                status_cell.fill = status_fill_pass
-            elif status_cell.value == "Fail":
-                status_cell.fill = status_fill_fail
+        model_name = request.form.get('model_name', 'llama3.1')
+        logging.info(f"Selected model: {model_name}")
 
-        # Determine overall SOC viability
-        statuses = [ws.cell(row=row, column=2).value for row in range(data_start_row, ws.max_row + 1)]
-        overall_viability = "Pass" if all(status == "Pass" for status in statuses) else "Fail"
+        # Secure filenames
+        filename_pdf = secure_filename(pdf_file.filename)
+        filename_excel = secure_filename(excel_file.filename)
 
-        # Define summary row data
-        summary_question = "Overall SOC Viability"
-        summary_status = overall_viability
-        summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
+        # Save uploaded files
+        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
+        pdf_file.save(pdf_path)
+        logging.info(f"PDF file saved to {pdf_path}")
 
-        # Append summary row
-        ws.append([summary_question, summary_status, summary_answer])
+        excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_excel)
+        excel_file.save(excel_path)
+        logging.info(f"Excel file saved to {excel_path}")
 
-        # Get the summary row number
-        summary_row = ws.max_row
+        # Detect Control IDs and their pages
+        # To handle shared regex patterns, group Control IDs by their regex
+        repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
+        regex_to_cids = {}
+        for pattern_dict in repeating_patterns:
+            regex = pattern_dict.get("Regex Pattern")
+            cid = pattern_dict.get("Example Control ID")
+            if regex and cid and cid in [c.strip() for c in control_id.split(',') if c.strip()]:
+                regex_to_cids.setdefault(regex, []).append(cid)
 
-        # Apply color coding to summary Status cell
-        summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
-        ws.cell(row=summary_row, column=2).fill = summary_fill
+        # Extract Control IDs from repeating patterns (filtered)
+        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
 
-        # Make the summary row bold
-        bold_font = Font(bold=True)
-        for col in range(1, 4):
-            ws.cell(row=summary_row, column=col).font = bold_font
+        if not regex_to_cids:
+            raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
 
-        # Save the workbook
-        wb.save(excel_output_path)
-        logging.info("Excel formatting and summary row added.")
-    except Exception as e:
-        logging.error("Error formatting Excel file: %s", e)
-        return
+        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
 
-def evaluate_soc_report_minimal(df_chunks_path, faiss_index_path, top_k=3):
-    """
-    Minimal version of qualifier checks that:
-      1) Loads the chunked text and FAISS index for qualifiers.
-      2) Calls the three checks (is_report_latest, are_trust_principles_covered, is_audit_period_sufficient).
-      3) Returns a simple dictionary with pass/fail (True/False) for each check + an 'overall' key.
+        # Determine page range based on Control IDs with prioritization
+        start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
+        logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
 
-    DOES NOT write anything to Excel (used only to see if SOC is valid enough to continue).
-    """
-
-    try:
-        # 1. Load model, data, and index
-        model = SentenceTransformer('all-mpnet-base-v2')
-        df_chunks = pd.read_csv(df_chunks_path)
-        index = load_faiss_index(faiss_index_path)
-
-        # 2. Perform the checks
-        latest_result = is_report_latest(df_chunks, model, index, top_k=top_k)
-        trust_principles_result = are_trust_principles_covered(df_chunks, model, index, top_k=top_k)
-        audit_period_result = is_audit_period_sufficient(df_chunks, model, index, top_k=top_k)
-
-        # 3. Parse each result to a boolean pass/fail
-        latest_pass = latest_result.strip().lower().startswith("yes.")
-        trust_pass = trust_principles_result.strip().lower().startswith("yes.")
-        audit_pass = audit_period_result.strip().lower().startswith("yes.")
-
-        overall = (latest_pass and trust_pass and audit_pass)
-
-        return {
-            "latest": latest_pass,
-            "trust_principles": trust_pass,
-            "audit_period": audit_pass,
-            "overall": overall
+        # Generate a unique task ID
+        task_id = str(uuid.uuid4())
+        progress_data[task_id] = {
+            'progress': 0.0,
+            'status': 'Starting task...',
+            'download_url': None,
+            'error': None,
+            'start_time': time.time(),
+            'eta': None,
+            'num_controls': 0,
+            'cancelled': False
         }
 
+        # Extract base filenames for final output naming
+        soc_report_filename = filename_pdf
+        framework_filename = filename_excel
+
+        # Start background processing thread with determined start and end pages
+        thread = threading.Thread(
+            target=background_process,
+            args=(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename)
+        )
+        thread.start()
+
+        return jsonify({"message": "Processing started", "task_id": task_id}), 202
+
     except Exception as e:
-        logging.error(f"Error in minimal qualifier checks: {e}")
-        # If error, treat as fail or return a safe default
-        return {
-            "latest": False,
-            "trust_principles": False,
-            "audit_period": False,
-            "overall": False
-        }
+        logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 400
+
+# -------------------------------------------------------
+# Existing Endpoint: /progress/<task_id>
+# -------------------------------------------------------
+@app.route('/progress/<task_id>', methods=['GET'])
+def sse_progress(task_id):
+    def generate():
+        while True:
+            task_info = progress_data.get(task_id, None)
+            if task_info is None:
+                yield f"data: {json.dumps({'error': 'Invalid task ID'})}\n\n"
+                break
+
+            progress = task_info['progress']
+            status = task_info['status']
+            eta = task_info.get('eta', None)
+            error = task_info.get('error', None)
+            download_url = task_info.get('download_url', None)
+            cancelled = task_info.get('cancelled', False)
+
+            data = {
+                'progress': round(progress, 2),
+                'status': status,
+                'eta': round(eta, 2) if eta is not None else eta
+            }
+            if download_url:
+                data['download_url'] = download_url
+            if error:
+                data['error'] = error
+            if cancelled:
+                data['cancelled'] = True
+
+            yield f"data: {json.dumps(data)}\n\n"
+
+            # Stop streaming if finished, cancelled, or error encountered
+            if progress >= 100 or error or cancelled:
+                break
+
+            time.sleep(1)
+
+    response = Response(generate(), mimetype='text/event-stream')
+
+    # ✅ Add required headers to prevent buffering issues
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Cache-Control'] = 'no-cache'
+    response.headers['Connection'] = 'keep-alive'  # ✅ Prevents disconnects
+    response.headers['X-Accel-Buffering'] = 'no'  # ✅ Disables buffering
+
+    return response
+
+
+@app.route('/download/<filename>', methods=['GET'])
+def download_file(filename):
+    """
+    Endpoint to download a file from the specified directory.
+    Restricts access to 'excel_outputs' directory for security.
+    """
+    logging.info(f"Received request to download file: {filename}")
+    try:
+        # Ensure the filename is secure
+        filename = secure_filename(filename)
+        directory = app.config['EXCEL_FOLDER']
+        file_path = os.path.join(directory, filename)
+        if not os.path.exists(file_path):
+            logging.error(f"File not found: {filename}")
+            return jsonify({"error": "File not found"}), 404
+        return send_file(
+            file_path,
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            as_attachment=True
+        )
+
+    except Exception as e:
+        logging.error(f"Error serving file {filename}: {e}", exc_info=True)
+        return jsonify({"error": "File could not be served"}), 500
+
+@app.route('/cancel_task/<task_id>', methods=['POST'])
+def cancel_task(task_id):
+    """
+    Endpoint to signal that the user wants to cancel a running task.
+    The background process will check the `cancelled` flag and halt.
+    """
+    task_info = progress_data.get(task_id)
+    if not task_info:
+        logging.warning(f"Attempted to cancel invalid task_id: {task_id}.")
+        return jsonify({"error": "Invalid task ID"}), 404
+
+    if task_info.get('cancelled'):
+        logging.info(f"Task {task_id} is already cancelled.")
+        return jsonify({"message": f"Task {task_id} is already cancelled."}), 200
+
+    # Mark the task as cancelled
+    task_info['cancelled'] = True
+    task_info['status'] = "Cancelled"
+    task_info['progress'] = 0
+    task_info['eta'] = 0
+    task_info['error'] = "Task was cancelled by the user."
+
+    logging.info(f"Task {task_id} marked as cancelled by the user.")
+    return jsonify({"message": f"Task {task_id} cancelled."}), 200
+
+if __name__ == "__main__":
+    logging.info("Starting the Flask application on port 5000.")
+    app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)

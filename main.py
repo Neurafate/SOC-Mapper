@@ -1,3 +1,5 @@
+# main.py
+
 import os
 import logging
 import threading
@@ -26,7 +28,7 @@ from llm_analysis import (
     save_to_excel,
     remove_not_met_controls
 )
-from qualifiers import qualify_soc_report, evaluate_soc_report_minimal
+from qualifiers import qualify_soc_report
 
 import pandas as pd
 from openpyxl import load_workbook
@@ -213,86 +215,184 @@ def format_compliance_sheet(excel_path):
         for row in ws.iter_rows(min_row=1):
             for cell in row:
                 cell.alignment = Alignment(wrap_text=True, vertical='top')
+        ws.column_dimensions['A'].width = 25
+        ws.column_dimensions['B'].width = 25
+        ws.column_dimensions['C'].width = 25
+        ws.column_dimensions['D'].width = 25
+        ws.column_dimensions['E'].width = 25
 
-        # Identify columns by name
-        domain_col = None
-        domain_score_col = None
-        subdomain_col = None
-        subdomain_score_col = None
-        overall_col = None
-
-        for i, cell in enumerate(ws[1], start=1):
-            if cell.value == "Domain Name":
-                domain_col = i
-            elif cell.value == "Domain Compliance Score":
-                domain_score_col = i
-            elif cell.value == "Sub-Domain Name":
-                subdomain_col = i
-            elif cell.value == "Sub-Domain Compliance Score":
-                subdomain_score_col = i
-            elif cell.value == "Overall Compliance Score":
-                overall_col = i
-
-        if not all([domain_col, domain_score_col, subdomain_col, subdomain_score_col, overall_col]):
-            logging.error("One or more required columns not found in Compliance Score sheet.")
-            return
-
-        # Get last row
-        max_row = ws.max_row
-
-        # Merge the Overall Compliance Score column top to bottom (from row 2 to max_row)
-        if max_row > 1:
-            ws.merge_cells(start_row=2, start_column=overall_col, end_row=max_row, end_column=overall_col)
-
-        # Group rows by domain to merge domain name & domain compliance score
-        current_domain = None
-        domain_start_row = 2
-
-        for row in range(2, max_row + 1):
-            cell_value = ws.cell(row=row, column=domain_col).value
-            if cell_value != current_domain:
-                if current_domain is not None:
-                    # Merge domain name
-                    ws.merge_cells(
-                        start_row=domain_start_row,
-                        start_column=domain_col,
-                        end_row=row - 1,
-                        end_column=domain_col
-                    )
-                    # Merge domain compliance score
-                    ws.merge_cells(
-                        start_row=domain_start_row,
-                        start_column=domain_score_col,
-                        end_row=row - 1,
-                        end_column=domain_score_col
-                    )
-                current_domain = cell_value
-                domain_start_row = row
-        # Merge last block
-        if current_domain is not None and domain_start_row < max_row:
-            ws.merge_cells(
-                start_row=domain_start_row,
-                start_column=domain_col,
-                end_row=max_row,
-                end_column=domain_col
-            )
-            ws.merge_cells(
-                start_row=domain_start_row,
-                start_column=domain_score_col,
-                end_row=max_row,
-                end_column=domain_score_col
-            )
-
-        # Adjust column widths
-        ws.column_dimensions[get_column_letter(domain_col)].width = 25
-        ws.column_dimensions[get_column_letter(domain_score_col)].width = 25
-        ws.column_dimensions[get_column_letter(subdomain_col)].width = 25
-        ws.column_dimensions[get_column_letter(subdomain_score_col)].width = 25
-        ws.column_dimensions[get_column_letter(overall_col)].width = 25
-
-        # Header styling
+        # Apply header styling
         header_fill = PatternFill(start_color="FFCCFF", end_color="FFCCFF", fill_type="solid")
-        header_font = Font(bold=True)
+        bold_font = Font(bold=True)
+        for cell in ws[1]:
+            cell.fill = header_fill
+            cell.font = bold_font
+
+        # Apply sentiment-based color coding
+        for row in ws.iter_rows(min_row=2):
+            compliance_cell = row[1]  # Assuming Compliance Score is the second column
+            if compliance_cell.value:
+                compliance_value = float(compliance_cell.value)
+                if compliance_value >= 90:
+                    compliance_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
+                elif 75 <= compliance_value < 90:
+                    compliance_cell.fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")  # Amber
+                else:
+                    compliance_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
+
+        wb.save(excel_path)
+        logging.info("Compliance Score sheet formatted successfully.")
+    except Exception as e:
+        logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
+
+def create_executive_summary(input_excel_path, output_excel_path):
+    """
+    Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
+    The summary includes:
+      - Legend explaining compliance score colors
+      - SOC Usability status
+      - Overall Compliance Percentage
+      - Domain-wise Compliance Breakdown
+      - Sub-Domain-wise Compliance Breakdown
+      - Count of fully met, partially met, and not met controls per domain and sub-domain
+    """
+    try:
+        logging.info("Generating Executive Summary...")
+
+        # Read the "Control Assessment" sheet using pandas
+        df = pd.read_excel(input_excel_path, sheet_name='Control Assessment')
+
+        # Debug: Print available columns to confirm naming
+        logging.info(f"Columns in 'Control Assessment': {list(df.columns)}")
+
+        # Expected column names
+        expected_columns = [
+            'Sr. No.',
+            'User Org Control Domain',
+            'User Org Control Sub-Domain',
+            'User Org Control Statement',
+            'Service Org Control IDs',
+            'Service Org Controls',
+            'Compliance Score',
+            'Detailed Analysis Explanation',
+            'Control Status'
+        ]
+
+        # Ensure all required columns exist
+        for col in expected_columns:
+            if col not in df.columns:
+                raise ValueError(f"Column '{col}' not found in 'Control Assessment'.")
+
+        # Data Cleaning: Trim whitespace and standardize capitalization in 'User Org Control Domain' and 'User Org Control Sub-Domain'
+        df['User Org Control Domain'] = df['User Org Control Domain'].astype(str).str.strip().str.title()
+        df['User Org Control Sub-Domain'] = df['User Org Control Sub-Domain'].astype(str).str.strip().str.title()
+
+        # Debug: Log unique domains and sub-domains
+        unique_domains = df['User Org Control Domain'].unique()
+        logging.info(f"Unique Domains ({len(unique_domains)}): {unique_domains}")
+
+        unique_subdomains = df['User Org Control Sub-Domain'].unique()
+        logging.info(f"Unique Sub-Domains ({len(unique_subdomains)}): {unique_subdomains}")
+
+        # Compute domain-wise compliance scores
+        domain_avg = df.groupby("User Org Control Domain")["Compliance Score"].mean().reset_index()
+        domain_avg["Compliance Score"] = domain_avg["Compliance Score"] / 100.0  # Convert to percentage
+
+        # Compute overall compliance score as the mean of domain-wise averages
+        overall_avg = domain_avg["Compliance Score"].mean()
+
+        # Count fully met, partially met, and not met controls per domain
+        domain_status_counts = df.groupby(["User Org Control Domain", "Control Status"]).size().unstack(fill_value=0).reset_index()
+
+        # Ensure all categories exist
+        for status in ["Fully Met", "Partially Met", "Not Met"]:
+            if status not in domain_status_counts.columns:
+                domain_status_counts[status] = 0
+
+        # Merge compliance score and control status counts
+        domain_summary = domain_avg.merge(domain_status_counts, on="User Org Control Domain", how="left")
+
+        # Verify that all domains are included after merging
+        if len(domain_summary) != len(unique_domains):
+            missing_domains = set(unique_domains) - set(domain_summary['User Org Control Domain'])
+            logging.warning(f"Missing Domains after merging: {missing_domains}")
+            # Optionally, add missing domains with default values
+            for domain in missing_domains:
+                domain_summary = domain_summary.append({
+                    "User Org Control Domain": domain,
+                    "Compliance Score": 0.0,
+                    "Fully Met": 0,
+                    "Partially Met": 0,
+                    "Not Met": 0
+                }, ignore_index=True)
+
+        # Compute sub-domain-wise compliance scores
+        subdomain_avg = df.groupby("User Org Control Sub-Domain")["Compliance Score"].mean().reset_index()
+        subdomain_avg["Compliance Score"] = subdomain_avg["Compliance Score"] / 100.0  # Convert to percentage
+
+        # Count fully met, partially met, and not met controls per sub-domain
+        subdomain_status_counts = df.groupby(["User Org Control Sub-Domain", "Control Status"]).size().unstack(fill_value=0).reset_index()
+
+        # Ensure all categories exist
+        for status in ["Fully Met", "Partially Met", "Not Met"]:
+            if status not in subdomain_status_counts.columns:
+                subdomain_status_counts[status] = 0
+
+        # Merge compliance score and control status counts for sub-domains
+        subdomain_summary = subdomain_avg.merge(subdomain_status_counts, on="User Org Control Sub-Domain", how="left")
+
+        # Verify that all sub-domains are included after merging
+        if len(subdomain_summary) != len(unique_subdomains):
+            missing_subdomains = set(unique_subdomains) - set(subdomain_summary['User Org Control Sub-Domain'])
+            logging.warning(f"Missing Sub-Domains after merging: {missing_subdomains}")
+            # Optionally, add missing sub-domains with default values
+            for subdomain in missing_subdomains:
+                subdomain_summary = subdomain_summary.append({
+                    "User Org Control Sub-Domain": subdomain,
+                    "Compliance Score": 0.0,
+                    "Fully Met": 0,
+                    "Partially Met": 0,
+                    "Not Met": 0
+                }, ignore_index=True)
+
+        # Load workbook with openpyxl
+        wb = load_workbook(input_excel_path)
+
+        # If an 'Executive Summary' sheet exists, remove it
+        if "Executive Summary" in wb.sheetnames:
+            del wb["Executive Summary"]
+
+        # Create a new sheet for the summary
+        ws = wb.create_sheet("Executive Summary")
+
+        # Insert Executive Summary as the first sheet
+        wb._sheets.insert(0, wb._sheets.pop(wb.sheetnames.index("Executive Summary")))
+
+        # Define styles using good color theory principles
+        # Use colorblind-friendly palette and ensure good contrast
+        legend_colors = {
+            ">90%": "CCFFCC",         # Very Light Green
+            "<90% & >75%": "FFF2CC",  # Very Light Amber/Orange
+            "<75%": "FFCCCC"          # Very Light Red
+        }
+
+        fill_legend = {
+            ">90%": PatternFill(start_color=legend_colors[">90%"], end_color=legend_colors[">90%"], fill_type="solid"),
+            "<90% & >75%": PatternFill(start_color=legend_colors["<90% & >75%"], end_color=legend_colors["<90% & >75%"], fill_type="solid"),
+            "<75%": PatternFill(start_color=legend_colors["<75%"], end_color=legend_colors["<75%"], fill_type="solid")
+        }
+
+        # Use the same colors for compliance_fill_colors to ensure consistency
+        compliance_fill_colors = {
+            "high": legend_colors[">90%"],            # Very Light Green
+            "medium": legend_colors["<90% & >75%"],  # Very Light Amber/Orange
+            "low": legend_colors["<75%"]             # Very Light Red
+        }
+
+        # **Updated Header Fill Color to Yellow (#FFFF00)**
+        header_fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")  # Bright Yellow
+        # **Updated Header Font Color to Black (#000000)**
+        header_font = Font(bold=True, color="000000")  # Black
         thin_border = Border(
             left=Side(border_style="thin"),
             right=Side(border_style="thin"),
@@ -312,9 +412,9 @@ def format_compliance_sheet(excel_path):
 
         # Define legend items
         legend_items = [
-            { "text": ">90%", "fill": PatternFill(start_color="CCFFCC", end_color="CCFFCC", fill_type="solid") },         # Very Light Green
-            { "text": "<90% & >75%", "fill": PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid") },  # Very Light Amber/Orange
-            { "text": "<75%", "fill": PatternFill(start_color="FFCCCC", end_color="FFCCCC", fill_type="solid") }          # Very Light Red
+            { "text": ">90%", "fill": fill_legend[">90%"] },
+            { "text": "<90% & >75%", "fill": fill_legend["<90% & >75%"] },
+            { "text": "<75%", "fill": fill_legend["<75%"] }
         ]
 
         # Write legend items starting from B3
@@ -327,7 +427,7 @@ def format_compliance_sheet(excel_path):
             ws[f'C{idx}'].border = thin_border
 
         # Apply borders to legend section
-        for row in range(2, 5):
+        for row in range(2, 6):
             for col in ['B', 'C']:
                 ws[f'{col}{row}'].border = thin_border
 
@@ -379,11 +479,11 @@ def format_compliance_sheet(excel_path):
         # Color code the Overall Compliance Percentage based on the legend
         compliance_percentage_overall = overall_avg * 100  # Convert to percentage
         if compliance_percentage_overall >= 90:
-            fill_color_overall = "CCFFCC"  # Very Light Green
+            fill_color_overall = compliance_fill_colors["high"]  # Very Light Green
         elif 75 <= compliance_percentage_overall < 90:
-            fill_color_overall = "FFF2CC"  # Very Light Amber/Orange
+            fill_color_overall = compliance_fill_colors["medium"]  # Very Light Amber/Orange
         else:
-            fill_color_overall = "FFCCCC"  # Very Light Red
+            fill_color_overall = compliance_fill_colors["low"]  # Very Light Red
 
         ws['C10'].fill = PatternFill(start_color=fill_color_overall, end_color=fill_color_overall, fill_type="solid")
 
@@ -431,11 +531,11 @@ def format_compliance_sheet(excel_path):
             # Apply color fill only to the "Average Compliance Score Per Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = "CCFFCC"  # Very Light Green
+                fill_color = compliance_fill_colors["high"]  # Very Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = "FFF2CC"  # Very Light Amber/Orange
+                fill_color = compliance_fill_colors["medium"]  # Very Light Amber/Orange
             else:
-                fill_color = "FFCCCC"  # Very Light Red
+                fill_color = compliance_fill_colors["low"]  # Very Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -487,11 +587,11 @@ def format_compliance_sheet(excel_path):
             # Apply color fill only to the "Average Compliance Score Per Sub-Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = "CCFFCC"  # Very Light Green
+                fill_color = compliance_fill_colors["high"]  # Very Light Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = "FFF2CC"  # Very Light Amber/Orange
+                fill_color = compliance_fill_colors["medium"]  # Very Light Amber/Orange
             else:
-                fill_color = "FFCCCC"  # Very Light Red
+                fill_color = compliance_fill_colors["low"]  # Very Light Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -519,9 +619,8 @@ def format_compliance_sheet(excel_path):
         wb.close()
 
         logging.info(f"Executive Summary created and saved to {output_excel_path}.")
-
     except Exception as e:
-        logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
+        logging.error(f"Error creating Executive Summary: {e}", exc_info=True)
 
 def detect_control_id_pages(pdf_path, regex_to_cids):
     """
@@ -626,7 +725,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         progress_data[task_id]['download_url'] = None
         progress_data[task_id]['error'] = None
         progress_data[task_id]['num_controls'] = num_controls
-        progress_data[task_id]['continue_processing'] = False  # New flag to continue after invalid
         progress_data[task_id]['cancelled'] = False
 
         # Progress increments
@@ -759,41 +857,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 with progress_lock:
                     progress_data[task_id]['progress'] += progress_increment_pre_llm
 
-        # ------------------------------------------
-        # NEW: Evaluate SOC at the start (lightweight check)
-        # ------------------------------------------
-        with progress_lock:
-            progress_data[task_id]['status'] = "Evaluating SOC report validity..."
-        logging.info(f"Task {task_id}: Evaluating SOC report validity.")
-
-        # Perform minimal qualifier check
-        qualifiers_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
-        qualifiers_faiss_index_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_qualifiers_{task_id}.idx")
-        qualifier_results = evaluate_soc_report_minimal(qualifiers_chunks_path, qualifiers_faiss_index_path, top_k=3)
-
-        if qualifier_results.get("overall", False):
-            logging.info(f"Task {task_id}: SOC report is valid. Proceeding with further processing.")
-            with progress_lock:
-                progress_data[task_id]['progress'] += 5.0  # Increment progress
-                progress_data[task_id]['status'] = "SOC report is valid. Continuing processing..."
-        else:
-            logging.warning(f"Task {task_id}: SOC report is INVALID. Waiting for user decision to continue or cancel.")
-            with progress_lock:
-                progress_data[task_id]['status'] = "SOC report is INVALID. Awaiting user decision to continue or cancel."
-            # Wait until the user sets 'continue_processing' or 'cancelled'
-            while not progress_data[task_id].get('continue_processing', False) and not progress_data[task_id].get('cancelled', False):
-                time.sleep(1)  # Wait for 1 second before checking again
-
-            if progress_data[task_id].get('cancelled', False):
-                logging.info(f"Task {task_id} was cancelled by the user after SOC report invalidity.")
-                return  # Exit the background_process
-
-            if progress_data[task_id].get('continue_processing', False):
-                logging.info(f"Task {task_id}: User chose to continue despite SOC report invalidity.")
-                with progress_lock:
-                    progress_data[task_id]['progress'] += 5.0  # Increment progress
-                    progress_data[task_id]['status'] = "User chose to continue processing despite SOC report invalidity."
-
         # ---------------------- LLM Analysis ----------------------
         # Determine Control IDs order
         control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
@@ -854,6 +917,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
             # Sleep for LLM processing time per control
             sleep_seconds(task_id, llm_time_per_control)
+            # **Removed redundant ETA decrement**
+            # progress_data[task_id]['eta'] -= llm_time_per_control  # Removed to prevent double decrement
 
             # Process exactly one control at a time, passing the chosen model
             processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
@@ -878,7 +943,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         framework_df, error = map_columns_by_position(framework_df)
         if error:
             raise ValueError(error)
-        
+
         merged_df = merge_dataframes(framework_df, analyzed_df)
         final_df, error = create_final_dataframe(merged_df)
         if error:
@@ -945,305 +1010,290 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             progress_data[task_id]['eta'] = 0
             progress_data[task_id]['status'] = "Task completed successfully."
         logging.info(f"Task {task_id}: Task completed successfully.")
-
     except Exception as e:
         logging.error(f"Error in background_process (task_id: {task_id}): {e}", exc_info=True)
-        if "cancelled" in str(e).lower():
-            # Mark the task as cancelled
+        with progress_lock:
+            progress_data[task_id]['status'] = "Error occurred during processing."
+            progress_data[task_id]['error'] = str(e)
+            progress_data[task_id]['progress'] = 0.0
+            progress_data[task_id]['eta'] = 0
+
+    # -------------------------------------------------------
+    # NEW ENDPOINT: /qualify_soc_report
+    # -------------------------------------------------------
+    @app.route('/qualify_soc_report', methods=['POST'])
+    def qualify_soc_report_endpoint():
+        """
+        Endpoint to perform qualifier checks at the start of processing.
+        This allows the user to decide whether to proceed based on the qualifiers.
+        """
+        logging.info("Received request to /qualify_soc_report endpoint.")
+        try:
+            pdf_file = request.files.get('pdf_file')
+            if not pdf_file:
+                raise ValueError("Missing required file: pdf_file")
+
+            # Secure filename and save
+            filename_pdf = secure_filename(pdf_file.filename)
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
+            pdf_file.save(pdf_path)
+            logging.info(f"PDF file saved to {pdf_path}")
+
+            # Generate a unique task ID for qualifier checks
+            task_id = str(uuid.uuid4())
+            progress_data[task_id] = {
+                'progress': 0.0,
+                'status': 'Performing initial qualifier checks...',
+                'download_url': None,
+                'error': None,
+                'eta': 30,  # Estimated time for qualifiers
+                'cancelled': False
+            }
+
+            # Start background thread for qualifier checks
+            thread = threading.Thread(
+                target=background_qualifier_process,
+                args=(task_id, pdf_path)
+            )
+            thread.start()
+
+            return jsonify({"message": "Qualifier checks started", "task_id": task_id}), 202
+
+        except Exception as e:
+            logging.error(f"Error in /qualify_soc_report endpoint: {e}", exc_info=True)
+            return jsonify({"error": str(e)}), 400
+
+    def background_qualifier_process(task_id, pdf_path):
+        """
+        Background process to perform qualifier checks at the start.
+        """
+        try:
+            logging.info(f"Background qualifier processing started for task_id: {task_id}.")
+
+            # Perform qualifier checks without saving to Excel
             with progress_lock:
-                progress_data[task_id]['cancelled'] = True
-                progress_data[task_id]['status'] = "Cancelled"
-                progress_data[task_id]['progress'] = 0
-                progress_data[task_id]['eta'] = 0
-                progress_data[task_id]['error'] = "Task was cancelled by the user."
-        else:
+                progress_data[task_id]['status'] = "Performing initial qualifier checks..."
+            logging.info(f"Task {task_id}: Performing initial qualifier checks.")
+
+            # Perform qualifier checks
+            qualifier_result = qualify_soc_report(
+                pdf_path=pdf_path,
+                df_chunks_path=None,          # No need to save chunks for initial check
+                faiss_index_path=None,        # No need to build index for initial check
+                excel_output_path=None        # Do not save to Excel
+            )
+
+            # Determine Pass/Fail based on qualifier_result
+            if "Yes." in qualifier_result:
+                status = "Pass"
+                message = "The SOC 2 Type 2 Report is valid."
+            else:
+                status = "Fail"
+                message = "The SOC 2 Type 2 Report is not valid."
+
             with progress_lock:
-                progress_data[task_id]['status'] = "Error occurred."
+                progress_data[task_id]['status'] = message
+                progress_data[task_id]['progress'] = 100.0
+                progress_data[task_id]['download_url'] = None
+
+            logging.info(f"Task {task_id}: Qualifier checks completed with status: {status}")
+
+        except Exception as e:
+            logging.error(f"Error in background_qualifier_process (task_id: {task_id}): {e}", exc_info=True)
+            with progress_lock:
+                progress_data[task_id]['status'] = "Error occurred during qualifier checks."
                 progress_data[task_id]['error'] = str(e)
+                progress_data[task_id]['progress'] = 0.0
                 progress_data[task_id]['eta'] = 0
 
-# -------------------------------------------------------
-# NEW ENDPOINT: /detect_control_ids
-# -------------------------------------------------------
-@app.route('/detect_control_ids', methods=['POST'])
-def detect_control_ids_endpoint():
-    """
-    1) Accepts a PDF file.
-    2) Calls identifier.process_pdf(...) to detect repeating Control IDs.
-    3) Detects the pages where these Control IDs appear.
-    4) Returns Control IDs and their page numbers in JSON for the frontend.
-    """
-    logging.info("Received request to /detect_control_ids endpoint.")
-    try:
-        pdf_file = request.files.get('pdf_file')
-        if not pdf_file:
-            raise ValueError("Missing required file: pdf_file")
+    # -------------------------------------------------------
+    # Existing Endpoint: /process_all
+    # -------------------------------------------------------
+    @app.route('/process_all', methods=['POST'])
+    def process_all_endpoint():
+        logging.info("Received request to /process_all endpoint.")
+        try:
+            pdf_file = request.files.get('pdf_file')
+            excel_file = request.files.get('excel_file')
 
-        # Secure filename and save
-        filename_pdf = secure_filename(pdf_file.filename)
-        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
-        pdf_file.save(pdf_path)
-        logging.info(f"PDF file saved to {pdf_path}")
+            if not pdf_file or not excel_file:
+                raise ValueError("Missing required files: pdf_file or excel_file")
 
-        # Identify control IDs by calling identifier.process_pdf
-        repeating_patterns = identify_control_ids(pdf_path)  # expects to return list of dicts
+            # Control IDs are mandatory
+            control_id = request.form.get('control_id', '').strip()
+            if not control_id:
+                logging.error("No Control IDs provided in the request.")
+                return jsonify({"error": "No Control IDs were provided."}), 400
 
-        # Group Control IDs by their regex patterns
-        regex_to_cids = {}
-        for pattern_dict in repeating_patterns:
-            regex = pattern_dict.get("Regex Pattern")
-            cid = pattern_dict.get("Example Control ID")
-            if regex and cid:
-                regex_to_cids.setdefault(regex, []).append(cid)
+            model_name = request.form.get('model_name', 'llama3.1')
+            logging.info(f"Selected model: {model_name}")
 
-        # Extract Control IDs from repeating patterns
-        control_ids = [cid for cids in regex_to_cids.values() for cid in cids]
+            # Secure filenames
+            filename_pdf = secure_filename(pdf_file.filename)
+            filename_excel = secure_filename(excel_file.filename)
 
-        # Detect pages where Control IDs appear
-        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+            # Save uploaded files
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
+            pdf_file.save(pdf_path)
+            logging.info(f"PDF file saved to {pdf_path}")
 
-        # Example return structure:
-        # {
-        #   "repeating_patterns": [...],
-        #   "control_id_pages": {
-        #       "AC-32": [56],
-        #       "CC1.1": [47, 72],
-        #       "AC-13a": [57, 74],
-        #       ...
-        #   }
-        # }
-        return jsonify({
-            "repeating_patterns": repeating_patterns,
-            "control_id_pages": control_id_pages
-        }), 200
+            excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_excel)
+            excel_file.save(excel_path)
+            logging.info(f"Excel file saved to {excel_path}")
 
-    except Exception as e:
-        logging.error(f"Error in /detect_control_ids endpoint: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 400
+            # Detect Control IDs and their pages
+            # To handle shared regex patterns, group Control IDs by their regex
+            repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
+            regex_to_cids = {}
+            for pattern_dict in repeating_patterns:
+                regex = pattern_dict.get("Regex Pattern")
+                cid = pattern_dict.get("Example Control ID")
+                if regex and cid and cid in [c.strip() for c in control_id.split(',') if c.strip()]:
+                    regex_to_cids.setdefault(regex, []).append(cid)
 
-# -------------------------------------------------------
-# Existing Endpoint: /process_all
-# -------------------------------------------------------
-@app.route('/process_all', methods=['POST'])
-def process_all():
-    logging.info("Received request to /process_all endpoint.")
-    try:
-        pdf_file = request.files.get('pdf_file')
-        excel_file = request.files.get('excel_file')
+            # Extract Control IDs from repeating patterns (filtered)
+            control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+            logging.info(f"Control IDs order for page range determination: {control_ids_order}")
 
-        if not pdf_file or not excel_file:
-            raise ValueError("Missing required files: pdf_file or excel_file")
+            if not regex_to_cids:
+                raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
 
-        # Control IDs are mandatory
-        control_id = request.form.get('control_id', '').strip()
-        if not control_id:
-            logging.error("No Control IDs provided in the request.")
-            return jsonify({"error": "No Control IDs were provided."}), 400
+            control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
 
-        model_name = request.form.get('model_name', 'llama3.1')
-        logging.info(f"Selected model: {model_name}")
+            # Determine page range based on Control IDs with prioritization
+            start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
+            logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
 
-        # Secure filenames
-        filename_pdf = secure_filename(pdf_file.filename)
-        filename_excel = secure_filename(excel_file.filename)
+            # Generate a unique task ID
+            task_id = str(uuid.uuid4())
+            progress_data[task_id] = {
+                'progress': 0.0,
+                'status': 'Starting task...',
+                'download_url': None,
+                'error': None,
+                'start_time': time.time(),
+                'eta': None,
+                'num_controls': 0,
+                'cancelled': False
+            }
 
-        # Save uploaded files
-        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
-        pdf_file.save(pdf_path)
-        logging.info(f"PDF file saved to {pdf_path}")
+            # Extract base filenames for final output naming
+            soc_report_filename = filename_pdf
+            framework_filename = filename_excel
 
-        excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_excel)
-        excel_file.save(excel_path)
-        logging.info(f"Excel file saved to {excel_path}")
+            # Start background processing thread with determined start and end pages
+            thread = threading.Thread(
+                target=background_process,
+                args=(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename)
+            )
+            thread.start()
 
-        # Detect Control IDs and their pages
-        # To handle shared regex patterns, group Control IDs by their regex
-        repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
-        regex_to_cids = {}
-        for pattern_dict in repeating_patterns:
-            regex = pattern_dict.get("Regex Pattern")
-            cid = pattern_dict.get("Example Control ID")
-            if regex and cid and cid in [c.strip() for c in control_id.split(',') if c.strip()]:
-                regex_to_cids.setdefault(regex, []).append(cid)
+            return jsonify({"message": "Processing started", "task_id": task_id}), 202
 
-        # Extract Control IDs from repeating patterns (filtered)
-        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
-        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
+        except Exception as e:
+            logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
+            return jsonify({"error": str(e)}), 400
 
-        if not regex_to_cids:
-            raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
+    @app.route('/progress/<task_id>', methods=['GET'])
+    def sse_progress(task_id):
+        def generate():
+            while True:
+                task_info = progress_data.get(task_id, None)
+                if task_info is None:
+                    yield f"data: {json.dumps({'error': 'Invalid task ID'})}\n\n"
+                    break
 
-        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+                progress = task_info['progress']
+                status = task_info['status']
+                eta = task_info.get('eta', None)
+                error = task_info.get('error', None)
+                download_url = task_info.get('download_url', None)
+                cancelled = task_info.get('cancelled', False)
 
-        # Determine page range based on Control IDs with prioritization
-        start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
-        logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
+                data = {
+                    'progress': round(progress, 2),
+                    'status': status,
+                    'eta': round(eta, 2) if eta is not None else eta
+                }
+                if download_url:
+                    data['download_url'] = download_url
+                if error:
+                    data['error'] = error
+                if cancelled:
+                    data['cancelled'] = True
 
-        # Generate a unique task ID
-        task_id = str(uuid.uuid4())
-        progress_data[task_id] = {
-            'progress': 0.0,
-            'status': 'Starting task...',
-            'download_url': None,
-            'error': None,
-            'start_time': time.time(),
-            'eta': None,
-            'num_controls': 0,
-            'continue_processing': False,  # New flag to continue after invalid
-            'cancelled': False
-        }
+                yield f"data: {json.dumps(data)}\n\n"
 
-        # Extract base filenames for final output naming
-        soc_report_filename = filename_pdf
-        framework_filename = filename_excel
+                # Stop streaming if finished, cancelled, or error encountered
+                if progress >= 100 or error or cancelled:
+                    break
 
-        # Start background processing thread with determined start and end pages
-        thread = threading.Thread(
-            target=background_process,
-            args=(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename)
-        )
-        thread.start()
+                time.sleep(1)
 
-        return jsonify({"message": "Processing started", "task_id": task_id}), 202
+        response = Response(generate(), mimetype='text/event-stream')
 
-    except Exception as e:
-        logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 400
+        # ✅ Add required headers to prevent buffering issues
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        response.headers['Cache-Control'] = 'no-cache'
+        response.headers['Connection'] = 'keep-alive'  # ✅ Prevents disconnects
+        response.headers['X-Accel-Buffering'] = 'no'  # ✅ Disables buffering
 
-# -------------------------------------------------------
-# NEW ENDPOINT: /continue_task/<task_id>
-# -------------------------------------------------------
-@app.route('/continue_task/<task_id>', methods=['POST'])
-def continue_task(task_id):
-    """
-    Endpoint to signal that the user wants to continue processing after an invalid SOC report.
-    Sets the 'continue_processing' flag to True for the specified task.
-    """
-    logging.info(f"Received request to /continue_task endpoint for task_id: {task_id}.")
-    try:
-        if task_id not in progress_data:
-            logging.warning(f"Invalid task_id received for continue_task: {task_id}.")
+        return response
+
+
+    @app.route('/download/<filename>', methods=['GET'])
+    def download_file(filename):
+        """
+        Endpoint to download a file from the specified directory.
+        Restricts access to 'excel_outputs' directory for security.
+        """
+        logging.info(f"Received request to download file: {filename}")
+        try:
+            # Ensure the filename is secure
+            filename = secure_filename(filename)
+            directory = app.config['EXCEL_FOLDER']
+            file_path = os.path.join(directory, filename)
+            if not os.path.exists(file_path):
+                logging.error(f"File not found: {filename}")
+                return jsonify({"error": "File not found"}), 404
+            return send_file(
+                file_path,
+                mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                as_attachment=True
+            )
+
+        except Exception as e:
+            logging.error(f"Error serving file {filename}: {e}", exc_info=True)
+            return jsonify({"error": "File could not be served"}), 500
+
+    @app.route('/cancel_task/<task_id>', methods=['POST'])
+    def cancel_task(task_id):
+        """
+        Endpoint to signal that the user wants to cancel a running task.
+        The background process will check the `cancelled` flag and halt.
+        """
+        task_info = progress_data.get(task_id)
+        if not task_info:
+            logging.warning(f"Attempted to cancel invalid task_id: {task_id}.")
             return jsonify({"error": "Invalid task ID"}), 404
 
-        if progress_data[task_id].get('continue_processing', False):
-            logging.info(f"Task {task_id} has already been set to continue.")
-            return jsonify({"message": "Task is already set to continue."}), 200
+        if task_info.get('cancelled'):
+            logging.info(f"Task {task_id} is already cancelled.")
+            return jsonify({"message": f"Task {task_id} is already cancelled."}), 200
 
-        if progress_data[task_id].get('cancelled', False):
-            logging.info(f"Cannot continue task {task_id} as it has been cancelled.")
-            return jsonify({"error": "Cannot continue a cancelled task."}), 400
+        # Mark the task as cancelled
+        task_info['cancelled'] = True
+        task_info['status'] = "Cancelled"
+        task_info['progress'] = 0
+        task_info['eta'] = 0
+        task_info['error'] = "Task was cancelled by the user."
 
-        # Set the 'continue_processing' flag to True
-        progress_data[task_id]['continue_processing'] = True
-        logging.info(f"Task {task_id} has been set to continue processing.")
+        logging.info(f"Task {task_id} marked as cancelled by the user.")
+        return jsonify({"message": f"Task {task_id} cancelled."}), 200
 
-        return jsonify({"message": f"Task {task_id} will continue processing."}), 200
-
-    except Exception as e:
-        logging.error(f"Error in /continue_task endpoint for task_id {task_id}: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 500
-
-# -------------------------------------------------------
-# Existing Endpoint: /progress/<task_id>
-# -------------------------------------------------------
-@app.route('/progress/<task_id>', methods=['GET'])
-def sse_progress(task_id):
-    def generate():
-        while True:
-            task_info = progress_data.get(task_id, None)
-            if task_info is None:
-                yield f"data: {json.dumps({'error': 'Invalid task ID'})}\n\n"
-                break
-
-            progress = task_info['progress']
-            status = task_info['status']
-            eta = task_info.get('eta', None)
-            error = task_info.get('error', None)
-            download_url = task_info.get('download_url', None)
-            cancelled = task_info.get('cancelled', False)
-
-            data = {
-                'progress': round(progress, 2),
-                'status': status,
-                'eta': round(eta, 2) if eta is not None else eta
-            }
-            if download_url:
-                data['download_url'] = download_url
-            if error:
-                data['error'] = error
-            if cancelled:
-                data['cancelled'] = True
-
-            yield f"data: {json.dumps(data)}\n\n"
-
-            # Stop streaming if finished, cancelled, or error encountered
-            if progress >= 100 or error or cancelled:
-                break
-
-            time.sleep(1)
-
-    response = Response(generate(), mimetype='text/event-stream')
+    if __name__ == "__main__":
+        logging.info("Starting the Flask application on port 5000.")
+        app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)
     
-    # ✅ Add required headers to prevent buffering issues
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'GET'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    response.headers['Cache-Control'] = 'no-cache'
-    response.headers['Connection'] = 'keep-alive'  # ✅ Prevents disconnects
-    response.headers['X-Accel-Buffering'] = 'no'  # ✅ Disables buffering
-
-    return response
-
-@app.route('/download/<filename>', methods=['GET'])
-def download_file(filename):
-    """
-    Endpoint to download a file from the specified directory.
-    Restricts access to 'excel_outputs' directory for security.
-    """
-    logging.info(f"Received request to download file: {filename}")
-    try:
-        # Ensure the filename is secure
-        filename = secure_filename(filename)
-        directory = app.config['EXCEL_FOLDER']
-        file_path = os.path.join(directory, filename)
-        if not os.path.exists(file_path):
-            logging.error(f"File not found: {filename}")
-            return jsonify({"error": "File not found"}), 404
-        return send_file(
-            file_path,
-            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            as_attachment=True
-        )
-
-    except Exception as e:
-        logging.error(f"Error serving file {filename}: {e}", exc_info=True)
-        return jsonify({"error": "File could not be served"}), 500
-
-@app.route('/cancel_task/<task_id>', methods=['POST'])
-def cancel_task(task_id):
-    """
-    Endpoint to signal that the user wants to cancel a running task.
-    The background process will check the `cancelled` flag and halt.
-    """
-    task_info = progress_data.get(task_id)
-    if not task_info:
-        logging.warning(f"Attempted to cancel invalid task_id: {task_id}.")
-        return jsonify({"error": "Invalid task ID"}), 404
-
-    if task_info.get('cancelled'):
-        logging.info(f"Task {task_id} is already cancelled.")
-        return jsonify({"message": f"Task {task_id} is already cancelled."}), 200
-
-    # Mark the task as cancelled
-    task_info['cancelled'] = True
-    task_info['status'] = "Cancelled"
-    task_info['progress'] = 0
-    task_info['eta'] = 0
-    task_info['error'] = "Task was cancelled by the user."
-
-    logging.info(f"Task {task_id} marked as cancelled by the user.")
-    return jsonify({"message": f"Task {task_id} cancelled."}), 200
-
-if __name__ == "__main__":
-    logging.info("Starting the Flask application on port 5000.")
-    app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)
