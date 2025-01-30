@@ -990,9 +990,6 @@ def process_all():
 
 @app.route('/progress/<task_id>', methods=['GET'])
 def sse_progress(task_id):
-    """
-    SSE endpoint that streams progress updates for the given task_id.
-    """
     def generate():
         while True:
             task_info = progress_data.get(task_id, None)
@@ -1010,7 +1007,7 @@ def sse_progress(task_id):
             data = {
                 'progress': round(progress, 2),
                 'status': status,
-                'eta': round(eta, 2) if eta is not None and isinstance(eta, (int, float)) else eta
+                'eta': round(eta, 2) if eta is not None else eta
             }
             if download_url:
                 data['download_url'] = download_url
@@ -1027,7 +1024,18 @@ def sse_progress(task_id):
 
             time.sleep(1)
 
-    return Response(generate(), mimetype='text/event-stream')
+    response = Response(generate(), mimetype='text/event-stream')
+    
+    # ✅ Add required headers to prevent buffering issues
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Cache-Control'] = 'no-cache'
+    response.headers['Connection'] = 'keep-alive'  # ✅ Prevents disconnects
+    response.headers['X-Accel-Buffering'] = 'no'  # ✅ Disables buffering
+
+    return response
+
 
 @app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
@@ -1081,5 +1089,4 @@ def cancel_task(task_id):
 
 if __name__ == "__main__":
     logging.info("Starting the Flask application on port 5000.")
-    # Note: Consider setting debug=False in production
-    app.run(host="0.0.0.0", port=5000, threaded=True)
+    app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)
