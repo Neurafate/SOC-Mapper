@@ -820,7 +820,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
 
         # Set the download URL to the final summarized Excel file
-        progress_data[task_id]['download_url'] = f"http://127.0.0.1:5000/download/{final_filename}"
+        progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
 
         progress_data[task_id]['progress'] = 100.0
         progress_data[task_id]['eta'] = 0
