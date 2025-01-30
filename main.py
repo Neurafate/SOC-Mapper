@@ -305,6 +305,7 @@ def format_compliance_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
+
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
@@ -343,6 +344,17 @@ def create_executive_summary(input_excel_path, output_excel_path):
             if col not in df.columns:
                 raise ValueError(f"Column '{col}' not found in 'Control Assessment'.")
 
+        # Data Cleaning: Trim whitespace and standardize capitalization in 'User Org Control Domain' and 'User Org Control Sub-Domain'
+        df['User Org Control Domain'] = df['User Org Control Domain'].astype(str).str.strip().str.title()
+        df['User Org Control Sub-Domain'] = df['User Org Control Sub-Domain'].astype(str).str.strip().str.title()
+
+        # Debug: Log unique domains and sub-domains
+        unique_domains = df['User Org Control Domain'].unique()
+        logging.info(f"Unique Domains ({len(unique_domains)}): {unique_domains}")
+
+        unique_subdomains = df['User Org Control Sub-Domain'].unique()
+        logging.info(f"Unique Sub-Domains ({len(unique_subdomains)}): {unique_subdomains}")
+
         # Compute domain-wise compliance scores
         domain_avg = df.groupby("User Org Control Domain")["Compliance Score"].mean().reset_index()
         domain_avg["Compliance Score"] = domain_avg["Compliance Score"] / 100.0  # Convert to percentage
@@ -361,6 +373,20 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Merge compliance score and control status counts
         domain_summary = domain_avg.merge(domain_status_counts, on="User Org Control Domain", how="left")
 
+        # Verify that all domains are included after merging
+        if len(domain_summary) != len(unique_domains):
+            missing_domains = set(unique_domains) - set(domain_summary['User Org Control Domain'])
+            logging.warning(f"Missing Domains after merging: {missing_domains}")
+            # Optionally, add missing domains with default values
+            for domain in missing_domains:
+                domain_summary = domain_summary.append({
+                    "User Org Control Domain": domain,
+                    "Compliance Score": 0.0,
+                    "Fully Met": 0,
+                    "Partially Met": 0,
+                    "Not Met": 0
+                }, ignore_index=True)
+
         # Compute sub-domain-wise compliance scores
         subdomain_avg = df.groupby("User Org Control Sub-Domain")["Compliance Score"].mean().reset_index()
         subdomain_avg["Compliance Score"] = subdomain_avg["Compliance Score"] / 100.0  # Convert to percentage
@@ -375,6 +401,21 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # Merge compliance score and control status counts for sub-domains
         subdomain_summary = subdomain_avg.merge(subdomain_status_counts, on="User Org Control Sub-Domain", how="left")
+
+        # Verify that all sub-domains are included after merging
+        unique_subdomain_summary = subdomain_summary['User Org Control Sub-Domain'].unique()
+        if len(unique_subdomain_summary) != len(unique_subdomains):
+            missing_subdomains = set(unique_subdomains) - set(subdomain_summary['User Org Control Sub-Domain'])
+            logging.warning(f"Missing Sub-Domains after merging: {missing_subdomains}")
+            # Optionally, add missing sub-domains with default values
+            for subdomain in missing_subdomains:
+                subdomain_summary = subdomain_summary.append({
+                    "User Org Control Sub-Domain": subdomain,
+                    "Compliance Score": 0.0,
+                    "Fully Met": 0,
+                    "Partially Met": 0,
+                    "Not Met": 0
+                }, ignore_index=True)
 
         # Load workbook with openpyxl
         wb = load_workbook(input_excel_path)
@@ -405,9 +446,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # Use the same colors for compliance_fill_colors to ensure consistency
         compliance_fill_colors = {
-            "high": legend_colors[">90%"],        # Green
+            "high": legend_colors[">90%"],            # Green
             "medium": legend_colors["<90% & >75%"],  # Amber/Orange
-            "low": legend_colors["<75%"]          # Red
+            "low": legend_colors["<75%"]             # Red
         }
 
         header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")  # Blue
@@ -697,22 +738,21 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         pre_llm_steps = 6
         pre_llm_step_time = int(pre_llm_time / pre_llm_steps)
         
-        # Adjust qualifier_time based on model_name
+        # **Updated Qualifier ETA Based on Model Name**
         if model_name.lower() == 'phi4':
-            qualifier_time = 165
+            qualifier_time = 21  # Changed from 165 to 21 seconds
             logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
         else:
-            qualifier_time = 30
+            qualifier_time = 9  # Changed from 30 to 9 seconds
             logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
 
-        qualifier_time = max(qualifier_time, 0)  # Ensure non-negative
-
-        llm_time_per_control = 55 if model_name.lower() == 'phi4' else 15
+        # **Updated LLM Processing Time Per Control**
+        llm_time_per_control = 7 if model_name.lower() == 'phi4' else 3  # Changed from 55/15 to 7/3 seconds per control
 
         num_controls = count_controls(excel_path)
         llm_time = num_controls * llm_time_per_control
 
-        # Total ETA includes pre_llm_time, llm_time, and qualifier_time
+        # **Total ETA Includes pre_llm_time, llm_time, and qualifier_time**
         total_eta = pre_llm_time + llm_time + qualifier_time
         progress_data[task_id]['eta'] = int(total_eta)
         progress_data[task_id]['progress'] = 0.0
@@ -893,10 +933,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
             logging.info(f"Task {task_id}: Analyzing control {i+1}/{num_controls}. ETA: {format_eta(progress_data[task_id]['eta'])}")
 
-            # Sleep 1 second, then decrement the rest
-            sleep_seconds(task_id, 1)
-            if progress_data[task_id]['eta'] > (llm_time_per_control - 1):
-                progress_data[task_id]['eta'] -= (llm_time_per_control - 1)
+            # **Updated Sleep Duration Based on New LLM Timing**
+            sleep_seconds(task_id, llm_time_per_control)
+            progress_data[task_id]['eta'] -= llm_time_per_control
 
             # Process exactly one control at a time, passing the chosen model
             processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
@@ -948,8 +987,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         format_qualifier_sheet(final_output_path)
         
-        # Sleep for dynamic qualifier_time
-        sleep_seconds(task_id, qualifier_time)
+        # **Removed the unnecessary sleep_seconds call after qualifiers**
+        # sleep_seconds(task_id, qualifier_time)  # This line is removed to fix the ETA flaw
         check_cancel(task_id)
         progress_data[task_id]['progress'] += progress_increment_qualifier
 
