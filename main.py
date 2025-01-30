@@ -393,8 +393,8 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Use colorblind-friendly palette and ensure good contrast
         legend_colors = {
             ">90%": "00B050",         # Green
-            "<90% & >75%": "FFC000",   # Amber/Orange
-            "<75%": "FF0000"           # Red
+            "<90% & >75%": "FFC000",  # Amber/Orange
+            "<75%": "FF0000"          # Red
         }
 
         fill_legend = {
@@ -403,10 +403,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             "<75%": PatternFill(start_color=legend_colors["<75%"], end_color=legend_colors["<75%"], fill_type="solid")
         }
 
+        # Use the same colors for compliance_fill_colors to ensure consistency
         compliance_fill_colors = {
-            "high": "C6EFCE",    # Light Green
-            "medium": "FFF2CC",  # Light Amber
-            "low": "FFC7CE"      # Light Red
+            "high": legend_colors[">90%"],        # Green
+            "medium": legend_colors["<90% & >75%"],  # Amber/Orange
+            "low": legend_colors["<75%"]          # Red
         }
 
         header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")  # Blue
@@ -475,11 +476,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Color code the Overall Compliance Percentage based on the legend
         compliance_percentage_overall = overall_avg * 100  # Convert to percentage
         if compliance_percentage_overall >= 90:
-            fill_color_overall = compliance_fill_colors["high"]  # Light Green
+            fill_color_overall = compliance_fill_colors["high"]  # Green
         elif 75 <= compliance_percentage_overall < 90:
-            fill_color_overall = compliance_fill_colors["medium"]  # Light Amber
+            fill_color_overall = compliance_fill_colors["medium"]  # Amber/Orange
         else:
-            fill_color_overall = compliance_fill_colors["low"]  # Light Red
+            fill_color_overall = compliance_fill_colors["low"]  # Red
 
         ws['C10'].fill = PatternFill(start_color=fill_color_overall, end_color=fill_color_overall, fill_type="solid")
 
@@ -527,11 +528,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Light Green
+                fill_color = compliance_fill_colors["high"]  # Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Light Amber
+                fill_color = compliance_fill_colors["medium"]  # Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Light Red
+                fill_color = compliance_fill_colors["low"]  # Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
@@ -579,11 +580,11 @@ def create_executive_summary(input_excel_path, output_excel_path):
             # Apply color fill only to the "Average Compliance Score Per Sub-Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
-                fill_color = compliance_fill_colors["high"]  # Light Green
+                fill_color = compliance_fill_colors["high"]  # Green
             elif 75 <= compliance_percentage < 90:
-                fill_color = compliance_fill_colors["medium"]  # Light Amber
+                fill_color = compliance_fill_colors["medium"]  # Amber/Orange
             else:
-                fill_color = compliance_fill_colors["low"]  # Light Red
+                fill_color = compliance_fill_colors["low"]  # Red
 
             ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
