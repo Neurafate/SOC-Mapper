@@ -1,3 +1,5 @@
+# main.py
+
 import os
 import logging
 import threading
@@ -7,6 +9,9 @@ import uuid
 import re
 from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
+from identifier import process_pdf as identify_control_ids
+
+# Existing imports from your project
 from parser import (
     generate_regex_from_sample,
     extract_text_from_pdf,
@@ -30,6 +35,8 @@ from openpyxl import load_workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
 from werkzeug.utils import secure_filename
+
+import PyPDF2  # New import for PDF processing
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -62,7 +69,6 @@ logging.info("Application started.")
 # Dictionary to track progress and final result for each task_id
 progress_data = {}
 
-
 def count_controls(excel_path):
     """
     Counts the number of controls (rows) in the provided Excel file.
@@ -82,7 +88,6 @@ def count_controls(excel_path):
     except Exception as e:
         logging.error(f"Error counting controls in {excel_path}: {e}", exc_info=True)
         return 0
-
 
 def format_qualifier_sheet(excel_path):
     """Format the Qualifying Questions sheet in the Excel output."""
@@ -109,10 +114,12 @@ def format_qualifier_sheet(excel_path):
             # Apply sentiment-based color coding
             for row in ws.iter_rows(min_row=2):
                 answer_cell = row[1]  # Assuming Answer column is second
-                if "yes" in str(answer_cell.value).lower():
-                    answer_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
-                elif "no" in str(answer_cell.value).lower():
-                    answer_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
+                if answer_cell.value:
+                    answer_text = str(answer_cell.value).lower()
+                    if "yes" in answer_text:
+                        answer_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
+                    elif "no" in answer_text:
+                        answer_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
 
             wb.save(excel_path)
             logging.info("Qualifying Questions sheet formatted successfully.")
@@ -120,7 +127,6 @@ def format_qualifier_sheet(excel_path):
             logging.warning("Qualifying Questions sheet not found in the Excel file.")
     except Exception as e:
         logging.error(f"Error formatting Qualifying Questions sheet: {e}", exc_info=True)
-
 
 def chunk_text_without_patterns(text, chunk_size):
     """
@@ -151,7 +157,6 @@ def chunk_text_without_patterns(text, chunk_size):
         logging.error(f"Error in chunk_text_without_patterns: {e}", exc_info=True)
         return []
 
-
 def format_eta(seconds):
     """
     Converts seconds to a string in the format 'Xm Ys'.
@@ -159,7 +164,6 @@ def format_eta(seconds):
     minutes = seconds // 60
     secs = seconds % 60
     return f"{int(minutes)}m {int(secs)}s"
-
 
 def sleep_seconds(task_id, seconds):
     """
@@ -176,7 +180,6 @@ def sleep_seconds(task_id, seconds):
             if progress_data[task_id]['eta'] > 0:
                 progress_data[task_id]['eta'] -= 1
 
-
 def rename_sheet_to_soc_mapping(excel_path):
     try:
         logging.info(f"Renaming 'Sheet1' to 'Control Assessment' in {excel_path}.")
@@ -190,7 +193,6 @@ def rename_sheet_to_soc_mapping(excel_path):
             logging.warning("Sheet1 not found in the Excel file.")
     except Exception as e:
         logging.error(f"Error renaming Sheet1 to Control Assessment: {e}", exc_info=True)
-
 
 def format_compliance_sheet(excel_path):
     """
@@ -303,30 +305,59 @@ def format_compliance_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
-
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
     The summary includes:
       - Overall Compliance Score (average of Domain-wise Compliance Scores)
       - Domain-wise Compliance Scores
+      - Count of fully met, partially met, and not met controls per domain
+      - Detailed list of failing and partially met controls
     """
     try:
-        # Read the "Control Assessment" sheet using pandas for quick math
+        logging.info("Generating Executive Summary...")
+
+        # Read the "Control Assessment" sheet using pandas
         df = pd.read_excel(input_excel_path, sheet_name='Control Assessment')
 
-        # Check required columns
-        required_cols = ["User Org Control Domain", "Compliance Score"]
-        for col in required_cols:
+        # Debug: Print available columns to confirm naming
+        logging.info(f"Columns in 'Control Assessment': {list(df.columns)}")
+
+        # Expected column names
+        expected_columns = [
+            'Sr. No.',
+            'User Org Control Domain',
+            'User Org Control Sub-Domain',
+            'User Org Control Statement',
+            'Service Org Control IDs',
+            'Service Org Controls',
+            'Compliance Score',
+            'Detailed Analysis Explanation',
+            'Control Status'
+        ]
+
+        # Ensure all required columns exist
+        for col in expected_columns:
             if col not in df.columns:
                 raise ValueError(f"Column '{col}' not found in 'Control Assessment'.")
 
         # Compute domain-wise compliance scores
         domain_avg = df.groupby("User Org Control Domain")["Compliance Score"].mean().reset_index()
-        domain_avg["Compliance Score"] = domain_avg["Compliance Score"] / 100.0
+        domain_avg["Compliance Score"] = domain_avg["Compliance Score"] / 100.0  # Convert to percentage
 
         # Compute overall compliance score as the mean of domain-wise averages
         overall_avg = domain_avg["Compliance Score"].mean()
+
+        # Count fully met, partially met, and not met controls per domain
+        domain_status_counts = df.groupby(["User Org Control Domain", "Control Status"]).size().unstack(fill_value=0).reset_index()
+
+        # Ensure all categories exist
+        for status in ["Fully Met", "Partially Met", "Not Met"]:
+            if status not in domain_status_counts.columns:
+                domain_status_counts[status] = 0
+
+        # Merge compliance score and control status counts
+        domain_summary = domain_avg.merge(domain_status_counts, on="User Org Control Domain", how="left")
 
         # Load with openpyxl
         wb = load_workbook(input_excel_path)
@@ -341,33 +372,43 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Insert Executive Summary as the first sheet
         wb._sheets.insert(0, wb._sheets.pop(wb.sheetnames.index("Executive Summary")))
 
-        # Write headers/info
+        # Write headers
         ws["B2"] = "Overall Compliance Score"
         ws["C2"] = overall_avg
         ws["C2"].number_format = "0.00%"
 
-        ws["B3"] = "Domain-wise Compliance Score"
+        ws["B3"] = "Domain-wise Compliance Breakdown"
         ws["C3"] = "Average Compliance Score per Domain"
+        ws["D3"] = "Fully Met Controls"
+        ws["E3"] = "Partially Met Controls"
+        ws["F3"] = "Not Met Controls"
 
-        # Style the headers (B2:C3)
+        # Style the headers
         header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")
         header_font = Font(bold=True, color="FFFFFF")
-        for row in range(2, 4):
-            for col in range(2, 4):
-                cell = ws.cell(row=row, column=col)
-                cell.fill = header_fill
-                cell.font = header_font
-                cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+        for col in range(2, 7):
+            cell = ws.cell(row=3, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-        # Write domain-wise compliance starting from row 4
+        # Write domain-wise compliance scores and failing control counts
         start_row = 4
-        for i, row_data in domain_avg.iterrows():
+        for i, row_data in domain_summary.iterrows():
             ws.cell(row=start_row + i, column=2, value=row_data["User Org Control Domain"])
             ws.cell(row=start_row + i, column=3, value=row_data["Compliance Score"])
             ws.cell(row=start_row + i, column=3).number_format = "0.00%"
+            ws.cell(row=start_row + i, column=4, value=row_data.get("Fully Met", 0))
+            ws.cell(row=start_row + i, column=5, value=row_data.get("Partially Met", 0))
+            ws.cell(row=start_row + i, column=6, value=row_data.get("Not Met", 0))
 
-        # Set row height for Overall Compliance Score
-        ws.row_dimensions[2].height = 50
+            # Highlight domains with failing controls in red and partially met in yellow
+            if row_data.get("Not Met", 0) > 0:
+                for col in range(2, 7):
+                    ws.cell(row=start_row + i, column=col).fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red for Not Met
+            elif row_data.get("Partially Met", 0) > 0:
+                for col in range(2, 7):
+                    ws.cell(row=start_row + i, column=col).fill = PatternFill(start_color="FFD966", end_color="FFD966", fill_type="solid")  # Yellow for Partially Met
 
         # Add border to all used cells
         thin_border = Border(
@@ -377,14 +418,46 @@ def create_executive_summary(input_excel_path, output_excel_path):
             bottom=Side(border_style="thin")
         )
 
-        for row in ws.iter_rows(min_row=2, max_row=start_row + len(domain_avg) - 1, min_col=2, max_col=3):
+        for row in ws.iter_rows(min_row=3, max_row=start_row + len(domain_summary), min_col=2, max_col=6):
             for cell in row:
                 cell.border = thin_border
                 cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-        # Autofit columns B and C
-        ws.column_dimensions['B'].width = 40
+        # Add failing and partially met controls list below the table
+        fail_start_row = start_row + len(domain_summary) + 3
+        ws.cell(row=fail_start_row, column=2, value="List of Partially Met and Not Met Controls").font = Font(bold=True, size=12)
+        ws.cell(row=fail_start_row, column=2).alignment = Alignment(horizontal='left', vertical='center')
+
+        # Write headers for failing controls section
+        fail_headers = ["Domain", "Sub-Domain", "Control Statement", "Control Status", "Detailed Analysis"]
+        for col_idx, header in enumerate(fail_headers, start=2):
+            cell = ws.cell(row=fail_start_row + 1, column=col_idx, value=header)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+
+        # Filter out partially met and not met controls
+        failing_controls = df[df["Control Status"].isin(["Not Met", "Partially Met"])]
+
+        # Add failing control details
+        for i, row_data in failing_controls.iterrows():
+            ws.cell(row=fail_start_row + 2 + i, column=2, value=row_data["User Org Control Domain"])
+            ws.cell(row=fail_start_row + 2 + i, column=3, value=row_data["User Org Control Sub-Domain"])
+            ws.cell(row=fail_start_row + 2 + i, column=4, value=row_data["User Org Control Statement"])
+            ws.cell(row=fail_start_row + 2 + i, column=5, value=row_data["Control Status"])
+            ws.cell(row=fail_start_row + 2 + i, column=6, value=row_data["Detailed Analysis Explanation"])
+
+            # Highlight failing controls in red and partially met in yellow
+            fill_color = "FFC7CE" if row_data["Control Status"] == "Not Met" else "FFD966"
+            for col in range(2, 7):
+                ws.cell(row=fail_start_row + 2 + i, column=col).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
+
+        # Autofit columns
+        ws.column_dimensions['B'].width = 30
         ws.column_dimensions['C'].width = 30
+        ws.column_dimensions['D'].width = 50
+        ws.column_dimensions['E'].width = 15
+        ws.column_dimensions['F'].width = 50
 
         # Save as a new file
         wb.save(output_excel_path)
@@ -396,6 +469,64 @@ def create_executive_summary(input_excel_path, output_excel_path):
         logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
         raise
 
+
+def detect_control_id_pages(pdf_path, regex_to_cids):
+    """
+    Detects the pages where each Control ID appears in the PDF.
+    Groups Control IDs by their regex patterns and assigns the earliest page
+    where any Control ID in the group appears as the start page for all in the group.
+
+    :param pdf_path: Path to the PDF file.
+    :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
+    :return: Dictionary mapping Control IDs to list of page numbers where they appear.
+    """
+    control_id_pages = {cid: [] for cids in regex_to_cids.values() for cid in cids}
+    try:
+        logging.info(f"Detecting pages for Control IDs in {pdf_path}.")
+        reader = PyPDF2.PdfReader(pdf_path)
+        for page_num, page in enumerate(reader.pages, start=1):
+            text = page.extract_text()
+            if text:
+                for regex, cids in regex_to_cids.items():
+                    if re.search(regex, text, re.IGNORECASE):
+                        for cid in cids:
+                            if page_num not in control_id_pages[cid]:
+                                control_id_pages[cid].append(page_num)
+                                logging.debug(f"Found Control ID '{cid}' on page {page_num}.")
+        logging.info(f"Control ID pages detected: {control_id_pages}")
+        return control_id_pages
+    except Exception as e:
+        logging.error(f"Error in detect_control_id_pages: {e}", exc_info=True)
+        return control_id_pages  # Return what has been found so far
+
+def determine_page_range(control_id_pages, regex_to_cids):
+    """
+    Determines the start and end pages based on Control IDs' page occurrences, 
+    prioritizing the order of regex patterns.
+
+    :param control_id_pages: Dictionary mapping Control IDs to list of page numbers.
+    :param regex_to_cids: Dict mapping regex patterns to list of Control IDs.
+    :return: Tuple (start_page, end_page)
+    """
+    start_pages = []
+    for regex, cids in regex_to_cids.items():
+        # Find the earliest page among all Control IDs in this regex group
+        pages = [min(control_id_pages[cid]) for cid in cids if control_id_pages.get(cid)]
+        if pages:
+            earliest_page = min(pages)
+            start_pages.append(earliest_page)
+            logging.info(f"Earliest page for regex '{regex}': {earliest_page}")
+
+    # The overall start_page is the minimum of all earliest_pages
+    start_page = min(start_pages) if start_pages else 1
+    logging.info(f"Overall start_page determined: {start_page}")
+
+    # The end_page is the maximum page across all Control IDs
+    all_pages = [p for pages in control_id_pages.values() for p in pages]
+    end_page = max(all_pages) if all_pages else 1
+    logging.info(f"Overall end_page determined: {end_page}")
+
+    return (start_page, end_page)
 
 def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename):
     """
@@ -429,7 +560,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         qualifier_time = max(qualifier_time, 0)  # Ensure non-negative
 
-        # Removed compliance_scoring_time as per request
         llm_time_per_control = 55 if model_name.lower() == 'phi4' else 15
 
         num_controls = count_controls(excel_path)
@@ -443,6 +573,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         progress_data[task_id]['download_url'] = None
         progress_data[task_id]['error'] = None
         progress_data[task_id]['num_controls'] = num_controls
+        progress_data[task_id]['cancelled'] = False
 
         progress_increment_pre_llm = 20.0 / pre_llm_steps
         progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0
@@ -467,6 +598,11 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             "Chunking controls' text...",
             "Building RAG system for controls..."
         ]
+
+        # We REQUIRE the user to have selected control IDs by now.
+        # If 'control_id' is empty, we cannot do chunking for the main process.
+        if not control_id.strip():
+            raise ValueError("No Control IDs were selected. Please provide Control IDs before continuing.")
 
         for idx, step_description in enumerate(pre_llm_phase_descriptions):
             check_cancel(task_id)
@@ -524,8 +660,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 # 5: Chunking controls' text
                 control_ids_raw = control_id
                 control_ids = [cid.strip() for cid in control_ids_raw.split(',') if cid.strip()]
-                if not control_ids:
-                    raise ValueError("No valid Control IDs provided.")
 
                 # Generate regex patterns
                 control_patterns = [generate_regex_from_sample(cid) for cid in control_ids]
@@ -543,6 +677,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             elif idx == 5:
                 # 6: Building RAG system for controls
                 faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
+                # Reuse 'control_patterns' from chunking
                 build_rag_system_with_parser(
                     pdf_path=pdf_path,
                     start_page=start_page,
@@ -558,11 +693,37 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                     raise FileNotFoundError(f"Controls FAISS index not found at {faiss_index_controls_path}")
                 progress_data[task_id]['progress'] += progress_increment_pre_llm
 
+        # Determine Control IDs order
+        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
+
+        # Detect Control IDs and their pages
+        # To handle shared regex patterns, group Control IDs by their regex
+        repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
+        regex_to_cids = {}
+        for pattern_dict in repeating_patterns:
+            regex = pattern_dict.get("Regex Pattern")
+            cid = pattern_dict.get("Example Control ID")
+            if regex and cid and cid in control_ids_order:
+                regex_to_cids.setdefault(regex, []).append(cid)
+
+        if not regex_to_cids:
+            raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
+
+        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+
+        # Determine page range based on Control IDs with prioritization
+        start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
+        logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
+
         # Process control framework with RAG
         check_cancel(task_id)
         progress_data[task_id]['status'] = "Processing control framework with RAG..."
         logging.info(f"Task {task_id}: Processing control framework with RAG. ETA: {format_eta(progress_data[task_id]['eta'])}")
         processed_framework_path = os.path.join(app.config['RAG_OUTPUTS'], f"cybersecurity_framework_with_answers_{task_id}.xlsx")
+        faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
+        df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
+
         process_cybersecurity_framework_with_rag(
             excel_input_path=excel_path,
             output_path=processed_framework_path,
@@ -624,7 +785,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         rename_sheet_to_soc_mapping(final_output_path)
         check_cancel(task_id)
 
-
         # Qualifier checks
         progress_data[task_id]['status'] = "Performing qualifier checks..."
         logging.info(f"Task {task_id}: Performing qualifier checks. ETA: {format_eta(progress_data[task_id]['eta'])}")
@@ -641,31 +801,26 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         format_qualifier_sheet(final_output_path)
         
-        # Replace the fixed sleep with dynamic qualifier_time
-        sleep_seconds(task_id, qualifier_time)  # Adjusted sleep based on model
+        # Sleep for dynamic qualifier_time
+        sleep_seconds(task_id, qualifier_time)
         check_cancel(task_id)
         progress_data[task_id]['progress'] += progress_increment_qualifier
 
         # === Create Executive Summary in a new final file ===
         progress_data[task_id]['status'] = "Creating Executive Summary..."
         logging.info(f"Task {task_id}: Creating Executive Summary. ETA: {format_eta(progress_data[task_id]['eta'])}")
-        
+
         # Generate the final filename based on input filenames
         soc_report_basename = os.path.splitext(os.path.basename(soc_report_filename))[0]
         framework_basename = os.path.splitext(os.path.basename(framework_filename))[0]
         final_filename = f"{soc_report_basename}_Baselined_Vs_{framework_basename}.xlsx"
         summary_output_path = os.path.join(app.config['EXCEL_FOLDER'], final_filename)
-        
+
         create_executive_summary(final_output_path, summary_output_path)
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
 
-        # **Set the download URL to the final summarized Excel file**
+        # Set the download URL to the final summarized Excel file
         progress_data[task_id]['download_url'] = f"http://127.0.0.1:5000/download/{final_filename}"
-
-        # **Update status and ETA after Executive Summary creation**
-        progress_data[task_id]['status'] = "Executive Summary is being prepared..."
-        # Assuming the Executive Summary preparation takes some time, but since it's already created,
-        # we can immediately set progress to 100 and ETA to 0.
 
         progress_data[task_id]['progress'] = 100.0
         progress_data[task_id]['eta'] = 0
@@ -686,7 +841,68 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             progress_data[task_id]['error'] = str(e)
             progress_data[task_id]['eta'] = 0
 
+# -------------------------------------------------------
+# NEW ENDPOINT: /detect_control_ids
+# -------------------------------------------------------
+@app.route('/detect_control_ids', methods=['POST'])
+def detect_control_ids_endpoint():
+    """
+    1) Accepts a PDF file.
+    2) Calls identifier.process_pdf(...) to detect repeating Control IDs.
+    3) Detects the pages where these Control IDs appear.
+    4) Returns Control IDs and their page numbers in JSON for the frontend.
+    """
+    logging.info("Received request to /detect_control_ids endpoint.")
+    try:
+        pdf_file = request.files.get('pdf_file')
+        if not pdf_file:
+            raise ValueError("Missing required file: pdf_file")
 
+        # Secure filename and save
+        filename_pdf = secure_filename(pdf_file.filename)
+        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
+        pdf_file.save(pdf_path)
+        logging.info(f"PDF file saved to {pdf_path}")
+
+        # Identify control IDs by calling identifier.process_pdf
+        repeating_patterns = identify_control_ids(pdf_path)  # expects to return list of dicts
+
+        # Group Control IDs by their regex patterns
+        regex_to_cids = {}
+        for pattern_dict in repeating_patterns:
+            regex = pattern_dict.get("Regex Pattern")
+            cid = pattern_dict.get("Example Control ID")
+            if regex and cid:
+                regex_to_cids.setdefault(regex, []).append(cid)
+
+        # Extract Control IDs from repeating patterns
+        control_ids = [cid for cids in regex_to_cids.values() for cid in cids]
+
+        # Detect pages where Control IDs appear
+        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+
+        # Example return structure:
+        # {
+        #   "repeating_patterns": [...],
+        #   "control_id_pages": {
+        #       "AC-32": [56],
+        #       "CC1.1": [47, 72],
+        #       "AC-13a": [57, 74],
+        #       ...
+        #   }
+        # }
+        return jsonify({
+            "repeating_patterns": repeating_patterns,
+            "control_id_pages": control_id_pages
+        }), 200
+
+    except Exception as e:
+        logging.error(f"Error in /detect_control_ids endpoint: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 400
+
+# -------------------------------------------------------
+# Existing Endpoint: /process_all
+# -------------------------------------------------------
 @app.route('/process_all', methods=['POST'])
 def process_all():
     logging.info("Received request to /process_all endpoint.")
@@ -697,18 +913,12 @@ def process_all():
         if not pdf_file or not excel_file:
             raise ValueError("Missing required files: pdf_file or excel_file")
 
-        try:
-            start_page = int(request.form.get('start_page', 1))
-            end_page = int(request.form.get('end_page', 10))
-        except ValueError:
-            logging.error("Invalid page numbers provided.")
-            return jsonify({'error': 'start_page and end_page must be integers'}), 400
-
-        control_id = request.form.get('control_id', '')
+        # Control IDs are mandatory
+        control_id = request.form.get('control_id', '').strip()
         if not control_id:
-            raise ValueError("Missing required parameter: control_id")
+            logging.error("No Control IDs provided in the request.")
+            return jsonify({"error": "No Control IDs were provided."}), 400
 
-        # Retrieve model name from the frontend; default to 'llama3.1' if not provided
         model_name = request.form.get('model_name', 'llama3.1')
         logging.info(f"Selected model: {model_name}")
 
@@ -724,6 +934,29 @@ def process_all():
         excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_excel)
         excel_file.save(excel_path)
         logging.info(f"Excel file saved to {excel_path}")
+
+        # Detect Control IDs and their pages
+        # To handle shared regex patterns, group Control IDs by their regex
+        repeating_patterns = identify_control_ids(pdf_path)  # List of dicts with 'Regex Pattern' and 'Example Control ID'
+        regex_to_cids = {}
+        for pattern_dict in repeating_patterns:
+            regex = pattern_dict.get("Regex Pattern")
+            cid = pattern_dict.get("Example Control ID")
+            if regex and cid and cid in [c.strip() for c in control_id.split(',') if c.strip()]:
+                regex_to_cids.setdefault(regex, []).append(cid)
+
+        # Extract Control IDs from repeating patterns (filtered)
+        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
+
+        if not regex_to_cids:
+            raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
+
+        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+
+        # Determine page range based on Control IDs with prioritization
+        start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
+        logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
 
         # Generate a unique task ID
         task_id = str(uuid.uuid4())
@@ -742,9 +975,9 @@ def process_all():
         soc_report_filename = filename_pdf
         framework_filename = filename_excel
 
-        # Start background processing thread
+        # Start background processing thread with determined start and end pages
         thread = threading.Thread(
-            target=background_process, 
+            target=background_process,
             args=(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name, soc_report_filename, framework_filename)
         )
         thread.start()
@@ -754,7 +987,6 @@ def process_all():
     except Exception as e:
         logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
-
 
 @app.route('/progress/<task_id>', methods=['GET'])
 def sse_progress(task_id):
@@ -797,7 +1029,6 @@ def sse_progress(task_id):
 
     return Response(generate(), mimetype='text/event-stream')
 
-
 @app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
     """
@@ -823,7 +1054,6 @@ def download_file(filename):
         logging.error(f"Error serving file {filename}: {e}", exc_info=True)
         return jsonify({"error": "File could not be served"}), 500
 
-
 @app.route('/cancel_task/<task_id>', methods=['POST'])
 def cancel_task(task_id):
     """
@@ -848,7 +1078,6 @@ def cancel_task(task_id):
 
     logging.info(f"Task {task_id} marked as cancelled by the user.")
     return jsonify({"message": f"Task {task_id} cancelled."}), 200
-
 
 if __name__ == "__main__":
     logging.info("Starting the Flask application on port 5000.")
