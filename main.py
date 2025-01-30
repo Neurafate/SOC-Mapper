@@ -61,13 +61,14 @@ logging.basicConfig(
     filename='LLM_analysis.log',
     filemode='a',
     format='%(asctime)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    level=logging.DEBUG  # Changed to DEBUG for more detailed logs
 )
 
 logging.info("Application started.")
 
 # Dictionary to track progress and final result for each task_id
 progress_data = {}
+progress_lock = threading.Lock()  # Initialize the lock
 
 def count_controls(excel_path):
     """
@@ -172,8 +173,10 @@ def sleep_seconds(task_id, seconds):
     """
     for _ in range(seconds):
         time.sleep(1)
-        if task_id in progress_data:
-            # Check if cancelled
+        with progress_lock:
+            if task_id not in progress_data:
+                logging.warning(f"Task {task_id} not found in progress_data during sleep.")
+                break
             if progress_data[task_id].get('cancelled'):
                 logging.info(f"Task {task_id} has been cancelled during sleep.")
                 break
@@ -232,13 +235,16 @@ def format_compliance_sheet(excel_path):
         for row in ws.iter_rows(min_row=2):
             compliance_cell = row[1]  # Assuming Compliance Score is the second column
             if compliance_cell.value:
-                compliance_value = float(compliance_cell.value)
-                if compliance_value >= 90:
-                    compliance_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
-                elif 75 <= compliance_value < 90:
-                    compliance_cell.fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")  # Amber
-                else:
-                    compliance_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
+                try:
+                    compliance_value = float(compliance_cell.value)
+                    if compliance_value >= 90:
+                        compliance_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
+                    elif 75 <= compliance_value < 90:
+                        compliance_cell.fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")  # Amber
+                    else:
+                        compliance_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
+                except ValueError:
+                    logging.warning(f"Invalid Compliance Score value: {compliance_cell.value}")
 
         wb.save(excel_path)
         logging.info("Compliance Score sheet formatted successfully.")
@@ -263,7 +269,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         df = pd.read_excel(input_excel_path, sheet_name='Control Assessment')
 
         # Debug: Print available columns to confirm naming
-        logging.info(f"Columns in 'Control Assessment': {list(df.columns)}")
+        logging.debug(f"Columns in 'Control Assessment': {list(df.columns)}")
 
         # Expected column names
         expected_columns = [
@@ -719,33 +725,30 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         # Total ETA includes pre_llm_time, llm_time, and qualifier_time
         total_eta = pre_llm_time + llm_time + qualifier_time
-        progress_data[task_id]['eta'] = int(total_eta)
-        progress_data[task_id]['progress'] = 0.0
-        progress_data[task_id]['status'] = "Initializing..."
-        progress_data[task_id]['download_url'] = None
-        progress_data[task_id]['error'] = None
-        progress_data[task_id]['num_controls'] = num_controls
-        progress_data[task_id]['cancelled'] = False
+        with progress_lock:
+            progress_data[task_id]['eta'] = int(total_eta)
+            progress_data[task_id]['progress'] = 0.0
+            progress_data[task_id]['status'] = "Initializing..."
+            progress_data[task_id]['download_url'] = None
+            progress_data[task_id]['error'] = None
+            progress_data[task_id]['num_controls'] = num_controls
+            progress_data[task_id]['cancelled'] = False
 
         # Progress increments
         progress_increment_pre_llm = 20.0 / pre_llm_steps  # 20% divided by 6 steps ≈ 3.33% per step
         progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0  # 70% allocated for LLM
         progress_increment_qualifier = 10.0  # 10% allocated for qualifiers
 
-        # Thread-safe lock for progress_data
-        from threading import Lock
-        progress_lock = Lock()
-
         # Helper function to check for cancellation
         def check_cancel(tid):
-            if progress_data[tid].get('cancelled'):
-                logging.info(f"Task {tid} has been cancelled.")
-                with progress_lock:
+            with progress_lock:
+                if progress_data[tid].get('cancelled'):
+                    logging.info(f"Task {tid} has been cancelled.")
                     progress_data[tid]['status'] = "Cancelled"
                     progress_data[tid]['progress'] = 0
                     progress_data[tid]['eta'] = 0
                     progress_data[tid]['error'] = "Task was cancelled by the user."
-                raise Exception("Task cancelled by user.")
+                    raise Exception("Task cancelled by user.")
 
         # -------------- Pre-LLM phases --------------
         pre_llm_phase_descriptions = [
@@ -1041,14 +1044,15 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
             # Generate a unique task ID for qualifier checks
             task_id = str(uuid.uuid4())
-            progress_data[task_id] = {
-                'progress': 0.0,
-                'status': 'Performing initial qualifier checks...',
-                'download_url': None,
-                'error': None,
-                'eta': 30,  # Estimated time for qualifiers
-                'cancelled': False
-            }
+            with progress_lock:
+                progress_data[task_id] = {
+                    'progress': 0.0,
+                    'status': 'Performing initial qualifier checks...',
+                    'download_url': None,
+                    'error': None,
+                    'eta': 30,  # Estimated time for qualifiers
+                    'cancelled': False
+                }
 
             # Start background thread for qualifier checks
             thread = threading.Thread(
@@ -1166,16 +1170,17 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
             # Generate a unique task ID
             task_id = str(uuid.uuid4())
-            progress_data[task_id] = {
-                'progress': 0.0,
-                'status': 'Starting task...',
-                'download_url': None,
-                'error': None,
-                'start_time': time.time(),
-                'eta': None,
-                'num_controls': 0,
-                'cancelled': False
-            }
+            with progress_lock:
+                progress_data[task_id] = {
+                    'progress': 0.0,
+                    'status': 'Starting task...',
+                    'download_url': None,
+                    'error': None,
+                    'start_time': time.time(),
+                    'eta': None,
+                    'num_controls': 0,
+                    'cancelled': False
+                }
 
             # Extract base filenames for final output naming
             soc_report_filename = filename_pdf
@@ -1198,7 +1203,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
     def sse_progress(task_id):
         def generate():
             while True:
-                task_info = progress_data.get(task_id, None)
+                with progress_lock:
+                    task_info = progress_data.get(task_id, None)
                 if task_info is None:
                     yield f"data: {json.dumps({'error': 'Invalid task ID'})}\n\n"
                     break
@@ -1274,21 +1280,22 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         Endpoint to signal that the user wants to cancel a running task.
         The background process will check the `cancelled` flag and halt.
         """
-        task_info = progress_data.get(task_id)
-        if not task_info:
-            logging.warning(f"Attempted to cancel invalid task_id: {task_id}.")
-            return jsonify({"error": "Invalid task ID"}), 404
+        with progress_lock:
+            task_info = progress_data.get(task_id)
+            if not task_info:
+                logging.warning(f"Attempted to cancel invalid task_id: {task_id}.")
+                return jsonify({"error": "Invalid task ID"}), 404
 
-        if task_info.get('cancelled'):
-            logging.info(f"Task {task_id} is already cancelled.")
-            return jsonify({"message": f"Task {task_id} is already cancelled."}), 200
+            if task_info.get('cancelled'):
+                logging.info(f"Task {task_id} is already cancelled.")
+                return jsonify({"message": f"Task {task_id} is already cancelled."}), 200
 
-        # Mark the task as cancelled
-        task_info['cancelled'] = True
-        task_info['status'] = "Cancelled"
-        task_info['progress'] = 0
-        task_info['eta'] = 0
-        task_info['error'] = "Task was cancelled by the user."
+            # Mark the task as cancelled
+            task_info['cancelled'] = True
+            task_info['status'] = "Cancelled"
+            task_info['progress'] = 0
+            task_info['eta'] = 0
+            task_info['error'] = "Task was cancelled by the user."
 
         logging.info(f"Task {task_id} marked as cancelled by the user.")
         return jsonify({"message": f"Task {task_id} cancelled."}), 200
@@ -1296,4 +1303,3 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
     if __name__ == "__main__":
         logging.info("Starting the Flask application on port 5000.")
         app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)
-    
