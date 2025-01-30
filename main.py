@@ -305,12 +305,6 @@ def format_compliance_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
-import logging
-import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
-from openpyxl.utils import get_column_letter
-
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
@@ -457,7 +451,8 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # **Updated Header Fill Color to Gold (#FFD700)**
         header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
-        header_font = Font(bold=True, color="FFFFFF")
+        # **Updated Header Font Color to Black (#000000)**
+        header_font = Font(bold=True, color="000000")  # Black
         thin_border = Border(
             left=Side(border_style="thin"),
             right=Side(border_style="thin"),
@@ -471,7 +466,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Merge B2:C2 and set "Legend"
         ws.merge_cells('B2:C2')
         ws['B2'] = "Legend"
-        ws['B2'].font = Font(bold=True, size=14, color="FFFFFF")
+        ws['B2'].font = Font(bold=True, size=14, color="000000")  # Changed to Black
         ws['B2'].alignment = center_alignment
         ws['B2'].fill = header_fill
 
@@ -486,7 +481,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         for idx, item in enumerate(legend_items, start=3):
             ws[f'B{idx}'] = item["text"]
             ws[f'B{idx}'].alignment = left_alignment
-            ws[f'B{idx}'].font = Font(bold=False, color="000000")
+            ws[f'B{idx}'].font = Font(bold=False, color="000000")  # Black
             ws[f'C{idx}'] = ""  # Empty cell to apply color
             ws[f'C{idx}'].fill = item["fill"]
             ws[f'C{idx}'].border = thin_border
@@ -498,7 +493,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 2. SOC Usability Section
         ws['B7'] = "SOC Usability"
-        ws['B7'].font = Font(bold=True, color="FFFFFF")
+        ws['B7'].font = Font(bold=True, color="000000")  # Changed to Black
         ws['B7'].alignment = left_alignment
         ws['B7'].fill = header_fill
         ws['B7'].border = thin_border
@@ -531,7 +526,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 3. Overall Compliance Percentage
         ws['B10'] = "Overall Compliance Percentage"
-        ws['B10'].font = Font(bold=True, color="FFFFFF")
+        ws['B10'].font = Font(bold=True, color="000000")  # Changed to Black
         ws['B10'].alignment = left_alignment
         ws['B10'].fill = header_fill
         ws['B10'].border = thin_border
@@ -554,7 +549,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 4. Domain-wise Compliance Breakdown Headers
         ws['B12'] = "Domain-wise Compliance Breakdown"
-        ws['B12'].font = Font(bold=True, size=12, color="FFFFFF")
+        ws['B12'].font = Font(bold=True, size=12, color="000000")  # Changed to Black
         ws['B12'].alignment = left_alignment
         ws['B12'].fill = header_fill
         ws['B12'].border = thin_border
@@ -564,7 +559,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         for idx, header in enumerate(headers_domain, start=start_col):
             cell = ws.cell(row=12, column=idx, value=header)
             cell.fill = header_fill
-            cell.font = header_font
+            cell.font = header_font  # Already set to Black
             cell.alignment = center_alignment
             cell.border = thin_border
 
@@ -610,7 +605,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 6. Sub-Domain-wise Compliance Breakdown Headers
         ws.cell(row=start_row_subdomain_header, column=2, value="Sub-Domain-wise Compliance Breakdown")
-        ws.cell(row=start_row_subdomain_header, column=2).font = Font(bold=True, size=12, color="FFFFFF")
+        ws.cell(row=start_row_subdomain_header, column=2).font = Font(bold=True, size=12, color="000000")  # Changed to Black
         ws.cell(row=start_row_subdomain_header, column=2).alignment = left_alignment
         ws.cell(row=start_row_subdomain_header, column=2).fill = header_fill
         ws.cell(row=start_row_subdomain_header, column=2).border = thin_border
@@ -620,7 +615,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         for idx, header in enumerate(headers_subdomain, start=start_col_sub):
             cell = ws.cell(row=start_row_subdomain_header, column=idx, value=header)
             cell.fill = header_fill
-            cell.font = header_font
+            cell.font = header_font  # Already set to Black
             cell.alignment = center_alignment
             cell.border = thin_border
 

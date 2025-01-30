@@ -6,6 +6,8 @@ from llm_analysis import call_ollama_api
 from sentence_transformers import SentenceTransformer
 import datetime
 import re
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -194,33 +196,48 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         }
     ]
 
+    # Convert to DataFrame
+    qualifier_df = pd.DataFrame(qualifier_results)
+
+    # Define function to determine Pass/Fail
+    def determine_status(answer):
+        if answer.strip().startswith("Yes."):
+            return "Pass"
+        else:
+            return "Fail"
+
+    # Add Status column
+    qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
+
+    # Reorder columns: Question, Status, Answer
+    qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
+
     # Save results to the Excel file
     try:
         if os.path.exists(excel_output_path):
-            with pd.ExcelWriter(excel_output_path, mode='a', engine='openpyxl') as writer:
-                # Check if "Qualifier Results" sheet exists
-                try:
-                    existing_df = pd.read_excel(excel_output_path, sheet_name="Qualifier Results")
-                    # If exists, append without overwriting
-                    qualifier_df = pd.DataFrame(qualifier_results)
-                    startrow = existing_df.shape[0] + 1
+            # Load existing workbook
+            wb = load_workbook(excel_output_path)
+            if "Qualifying Questions" in wb.sheetnames:
+                ws = wb["Qualifying Questions"]
+                # Find the last row
+                last_row = ws.max_row
+                # Append new data without headers
+                for index, row in qualifier_df.iterrows():
+                    ws.append(row.tolist())
+                # Save workbook after appending
+                wb.save(excel_output_path)
+            else:
+                # If "Qualifying Questions" sheet does not exist, create it
+                with pd.ExcelWriter(excel_output_path, engine='openpyxl', mode='a') as writer:
                     qualifier_df.to_excel(
-                        writer, 
-                        sheet_name="Qualifying Questions", 
-                        index=False, 
-                        header=False, 
-                        startrow=startrow
-                    )
-                except ValueError:
-                    # If "Qualifier Results" sheet does not exist, create it
-                    pd.DataFrame(qualifier_results).to_excel(
                         writer, 
                         sheet_name="Qualifying Questions", 
                         index=False
                     )
         else:
+            # Create new Excel file with "Qualifying Questions" sheet
             with pd.ExcelWriter(excel_output_path, mode='w', engine='openpyxl') as writer:
-                pd.DataFrame(qualifier_results).to_excel(
+                qualifier_df.to_excel(
                     writer, 
                     sheet_name="Qualifying Questions", 
                     index=False
@@ -228,6 +245,65 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         logging.info("Qualifier checks completed and saved to Excel.")
     except Exception as e:
         logging.error("Error saving results to Excel: %s", e)
+        return
+
+    # Open the workbook for formatting
+    try:
+        wb = load_workbook(excel_output_path)
+        ws = wb["Qualifying Questions"]
+
+        # Determine the start row for data (assuming headers are in the first row)
+        data_start_row = 2
+
+        # Define color fills
+        status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")  # Light green
+        status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")  # Light red
+        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")    # Gold
+
+        # Apply color to header row (Row 1)
+        for col in range(1, 4):  # Assuming three columns: A, B, C
+            header_cell = ws.cell(row=1, column=col)
+            header_cell.fill = header_fill
+            header_cell.font = Font(bold=True)
+
+        # Apply color coding to Status column (Column B)
+        for row in range(data_start_row, ws.max_row + 1):
+            status_cell = ws.cell(row=row, column=2)  # Column B
+            if status_cell.value == "Pass":
+                status_cell.fill = status_fill_pass
+            elif status_cell.value == "Fail":
+                status_cell.fill = status_fill_fail
+
+        # Determine overall SOC viability
+        statuses = [ws.cell(row=row, column=2).value for row in range(data_start_row, ws.max_row + 1)]
+        overall_viability = "Pass" if all(status == "Pass" for status in statuses) else "Fail"
+
+        # Define summary row data
+        summary_question = "Overall SOC Viability"
+        summary_status = overall_viability
+        summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
+
+        # Append summary row
+        ws.append([summary_question, summary_status, summary_answer])
+
+        # Get the summary row number
+        summary_row = ws.max_row
+
+        # Apply color coding to summary Status cell
+        summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
+        ws.cell(row=summary_row, column=2).fill = summary_fill
+
+        # Make the summary row bold
+        bold_font = Font(bold=True)
+        for col in range(1, 4):
+            ws.cell(row=summary_row, column=col).font = bold_font
+
+        # Save the workbook
+        wb.save(excel_output_path)
+        logging.info("Excel formatting and summary row added.")
+    except Exception as e:
+        logging.error("Error formatting Excel file: %s", e)
+        return
 
 if __name__ == "__main__":
     # Example usage (you can remove or adjust this as needed)
