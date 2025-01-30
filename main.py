@@ -746,9 +746,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         # Timings
         pre_llm_time = 20  # Total time for pre-LLM steps in seconds
         pre_llm_steps = 6
-        pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Time per pre-LLM step
+        pre_llm_step_time = int(pre_llm_time / pre_llm_steps)  # Approximately 3.33 seconds per step
         
-        # **Updated Qualifier ETA Based on Model Name**
+        # Determine qualifier_time based on model_name
         if model_name.lower() == 'phi4':
             qualifier_time = 21  # Qualifier processing time for Phi4
             logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
@@ -756,13 +756,13 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             qualifier_time = 9   # Qualifier processing time for Llama3.1
             logging.info(f"Model '{model_name}' selected. Setting qualifier_time to {qualifier_time} seconds.")
         
-        # **Updated LLM Processing Time Per Control**
+        # Determine LLM processing time per control
         llm_time_per_control = 7 if model_name.lower() == 'phi4' else 3  # Phi4:7s, Llama3.1:3s
         
         num_controls = count_controls(excel_path)
-        llm_time = num_controls * llm_time_per_control
+        llm_time = num_controls * llm_time_per_control  # Total LLM processing time
         
-        # **Total ETA Includes pre_llm_time, llm_time, and qualifier_time**
+        # Total ETA includes pre_llm_time, llm_time, and qualifier_time
         total_eta = pre_llm_time + llm_time + qualifier_time
         progress_data[task_id]['eta'] = int(total_eta)
         progress_data[task_id]['progress'] = 0.0
@@ -772,19 +772,24 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         progress_data[task_id]['num_controls'] = num_controls
         progress_data[task_id]['cancelled'] = False
         
-        # **Adjust Progress Increments**
-        progress_increment_pre_llm = 20.0 / pre_llm_steps  # 20% divided by pre_llm_steps
-        progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0  # 70% for LLM
-        progress_increment_qualifier = 10.0  # 10% for qualifiers
+        # Progress increments
+        progress_increment_pre_llm = 20.0 / pre_llm_steps  # 20% divided by 6 steps ≈ 3.33% per step
+        progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0  # 70% allocated for LLM
+        progress_increment_qualifier = 10.0  # 10% allocated for qualifiers
+        
+        # Thread-safe lock for progress_data
+        from threading import Lock
+        progress_lock = Lock()
         
         # Helper function to check for cancellation
         def check_cancel(tid):
             if progress_data[tid].get('cancelled'):
                 logging.info(f"Task {tid} has been cancelled.")
-                progress_data[tid]['status'] = "Cancelled"
-                progress_data[tid]['progress'] = 0
-                progress_data[tid]['eta'] = 0
-                progress_data[tid]['error'] = "Task was cancelled by the user."
+                with progress_lock:
+                    progress_data[tid]['status'] = "Cancelled"
+                    progress_data[tid]['progress'] = 0
+                    progress_data[tid]['eta'] = 0
+                    progress_data[tid]['error'] = "Task was cancelled by the user."
                 raise Exception("Task cancelled by user.")
         
         # -------------- Pre-LLM phases --------------
@@ -803,7 +808,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         
         for idx, step_description in enumerate(pre_llm_phase_descriptions):
             check_cancel(task_id)
-            progress_data[task_id]['status'] = step_description
+            with progress_lock:
+                progress_data[task_id]['status'] = step_description
             logging.info(f"Task {task_id}: {step_description}, ETA: {format_eta(progress_data[task_id]['eta'])}")
             
             if idx == 0:
@@ -813,7 +819,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(full_text_output_path):
                     raise FileNotFoundError(f"Extracted full text file not found at {full_text_output_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
             
             elif idx == 1:
                 # 2: Chunking full text for qualifiers
@@ -824,7 +831,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(df_qualifier_chunks_path):
                     raise FileNotFoundError(f"Qualifier chunks file not found at {df_qualifier_chunks_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
             
             elif idx == 2:
                 # 3: Building RAG system for qualifiers
@@ -842,7 +850,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(faiss_index_qualifiers_path):
                     raise FileNotFoundError(f"Qualifiers FAISS index not found at {faiss_index_qualifiers_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
             
             elif idx == 3:
                 # 4: Extracting controls' text
@@ -851,7 +860,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(controls_output_text_path):
                     raise FileNotFoundError(f"Controls extracted text file not found at {controls_output_text_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
             
             elif idx == 4:
                 # 5: Chunking controls' text
@@ -869,7 +879,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(df_control_chunks_path):
                     raise FileNotFoundError(f"Control chunks file not found at {df_control_chunks_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
             
             elif idx == 5:
                 # 6: Building RAG system for controls
@@ -888,11 +899,10 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(faiss_index_controls_path):
                     raise FileNotFoundError(f"Controls FAISS index not found at {faiss_index_controls_path}")
-                progress_data[task_id]['progress'] += progress_increment_pre_llm
+                with progress_lock:
+                    progress_data[task_id]['progress'] += progress_increment_pre_llm
         
-        # At this point, pre-LLM phases are complete
-        # Proceeding to determine Control IDs and their page ranges
-        
+        # ---------------------- LLM Analysis ----------------------
         # Determine Control IDs order
         control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
         logging.info(f"Control IDs order for page range determination: {control_ids_order}")
@@ -918,7 +928,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         
         # Process control framework with RAG
         check_cancel(task_id)
-        progress_data[task_id]['status'] = "Processing control framework with RAG..."
+        with progress_lock:
+            progress_data[task_id]['status'] = "Processing control framework with RAG..."
         logging.info(f"Task {task_id}: Processing control framework with RAG. ETA: {format_eta(progress_data[task_id]['eta'])}")
         processed_framework_path = os.path.join(app.config['RAG_OUTPUTS'], f"cybersecurity_framework_with_answers_{task_id}.xlsx")
         faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
@@ -935,25 +946,30 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         if not os.path.exists(processed_framework_path):
             raise FileNotFoundError(f"Processed framework file not found at {processed_framework_path}")
         
+        # ---------------------- LLM Processing ----------------------
         # Analyze controls with LLM
-        progress_data[task_id]['status'] = "Analyzing controls with LLM..."
+        with progress_lock:
+            progress_data[task_id]['status'] = "Analyzing controls with LLM..."
         logging.info(f"Task {task_id}: Analyzing controls with LLM. ETA: {format_eta(progress_data[task_id]['eta'])}")
         analysis_df = load_responses(processed_framework_path)
         analyzed_rows = []
         
         for i, row in analysis_df.iterrows():
             check_cancel(task_id)
-            progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
+            with progress_lock:
+                progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
             logging.info(f"Task {task_id}: Analyzing control {i+1}/{num_controls}. ETA: {format_eta(progress_data[task_id]['eta'])}")
             
-            # **Updated Sleep Duration Based on New LLM Timing**
+            # Sleep for LLM processing time per control
             sleep_seconds(task_id, llm_time_per_control)
-            progress_data[task_id]['eta'] -= llm_time_per_control  # Decrement ETA accordingly
+            with progress_lock:
+                progress_data[task_id]['eta'] -= llm_time_per_control
             
             # Process exactly one control at a time, passing the chosen model
             processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
             analyzed_rows.append(processed_row)
-            progress_data[task_id]['progress'] += progress_increment_llm
+            with progress_lock:
+                progress_data[task_id]['progress'] += progress_increment_llm
         
         analyzed_df = pd.concat(analyzed_rows, ignore_index=True) if analyzed_rows else pd.DataFrame()
         
@@ -966,6 +982,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: LLM analysis completed at {analysis_output_path}")
         check_cancel(task_id)
         
+        # ---------------------- Merge and Finalize ----------------------
         # Merge and finalize
         framework_df = load_excel_file(excel_path)
         framework_df, error = map_columns_by_position(framework_df)
@@ -980,12 +997,15 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         final_output_path = os.path.join(app.config['EXCEL_FOLDER'], f"Final_Control_Status_{task_id}.xlsx")
         save_to_excel(final_df, final_output_path)
         logging.info(f"Task {task_id}: Final control status saved to {final_output_path}")
-        progress_data[task_id]['progress'] = 90.0
+        with progress_lock:
+            progress_data[task_id]['progress'] = 90.0
         rename_sheet_to_soc_mapping(final_output_path)
         check_cancel(task_id)
         
+        # ---------------------- Qualifier Checks ----------------------
         # Qualifier checks
-        progress_data[task_id]['status'] = "Performing qualifier checks..."
+        with progress_lock:
+            progress_data[task_id]['status'] = "Performing qualifier checks..."
         logging.info(f"Task {task_id}: Performing qualifier checks. ETA: {format_eta(progress_data[task_id]['eta'])}")
         try:
             qualify_soc_report(
@@ -1000,18 +1020,20 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         
         format_qualifier_sheet(final_output_path)
         
-        # **Qualifier Time Processing**
-        progress_data[task_id]['status'] = "Finalizing qualifier processing..."
+        # Sleep for qualifier_time to account for processing time
+        with progress_lock:
+            progress_data[task_id]['status'] = "Finalizing qualifier processing..."
         logging.info(f"Task {task_id}: Finalizing qualifier processing. ETA: {format_eta(progress_data[task_id]['eta'])}")
-        
-        # Simulate qualifier processing time by decrementing the ETA without additional sleep
-        # If qualifiers require actual processing time, you can integrate it within the qualifier checks above
-        progress_data[task_id]['eta'] -= qualifier_time
-        progress_data[task_id]['progress'] += progress_increment_qualifier
+        sleep_seconds(task_id, qualifier_time)
+        with progress_lock:
+            progress_data[task_id]['eta'] -= qualifier_time
+            progress_data[task_id]['progress'] += progress_increment_qualifier
         check_cancel(task_id)
         
-        # === Create Executive Summary in a new final file ===
-        progress_data[task_id]['status'] = "Creating Executive Summary..."
+        # ---------------------- Executive Summary ----------------------
+        # Create Executive Summary in a new final file
+        with progress_lock:
+            progress_data[task_id]['status'] = "Creating Executive Summary..."
         logging.info(f"Task {task_id}: Creating Executive Summary. ETA: {format_eta(progress_data[task_id]['eta'])}")
         
         # Generate the final filename based on input filenames
@@ -1024,26 +1046,31 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
         
         # Set the download URL to the final summarized Excel file
-        progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
+        with progress_lock:
+            progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
         
-        progress_data[task_id]['progress'] = 100.0
-        progress_data[task_id]['eta'] = 0
-        progress_data[task_id]['status'] = "Task completed successfully."
+        with progress_lock:
+            progress_data[task_id]['progress'] = 100.0
+            progress_data[task_id]['eta'] = 0
+            progress_data[task_id]['status'] = "Task completed successfully."
         logging.info(f"Task {task_id}: Task completed successfully.")
     
     except Exception as e:
         logging.error(f"Error in background_process (task_id: {task_id}): {e}", exc_info=True)
         if "cancelled" in str(e).lower():
             # Mark the task as cancelled
-            progress_data[task_id]['cancelled'] = True
-            progress_data[task_id]['status'] = "Cancelled"
-            progress_data[task_id]['progress'] = 0
-            progress_data[task_id]['eta'] = 0
-            progress_data[task_id]['error'] = "Task was cancelled by the user."
+            with progress_lock:
+                progress_data[task_id]['cancelled'] = True
+                progress_data[task_id]['status'] = "Cancelled"
+                progress_data[task_id]['progress'] = 0
+                progress_data[task_id]['eta'] = 0
+                progress_data[task_id]['error'] = "Task was cancelled by the user."
         else:
-            progress_data[task_id]['status'] = "Error occurred."
-            progress_data[task_id]['error'] = str(e)
-            progress_data[task_id]['eta'] = 0
+            with progress_lock:
+                progress_data[task_id]['status'] = "Error occurred."
+                progress_data[task_id]['error'] = str(e)
+                progress_data[task_id]['eta'] = 0
+
 
 # -------------------------------------------------------
 # NEW ENDPOINT: /detect_control_ids
