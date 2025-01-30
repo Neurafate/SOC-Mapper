@@ -315,7 +315,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
       - Domain-wise Compliance Breakdown
       - Sub-Domain-wise Compliance Breakdown
       - Count of fully met, partially met, and not met controls per domain and sub-domain
-      - Detailed list of failing and partially met controls
     """
     try:
         logging.info("Generating Executive Summary...")
@@ -425,10 +424,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
         # Merge B2:C2 and set "Legend"
         ws.merge_cells('B2:C2')
         ws['B2'] = "Legend"
-        ws['B2'].font = Font(bold=True, size=14)
+        ws['B2'].font = Font(bold=True, size=14, color="FFFFFF")
         ws['B2'].alignment = center_alignment
         ws['B2'].fill = header_fill
-        ws['B2'].font = Font(bold=True, color="FFFFFF")
 
         # Define legend items
         legend_items = [
@@ -453,8 +451,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 2. SOC Usability Section
         ws['B7'] = "SOC Usability"
-        ws['B7'].font = Font(bold=True)
+        ws['B7'].font = Font(bold=True, color="FFFFFF")
         ws['B7'].alignment = left_alignment
+        ws['B7'].fill = header_fill
         ws['B7'].border = thin_border
 
         ws['C7'] = "Yes"  # This can be dynamic based on your data
@@ -463,8 +462,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         # 3. Overall Compliance Percentage
         ws['B10'] = "Overall Compliance Percentage"
-        ws['B10'].font = Font(bold=True)
+        ws['B10'].font = Font(bold=True, color="FFFFFF")
         ws['B10'].alignment = left_alignment
+        ws['B10'].fill = header_fill
         ws['B10'].border = thin_border
 
         ws['C10'] = overall_avg
@@ -472,10 +472,22 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws['C10'].alignment = center_alignment
         ws['C10'].border = thin_border
 
+        # Color code the Overall Compliance Percentage based on the legend
+        compliance_percentage_overall = overall_avg * 100  # Convert to percentage
+        if compliance_percentage_overall >= 90:
+            fill_color_overall = compliance_fill_colors["high"]  # Light Green
+        elif 75 <= compliance_percentage_overall < 90:
+            fill_color_overall = compliance_fill_colors["medium"]  # Light Amber
+        else:
+            fill_color_overall = compliance_fill_colors["low"]  # Light Red
+
+        ws['C10'].fill = PatternFill(start_color=fill_color_overall, end_color=fill_color_overall, fill_type="solid")
+
         # 4. Domain-wise Compliance Breakdown Headers
         ws['B12'] = "Domain-wise Compliance Breakdown"
-        ws['B12'].font = Font(bold=True, size=12)
+        ws['B12'].font = Font(bold=True, size=12, color="FFFFFF")
         ws['B12'].alignment = left_alignment
+        ws['B12'].fill = header_fill
         ws['B12'].border = thin_border
 
         headers_domain = ["Average Compliance Score Per Domain", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
@@ -512,7 +524,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
             ws.cell(row=row_num, column=6).alignment = center_alignment
             ws.cell(row=row_num, column=6).border = thin_border
 
-            # Apply color fill based on compliance percentage using good color theory
+            # Apply color fill only to the "Average Compliance Score Per Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
                 fill_color = compliance_fill_colors["high"]  # Light Green
@@ -521,14 +533,13 @@ def create_executive_summary(input_excel_path, output_excel_path):
             else:
                 fill_color = compliance_fill_colors["low"]  # Light Red
 
-            for col in range(2, 7):
-                cell = ws.cell(row=row_num, column=col)
-                cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
+            ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
         # 6. Sub-Domain-wise Compliance Breakdown Headers
         ws['B15'] = "Sub-Domain-wise Compliance Breakdown"
-        ws['B15'].font = Font(bold=True, size=12)
+        ws['B15'].font = Font(bold=True, size=12, color="FFFFFF")
         ws['B15'].alignment = left_alignment
+        ws['B15'].fill = header_fill
         ws['B15'].border = thin_border
 
         headers_subdomain = ["Average Compliance Score Per Sub-Domain", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
@@ -565,7 +576,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
             ws.cell(row=row_num, column=6).alignment = center_alignment
             ws.cell(row=row_num, column=6).border = thin_border
 
-            # Apply color fill based on compliance percentage using good color theory
+            # Apply color fill only to the "Average Compliance Score Per Sub-Domain" cell based on the legend
             compliance_percentage = row_data["Compliance Score"] * 100  # Convert back to percentage
             if compliance_percentage >= 90:
                 fill_color = compliance_fill_colors["high"]  # Light Green
@@ -574,59 +585,9 @@ def create_executive_summary(input_excel_path, output_excel_path):
             else:
                 fill_color = compliance_fill_colors["low"]  # Light Red
 
-            for col in range(2, 7):
-                cell = ws.cell(row=row_num, column=col)
-                cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
+            ws.cell(row=row_num, column=3).fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
 
-        # 8. Failing Controls Section
-        # Determine the starting row based on the sub-domain section
-        fail_start_row = start_row_subdomain + len(subdomain_summary) + 2  # Add 2 for spacing
-
-        ws.cell(row=fail_start_row, column=2, value="List of Partially Met and Not Met Controls").font = Font(bold=True, size=12)
-        ws.cell(row=fail_start_row, column=2).alignment = left_alignment
-        ws.cell(row=fail_start_row, column=2).border = thin_border
-
-        # Write headers for failing controls section
-        fail_headers = ["Domain", "Sub-Domain", "Control Statement", "Control Status", "Detailed Analysis"]
-        for col_idx, header in enumerate(fail_headers, start=2):
-            cell = ws.cell(row=fail_start_row + 1, column=col_idx, value=header)
-            cell.fill = header_fill
-            cell.font = header_font
-            cell.alignment = center_alignment
-            cell.border = thin_border
-
-        # Filter out partially met and not met controls
-        failing_controls = df[df["Control Status"].isin(["Not Met", "Partially Met"])]
-
-        # Add failing control details
-        for i, row_data in failing_controls.iterrows():
-            row_num = fail_start_row + 2 + i
-            ws.cell(row=row_num, column=2, value=row_data["User Org Control Domain"]).alignment = left_alignment
-            ws.cell(row=row_num, column=2).border = thin_border
-
-            ws.cell(row=row_num, column=3, value=row_data["User Org Control Sub-Domain"]).alignment = left_alignment
-            ws.cell(row=row_num, column=3).border = thin_border
-
-            ws.cell(row=row_num, column=4, value=row_data["User Org Control Statement"]).alignment = left_alignment
-            ws.cell(row=row_num, column=4).border = thin_border
-
-            ws.cell(row=row_num, column=5, value=row_data["Control Status"]).alignment = center_alignment
-            ws.cell(row=row_num, column=5).border = thin_border
-
-            ws.cell(row=row_num, column=6, value=row_data["Detailed Analysis Explanation"]).alignment = left_alignment
-            ws.cell(row=row_num, column=6).border = thin_border
-
-            # Highlight failing controls in red and partially met in amber
-            if row_data["Control Status"] == "Not Met":
-                fill_color = "FFC7CE"  # Light Red
-            else:
-                fill_color = "FFD966"  # Light Amber
-
-            for col in range(2, 7):
-                cell = ws.cell(row=row_num, column=col)
-                cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
-
-        # 9. Optimize Column Widths Based on Content
+        # 8. Optimize Column Widths Based on Content
         def autofit_columns(ws, min_width=10, max_width=50):
             """
             Adjust column widths based on the maximum length of the content in each column.
@@ -640,12 +601,12 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
         autofit_columns(ws)
 
-        # 10. Ensure Text Wrapping for All Cells
+        # 9. Ensure Text Wrapping for All Cells
         for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=2, max_col=6):
             for cell in row:
                 cell.alignment = Alignment(wrap_text=True, vertical='top')
 
-        # 11. Save as a new file
+        # 10. Save as a new file
         wb.save(output_excel_path)
         wb.close()
 
