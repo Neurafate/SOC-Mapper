@@ -1082,4 +1082,4 @@ def cancel_task(task_id):
 if __name__ == "__main__":
     logging.info("Starting the Flask application on port 5000.")
     # Note: Consider setting debug=False in production
-    app.run(host="0.0.0.0", port=5000, debug=True, threaded=True)
+    app.run(host="0.0.0.0", port=5000, threaded=True)
