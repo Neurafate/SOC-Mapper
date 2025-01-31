@@ -44,6 +44,9 @@ from openpyxl.utils import get_column_letter
 from werkzeug.utils import secure_filename
 
 import PyPDF2  # PDF processing
+from sentence_transformers import SentenceTransformer
+from qualifiers import qualify_soc_report
+import faiss
 
 app = Flask(__name__)
 CORS(app)

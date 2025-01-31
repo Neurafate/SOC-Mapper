@@ -10,6 +10,7 @@ import datetime
 import re
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
+from openpyxl.styles import Font, Alignment, PatternFill
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
