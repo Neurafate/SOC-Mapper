@@ -349,65 +349,70 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         logging.error("Error saving qualifiers to Excel: %s", e)
         return
 
-    # Format in Excel
+    """Format the Qualifying Questions sheet in the Excel output."""
     try:
+        logging.info(f"Formatting Qualifying Questions sheet in {excel_output_path}.")
         wb = load_workbook(excel_output_path)
-        ws = wb["Qualifying Questions"]
+        if "Qualifying Questions" in wb.sheetnames:
+            ws = wb["Qualifying Questions"]
 
-        # **Set Column C Width to 50**
-        ws.column_dimensions['C'].width = 50
+            # **Set Column A and Column C Width to 100**
+            ws.column_dimensions['A'].width = 100
+            ws.column_dimensions['C'].width = 100
 
-        # Set column widths as needed (additional columns can be set similarly)
-        # Example: ws.column_dimensions['A'].width = 40
+            # **Enable Wrap Text for All Columns**
+            for row in ws.iter_rows():
+                for cell in row:
+                    cell.alignment = Alignment(wrap_text=True, vertical='top')
 
-        data_start_row = 2
-        status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
-        status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
-        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
+            data_start_row = 2
+            status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
+            status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
+            header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
 
-        # Apply header styling
-        for col in range(1, 4):
-            cell = ws.cell(row=1, column=col)
-            cell.fill = header_fill
-            cell.font = Font(bold=True)
-            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+            # Apply header styling
+            for col in range(1, 4):
+                cell = ws.cell(row=1, column=col)
+                cell.fill = header_fill
+                cell.font = Font(bold=True)
+                cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-        # Apply status fill colors
-        for row in range(data_start_row, ws.max_row + 1):
-            status_cell = ws.cell(row=row, column=2)
-            if status_cell.value == "Pass":
-                status_cell.fill = status_fill_pass
-            elif status_cell.value == "Fail":
-                status_cell.fill = status_fill_fail
+            # Apply status fill colors
+            for row in range(data_start_row, ws.max_row + 1):
+                status_cell = ws.cell(row=row, column=2)
+                if status_cell.value == "Pass":
+                    status_cell.fill = status_fill_pass
+                elif status_cell.value == "Fail":
+                    status_cell.fill = status_fill_fail
 
-        # Overall viability row
-        statuses = [ws.cell(row=r, column=2).value for r in range(data_start_row, ws.max_row + 1)]
-        overall_viability = "Pass" if all(s == "Pass" for s in statuses) else "Fail"
+            # Overall viability row
+            statuses = [ws.cell(row=r, column=2).value for r in range(data_start_row, ws.max_row + 1)]
+            overall_viability = "Pass" if all(s == "Pass" for s in statuses if s != "N/A") else "Fail"
 
-        summary_question = "Overall SOC Viability"
-        summary_status = overall_viability
-        summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
+            summary_question = "Overall SOC Viability"
+            summary_status = overall_viability
+            summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
 
-        ws.append([summary_question, summary_status, summary_answer])
-        summary_row = ws.max_row
+            ws.append([summary_question, summary_status, summary_answer])
+            summary_row = ws.max_row
 
-        summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
-        ws.cell(row=summary_row, column=2).fill = summary_fill
+            summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
+            ws.cell(row=summary_row, column=2).fill = summary_fill
 
-        bold_font = Font(bold=True)
-        for col in range(1, 4):
-            ws.cell(row=summary_row, column=col).font = bold_font
+            bold_font = Font(bold=True)
+            for col in range(1, 4):
+                ws.cell(row=summary_row, column=col).font = bold_font
 
-        # **Set Column C Width to 50 Again to Ensure It's Applied After Appending**
-        ws.column_dimensions['C'].width = 50
+            # **Set Column A and C Width to 100 Again to Ensure It's Applied**
+            ws.column_dimensions['A'].width = 100
+            ws.column_dimensions['C'].width = 100
 
-        wb.save(excel_output_path)
-        logging.info("Excel formatting and summary row added.")
+            wb.save(excel_output_path)
+            logging.info("Qualifying Questions sheet formatted successfully.")
+        else:
+            logging.warning("Qualifying Questions sheet not found in the Excel file.")
     except Exception as e:
-        logging.error("Error formatting Excel for qualifiers: %s", e)
-        return
-
-
+        logging.error(f"Error formatting Qualifying Questions sheet: {e}", exc_info=True)
 if __name__ == "__main__":
     # Example usage (debug/test):
     pdf_path = "path/to/soc2_report.pdf"

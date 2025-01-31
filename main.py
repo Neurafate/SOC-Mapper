@@ -1024,6 +1024,21 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['error'] = str(e)
                 progress_data[task_id]['eta'] = 0
 
+def determine_status(question, answer):
+    """
+    Determines the status based on the question and the answer.
+    For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
+    """
+    if "signify the report is invalid" in question or "qualified report" in question:
+        # For these questions, "Yes" indicates a negative outcome (Fail)
+        if answer.strip().lower().startswith("yes."):
+            return "Fail"
+        return "Pass"
+    else:
+        # For other questions, "Yes" indicates a positive outcome (Pass)
+        if answer.strip().lower().startswith("yes."):
+            return "Pass"
+        return "Fail"
 
 # -------------------------------------------------------
 # UPDATED Endpoint: /initial_qualifier_check
@@ -1031,11 +1046,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 @app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
     """
-    1) Accepts a PDF file and optionally a model name.
-    2) Extracts text from the entire PDF (or you can limit pages if you prefer).
-    3) Builds a short RAG index for qualifiers.
-    4) Calls the qualifier-check prompts (in-memory).
-    5) Returns the pass/fail results to the frontend in JSON (no Excel writing).
+    Runs initial qualifier checks on the SOC 2 Type 2 Report.
     """
     logging.info("Received request to /initial_qualifier_check endpoint.")
     try:
@@ -1077,35 +1088,17 @@ def initial_qualifier_check():
         audit_period_result = is_audit_period_sufficient(df_temp, model, index, top_k=3)
         invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)
         report_qualified_result = is_report_qualified(df_temp, model, index, top_k=3)
-        scope_of_services_result = describe_scope_of_services(df_temp, model, index, top_k=3)  # **New Qualifier**
-
-        # 5) Determine pass/fail based on the qualifiers
-        def determine_status(question, answer):
-            """
-            Determines the status based on the question and the answer.
-            For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
-            """
-            if "signify the report is invalid" in question or "qualified report" in question:
-                # For these questions, "Yes" indicates a negative outcome (Fail)
-                if answer.strip().lower().startswith("yes."):
-                    return "Fail"
-                return "Pass"
-            else:
-                # For other questions, "Yes" indicates a positive outcome (Pass)
-                if answer.strip().lower().startswith("yes."):
-                    return "Pass"
-                return "Fail"
 
         qualifiers = [
             {
                 "question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
                 "answer": latest_report_result,
-                "status": determine_status("Is the SOC 2 Type 2 Report latest (within the last 12 months)?", latest_report_result)
+                "status": determine_status("Is the SOC 2 Type 2 Report latest?", latest_report_result)
             },
             {
                 "question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
                 "answer": trust_principles_result,
-                "status": determine_status("Are all three Trust Principles (Security, Availability, Confidentiality) covered?", trust_principles_result)
+                "status": determine_status("Are all three Trust Principles covered?", trust_principles_result)
             },
             {
                 "question": "Does the SOC 2 Type 2 Report cover an audit period of at least 9 months?",
@@ -1115,28 +1108,30 @@ def initial_qualifier_check():
             {
                 "question": "Are there any observations in the independent auditor’s opinion that signify the report is invalid?",
                 "answer": invalid_observations_result,
-                "status": determine_status("Are there any observations in the independent auditor’s opinion that signify the report is invalid?", invalid_observations_result)
+                "status": determine_status("Are there invalid observations?", invalid_observations_result)
             },
             {
                 "question": "Is the SOC 2 Type 2 Report a qualified report?",
                 "answer": report_qualified_result,
                 "status": determine_status("Is the SOC 2 Type 2 Report a qualified report?", report_qualified_result)
-            },
-            {
-                "question": "Please detail the scope of services within the SOC 2 Type 2 Report.",  # **New Question**
-                "answer": scope_of_services_result,
-                "status": "N/A"  # Scope details might not require Pass/Fail status
             }
         ]
 
-        # Determine overall viability
+        # **Scope of Services is still included, but does not impact overall viability**
+        scope_of_services_result = describe_scope_of_services(df_temp, model, index, top_k=3)
+        qualifiers.append({
+            "question": "Please detail the scope of services within the SOC 2 Type 2 Report.",
+            "answer": scope_of_services_result,
+            "status": "N/A"
+        })
+
+        # Determine overall viability without considering "Scope of Services"
         overall_viability = "Pass"
         for q in qualifiers:
             if q["status"] == "Fail":
                 overall_viability = "Fail"
                 break
 
-        # Return the results in JSON
         return jsonify({
             "model_used": model_name,
             "qualifiers": qualifiers,
@@ -1146,6 +1141,7 @@ def initial_qualifier_check():
     except Exception as e:
         logging.error(f"Error in /initial_qualifier_check: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
+
 
 
 # -------------------------------------------------------
