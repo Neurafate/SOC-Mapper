@@ -244,7 +244,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
         audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
         invalid_observations_result = has_invalid_observations(df_chunks, model, index)
-        qualified_opinion_result = is_report_qualified(df_chunks, model, index)  # Updated function name
+        report_qualified_result = is_report_qualified(df_chunks, model, index)  # Updated function name
     except Exception as e:
         logging.error("Error during qualifier checks: %s", e)
         return
@@ -259,7 +259,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             "Answer": trust_principles_result
         },
         {
-            "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
+            "Question": "Does the SOC 2 Type 2 Report cover an audit period of at least 9 months?",
             "Answer": audit_period_result
         },
         {
@@ -267,8 +267,8 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             "Answer": invalid_observations_result
         },
         {
-            "Question": "Is the SOC 2 Type 2 Report a qualified report?",
-            "Answer": qualified_opinion_result  # Updated question text
+            "Question": "Is the SOC 2 Type 2 Report a qualified report?",  # Updated question text
+            "Answer": report_qualified_result  # Updated variable name
         }
     ]
 
@@ -320,7 +320,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         data_start_row = 2
         status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
         status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
-        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Updated color
+        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
 
         for col in range(1, 4):
             cell = ws.cell(row=1, column=col)
