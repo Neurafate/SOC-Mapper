@@ -998,31 +998,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 # -------------------------------------------------------
 # NEW ENDPOINT: /initial_qualifier_check
 # -------------------------------------------------------
-import os
-import logging
-from flask import request, jsonify
-from werkzeug.utils import secure_filename
-import pandas as pd
-import faiss
-import PyPDF2
-from sentence_transformers import SentenceTransformer
-from rag import load_faiss_index, retrieve_answers_for_controls
-from llm_analysis import call_ollama_api
-from qualifiers import (
-    is_report_latest,
-    are_trust_principles_covered,
-    is_audit_period_sufficient,
-    has_invalid_observations,
-    is_opinion_qualified
-)
-from parser import chunk_text_without_patterns
-
-# Configure logging
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
 @app.route('/initial_qualifier_check', methods=['POST'])
-
+@app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
     """
     1) Accepts a PDF file and optionally a model name.
@@ -1037,14 +1014,32 @@ def initial_qualifier_check():
         if not pdf_file:
             raise ValueError("Missing required file: pdf_file")
 
-        model_name = request.form.get('model_name', 'all-mpnet-base-v2').strip()
+        model_name = request.form.get('model_name', 'llama3.1').strip()
 
         filename_pdf = secure_filename(pdf_file.filename)
         pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
         pdf_file.save(pdf_path)
         logging.info(f"PDF file saved to {pdf_path}")
 
+        # We'll do a quick chunking of the entire PDF, build a RAG, and run the 5 checks.
+        # We'll keep it synchronous for simplicity. If you want streaming progress, you can
+        # push it into a background thread with SSE progress like the other steps.
+
+        from sentence_transformers import SentenceTransformer
+        from rag import load_faiss_index, retrieve_answers_for_controls
+        from llm_analysis import call_ollama_api
+        import pandas as pd
+        import faiss
+        from qualifiers import (
+            is_report_latest,
+            are_trust_principles_covered,
+            is_audit_period_sufficient,
+            has_invalid_observations,       # New Import
+            is_opinion_qualified            # New Import
+        )
+
         # 1) Extract full PDF text
+        #    If you want to limit pages, do so here. Right now we'll do pages 1..N.
         reader = PyPDF2.PdfReader(pdf_path)
         total_pages = len(reader.pages)
         full_text = ""
@@ -1059,7 +1054,7 @@ def initial_qualifier_check():
         df_temp = pd.DataFrame({"Content": text_chunks})
 
         # 3) Build an in-memory FAISS index for qualifiers
-        model = SentenceTransformer(model_name)
+        model = SentenceTransformer('all-mpnet-base-v2')
         embeddings = model.encode(df_temp["Content"].tolist(), show_progress_bar=False).astype('float32')
         dimension = embeddings.shape[1]
         index = faiss.IndexFlatIP(dimension)
@@ -1069,8 +1064,8 @@ def initial_qualifier_check():
         latest_report_result = is_report_latest(df_temp, model, index, top_k=3)
         trust_principles_result = are_trust_principles_covered(df_temp, model, index, top_k=3)
         audit_period_result = is_audit_period_sufficient(df_temp, model, index, top_k=3)
-        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)
-        qualified_opinion_result = is_opinion_qualified(df_temp, model, index, top_k=3)
+        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)      # New Qualifier
+        qualified_opinion_result = is_opinion_qualified(df_temp, model, index, top_k=3)            # New Qualifier
 
         # 5) Determine pass/fail based on the qualifiers
         def determine_status(question, answer):
@@ -1134,6 +1129,7 @@ def initial_qualifier_check():
     except Exception as e:
         logging.error(f"Error in /initial_qualifier_check: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
+
 
 # -------------------------------------------------------
 # NEW ENDPOINT: /detect_control_ids
