@@ -28,7 +28,14 @@ from llm_analysis import (
     save_to_excel,
     remove_not_met_controls
 )
-from qualifiers import qualify_soc_report  # Keep as is (final step usage)
+from qualifiers import (
+    is_report_latest,
+    are_trust_principles_covered,
+    is_audit_period_sufficient,
+    has_invalid_observations,
+    is_report_qualified,
+    describe_scope_of_services  # **New Import**
+)  # Updated Import
 
 import pandas as pd
 from openpyxl import load_workbook
@@ -97,29 +104,52 @@ def format_qualifier_sheet(excel_path):
         if "Qualifying Questions" in wb.sheetnames:
             ws = wb["Qualifying Questions"]
 
-            # Set column width and wrap text
-            for col in ws.columns:
-                for cell in col:
-                    cell.alignment = Alignment(wrap_text=True, vertical='top')
-            ws.column_dimensions['A'].width = 40
-            ws.column_dimensions['B'].width = 40
+            # **Set Column C Width to 50**
+            ws.column_dimensions['C'].width = 50
+
+            # Set column widths as needed (additional columns can be set similarly)
+            # Example: ws.column_dimensions['A'].width = 40
+
+            data_start_row = 2
+            status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
+            status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
+            header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
 
             # Apply header styling
-            header_fill = PatternFill(start_color="FFCCFF", end_color="FFCCFF", fill_type="solid")
-            bold_font = Font(bold=True)
-            for cell in ws[1]:
+            for col in range(1, 4):
+                cell = ws.cell(row=1, column=col)
                 cell.fill = header_fill
-                cell.font = bold_font
+                cell.font = Font(bold=True)
+                cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
-            # Apply sentiment-based color coding
-            for row in ws.iter_rows(min_row=2):
-                answer_cell = row[1]  # Assuming Answer column is second
-                if answer_cell.value:
-                    answer_text = str(answer_cell.value).lower()
-                    if "yes" in answer_text:
-                        answer_cell.fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Green
-                    elif "no" in answer_text:
-                        answer_cell.fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Red
+            # Apply status fill colors
+            for row in range(data_start_row, ws.max_row + 1):
+                status_cell = ws.cell(row=row, column=2)
+                if status_cell.value == "Pass":
+                    status_cell.fill = status_fill_pass
+                elif status_cell.value == "Fail":
+                    status_cell.fill = status_fill_fail
+
+            # Overall viability row
+            statuses = [ws.cell(row=r, column=2).value for r in range(data_start_row, ws.max_row + 1)]
+            overall_viability = "Pass" if all(s == "Pass" for s in statuses) else "Fail"
+
+            summary_question = "Overall SOC Viability"
+            summary_status = overall_viability
+            summary_answer = "SOC is valid." if overall_viability == "Pass" else "SOC is not valid."
+
+            ws.append([summary_question, summary_status, summary_answer])
+            summary_row = ws.max_row
+
+            summary_fill = status_fill_pass if summary_status == "Pass" else status_fill_fail
+            ws.cell(row=summary_row, column=2).fill = summary_fill
+
+            bold_font = Font(bold=True)
+            for col in range(1, 4):
+                ws.cell(row=summary_row, column=col).font = bold_font
+
+            # **Set Column C Width to 50 Again to Ensure It's Applied After Appending**
+            ws.column_dimensions['C'].width = 50
 
             wb.save(excel_path)
             logging.info("Qualifying Questions sheet formatted successfully.")
@@ -219,6 +249,8 @@ def format_compliance_sheet(excel_path):
         for row in ws.iter_rows(min_row=1):
             for cell in row:
                 cell.alignment = Alignment(wrap_text=True, vertical='top')
+        ws.column_dimensions['A'].width = 40
+        ws.column_dimensions['B'].width = 40
 
         # Identify columns by name
         domain_col = None
@@ -297,8 +329,8 @@ def format_compliance_sheet(excel_path):
         ws.column_dimensions[get_column_letter(overall_col)].width = 25
 
         # Header styling
-        header_fill = PatternFill(start_color="FFCCFF", end_color="FFCCFF", fill_type="solid")
-        bold_font = Font(bold=True)
+        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
+        bold_font = Font(bold=True, color="000000")
         for cell in ws[1]:
             cell.fill = header_fill
             cell.font = bold_font
@@ -309,12 +341,6 @@ def format_compliance_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
-
-import pandas as pd
-import logging
-from openpyxl import load_workbook
-from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
-from openpyxl.utils import get_column_letter
 
 def create_executive_summary(input_excel_path, output_excel_path):
     """
@@ -528,7 +554,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws['B12'].border = thin_border
 
         headers_domain = ["Domain", "Average Compliance Score", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
-        start_col = 2  # Changed from 3 to 2 to accommodate the "Domain" label in column B
+        start_col = 2  # Column B
         for idx, header in enumerate(headers_domain, start=start_col):
             cell = ws.cell(row=12, column=idx, value=header)
             cell.fill = header_fill
@@ -576,7 +602,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws.cell(row=start_row_subdomain_header, column=2).border = thin_border
 
         headers_subdomain = ["Sub-Domain", "Average Compliance Score", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
-        start_col_sub = 2  # Changed from 3 to 2 to accommodate the "Sub-Domain" label in column B
+        start_col_sub = 2  # Column B
         for idx, header in enumerate(headers_subdomain, start=start_col_sub):
             cell = ws.cell(row=start_row_subdomain_header, column=idx, value=header)
             cell.fill = header_fill
@@ -636,6 +662,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
     except Exception as e:
         logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
         raise
+
 
 def detect_control_id_pages(pdf_path, regex_to_cids):
     """
@@ -770,9 +797,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             elif idx == 1:
                 # 2: Chunking full text for qualifiers
                 chunk_size = app.config['CHUNK_SIZE']
-                full_text_chunks = chunk_text_without_patterns(full_extracted_text, chunk_size)
+                text_chunks = chunk_text_without_patterns(full_extracted_text, chunk_size)
                 df_qualifier_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_qualifier_chunks_{task_id}.csv")
-                pd.DataFrame({"Content": full_text_chunks}).to_csv(df_qualifier_chunks_path, index=False)
+                pd.DataFrame({"Content": text_chunks}).to_csv(df_qualifier_chunks_path, index=False)
                 sleep_seconds(task_id, pre_llm_step_time)
                 if not os.path.exists(df_qualifier_chunks_path):
                     raise FileNotFoundError(f"Qualifier chunks file not found at {df_qualifier_chunks_path}")
@@ -996,7 +1023,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
 
 # -------------------------------------------------------
-# NEW ENDPOINT: /initial_qualifier_check
+# UPDATED Endpoint: /initial_qualifier_check
 # -------------------------------------------------------
 @app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
@@ -1020,25 +1047,7 @@ def initial_qualifier_check():
         pdf_file.save(pdf_path)
         logging.info(f"PDF file saved to {pdf_path}")
 
-        # We'll do a quick chunking of the entire PDF, build a RAG, and run the 5 checks.
-        # We'll keep it synchronous for simplicity. If you want streaming progress, you can
-        # push it into a background thread with SSE progress like the other steps.
-
-        from sentence_transformers import SentenceTransformer
-        from rag import load_faiss_index, retrieve_answers_for_controls
-        from llm_analysis import call_ollama_api
-        import pandas as pd
-        import faiss
-        from qualifiers import (
-            is_report_latest,
-            are_trust_principles_covered,
-            is_audit_period_sufficient,
-            has_invalid_observations,       # Updated Import
-            is_report_qualified             # Updated Import
-        )
-
         # 1) Extract full PDF text
-        #    If you want to limit pages, do so here. Right now we'll do pages 1..N.
         reader = PyPDF2.PdfReader(pdf_path)
         total_pages = len(reader.pages)
         full_text = ""
@@ -1063,8 +1072,9 @@ def initial_qualifier_check():
         latest_report_result = is_report_latest(df_temp, model, index, top_k=3)
         trust_principles_result = are_trust_principles_covered(df_temp, model, index, top_k=3)
         audit_period_result = is_audit_period_sufficient(df_temp, model, index, top_k=3)
-        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)      # Updated Qualifier
-        report_qualified_result = is_report_qualified(df_temp, model, index, top_k=3)             # Updated Qualifier
+        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)
+        report_qualified_result = is_report_qualified(df_temp, model, index, top_k=3)
+        scope_of_services_result = describe_scope_of_services(df_temp, model, index, top_k=3)  # **New Qualifier**
 
         # 5) Determine pass/fail based on the qualifiers
         def determine_status(question, answer):
@@ -1105,10 +1115,15 @@ def initial_qualifier_check():
                 "status": determine_status("Are there any observations in the independent auditor’s opinion that signify the report is invalid?", invalid_observations_result)
             },
             {
-                "question": "Is the SOC 2 Type 2 Report a qualified report?",  # Updated Question Text
-                "answer": report_qualified_result,                        # Updated Variable Name
+                "question": "Is the SOC 2 Type 2 Report a qualified report?",
+                "answer": report_qualified_result,
                 "status": determine_status("Is the SOC 2 Type 2 Report a qualified report?", report_qualified_result)
             },
+            {
+                "question": "Please detail the scope of services within the SOC 2 Type 2 Report.",  # **New Question**
+                "answer": scope_of_services_result,
+                "status": "N/A"  # Scope details might not require Pass/Fail status
+            }
         ]
 
         # Determine overall viability
