@@ -310,6 +310,12 @@ def format_compliance_sheet(excel_path):
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
 
 
+import pandas as pd
+import logging
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
+from openpyxl.utils import get_column_letter
+
 def create_executive_summary(input_excel_path, output_excel_path):
     """
     Creates an Executive Summary sheet inside the final Excel workbook using openpyxl.
@@ -399,6 +405,21 @@ def create_executive_summary(input_excel_path, output_excel_path):
                     "Not Met": 0
                 }, ignore_index=True)
 
+        # **New Code: Determine SOC Usability from "Qualifying Questions" sheet**
+        try:
+            qualifying_df = pd.read_excel(input_excel_path, sheet_name='Qualifying Questions')
+            logging.info(f"Columns in 'Qualifying Questions': {list(qualifying_df.columns)}")
+            
+            # Assuming 'Status' is the header for Column B
+            status_column = qualifying_df.columns[1]  # Column B
+            fail_exists = qualifying_df[status_column].astype(str).str.strip().str.lower().eq('fail').any()
+            soc_usability_status = "No" if fail_exists else "Yes"
+            logging.info(f"SOC Usability Status determined as: {soc_usability_status}")
+        except Exception as e:
+            logging.error(f"Error reading 'Qualifying Questions' sheet: {e}", exc_info=True)
+            # Default to "No" if unable to determine
+            soc_usability_status = "No"
+
         wb = load_workbook(input_excel_path)
         if "Executive Summary" in wb.sheetnames:
             del wb["Executive Summary"]
@@ -462,8 +483,7 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws['B7'].fill = header_fill
         ws['B7'].border = thin_border
 
-        soc_usability_status = "Yes"  # Hard-coded example
-        ws['C7'] = soc_usability_status
+        ws['C7'] = soc_usability_status  # **Updated to use dynamic value**
         ws['C7'].number_format = "@"
         ws['C7'].alignment = center_alignment
         ws['C7'].border = thin_border
@@ -507,8 +527,8 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws['B12'].fill = header_fill
         ws['B12'].border = thin_border
 
-        headers_domain = ["Average Compliance Score Per Domain", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
-        start_col = 3
+        headers_domain = ["Domain", "Average Compliance Score", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
+        start_col = 2  # Changed from 3 to 2 to accommodate the "Domain" label in column B
         for idx, header in enumerate(headers_domain, start=start_col):
             cell = ws.cell(row=12, column=idx, value=header)
             cell.fill = header_fill
@@ -555,8 +575,8 @@ def create_executive_summary(input_excel_path, output_excel_path):
         ws.cell(row=start_row_subdomain_header, column=2).fill = header_fill
         ws.cell(row=start_row_subdomain_header, column=2).border = thin_border
 
-        headers_subdomain = ["Average Compliance Score Per Sub-Domain", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
-        start_col_sub = 3
+        headers_subdomain = ["Sub-Domain", "Average Compliance Score", "Fully Met Controls", "Partially Met Controls", "Not Met Controls"]
+        start_col_sub = 2  # Changed from 3 to 2 to accommodate the "Sub-Domain" label in column B
         for idx, header in enumerate(headers_subdomain, start=start_col_sub):
             cell = ws.cell(row=start_row_subdomain_header, column=idx, value=header)
             cell.fill = header_fill
@@ -616,7 +636,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
     except Exception as e:
         logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
         raise
-
 
 def detect_control_id_pages(pdf_path, regex_to_cids):
     """
@@ -979,7 +998,31 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 # -------------------------------------------------------
 # NEW ENDPOINT: /initial_qualifier_check
 # -------------------------------------------------------
+import os
+import logging
+from flask import request, jsonify
+from werkzeug.utils import secure_filename
+import pandas as pd
+import faiss
+import PyPDF2
+from sentence_transformers import SentenceTransformer
+from rag import load_faiss_index, retrieve_answers_for_controls
+from llm_analysis import call_ollama_api
+from qualifiers import (
+    is_report_latest,
+    are_trust_principles_covered,
+    is_audit_period_sufficient,
+    has_invalid_observations,
+    is_opinion_qualified
+)
+from parser import chunk_text_without_patterns
+
+# Configure logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 @app.route('/initial_qualifier_check', methods=['POST'])
+
 def initial_qualifier_check():
     """
     1) Accepts a PDF file and optionally a model name.
@@ -994,30 +1037,14 @@ def initial_qualifier_check():
         if not pdf_file:
             raise ValueError("Missing required file: pdf_file")
 
-        model_name = request.form.get('model_name', 'llama3.1').strip()
+        model_name = request.form.get('model_name', 'all-mpnet-base-v2').strip()
 
         filename_pdf = secure_filename(pdf_file.filename)
         pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
         pdf_file.save(pdf_path)
         logging.info(f"PDF file saved to {pdf_path}")
 
-        # We'll do a quick chunking of the entire PDF, build a RAG, and run the 3 checks.
-        # We'll keep it synchronous for simplicity. If you want streaming progress, you can
-        # push it into a background thread with SSE progress like the other steps.
-
-        from sentence_transformers import SentenceTransformer
-        from rag import load_faiss_index, retrieve_answers_for_controls
-        from llm_analysis import call_ollama_api
-        import pandas as pd
-        import faiss
-        from qualifiers import (
-            is_report_latest,
-            are_trust_principles_covered,
-            is_audit_period_sufficient
-        )
-
         # 1) Extract full PDF text
-        #    If you want to limit pages, do so here. Right now we'll do pages 1..N.
         reader = PyPDF2.PdfReader(pdf_path)
         total_pages = len(reader.pages)
         full_text = ""
@@ -1032,50 +1059,65 @@ def initial_qualifier_check():
         df_temp = pd.DataFrame({"Content": text_chunks})
 
         # 3) Build an in-memory FAISS index for qualifiers
-        model = SentenceTransformer('all-mpnet-base-v2')
+        model = SentenceTransformer(model_name)
         embeddings = model.encode(df_temp["Content"].tolist(), show_progress_bar=False).astype('float32')
         dimension = embeddings.shape[1]
         index = faiss.IndexFlatIP(dimension)
         index.add(embeddings)
 
-        # 4) Run the 3 qualifier checks:
-        #    We'll replicate the same calls from qualifiers.py, but in-memory, no Excel save.
-
-        # Directly call the qualifier functions from qualifiers.py, but we won't pass an Excel path:
-        # Instead, we'll just capture their textual responses.
-
-        # Reuse the same approach as in qualifiers.py but do it here in code:
+        # 4) Run the qualifier checks:
         latest_report_result = is_report_latest(df_temp, model, index, top_k=3)
         trust_principles_result = are_trust_principles_covered(df_temp, model, index, top_k=3)
         audit_period_result = is_audit_period_sufficient(df_temp, model, index, top_k=3)
+        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)
+        qualified_opinion_result = is_opinion_qualified(df_temp, model, index, top_k=3)
 
-        # 5) Decide pass/fail for each
-        def simple_pass_fail(answer_text):
-            # If it starts with "Yes.", we treat it as pass
-            # Otherwise, treat it as fail
-            if answer_text.strip().lower().startswith("yes."):
+        # 5) Determine pass/fail based on the qualifiers
+        def determine_status(question, answer):
+            """
+            Determines the status based on the question and the answer.
+            For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
+            """
+            if "signify the report is invalid" in question or "auditor’s opinion in the SOC 2 Type 2 Report is qualified" in question:
+                # For these questions, "Yes" indicates a negative outcome (Fail)
+                if answer.strip().lower().startswith("yes."):
+                    return "Fail"
                 return "Pass"
-            return "Fail"
+            else:
+                # For other questions, "Yes" indicates a positive outcome (Pass)
+                if answer.strip().lower().startswith("yes."):
+                    return "Pass"
+                return "Fail"
 
         qualifiers = [
             {
                 "question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
                 "answer": latest_report_result,
-                "status": simple_pass_fail(latest_report_result)
+                "status": determine_status("Is the SOC 2 Type 2 Report latest (within the last 12 months)?", latest_report_result)
             },
             {
                 "question": "Are all three Trust Principles (Security, Availability, Confidentiality) covered?",
                 "answer": trust_principles_result,
-                "status": simple_pass_fail(trust_principles_result)
+                "status": determine_status("Are all three Trust Principles (Security, Availability, Confidentiality) covered?", trust_principles_result)
             },
             {
                 "question": "Does the SOC 2 Type 2 Report cover an audit period of at least 9 months?",
                 "answer": audit_period_result,
-                "status": simple_pass_fail(audit_period_result)
+                "status": determine_status("Does the SOC 2 Type 2 Report cover an audit period of at least 9 months?", audit_period_result)
+            },
+            {
+                "question": "Are there any observations in the independent auditor’s opinion that signify the report is invalid?",
+                "answer": invalid_observations_result,
+                "status": determine_status("Are there any observations in the independent auditor’s opinion that signify the report is invalid?", invalid_observations_result)
+            },
+            {
+                "question": "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?",
+                "answer": qualified_opinion_result,
+                "status": determine_status("Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?", qualified_opinion_result)
             },
         ]
 
-        # Overall viability
+        # Determine overall viability
         overall_viability = "Pass"
         for q in qualifiers:
             if q["status"] == "Fail":
@@ -1092,7 +1134,6 @@ def initial_qualifier_check():
     except Exception as e:
         logging.error(f"Error in /initial_qualifier_check: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
-
 
 # -------------------------------------------------------
 # NEW ENDPOINT: /detect_control_ids

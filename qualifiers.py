@@ -156,9 +156,76 @@ def is_audit_period_sufficient(df_chunks, model, index, top_k=3):
         return "No. The SOC 2 Type 2 Report does not provide a clear audit period duration."
 
 
+def has_invalid_observations(df_chunks, model, index, top_k=3):
+    """
+    Checks if there are any observations in the independent auditor’s opinion that signify the report is invalid.
+    """
+    query = "Are there any observations in the independent auditor’s opinion that signify the SOC 2 Type 2 Report is invalid?"
+    query_emb = model.encode([query], show_progress_bar=False).astype('float32')
+
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
+
+    prompt = f'''
+    You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether there are any observations in the independent auditor’s opinion that signify the SOC 2 Type 2 Report is invalid.
+
+    Retrieved Responses:
+    {retrieved_answers.to_dict(orient='records')}
+
+    Instructions:
+    1. Analyze the retrieved responses for any observations or remarks made by the independent auditor that could indicate the report is invalid.
+    2. Provide a clear and concise answer in the following exact format:
+       - If there are invalid observations:
+         "Yes. The independent auditor’s opinion includes the following observations that signify the report is invalid: [list of observations]."
+       - If there are no invalid observations:
+         "No. There are no observations in the independent auditor’s opinion that signify the report is invalid."
+    3. Do not include any additional information or commentary beyond the specified format.
+    '''
+
+    logging.debug("Prompt for 'has_invalid_observations': %s", prompt)
+    response = call_ollama_api(prompt)
+    return response
+
+
+def is_opinion_qualified(df_chunks, model, index, top_k=3):
+    """
+    Checks if the report opinion is qualified, where qualified equals a bad report.
+    """
+    query = "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?"
+    query_emb = model.encode([query], show_progress_bar=False).astype('float32')
+
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
+
+    prompt = f'''
+    You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether the auditor’s opinion in the SOC 2 Type 2 Report is qualified.
+
+    Retrieved Responses:
+    {retrieved_answers.to_dict(orient='records')}
+
+    Instructions:
+    1. Analyze the retrieved responses to determine if the auditor’s opinion is qualified.
+       - A "qualified" opinion indicates that there are reservations or issues with the report.
+    2. Provide a clear and concise answer in the following exact format:
+       - If the opinion is qualified:
+         "Yes. The auditor’s opinion is qualified because [specific reasons]."
+       - If the opinion is unqualified:
+         "No. The auditor’s opinion is unqualified, indicating no reservations."
+    3. Do not include any additional information or commentary beyond the specified format.
+    '''
+
+    logging.debug("Prompt for 'is_opinion_qualified': %s", prompt)
+    response = call_ollama_api(prompt)
+    return response
+
+
 def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
     """
-    Performs the same 3 qualifier checks, then appends them to the Excel file under a "Qualifying Questions" sheet.
+    Performs multiple qualifier checks, then appends them to the Excel file under a "Qualifying Questions" sheet.
     Finally, appends an 'Overall SOC Viability' row at the bottom.
     """
     logging.info("Starting qualifier checks for SOC report.")
@@ -176,6 +243,8 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         latest_report_result = is_report_latest(df_chunks, model, index)
         trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
         audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
+        invalid_observations_result = has_invalid_observations(df_chunks, model, index)
+        qualified_opinion_result = is_opinion_qualified(df_chunks, model, index)
     except Exception as e:
         logging.error("Error during qualifier checks: %s", e)
         return
@@ -192,16 +261,35 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         {
             "Question": "Is the SOC 2 Type 2 Report covering an audit period of at least 9 months?",
             "Answer": audit_period_result
+        },
+        {
+            "Question": "Are there any observations in the independent auditor’s opinion that signify the report is invalid?",
+            "Answer": invalid_observations_result
+        },
+        {
+            "Question": "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?",
+            "Answer": qualified_opinion_result
         }
     ]
 
-    def determine_status(answer):
-        if answer.strip().lower().startswith("yes."):
+    def determine_status(question, answer):
+        """
+        Determines the status based on the question and the answer.
+        For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
+        """
+        if "signify the report is invalid" in question or "auditor’s opinion in the SOC 2 Type 2 Report is qualified" in question:
+            # For these questions, "Yes" indicates a negative outcome (Fail)
+            if answer.strip().lower().startswith("yes."):
+                return "Fail"
             return "Pass"
-        return "Fail"
+        else:
+            # For other questions, "Yes" indicates a positive outcome (Pass)
+            if answer.strip().lower().startswith("yes."):
+                return "Pass"
+            return "Fail"
 
     qualifier_df = pd.DataFrame(qualifier_results)
-    qualifier_df["Status"] = qualifier_df["Answer"].apply(determine_status)
+    qualifier_df["Status"] = qualifier_df.apply(lambda row: determine_status(row["Question"], row["Answer"]), axis=1)
     qualifier_df = qualifier_df[["Question", "Status", "Answer"]]
 
     # Save results to the Excel
@@ -210,7 +298,6 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             wb = load_workbook(excel_output_path)
             if "Qualifying Questions" in wb.sheetnames:
                 ws = wb["Qualifying Questions"]
-                last_row = ws.max_row
                 for _, row in qualifier_df.iterrows():
                     ws.append(row.tolist())
                 wb.save(excel_output_path)
