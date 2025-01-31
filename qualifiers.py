@@ -223,6 +223,37 @@ def is_report_qualified(df_chunks, model, index, top_k=3):
     return response
 
 
+def describe_scope_of_services(df_chunks, model, index, top_k=3):
+    """
+    Details the scope of services within the SOC 2 Type 2 Report.
+    """
+    query = "Please detail the scope of services within the SOC 2 Type 2 Report."
+    query_emb = model.encode([query], show_progress_bar=False).astype('float32')
+
+    distances, indices = index.search(query_emb, top_k)
+    retrieved_answers = retrieve_answers_for_controls(
+        pd.DataFrame([{'Control': query}]), model, index, df_chunks, top_k
+    )
+
+    prompt = f'''
+    You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, provide a detailed description of the scope of services covered within the SOC 2 Type 2 Report.
+
+    Retrieved Responses:
+    {retrieved_answers.to_dict(orient='records')}
+
+    Instructions:
+    1. Analyze the retrieved responses to identify the scope of services detailed in the SOC 2 Type 2 Report.
+    2. Provide a clear and concise answer in the following exact format:
+       - "The scope of services within the SOC 2 Type 2 Report includes: [detailed description]."
+    3. Ensure that all major service areas are covered in the description.
+    4. Do not include any additional information or commentary beyond the specified format.
+    '''
+
+    logging.debug("Prompt for 'describe_scope_of_services': %s", prompt)
+    response = call_ollama_api(prompt)
+    return response
+
+
 def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_path):
     """
     Performs multiple qualifier checks, then appends them to the Excel file under a "Qualifying Questions" sheet.
@@ -244,7 +275,8 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
         audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
         invalid_observations_result = has_invalid_observations(df_chunks, model, index)
-        report_qualified_result = is_report_qualified(df_chunks, model, index)  # Updated function name
+        report_qualified_result = is_report_qualified(df_chunks, model, index)
+        scope_of_services_result = describe_scope_of_services(df_chunks, model, index)
     except Exception as e:
         logging.error("Error during qualifier checks: %s", e)
         return
@@ -267,8 +299,12 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             "Answer": invalid_observations_result
         },
         {
-            "Question": "Is the SOC 2 Type 2 Report a qualified report?",  # Updated question text
-            "Answer": report_qualified_result  # Updated variable name
+            "Question": "Is the SOC 2 Type 2 Report a qualified report?",
+            "Answer": report_qualified_result
+        },
+        {
+            "Question": "Please detail the scope of services within the SOC 2 Type 2 Report.",
+            "Answer": scope_of_services_result
         }
     ]
 
@@ -317,16 +353,25 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         wb = load_workbook(excel_output_path)
         ws = wb["Qualifying Questions"]
 
+        # **Set Column C Width to 50**
+        ws.column_dimensions['C'].width = 50
+
+        # Set column widths as needed (additional columns can be set similarly)
+        # Example: ws.column_dimensions['A'].width = 40
+
         data_start_row = 2
         status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
         status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
         header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Gold
 
+        # Apply header styling
         for col in range(1, 4):
             cell = ws.cell(row=1, column=col)
             cell.fill = header_fill
             cell.font = Font(bold=True)
+            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 
+        # Apply status fill colors
         for row in range(data_start_row, ws.max_row + 1):
             status_cell = ws.cell(row=row, column=2)
             if status_cell.value == "Pass":
@@ -351,6 +396,9 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         bold_font = Font(bold=True)
         for col in range(1, 4):
             ws.cell(row=summary_row, column=col).font = bold_font
+
+        # **Set Column C Width to 50 Again to Ensure It's Applied After Appending**
+        ws.column_dimensions['C'].width = 50
 
         wb.save(excel_output_path)
         logging.info("Excel formatting and summary row added.")
