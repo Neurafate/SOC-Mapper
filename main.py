@@ -999,7 +999,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 # NEW ENDPOINT: /initial_qualifier_check
 # -------------------------------------------------------
 @app.route('/initial_qualifier_check', methods=['POST'])
-@app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
     """
     1) Accepts a PDF file and optionally a model name.
@@ -1034,8 +1033,8 @@ def initial_qualifier_check():
             is_report_latest,
             are_trust_principles_covered,
             is_audit_period_sufficient,
-            has_invalid_observations,       # New Import
-            is_opinion_qualified            # New Import
+            has_invalid_observations,       # Updated Import
+            is_report_qualified             # Updated Import
         )
 
         # 1) Extract full PDF text
@@ -1064,8 +1063,8 @@ def initial_qualifier_check():
         latest_report_result = is_report_latest(df_temp, model, index, top_k=3)
         trust_principles_result = are_trust_principles_covered(df_temp, model, index, top_k=3)
         audit_period_result = is_audit_period_sufficient(df_temp, model, index, top_k=3)
-        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)      # New Qualifier
-        qualified_opinion_result = is_opinion_qualified(df_temp, model, index, top_k=3)            # New Qualifier
+        invalid_observations_result = has_invalid_observations(df_temp, model, index, top_k=3)      # Updated Qualifier
+        report_qualified_result = is_report_qualified(df_temp, model, index, top_k=3)             # Updated Qualifier
 
         # 5) Determine pass/fail based on the qualifiers
         def determine_status(question, answer):
@@ -1073,7 +1072,7 @@ def initial_qualifier_check():
             Determines the status based on the question and the answer.
             For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
             """
-            if "signify the report is invalid" in question or "auditor’s opinion in the SOC 2 Type 2 Report is qualified" in question:
+            if "signify the report is invalid" in question or "qualified report" in question:
                 # For these questions, "Yes" indicates a negative outcome (Fail)
                 if answer.strip().lower().startswith("yes."):
                     return "Fail"
@@ -1106,9 +1105,9 @@ def initial_qualifier_check():
                 "status": determine_status("Are there any observations in the independent auditor’s opinion that signify the report is invalid?", invalid_observations_result)
             },
             {
-                "question": "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?",
-                "answer": qualified_opinion_result,
-                "status": determine_status("Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?", qualified_opinion_result)
+                "question": "Is the SOC 2 Type 2 Report a qualified report?",  # Updated Question Text
+                "answer": report_qualified_result,                        # Updated Variable Name
+                "status": determine_status("Is the SOC 2 Type 2 Report a qualified report?", report_qualified_result)
             },
         ]
 
