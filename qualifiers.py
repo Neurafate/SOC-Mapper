@@ -189,11 +189,11 @@ def has_invalid_observations(df_chunks, model, index, top_k=3):
     return response
 
 
-def is_opinion_qualified(df_chunks, model, index, top_k=3):
+def is_report_qualified(df_chunks, model, index, top_k=3):
     """
-    Checks if the report opinion is qualified, where qualified equals a bad report.
+    Checks if the SOC 2 Type 2 Report is a qualified report.
     """
-    query = "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?"
+    query = "Is the SOC 2 Type 2 Report a qualified report?"
     query_emb = model.encode([query], show_progress_bar=False).astype('float32')
 
     distances, indices = index.search(query_emb, top_k)
@@ -202,23 +202,23 @@ def is_opinion_qualified(df_chunks, model, index, top_k=3):
     )
 
     prompt = f'''
-    You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether the auditor’s opinion in the SOC 2 Type 2 Report is qualified.
+    You are an expert in SOC 2 Type 2 compliance. Based solely on the following retrieved responses, determine whether the SOC 2 Type 2 Report is a qualified report.
 
     Retrieved Responses:
     {retrieved_answers.to_dict(orient='records')}
 
     Instructions:
-    1. Analyze the retrieved responses to determine if the auditor’s opinion is qualified.
-       - A "qualified" opinion indicates that there are reservations or issues with the report.
+    1. Analyze the retrieved responses to determine if the SOC 2 Type 2 Report is a qualified report.
+       - A "qualified" report indicates that there are reservations or issues with the report.
     2. Provide a clear and concise answer in the following exact format:
-       - If the opinion is qualified:
-         "Yes. The auditor’s opinion is qualified because [specific reasons]."
-       - If the opinion is unqualified:
-         "No. The auditor’s opinion is unqualified, indicating no reservations."
+       - If the report is qualified:
+         "Yes. The SOC 2 Type 2 Report is qualified because [specific reasons]."
+       - If the report is unqualified:
+         "No. The SOC 2 Type 2 Report is unqualified, indicating no reservations."
     3. Do not include any additional information or commentary beyond the specified format.
     '''
 
-    logging.debug("Prompt for 'is_opinion_qualified': %s", prompt)
+    logging.debug("Prompt for 'is_report_qualified': %s", prompt)
     response = call_ollama_api(prompt)
     return response
 
@@ -244,7 +244,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         trust_principles_result = are_trust_principles_covered(df_chunks, model, index)
         audit_period_result = is_audit_period_sufficient(df_chunks, model, index)
         invalid_observations_result = has_invalid_observations(df_chunks, model, index)
-        qualified_opinion_result = is_opinion_qualified(df_chunks, model, index)
+        qualified_opinion_result = is_report_qualified(df_chunks, model, index)  # Updated function name
     except Exception as e:
         logging.error("Error during qualifier checks: %s", e)
         return
@@ -267,8 +267,8 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             "Answer": invalid_observations_result
         },
         {
-            "Question": "Is the auditor’s opinion in the SOC 2 Type 2 Report qualified?",
-            "Answer": qualified_opinion_result
+            "Question": "Is the SOC 2 Type 2 Report a qualified report?",
+            "Answer": qualified_opinion_result  # Updated question text
         }
     ]
 
@@ -277,7 +277,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         Determines the status based on the question and the answer.
         For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
         """
-        if "signify the report is invalid" in question or "auditor’s opinion in the SOC 2 Type 2 Report is qualified" in question:
+        if "signify the report is invalid" in question or "qualified report" in question:
             # For these questions, "Yes" indicates a negative outcome (Fail)
             if answer.strip().lower().startswith("yes."):
                 return "Fail"
@@ -320,7 +320,7 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
         data_start_row = 2
         status_fill_pass = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
         status_fill_fail = PatternFill(start_color="FF7F7F", end_color="FF7F7F", fill_type="solid")
-        header_fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")  # Updated color
 
         for col in range(1, 4):
             cell = ws.cell(row=1, column=col)
