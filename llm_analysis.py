@@ -45,7 +45,7 @@ def retry(exceptions, tries=3, delay=2, backoff=2):
     return decorator_retry
 
 # Configuration for the Ollama API
-OLLAMA_API_URL = "http://localhost:11434"   # Update if different
+OLLAMA_API_URL = "http://127.0.0.1:11434"   # Update if different
 
 # Default model name – can be set to "llama3.1" or "phi4:14b-fp16" (or another valid model) as needed.
 DEFAULT_MODEL_NAME = "llama3.1"              
