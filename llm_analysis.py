@@ -74,7 +74,7 @@ def call_ollama_api(prompt, model=DEFAULT_MODEL_NAME, max_tokens=MAX_TOKENS):
     }
 
     try:
-        response = requests.post(url, headers=headers, data=json.dumps(payload), stream=True, timeout=120)
+        response = requests.post(url, headers=headers, data=json.dumps(payload), timeout=120)
         response.raise_for_status()  # Raise an exception for HTTP errors
         logger.info(f"Ollama API response status: {response.status_code}")
     except requests.exceptions.RequestException as e:
