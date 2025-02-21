@@ -1,259 +1,145 @@
-import os
-import re
-import logging
 import fitz  # PyMuPDF
+from pathlib import Path
 
-from flask import Flask, request, render_template_string, redirect, flash, url_for
-
-from werkzeug.utils import secure_filename
-
-# === Production Configuration ===
-UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER', 'uploads')
-ALLOWED_EXTENSIONS = {'pdf'}
-
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-# Configure logging.
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG for detailed output.
-logger = logging.getLogger(__name__)
-
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = os.environ.get('SECRET_KEY', 'CHANGE_THIS_IN_PRODUCTION')
-
-# === HTML Templates ===
-
-INDEX_HTML = """
-<!doctype html>
-<html>
-<head>
-    <title>Extract CUECs from SOC Report</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Extract CUECs from SOC Report</h1>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class="flashes">
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    <form method="post" action="{{ url_for('process') }}" enctype="multipart/form-data">
-        <label for="file">Select PDF file:</label>
-        <input type="file" name="file" accept=".pdf" required>
-        <br><br>
-        <!-- Add a checkbox to enable debug mode if desired -->
-        <label for="debug">Enable Debug Logging:</label>
-        <input type="checkbox" name="debug" id="debug">
-        <br><br>
-        <button type="submit">Upload and Extract CUECs</button>
-    </form>
-</body>
-</html>
-"""
-
-RESULT_HTML = """
-<!doctype html>
-<html>
-<head>
-    <title>CUEC Extraction Results</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Extracted CUECs</h1>
-    {% if cuecs %}
-        {% for cuec in cuecs %}
-            <h3>CUEC {{ loop.index }}</h3>
-            <pre>{{ cuec }}</pre>
-        {% endfor %}
-    {% else %}
-        <p>No CUECs were found in the uploaded document.</p>
-    {% endif %}
-    {% if debug_log %}
-    <hr>
-    <h2>Debug Log</h2>
-    <pre>{{ debug_log }}</pre>
-    {% endif %}
-    <br>
-    <a href="{{ url_for('index') }}">Back to Upload</a>
-</body>
-</html>
-"""
-
-# === Utility Functions ===
-
-def allowed_file(filename):
-    """Return True if the file has an allowed extension (PDF)."""
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def extract_full_text(pdf_path, debug_log):
+def is_heading(line: str, max_words: int = 12) -> bool:
     """
-    Extract the complete text from a PDF document using PyMuPDF.
-    Appends debug information into the provided debug_log list.
+    A simple heuristic to decide if 'line' should be considered a heading:
+      - The line has <= max_words.
+    You can refine this (e.g., check capitalization or font size).
     """
-    try:
-        doc = fitz.open(pdf_path)
-        debug_log.append(f"Opened PDF: {pdf_path} with {doc.page_count} pages.")
-    except Exception as e:
-        logger.error("Error opening PDF '%s': %s", pdf_path, e)
-        debug_log.append(f"Error opening PDF '{pdf_path}': {e}")
-        raise
+    words = line.split()
+    if not words:
+        return False
+    if len(words) > max_words:
+        return False
+    return True
 
-    full_text = ""
-    for i, page in enumerate(doc, start=1):
-        page_text = page.get_text()
-        full_text += page_text + "\n"
-        debug_log.append(f"Extracted text from page {i} (length {len(page_text)} chars).")
-    return full_text
+def is_section_iii_heading(heading_text: str) -> bool:
+    """
+    True if the heading starts with 'Section III' (case-insensitive).
+    Examples:
+      - 'Section III'
+      - 'SECTION III.'
+      - 'Section III - Additional Info'
+    """
+    txt_lower = heading_text.lower().strip()
+    return txt_lower.startswith("section iii")
 
-def extract_cuecs_from_text(full_text, debug_log):
+def is_section_iv_heading(heading_text: str) -> bool:
     """
-    Heuristically extract candidate CUEC segments from the full text.
-    This version logs why and how it groups lines into sections.
+    True if the heading starts with 'Section IV' (case-insensitive).
     """
-    # Expanded header patterns.
-    header_pattern = re.compile(
-        r'(complementary user entity controls|cuec|controls expected to be implemented|user entity controls|control objectives)',
-        re.IGNORECASE
-    )
-    debug_log.append("Using header pattern: " + header_pattern.pattern)
+    txt_lower = heading_text.lower().strip()
+    return txt_lower.startswith("section iv")
+
+def is_complementary_heading(heading_text: str) -> bool:
+    """
+    True if 'heading_text' contains 'complementary' (case-insensitive).
+    """
+    return "complementary" in heading_text.lower()
+
+def extract_complementary_text(pdf_path: Path, pages_to_skip: int = 5) -> str:
+    """
+    Reads the PDF with PyMuPDF.
+    Skips the first `pages_to_skip` pages entirely (default = 5).
     
-    lines = full_text.splitlines()
-    debug_log.append(f"Total lines in text: {len(lines)}")
+    Then:
+      1) Looks for a heading mentioning "Section III".
+      2) After that, the FIRST heading mentioning "complementary" starts capture.
+      3) Capture all lines (headings or normal) until a heading mentioning "Section IV".
+      4) Stop and return the captured text as a single string.
+    """
+    doc = fitz.open(pdf_path)
     
-    sections = []
-    collecting = False
-    current_section = []
+    all_lines = []
     
-    for idx, line in enumerate(lines):
-        stripped_line = line.strip()
-        debug_log.append(f"Line {idx+1}: '{line}'")
-        
-        if header_pattern.search(line):
-            debug_log.append(f"--> Header detected at line {idx+1}: '{line.strip()}'")
-            if current_section:
-                section_text = "\n".join(current_section).strip()
-                debug_log.append(f"Section ended before header with {len(current_section)} lines.")
-                sections.append(section_text)
-                current_section = []
-            collecting = True
-            # Optionally log that we are skipping the header line.
-            debug_log.append("Skipping header line.")
+    # Skip the first 'pages_to_skip' pages
+    for page_num, page in enumerate(doc, start=1):
+        if page_num <= pages_to_skip:
+            # ignore these pages
             continue
-
-        if collecting:
-            if stripped_line == "":
-                # If we encounter an empty line, decide whether it terminates the section.
-                if current_section and current_section[-1] == "":
-                    # Two consecutive empty lines: end section.
-                    debug_log.append(f"--> Ending section at line {idx+1} due to consecutive empty lines.")
-                    sections.append("\n".join(current_section).strip())
-                    current_section = []
-                    collecting = False
-                else:
-                    # Append an empty line, but do not necessarily end the section.
-                    debug_log.append(f"Appending empty line at line {idx+1}.")
-                    current_section.append("")
-                continue
+        
+        page_text = page.get_text("text")
+        for raw_line in page_text.splitlines():
+            line_stripped = raw_line.strip()
+            if not line_stripped:
+                continue  # skip empty lines
             
-            # Check if line looks like a bullet item or is indented.
-            if re.match(r"^\s*[\-\*\•\d\.\)]", line):
-                debug_log.append(f"Appending bullet/indented line at {idx+1}: '{stripped_line}'")
-                current_section.append(stripped_line)
-            else:
-                # Otherwise, treat it as a continuation.
-                if current_section:
-                    debug_log.append(f"Appending continuation to previous line at {idx+1}: '{stripped_line}'")
-                    current_section[-1] += " " + stripped_line
+            # Decide if it looks like a heading
+            heading_flag = is_heading(line_stripped)
+            all_lines.append({
+                'text': line_stripped,
+                'is_heading': heading_flag
+            })
+    
+    # State variables
+    seen_section_iii = False
+    capturing = False
+    captured_lines = []
+    started_heading = ""
+    
+    for line_obj in all_lines:
+        line_text = line_obj['text']
+        line_is_heading = line_obj['is_heading']
+        
+        if line_is_heading:
+            # Check if it's "Section III"
+            if is_section_iii_heading(line_text):
+                seen_section_iii = True
+            
+            # If it's "Section IV", we stop if we're currently capturing
+            if is_section_iv_heading(line_text):
+                if capturing:
+                    # finalize
+                    break
                 else:
-                    debug_log.append(f"Starting new section with line {idx+1}: '{stripped_line}'")
-                    current_section.append(stripped_line)
-    
-    if current_section:
-        debug_log.append("Appending final section.")
-        sections.append("\n".join(current_section).strip())
-    
-    debug_log.append(f"Total sections detected before filtering: {len(sections)}")
-    
-    # Post-processing: remove sections that are too short to be genuine.
-    cleaned_sections = []
-    for i, sec in enumerate(sections, start=1):
-        word_count = len(sec.split())
-        debug_log.append(f"Section {i} word count: {word_count}")
-        if word_count > 5:
-            cleaned_sections.append(sec)
+                    # not capturing yet, just ignore
+                    continue
+            
+            # If it mentions "complementary"
+            if is_complementary_heading(line_text):
+                # Start capturing only if we've seen Section III
+                if seen_section_iii and not capturing:
+                    capturing = True
+                    started_heading = line_text
+                    # Include the heading in the captured text
+                    captured_lines.append(f"[START: {started_heading}]")
+                elif seen_section_iii and capturing:
+                    # If we're already capturing, treat it as another heading within the section
+                    captured_lines.append(f"[ANOTHER COMPLEMENTARY HEADING]: {line_text}")
+            else:
+                # Some other heading (not Section IV, not "complementary").
+                if capturing:
+                    captured_lines.append(f"[HEADING]: {line_text}")
         else:
-            debug_log.append(f"Section {i} filtered out due to insufficient length.")
+            # Normal line (not a heading)
+            if capturing:
+                captured_lines.append(line_text)
     
-    debug_log.append(f"Total sections after filtering: {len(cleaned_sections)}")
-    return cleaned_sections
+    doc.close()
+    
+    return "\n".join(captured_lines)
 
-def extract_cuecs(pdf_path, debug=False):
+def process_pdf_to_txt(pdf_path: Path, output_path: Path, pages_to_skip: int = 5):
     """
-    Combine the extraction steps to retrieve candidate CUEC segments from the provided PDF.
-    If debug is True, returns a tuple (cuecs, debug_log).
+    Extract the complementary sections from a single PDF,
+    skipping the first `pages_to_skip` pages,
+    and write the result to a .txt file.
     """
-    debug_log = []
-    full_text = extract_full_text(pdf_path, debug_log)
-    cuecs = extract_cuecs_from_text(full_text, debug_log)
-    if debug:
-        return cuecs, "\n".join(debug_log)
-    else:
-        return cuecs
-
-# === Flask Routes ===
-
-@app.route('/')
-def index():
-    return render_template_string(INDEX_HTML)
-
-@app.route('/process', methods=['POST'])
-def process():
-    # Check if debug mode is enabled via checkbox (or via URL parameter)
-    debug_mode = request.form.get('debug') == 'on' or request.args.get('debug') == '1'
-    logger.debug("Debug mode is %s", "enabled" if debug_mode else "disabled")
+    extracted = extract_complementary_text(pdf_path, pages_to_skip=pages_to_skip)
     
-    if 'file' not in request.files:
-        flash("No file part in the request.")
-        return redirect(request.url)
-    
-    file = request.files['file']
-    if file.filename == "":
-        flash("No file selected for uploading.")
-        return redirect(request.url)
-    
-    if not allowed_file(file.filename):
-        flash("Allowed file type is PDF.")
-        return redirect(request.url)
-    
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    try:
-        file.save(filepath)
-        logger.debug("File saved to: %s", filepath)
-    except Exception as e:
-        logger.error("Error saving file '%s': %s", filename, e)
-        flash("Error saving the uploaded file.")
-        return redirect(request.url)
-    
-    try:
-        if debug_mode:
-            cuecs, debug_log = extract_cuecs(filepath, debug=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        if extracted.strip():
+            f.write("=== EXTRACTED COMPLEMENTARY CONTENT ===\n\n")
+            f.write(extracted)
+            f.write("\n\n=== END ===\n")
         else:
-            cuecs = extract_cuecs(filepath)
-            debug_log = None
-    except Exception as e:
-        logger.error("Error processing PDF '%s': %s", filepath, e)
-        flash("Error processing the PDF.")
-        return redirect(url_for('index'))
-    
-    return render_template_string(RESULT_HTML, cuecs=cuecs, debug_log=debug_log)
+            f.write("No complementary section found (after Section III, before Section IV).\n")
 
-# === Entry Point ===
-if __name__ == '__main__':
-    # In production, run behind a WSGI server (e.g., Gunicorn).
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+if __name__ == "__main__":
+    pdf_file = Path("Oracle.pdf")
+    out_file = Path("output.txt")
+    
+    # We skip the first 5 pages. Adjust as needed.
+    process_pdf_to_txt(pdf_file, out_file, pages_to_skip=5)
+    print(f"Done. See {out_file}")
