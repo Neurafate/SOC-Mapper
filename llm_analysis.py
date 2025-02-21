@@ -47,7 +47,7 @@ def retry(exceptions, tries=3, delay=2, backoff=2):
 # Configuration for the Ollama API
 OLLAMA_API_URL = "http://127.0.0.1:11434"   # Update if different
 
-# Default model name – can be set to "llama3.1" or "phi4:14b-fp16" (or another valid model) as needed.
+# Default model name – can be set to "llama3.1" or "phi4" (or another valid model) as needed.
 DEFAULT_MODEL_NAME = "llama3.1"              
 MAX_TOKENS = 1024  # Increased from 512 to 1024
 
@@ -56,7 +56,7 @@ def call_ollama_api(prompt, model=DEFAULT_MODEL_NAME, max_tokens=MAX_TOKENS):
     """
     Calls the Ollama API with the given prompt and returns the generated text.
     
-    The `model` parameter can be set to "phi4:14b-fp16" if that model is selected.
+    The `model` parameter can be set to "phi4" if that model is selected.
     """
     logger.info("Calling Ollama API for LLM analysis.")
     url = f"{OLLAMA_API_URL}/api/generate"
@@ -308,7 +308,7 @@ def process_controls(df, top_k=3, max_retries=1, socketio=None, model_name=DEFAU
     Processes each control by generating prompts, calling the LLM, cleaning the output,
     and updating the DataFrame with analysis.
     
-    The parameter `model_name` can be set to "phi4:14b-fp16" if that model is selected.
+    The parameter `model_name` can be set to "phi4" if that model is selected.
     
     Parameters:
     - df (DataFrame): The DataFrame containing controls and retrieved answers.
