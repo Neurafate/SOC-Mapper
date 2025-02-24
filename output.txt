@@ -1,229 +1,99 @@
 === EXTRACTED COMPLEMENTARY CONTENT ===
 
-[START: COMPLEMENTARY USER ENTITY CONTROLS (CUECS)]
-Oracle IT general controls were designed with the assumption that certain controls would be implemented
-by user entities (or “customers”). This section describes additional controls that customers must have in
-operation to complement the controls of Oracle. The list of customer control considerations presented below
-and those presented with certain specified trust services criteria do not represent a comprehensive set of
-all the controls that should be employed by customers. Customers may be required to implement additional
-[HEADING]: administrative or technical controls to meet their business and legal needs.
-[HEADING]: Applicable Trust Services Criteria
-[ANOTHER COMPLEMENTARY HEADING]: Complementary User Entity Controls (CUECs)
-[HEADING]: CC1.3 – COSO Principle 3: Management
-[HEADING]: establishes, with board oversight,
-[HEADING]: structures, reporting lines, and appropriate
-[HEADING]: authorities and responsibilities in the pursuit
-[HEADING]: of objectives.
-[HEADING]: The customer is responsible for defining its
-[HEADING]: organizational structures, reporting lines, authorities,
-[HEADING]: and responsibilities for the design, development,
-[HEADING]: implementation, operation, maintenance and
-[HEADING]: monitoring of its application in accordance with
-[HEADING]: applicable laws, regulations standards in order to
-[HEADING]: meet its commitments and requirements as they
-[HEADING]: relate to security, availability, and confidentiality.
-[HEADING]: CC2.1 – COSO Principle 13: The entity
-[HEADING]: obtains or generates and uses relevant,
-[HEADING]: quality information to support the
-[HEADING]: functioning of internal control.
-[HEADING]: The customer is responsible for ensuring the
-[HEADING]: completeness and accuracy of the financial data.
-[HEADING]: The customer is responsible for application
-[HEADING]: functionality, configuration, and transaction
-[HEADING]: processing.
-[HEADING]: The customer is responsible for determining their
-[HEADING]: business processes and defining, or working with the
-[HEADING]: implementer to define, any configuration controls
-[HEADING]: required to support the business processes.
-[HEADING]: CC2.2 – COSO Principle 14: The entity
-[HEADING]: internally communicates information,
-[HEADING]: including objectives and responsibilities for
-[HEADING]: internal control, necessary to support the
-[HEADING]: functioning of internal control.
-[HEADING]: The customer is responsible for communicating
-[HEADING]: confidentiality commitments and requirements to
-[HEADING]: internal and external users of its application.
-[HEADING]: CC2.3 – COSO Principle 15: The entity
-[HEADING]: communicates with external parties
-[HEADING]: regarding matters affecting the functioning
-[HEADING]: of internal control.
-[HEADING]: The customer is responsible for notifying Oracle of
-[HEADING]: any unauthorized use of, and other known or
-[HEADING]: suspected breach of, security, including
-[HEADING]: compromised user accounts.
-[HEADING]: The customer is responsible for reviewing incident
-[HEADING]: response details provided by Oracle and to initiate
-[HEADING]: inquiry or follow-up as appropriate.
-[HEADING]: The customer is responsible for communicating
-[HEADING]: confidentiality commitments and requirements to
-[HEADING]: internal and external users of its application.
-[HEADING]: The customer is responsible for submitting incident
-[HEADING]: tickets (i.e. data restores) through the My Oracle
-[HEADING]: Support (MOS) customer portal. Customer requests
-[HEADING]: are recorded and tracked within an internal ticketing
-[HEADING]: system through resolution. The ticketing system is
-[HEADING]: utilized to document, prioritize, escalate, and resolve
-[HEADING]: problems affecting contracted services. Customer
-[HEADING]: requests are managed according to established
-[HEADING]: service level agreements.
-[HEADING]: ORACLE CONFIDENTIAL
-[HEADING]: 31 of 97
-[HEADING]: Applicable Trust Services Criteria
-[ANOTHER COMPLEMENTARY HEADING]: Complementary User Entity Controls (CUECs)
-[HEADING]: CC6.1 – The entity implements logical
-[HEADING]: access security software, infrastructure, and
-[HEADING]: architectures over protected information
-[HEADING]: assets to protect them from security events
-[HEADING]: to meet the entity’s objectives.
-[HEADING]: The customer is responsible for all aspects of
-[HEADING]: security relevant to its application.
-[HEADING]: The customer is responsible for designing,
-[HEADING]: developing, testing, implementing, operating and
-[HEADING]: maintaining administrative and technical safeguards
-[HEADING]: to prevent or detect unauthorized access, use, and
-[HEADING]: disclosure during input, processing, retention, output,
-[HEADING]: and disposition of data to, in or from its application.
-[HEADING]: The customer is responsible for confidentiality of
-[HEADING]: passwords and user IDs assigned by them.
-[HEADING]: The customer is responsible for ensuring the
-[HEADING]: confidentiality of any user accounts and passwords
-[HEADING]: assigned to them for use with Oracle’s systems.
-[HEADING]: The customer is responsible for managing
-[HEADING]: application-level access for their employees
-[HEADING]: throughout an employee’s relationship with the entity
-[HEADING]: (e.g., onboarding, termination, role changes, etc.).
-[HEADING]: CC6.2 – Prior to issuing system credentials
-[HEADING]: and granting system access, the entity
-[HEADING]: registers and authorizes new internal and
-[HEADING]: external users whose access is
-[HEADING]: administered by the entity. For those users
-[HEADING]: whose access is administered by the entity,
-[HEADING]: user system credentials are removed when
-[HEADING]: user access is no longer authorized.
-[HEADING]: The customer is responsible for administering
-[HEADING]: application security rights.
-[HEADING]: The customer is responsible for removing terminated
-[HEADING]: employees’ access.
-[HEADING]: The customer is responsible for defining authorized
-[HEADING]: application administrators within its application,
-[HEADING]: ensuring that these privileges are restricted to
-[HEADING]: authorized individuals, and for periodically reviewing
-[HEADING]: the security configurations and access rights for
-[HEADING]: appropriateness.
-[HEADING]: The customer is responsible for managing
-[HEADING]: application-level access for their employees
-[HEADING]: throughout an employee’s relationship with the entity
-[HEADING]: (e.g., onboarding, termination, role changes, etc.).
-[HEADING]: ORACLE CONFIDENTIAL
-[HEADING]: 32 of 97
-[HEADING]: Applicable Trust Services Criteria
-[ANOTHER COMPLEMENTARY HEADING]: Complementary User Entity Controls (CUECs)
-[HEADING]: CC6.6 – The entity implements logical
-[HEADING]: access security measures to protect against
-[HEADING]: threats from sources outside its system
-[HEADING]: boundaries.
-[HEADING]: The customer is responsible for configuring
-[HEADING]: application password parameters and complexity
-[HEADING]: requirements.
-[HEADING]: The customer is responsible for confidentiality of
-[HEADING]: passwords and user IDs assigned by them.
-[HEADING]: The customer is responsible for administering
-[HEADING]: application security rights.
-[HEADING]: The customer is responsible for removing terminated
-[HEADING]: employees’ access.
-[HEADING]: The customer is responsible for defining authorized
-[HEADING]: application administrators within its application,
-[HEADING]: ensuring that these privileges are restricted to
-[HEADING]: authorized individuals, and for periodically reviewing
-[HEADING]: the security configurations and access rights for
-[HEADING]: appropriateness.
-[HEADING]: The customer is responsible for defining authorized
-[HEADING]: application administrators within the application, and
-[HEADING]: for periodically reviewing the access rights for all end
-[HEADING]: users are appropriate.
-[HEADING]: The customer is responsible for immediately notifying
-[HEADING]: Oracle of any actual or suspected information
-[HEADING]: security breaches, including compromised user
-[HEADING]: accounts.
-[HEADING]: CC8.1 – The entity authorizes, designs,
-[HEADING]: develops or acquires, configures,
-[HEADING]: documents, tests, approves, and
-[HEADING]: implements changes to infrastructure, data,
-[HEADING]: software, and procedures to meet its
-[HEADING]: objectives.
-[HEADING]: The customer is responsible for any customized
-[HEADING]: changes made to its environment including, but not
-[HEADING]: limited to, virtual networks, operating systems, virtual
-[HEADING]: machines, databases, storage, and applications.
-[HEADING]: The customer is responsible for reviewing release
-[HEADING]: notes and other notices of changes and to evaluate,
-[HEADING]: and if necessary, take steps to mitigate, the effects of
-[HEADING]: any changes.
-[HEADING]: The customer is responsible for ensuring sufficient
-[HEADING]: controls for the implementation of the application.
-[HEADING]: The customer is responsible for ensuring the
-[HEADING]: integration with systems external to the application.
-[HEADING]: The customer is responsible for the change
-[HEADING]: management process regarding specific
-[HEADING]: customization(s).
-[HEADING]: The customer is responsible for data changes (e.g.
-[HEADING]: update, insertion and deletion of data).
-[HEADING]: The customer is responsible for the configuration of
-[HEADING]: their application and any third-party applications.
-[HEADING]: ORACLE CONFIDENTIAL
-[HEADING]: 33 of 97
-[HEADING]: Applicable Trust Services Criteria
-[ANOTHER COMPLEMENTARY HEADING]: Complementary User Entity Controls (CUECs)
-[HEADING]: C1.1 – The entity identifies and maintains
-[HEADING]: confidential information to meet the entity’s
-[HEADING]: objectives related to confidentiality.
-[HEADING]: The customer is responsible for ensuring that they do
-[HEADING]: not enter confidential data in support tickets and
-[HEADING]: requests.
-[HEADING]: The customer is responsible for designing,
-[HEADING]: developing, testing, implementing, operating, and
-[HEADING]: maintaining administrative and technical safeguards
-[HEADING]: to prevent or detect unauthorized access, use, and
-[HEADING]: disclosure during input, processing, retention, output,
-[HEADING]: and disposition of data to, in or from its application.
-[HEADING]: The customer is responsible for communicating
-[HEADING]: confidentiality commitments and requirements to
-[HEADING]: internal and external users of its application.
-[HEADING]: The customer is responsible for confidentiality of
-[HEADING]: passwords and user IDs assigned by them.
-[HEADING]: C1.2 - The entity disposes of confidential
-[HEADING]: information to meet the entity’s objectives
-[HEADING]: related to confidentiality.
-[HEADING]: The customer is responsible for notifying Oracle of
-[HEADING]: their intent to discontinue the use of the Service after
-[HEADING]: the end of the Service Period.
-[HEADING]: ORACLE CONFIDENTIAL
-[HEADING]: 34 of 97
-[ANOTHER COMPLEMENTARY HEADING]: COMPLEMENTARY SUBSERVICE ORGANIZATION CONTROLS
-[HEADING]: (CSOCS)
-Oracle uses subservice organizations to provide data center hosting services. These data center facilities
-include controls over physical security supporting the System. This description includes only those controls
-[HEADING]: expected at the subservice organizations and does not include controls at Oracle.
-[HEADING]: Trust Services
-[HEADING]: Criteria
-[ANOTHER COMPLEMENTARY HEADING]: Complementary Subservice Organization Controls
-[HEADING]: Common Criteria 2.3
-[HEADING]: The subservice organization is responsible for informing Oracle of all
-[HEADING]: physical security breaches, failures, identified vulnerabilities, and incidents.
-[HEADING]: Common Criteria 6.4
-[HEADING]: The subservice organization is responsible for restricting physical access to
-[HEADING]: production systems.
-[HEADING]: Common Criteria 6.4
-[HEADING]: The subservice organization is responsible for restricting physical access to
-[HEADING]: offline storage and backup media to help ensure that application and data
-[HEADING]: files are securely stored.
-[HEADING]: Availability Criteria 1.2
-[HEADING]: The subservice organization is responsible for equipping the data center
-[HEADING]: facilities with environmental security safeguards and utilizing an
-[HEADING]: environmental monitoring application to monitor for environmental events to
-[HEADING]: help ensure that systems are maintained in a manner that helps ensure
-[HEADING]: system availability.
-[HEADING]: ORACLE CONFIDENTIAL
-[HEADING]: 35 of 97
+Google Cloud Platform is designed with the assumption that user entities (also referred to as customers) would implement certain policies, procedures, and controls. In certain situations, the application of specific or additional controls at the user entity may be necessary to achieve the applicable trust criteria stated in the description. Therefore, each user’s controls must be evaluated in conjunction with the controls summarized in Section III and Section IV of this report.
+
+This section describes those additional policies, procedures, and controls that Google recommends user entities should consider to complement Google’s policies, procedures, and controls. Management of the user entity and the user entity’s auditor should consider whether the following controls have been placed in operation at the user entity:
+
+Organization and Administration
+
+• Customers are responsible for considering information security requirements in the deployment, configuration, and modification of their instance of the Google Cloud Platform System
+
+• Customers are responsible for establishing organizational policies and procedures for the use or integration of third-party services
+
+• Customers are responsible for reviewing the information security policies and the security capabilities in the Google Cloud Platform System to determine their applicability and modify their internal controls as appropriate
+
+• Customers are responsible for establishing documented policies and procedures for the transfer and sharing of information within their organization and with third-party entities
+
+• Customers are responsible for providing the appropriate training to end-users on proper use of the Google Cloud Platform System consistent with the Acceptable Use Policies and Terms of Service. Acceptable Use Policies available at (or such URL as Google may provide):
+
+• Google Cloud Platform: https://cloud.google.com/terms/aup
+
+• Chronicle (Security Product) and Threat Intelligence for Chronicle:
+
+https://chronicle.security/legal/service-terms/ cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 50
+
+• Customers are responsible for ensuring that end-users are trained on the organizational policies and procedures relevant to the use of the Google Cloud Platform System
+
+• Customers are responsible for defining, documenting, and making available to users procedures for the operation of their instance of the Google Cloud Platform System
+
+• Customers are responsible for identifying and managing the inventory of information assets on the Google Cloud Platform System Logical Access
+
+• Customers are responsible for defining and maintaining policies and procedures governing the customer's administration of access to the Google Cloud Platform System
+
+• Customers are responsible for provisioning service availability, user roles, and sharing permissions within the Google Cloud Platform System consistent with customer organizational policies
+
+• Customers are responsible for implementing secure log-on procedures to access the Google Cloud Platform System consistent with customer access management policies
+
+• Customers are responsible for provisioning, maintaining, and disabling users’ access in accordance with customer access management policies
+
+• Customers are responsible for reviewing users' access rights periodically, consistent with customer organizational policies, to mitigate the risk of inappropriate access
+
+• Customers are responsible for enabling and enforcing the use of two-step verification on privileged administrator accounts
+
+• Customers are responsible for establishing procedures to allocate the initial password to access the Google Cloud Platform System to end-users when Google password authentication is used
+
+• Customers are responsible for training users on the use and disclosure of passwords used to authenticate to the Google Cloud Platform System
+
+• Customers are responsible for assigning responsibilities for the operation and monitoring of the Google Cloud Platform System
+
+• Customers are responsible for configuring GCP Marketplace permissions in Google Cloud Platform consistent with customer’s internal policies (GCP Marketplace contains enterprise applications that can be added to a Google Cloud Platform)
+
+• Customers are responsible for restricting access to and monitoring the use of Application Programming Interfaces (APIs) available in the Google Cloud Platform System
+
+• Customers are responsible for enabling logging and monitoring functionalities to detect administrator activity, customer support activity, security events, system errors, and data deletions to support customer incident management processes
+
+• Customers are responsible for configuring domain settings related to integration with other systems within the customer's environment consistent with customer policies
+
+• Customers are responsible for configuring the Google Cloud Platform System mobile device options consistent with customer policies and procedures
+
+• Customers are responsible for the deployment, configuration and modification of default security settings for cloud products including virtual machines in accordance with their information security requirements cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 51 Change Management
+
+• Customers are responsible for ensuring that individuals creating and/or updating profiles or changing the product configurations are authorized
+
+• Customers are responsible for ensuring any application software which they deploy onto the Google Cloud Platform System follows their specific software change management policies and procedures
+
+• Customers are responsible for reviewing and testing features, builds, and product releases, including Application Programming Interfaces (APIs), to evaluate their impact prior to deploying into production environments, as applicable
+
+• Customers are responsible for configuring test and/or development environments in their instance of the Google Cloud Platform System, as applicable, and restricting access to data in these environments
+
+• Customers are responsible for ensuring that user data is exported and deleted from the Google Cloud Platform System before or within a reasonable amount of time after termination
+
+• Customers are responsible for periodically reviewing the configuration of the Google Cloud Platform System to ensure it is consistent with their policies and procedures
+
+• Customers are responsible for managing and testing configurations that support their business and operational resiliency objectives, and for considering Google Cloud Platform architecture recommendations Physical Security
+
+• Customers are responsible for ensuring appropriate physical security controls over all devices that access the Google Cloud Platform System
+
+• Customers are responsible for ensuring any devices that access the Google Cloud Platform System or contain customer data are properly handled, secured, and transported as defined by the products requirements Incident Management
+
+• Customers are responsible for establishing responsibilities and procedures to respond to relevant information security incidents pertaining to the use of the Google Cloud Platform System
+
+• Customers should train administrators and end-users on their responsibilities and organizational procedures for identifying, handling, and responding to security incidents pertaining to the use of the Google Cloud Platform System
+
+• Customers should contact Google if there are any issues with service availability or security, including, but not limited to, unauthorized use of their password or account, compromise of data, and security events Availability
+
+• Customers are responsible for ensuring they have business recovery and backup procedures over their non-Google managed information systems that access the Google Cloud Platform System
+
+• Customers are responsible for configuring data storage locations that support their business and operational resiliency requirements cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 52 Privacy
+
+• Customers are responsible for considering information security requirements in the deployment, configuration, and modification of their instance of the Google Cloud Platform System
+
+• Customers are responsible for provisioning, maintaining, monitoring and disabling end users’ access in accordance with their internal access management policies
+
+• Customers are responsible for establishing documented policies and procedures for the transfer and sharing of information within their organization and with third-party entities
+
+• Customers are responsible for establishing responsibilities and procedures to respond to relevant information security incidents pertaining to the use of the Google Cloud Platform System
+
+• Customers are responsible for ensuring that administrators do not send unnecessary employee personal data when escalating support requests to service providers, including Google cladmin-hcl-0101@unilever.com Google Confidental Information 53
 
 === END ===
