@@ -77,7 +77,6 @@ progress_data = {}
 
 
 def count_controls(excel_path):
-    # (Implementation unchanged)
     try:
         logging.info(f"Counting controls in {excel_path}.")
         if excel_path.endswith('.xlsx') or excel_path.endswith('.xls'):
@@ -95,7 +94,6 @@ def count_controls(excel_path):
 
 
 def format_qualifier_sheet(excel_path):
-    # (Implementation unchanged)
     try:
         logging.info(f"Formatting Qualifying Questions sheet in {excel_path}.")
         wb = load_workbook(excel_path)
@@ -152,7 +150,6 @@ def format_qualifier_sheet(excel_path):
 
 
 def chunk_text_without_patterns(text, chunk_size):
-    # (Implementation unchanged)
     try:
         logging.info("Starting text chunking without patterns.")
         text = text.replace('\n', ' ').replace('\r', ' ')
@@ -211,7 +208,6 @@ def rename_sheet_to_soc_mapping(excel_path):
 
 
 def format_compliance_sheet(excel_path):
-    # (Implementation unchanged)
     try:
         logging.info(f"Formatting Compliance Score sheet in {excel_path}.")
         wb = load_workbook(excel_path)
@@ -309,7 +305,6 @@ def format_compliance_sheet(excel_path):
 
 
 def create_executive_summary(input_excel_path, output_excel_path):
-    # (Implementation unchanged)
     try:
         logging.info("Generating Executive Summary...")
 
@@ -602,7 +597,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
 
 
 def detect_control_id_pages(pdf_path, regex_to_cids):
-    # (Implementation unchanged)
     control_id_pages = {cid: [] for cids in regex_to_cids.values() for cid in cids}
     try:
         logging.info(f"Detecting pages for Control IDs in {pdf_path}.")
@@ -624,7 +618,6 @@ def detect_control_id_pages(pdf_path, regex_to_cids):
 
 
 def determine_page_range(control_id_pages, regex_to_cids):
-    # (Implementation unchanged)
     start_pages = []
     for regex, cids in regex_to_cids.items():
         pages = [min(control_id_pages[cid]) for cid in cids if control_id_pages.get(cid)]
@@ -639,7 +632,7 @@ def determine_page_range(control_id_pages, regex_to_cids):
     return (start_page, end_page)
 
 
-def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name,
+def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                        soc_report_filename, framework_filename):
     """
     The long-running background process that extracts PDF text,
@@ -659,13 +652,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         pre_llm_steps = 6
         pre_llm_step_time = int(pre_llm_time / pre_llm_steps)
 
-        # --- Updated model check: use .startswith('phi4') to support "phi4:14b-fp16" ---
-        if model_name.lower().startswith('phi4'):
-            qualifier_time = 21
-        else:
-            qualifier_time = 9
-
-        llm_time_per_control = 7 if model_name.lower().startswith('phi4') else 3
+        # With no model input, use fixed timings.
+        qualifier_time = 21
+        llm_time_per_control = 7
 
         num_controls = count_controls(excel_path)
         llm_time = num_controls * llm_time_per_control
@@ -824,7 +813,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['status'] = f"Analyzing control {i+1} of {num_controls} with LLM..."
             logging.info(f"Task {task_id}: Analyzing control {i+1}/{num_controls}. ETA: {format_eta(progress_data[task_id]['eta'])}")
             sleep_seconds(task_id, llm_time_per_control)
-            processed_row = process_controls(pd.DataFrame([row]), model_name=model_name)
+            processed_row = process_controls(pd.DataFrame([row]))
             analyzed_rows.append(processed_row)
             with progress_lock:
                 progress_data[task_id]['progress'] += progress_increment_llm
@@ -894,7 +883,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
 
         with progress_lock:
-            progress_data[task_id]['download_url'] = f"https://g6lxt0v21br58e-5000.proxy.runpod.net/download/{final_filename}"
+            progress_data[task_id]['download_url'] = f"https://91upn2obiudwqc-5000.proxy.runpod.net/download/{final_filename}"
 
         with progress_lock:
             progress_data[task_id]['progress'] = 100.0
@@ -919,6 +908,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['error'] = str(e)
                 progress_data[task_id]['eta'] = 0
 
+
 def determine_status(question, answer):
     if "signify the report is invalid" in question or "qualified report" in question:
         if answer.strip().lower().startswith("yes."):
@@ -928,6 +918,7 @@ def determine_status(question, answer):
         if answer.strip().lower().startswith("yes."):
             return "Pass"
         return "Fail"
+
 
 # -------------------------------------------------------
 # UPDATED Endpoint: /initial_qualifier_check
@@ -940,8 +931,7 @@ def initial_qualifier_check():
         if not pdf_file:
             raise ValueError("Missing required file: pdf_file")
 
-        model_name = request.form.get('model_name', 'llama3.1').strip()
-
+        # Remove model input; use fixed model inside the service as needed.
         filename_pdf = secure_filename(pdf_file.filename)
         pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
         pdf_file.save(pdf_path)
@@ -1014,7 +1004,6 @@ def initial_qualifier_check():
                 break
 
         return jsonify({
-            "model_used": model_name,
             "qualifiers": qualifiers,
             "overall_viability": overall_viability
         }), 200
@@ -1077,9 +1066,6 @@ def process_all():
             logging.error("No Control IDs provided in the request.")
             return jsonify({"error": "No Control IDs were provided."}), 400
 
-        model_name = request.form.get('model_name', 'llama3.1')
-        logging.info(f"Selected model: {model_name}")
-
         filename_pdf = secure_filename(pdf_file.filename)
         filename_excel = secure_filename(excel_file.filename)
 
@@ -1127,7 +1113,7 @@ def process_all():
 
         thread = threading.Thread(
             target=background_process,
-            args=(task_id, pdf_path, excel_path, start_page, end_page, control_id, model_name,
+            args=(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                   soc_report_filename, framework_filename)
         )
         thread.start()
