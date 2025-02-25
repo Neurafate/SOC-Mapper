@@ -75,6 +75,48 @@ logging.info("Application started.")
 # Dictionary to track progress and final result for each task_id
 progress_data = {}
 
+# -----------------------------------------------------------
+# New helper functions for Section IV detection & filtering
+# -----------------------------------------------------------
+
+def is_heading(line: str, max_words: int = 12) -> bool:
+    """
+    Determines if a given line of text can be considered a heading,
+    based on the maximum number of words (default=12).
+    """
+    words = line.split()
+    return bool(words) and len(words) <= max_words
+
+def is_section_iv_heading(heading_text: str) -> bool:
+    """
+    Checks if the heading text starts with 'Section IV'
+    (case-insensitive comparison).
+    """
+    return heading_text.lower().strip().startswith("section iv")
+
+def find_section_iv_page(pdf_path):
+    """
+    Scans the PDF starting from page index 5 (i.e., skipping the first 5 pages)
+    and returns the 1-based page number where a heading that matches 'Section IV' is detected.
+    If not found, returns None.
+    """
+    try:
+        reader = PyPDF2.PdfReader(pdf_path)
+        total_pages = len(reader.pages)
+        # Start from page index 5 => ignoring pages 1 through 5
+        for i in range(5, total_pages):
+            page_text = reader.pages[i].extract_text() or ""
+            for line in page_text.splitlines():
+                if is_heading(line) and is_section_iv_heading(line):
+                    return i + 1  # Return 1-indexed page number
+        return None
+    except Exception as e:
+        logging.error(f"Error detecting Section IV heading: {e}", exc_info=True)
+        return None
+
+# ----------------------------------------------------------------
+# Helper functions from your existing code (unchanged)
+# ----------------------------------------------------------------
 
 def count_controls(excel_path):
     try:
@@ -91,7 +133,6 @@ def count_controls(excel_path):
     except Exception as e:
         logging.error(f"Error counting controls in {excel_path}: {e}", exc_info=True)
         return 0
-
 
 def format_qualifier_sheet(excel_path):
     try:
@@ -148,7 +189,6 @@ def format_qualifier_sheet(excel_path):
     except Exception as e:
         logging.error(f"Error formatting Qualifying Questions sheet: {e}", exc_info=True)
 
-
 def chunk_text_without_patterns(text, chunk_size):
     try:
         logging.info("Starting text chunking without patterns.")
@@ -174,12 +214,10 @@ def chunk_text_without_patterns(text, chunk_size):
         logging.error(f"Error in chunk_text_without_patterns: {e}", exc_info=True)
         return []
 
-
 def format_eta(seconds):
     minutes = seconds // 60
     secs = seconds % 60
     return f"{int(minutes)}m {int(secs)}s"
-
 
 def sleep_seconds(task_id, seconds):
     for _ in range(seconds):
@@ -190,7 +228,6 @@ def sleep_seconds(task_id, seconds):
                 break
             if progress_data[task_id]['eta'] > 0:
                 progress_data[task_id]['eta'] -= 1
-
 
 def rename_sheet_to_soc_mapping(excel_path):
     try:
@@ -205,7 +242,6 @@ def rename_sheet_to_soc_mapping(excel_path):
             logging.warning("Sheet1 not found in the Excel file.")
     except Exception as e:
         logging.error(f"Error renaming Sheet1 to Control Assessment: {e}", exc_info=True)
-
 
 def format_compliance_sheet(excel_path):
     try:
@@ -302,7 +338,6 @@ def format_compliance_sheet(excel_path):
         logging.info("Compliance Score sheet formatted successfully.")
     except Exception as e:
         logging.error(f"Error formatting Compliance Score sheet: {e}", exc_info=True)
-
 
 def create_executive_summary(input_excel_path, output_excel_path):
     try:
@@ -595,7 +630,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
         logging.error(f"Error in create_executive_summary: {e}", exc_info=True)
         raise
 
-
 def detect_control_id_pages(pdf_path, regex_to_cids):
     control_id_pages = {cid: [] for cids in regex_to_cids.values() for cid in cids}
     try:
@@ -616,7 +650,6 @@ def detect_control_id_pages(pdf_path, regex_to_cids):
         logging.error(f"Error in detect_control_id_pages: {e}", exc_info=True)
         return control_id_pages
 
-
 def determine_page_range(control_id_pages, regex_to_cids):
     start_pages = []
     for regex, cids in regex_to_cids.items():
@@ -631,6 +664,9 @@ def determine_page_range(control_id_pages, regex_to_cids):
 
     return (start_page, end_page)
 
+# -------------------------------------------------------------------
+# Background processing function for /process_all endpoint (unchanged)
+# -------------------------------------------------------------------
 
 def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                        soc_report_filename, framework_filename):
@@ -908,7 +944,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['error'] = str(e)
                 progress_data[task_id]['eta'] = 0
 
-
 def determine_status(question, answer):
     if "signify the report is invalid" in question or "qualified report" in question:
         if answer.strip().lower().startswith("yes."):
@@ -919,9 +954,8 @@ def determine_status(question, answer):
             return "Pass"
         return "Fail"
 
-
 # -------------------------------------------------------
-# UPDATED Endpoint: /initial_qualifier_check
+# UPDATED Endpoint: /initial_qualifier_check (unchanged)
 # -------------------------------------------------------
 @app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
@@ -931,7 +965,6 @@ def initial_qualifier_check():
         if not pdf_file:
             raise ValueError("Missing required file: pdf_file")
 
-        # Remove model input; use fixed model inside the service as needed.
         filename_pdf = secure_filename(pdf_file.filename)
         pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename_pdf)
         pdf_file.save(pdf_path)
@@ -1012,9 +1045,8 @@ def initial_qualifier_check():
         logging.error(f"Error in /initial_qualifier_check: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
 
-
 # -------------------------------------------------------
-# NEW ENDPOINT: /detect_control_ids
+# NEW ENDPOINT: /detect_control_ids (MODIFIED)
 # -------------------------------------------------------
 @app.route('/detect_control_ids', methods=['POST'])
 def detect_control_ids_endpoint():
@@ -1029,6 +1061,7 @@ def detect_control_ids_endpoint():
         pdf_file.save(pdf_path)
         logging.info(f"PDF file saved to {pdf_path}")
 
+        # Identify repeating patterns (control IDs) as before
         repeating_patterns = identify_control_ids(pdf_path)
         regex_to_cids = {}
         for pattern_dict in repeating_patterns:
@@ -1037,16 +1070,37 @@ def detect_control_ids_endpoint():
             if regex and cid:
                 regex_to_cids.setdefault(regex, []).append(cid)
 
-        control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+        # Get control ID pages as detected in the entire document
+        all_control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+
+        # Find the page number where Section IV heading appears (ignoring the first 5 pages)
+        section_iv_page = find_section_iv_page(pdf_path)
+        logging.info(f"Section IV heading detected on page: {section_iv_page}")
+
+        # Filter out any control IDs that do not appear AFTER the Section IV heading
+        # If no Section IV heading is found, we discard them all (or you can decide otherwise)
+        filtered_control_id_pages = {}
+
+        if section_iv_page is not None:
+            for cid, pages in all_control_id_pages.items():
+                # Keep only pages that come strictly after section_iv_page
+                filtered_pages = [p for p in pages if p > section_iv_page]
+                if filtered_pages:
+                    filtered_control_id_pages[cid] = filtered_pages
+                else:
+                    logging.info(f"Control ID '{cid}' discarded (appears only before Section IV or not at all).")
+        else:
+            # No Section IV found => discard all
+            logging.info("No Section IV heading found; discarding all control IDs.")
+            filtered_control_id_pages = {}
 
         return jsonify({
             "repeating_patterns": repeating_patterns,
-            "control_id_pages": control_id_pages
+            "control_id_pages": filtered_control_id_pages
         }), 200
     except Exception as e:
         logging.error(f"Error in /detect_control_ids endpoint: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
-
 
 # -------------------------------------------------------
 # UPDATED Endpoint: /process_all
@@ -1124,7 +1178,6 @@ def process_all():
         logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
 
-
 @app.route('/progress/<task_id>', methods=['GET'])
 def sse_progress(task_id):
     def generate():
@@ -1170,7 +1223,6 @@ def sse_progress(task_id):
 
     return response
 
-
 @app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
     logging.info(f"Received request to download file: {filename}")
@@ -1189,7 +1241,6 @@ def download_file(filename):
     except Exception as e:
         logging.error(f"Error serving file {filename}: {e}", exc_info=True)
         return jsonify({"error": "File could not be served"}), 500
-
 
 @app.route('/cancel_task/<task_id>', methods=['POST'])
 def cancel_task(task_id):
@@ -1210,7 +1261,6 @@ def cancel_task(task_id):
 
     logging.info(f"Task {task_id} marked as cancelled by the user.")
     return jsonify({"message": f"Task {task_id} cancelled."}), 200
-
 
 if __name__ == "__main__":
     logging.info("Starting the Flask application on port 5000.")
