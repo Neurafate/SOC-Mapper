@@ -8,7 +8,7 @@ import re
 from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
 
-# ========== NEW IMPORT for Complementary User Entity Controls ==========
+# ========== NEW IMPORT for CUECs ==========
 from pathlib import Path
 from CUEC import process_pdf_to_dataframe
 
@@ -599,13 +599,13 @@ def add_cuec_sheet_to_workbook(excel_path, df_cuec):
     try:
         logging.info(f"Adding CUEC sheet to workbook: {excel_path}")
         wb = load_workbook(excel_path)
-        if "Complementary User Entity Controls" in wb.sheetnames:
-            del wb["Complementary User Entity Controls"]
+        if "CUECs" in wb.sheetnames:
+            del wb["CUECs"]
         if "Control Assessment" not in wb.sheetnames:
-            ws_cuec = wb.create_sheet("Complementary User Entity Controls")
+            ws_cuec = wb.create_sheet("CUECs")
         else:
             control_assessment_index = wb.sheetnames.index("Control Assessment")
-            ws_cuec = wb.create_sheet(title="Complementary User Entity Controls", index=control_assessment_index + 1)
+            ws_cuec = wb.create_sheet(title="CUECs", index=control_assessment_index + 1)
         headers = list(df_cuec.columns)
         header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")
         bold_font = Font(bold=True, color="000000")
@@ -857,7 +857,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             progress_data[task_id]['eta'] = max(0, progress_data[task_id]['eta'] - executive_summary_time)
         check_cancel(task_id)
         with progress_lock:
-            progress_data[task_id]['status'] = "Extracting Complementary User Entity Controls..."
+            progress_data[task_id]['status'] = "Extracting CUECs..."
         logging.info(f"Task {task_id}: Extracting CUEC. ETA: {format_eta(progress_data[task_id]['eta'])}")
         start_cuec = time.time()
         df_cuec = process_pdf_to_dataframe(Path(pdf_path), pages_to_skip=5)
