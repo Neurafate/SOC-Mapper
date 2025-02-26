@@ -1069,6 +1069,7 @@ def process_all():
         logging.error(f"Error in /process_all endpoint: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 400
 
+# -------------------- UPDATED SSE Endpoint --------------------
 @app.route('/progress/<task_id>', methods=['GET'])
 def sse_progress(task_id):
     def generate():
@@ -1088,14 +1089,23 @@ def sse_progress(task_id):
                 'status': status,
                 'eta': round(eta, 2) if eta is not None else eta
             }
-            if (download_url):
+            if download_url:
                 data['download_url'] = download_url
-            if (error):
+            if error:
                 data['error'] = error
-            if (cancelled):
+            if cancelled:
                 data['cancelled'] = True
             yield f"data: {json.dumps(data)}\n\n"
+            # When task is complete, cancelled, or errored, send a final "done" event and break
             if progress >= 100 or error or cancelled:
+                final_data = {
+                    'progress': round(progress, 2),
+                    'status': status,
+                    'eta': 0
+                }
+                if download_url:
+                    final_data['download_url'] = download_url
+                yield f"data: {json.dumps(final_data)}\n\n"
                 break
             time.sleep(1)
     response = Response(generate(), mimetype='text/event-stream')
