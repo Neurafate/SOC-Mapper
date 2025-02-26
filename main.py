@@ -556,7 +556,7 @@ def create_cuec_sheet(pdf_path, summary_output_path, pages_to_skip=5):
             control_assessment_index = sheet_names.index("Control Assessment")
         except ValueError:
             control_assessment_index = 0
-        ws_cuec = wb.create_sheet("Complementary User Entity Controls")
+        ws_cuec = wb.create_sheet("CUECs")
         sheets = wb._sheets
         sheets.remove(ws_cuec)
         sheets.insert(control_assessment_index + 1, ws_cuec)
@@ -594,7 +594,7 @@ def create_cuec_sheet(pdf_path, summary_output_path, pages_to_skip=5):
             ws_cuec.column_dimensions[column].width = adjusted_width
         wb.save(summary_output_path)
         wb.close()
-        logging.info(f"Complementary User Entity Controls sheet added to {summary_output_path}")
+        logging.info(f"CUECs sheet added to {summary_output_path}")
     except Exception as e:
         logging.error(f"Error in create_cuec_sheet: {e}", exc_info=True)
         raise
