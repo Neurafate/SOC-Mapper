@@ -32,7 +32,8 @@ from qualifiers import (
     is_audit_period_sufficient,
     has_invalid_observations,
     is_report_qualified,
-    describe_scope_of_services
+    describe_scope_of_services,
+    qualify_soc_report
 )
 import pandas as pd
 from openpyxl import load_workbook
@@ -42,11 +43,10 @@ from werkzeug.utils import secure_filename
 
 import PyPDF2  # PDF processing
 from sentence_transformers import SentenceTransformer
-from qualifiers import qualify_soc_report
 import faiss
 
-# ------------------- NEW IMPORT FOR CUEC -------------------
-from CUEC import process_pdf_to_dataframe
+# New import for the complementary content module and Path
+import CUEC
 from pathlib import Path
 
 app = Flask(__name__)
@@ -118,7 +118,7 @@ def find_section_iv_page(pdf_path):
         return None
 
 # ----------------------------------------------------------------
-# Helper functions from your existing code (unchanged or updated)
+# Helper functions from your existing code (unchanged below)
 # ----------------------------------------------------------------
 
 def count_controls(excel_path):
@@ -324,7 +324,6 @@ def format_compliance_sheet(excel_path):
                 end_column=domain_score_col
             )
 
-        from openpyxl.utils import get_column_letter
         ws.column_dimensions[get_column_letter(domain_col)].width = 25
         ws.column_dimensions[get_column_letter(domain_score_col)].width = 25
         ws.column_dimensions[get_column_letter(subdomain_col)].width = 25
@@ -383,7 +382,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
                 domain_status_counts[status] = 0
         domain_summary = domain_avg.merge(domain_status_counts, on="User Org Control Domain", how="left")
 
-        # Ensure any missing domains get added (rare edge case).
         if len(domain_summary) != len(unique_domains):
             missing_domains = set(unique_domains) - set(domain_summary['User Org Control Domain'])
             for domain in missing_domains:
@@ -403,7 +401,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
                 subdomain_status_counts[status] = 0
         subdomain_summary = subdomain_avg.merge(subdomain_status_counts, on="User Org Control Sub-Domain", how="left")
 
-        # Ensure any missing subdomains are added
         if len(subdomain_summary) != len(unique_subdomains):
             missing_subdomains = set(unique_subdomains) - set(subdomain_summary['User Org Control Sub-Domain'])
             for subd in missing_subdomains:
@@ -415,7 +412,6 @@ def create_executive_summary(input_excel_path, output_excel_path):
                     "Not Met": 0
                 }, ignore_index=True)
 
-        # Attempt reading Qualifying Questions
         try:
             qualifying_df = pd.read_excel(input_excel_path, sheet_name='Qualifying Questions')
             logging.info(f"Columns in 'Qualifying Questions': {list(qualifying_df.columns)}")
@@ -671,110 +667,63 @@ def determine_page_range(control_id_pages, regex_to_cids):
 
     return (start_page, end_page)
 
-def determine_status(question, answer):
+# -------------------------------------------------------------------
+# NEW HELPER: Add Complementary User Entity Controls Sheet using CUEC
+# -------------------------------------------------------------------
+def add_cuec_sheet_to_excel(excel_path, pdf_path):
     """
-    A small helper for initial_qualifier_check to assign Pass/Fail
-    based on the question and LLM answer.
-    """
-    if "signify the report is invalid" in question or "qualified report" in question:
-        if answer.strip().lower().startswith("yes."):
-            return "Fail"
-        return "Pass"
-    else:
-        if answer.strip().lower().startswith("yes."):
-            return "Pass"
-        return "Fail"
-
-# -------------------------------------------------------
-# CUEC HELPER: add a new sheet to the final Excel
-# -------------------------------------------------------
-def add_cuec_sheet(pdf_path, excel_path):
-    """
-    1) Uses process_pdf_to_dataframe(...) from the CUEC module to extract
-       complementary user entity controls from the PDF.
-    2) Inserts a new sheet in the Excel named 'Complementary User Entity Controls',
-       placed immediately after 'Control Assessment'.
-    3) Applies simple formatting to mimic the style used in other sheets.
+    Calls the CUEC module to process the PDF and returns a DataFrame.
+    Then, it adds a new sheet called "Complementary User Entity Controls"
+    to the given Excel file (inserting it immediately after the 'Control Assessment' sheet)
+    and applies formatting similar to the other sheets.
     """
     try:
-        logging.info(f"Extracting Complementary User Entity Controls from {pdf_path}...")
-
-        # Process the PDF -> DataFrame
-        df_cuec = process_pdf_to_dataframe(Path(pdf_path), pages_to_skip=5)
-        logging.info(f"CUEC: extracted {len(df_cuec)} lines.")
-
-        # Load final Excel
+        logging.info("Extracting Complementary Content using CUEC module...")
+        df_cuec = CUEC.process_pdf_to_dataframe(Path(pdf_path), pages_to_skip=5)
         wb = load_workbook(excel_path)
-        sheet_name = "Complementary User Entity Controls"
-        # Remove if already exists (just to avoid conflicts on repeated runs)
-        if sheet_name in wb.sheetnames:
-            del wb[sheet_name]
-        new_ws = wb.create_sheet(sheet_name)
-
-        # Place it after "Control Assessment"
-        if "Control Assessment" in wb.sheetnames:
-            idx_assessment = wb.sheetnames.index("Control Assessment")
-            new_ws_index = wb.sheetnames.index(sheet_name)
-            wb._sheets.insert(idx_assessment + 1, wb._sheets.pop(new_ws_index))
-        else:
-            logging.warning("'Control Assessment' sheet not found; appending CUEC at the end.")
-
-        # Write headers
-        new_ws["A1"] = "S. No."
-        new_ws["B1"] = "Content"
-
-        # Format headers (gold fill, bold)
+        # Create new sheet
+        new_sheet = wb.create_sheet("Complementary User Entity Controls")
+        # Reorder: place it immediately after the "Control Assessment" sheet
+        sheet_names = wb.sheetnames
+        try:
+            index = sheet_names.index("Control Assessment")
+        except ValueError:
+            index = 0
+        sheets = wb._sheets
+        sheets.remove(new_sheet)
+        sheets.insert(index + 1, new_sheet)
+        # Write DataFrame header and data
+        new_sheet.append(list(df_cuec.columns))
+        for row in df_cuec.itertuples(index=False):
+            new_sheet.append(list(row))
+        # Apply basic formatting: header style and column widths
         header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")
-        header_font = Font(bold=True, color="000000")
-        new_ws["A1"].fill = header_fill
-        new_ws["B1"].fill = header_fill
-        new_ws["A1"].font = header_font
-        new_ws["B1"].font = header_font
-        new_ws["A1"].alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
-        new_ws["B1"].alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
-
-        # Write data
-        thin_border = Border(
-            left=Side(border_style="thin"),
-            right=Side(border_style="thin"),
-            top=Side(border_style="thin"),
-            bottom=Side(border_style="thin")
-        )
-        row_index = 2
-        for i, row_data in df_cuec.iterrows():
-            sno = row_data.get("S. No.")
-            content = row_data.get("Content", "")
-            cell_sno = new_ws.cell(row=row_index, column=1, value=sno)
-            cell_content = new_ws.cell(row=row_index, column=2, value=content)
-
-            # styling
-            cell_sno.alignment = Alignment(wrap_text=True, vertical='top')
-            cell_sno.border = thin_border
-            cell_content.alignment = Alignment(wrap_text=True, vertical='top')
-            cell_content.border = thin_border
-
-            row_index += 1
-
-        # Adjust column widths
-        new_ws.column_dimensions["A"].width = 10
-        new_ws.column_dimensions["B"].width = 70
-
+        bold_font = Font(bold=True)
+        for cell in new_sheet[1]:
+            cell.fill = header_fill
+            cell.font = bold_font
+            cell.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+        # Set column widths (adjust as needed)
+        new_sheet.column_dimensions['A'].width = 10
+        new_sheet.column_dimensions['B'].width = 100
         wb.save(excel_path)
         wb.close()
-        logging.info(f"Successfully added 'Complementary User Entity Controls' sheet to {excel_path}")
+        logging.info("Complementary User Entity Controls sheet added successfully.")
     except Exception as e:
-        logging.error(f"Error in add_cuec_sheet: {e}", exc_info=True)
+        logging.error(f"Error adding Complementary User Entity Controls sheet: {e}", exc_info=True)
+        raise
 
 # -------------------------------------------------------------------
 # Background processing function for /process_all endpoint
 # -------------------------------------------------------------------
+
 def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                        soc_report_filename, framework_filename):
     """
     The long-running background process that extracts PDF text,
     builds RAG, processes controls, merges with user framework,
-    performs final qualifiers, creates an Executive Summary,
-    and now also adds a Complementary User Entity Controls sheet.
+    performs final qualifiers, and creates an Executive Summary.
+    Additionally, it calls the CUEC module to add a complementary content sheet.
     """
     try:
         logging.info(f"Background processing started for task_id: {task_id}.")
@@ -785,19 +734,21 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         qualifiers_start_page = 1
         qualifiers_end_page = start_page - 1 if start_page > 1 else 1
 
-        # Timing estimates (seconds)
         pre_llm_time = 40
         pre_llm_steps = 6
         pre_llm_step_time = int(pre_llm_time / pre_llm_steps)
+
+        # With no model input, use fixed timings.
         qualifier_time = 21
         llm_time_per_control = 7
-        cuec_time = 30  # NEW step for CUEC extraction
 
         num_controls = count_controls(excel_path)
         llm_time = num_controls * llm_time_per_control
 
-        # total = pre-LLM (40) + LLM time + Qualifier (21) + CUEC (30) = 40 + (num_controls*7) + 21 + 30
-        total_eta = pre_llm_time + llm_time + qualifier_time + cuec_time
+        # New complementary step time
+        complementary_step_time = 15
+
+        total_eta = pre_llm_time + llm_time + qualifier_time + complementary_step_time
 
         progress_data[task_id]['eta'] = int(total_eta)
         progress_data[task_id]['progress'] = 0.0
@@ -820,7 +771,11 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                     progress_data[tid]['error'] = "Task was cancelled by the user."
                 raise Exception("Task cancelled by user.")
 
-        # Break down progress into increments
+        progress_increment_pre_llm = 20.0 / pre_llm_steps
+        progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0
+        progress_increment_qualifier = 5.0
+        progress_increment_complementary = 5.0
+
         pre_llm_phase_descriptions = [
             "Extracting full text for qualifiers...",
             "Chunking full text for qualifiers...",
@@ -830,30 +785,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             "Building RAG system for controls..."
         ]
 
-        # The old distribution was:
-        #   Pre-LLM: 20% total
-        #   LLM controls: 70% total
-        #   Qualifier: 10% total
-        #
-        # We now add CUEC as a separate step. Let's keep the same distribution for pre-LLM and LLM,
-        # reduce Qualifiers from 10% to 8%, and give 2% to CUEC, or similar. We'll do something simpler
-        # for demonstration:
-        #   Pre-LLM -> 20%
-        #   LLM -> 70%
-        #   Qualifiers -> 8%
-        #   CUEC -> 2%
-        # = 100%
-        #
-        # This is just one approach; feel free to adjust as needed.
-        progress_increment_pre_llm = 20.0 / pre_llm_steps
-        progress_increment_llm = 70.0 / num_controls if num_controls > 0 else 0
-        progress_increment_qualifier = 8.0
-        progress_increment_cuec = 2.0
-
         if not control_id.strip():
             raise ValueError("No Control IDs were selected. Please provide Control IDs before continuing.")
 
-        # ----------------- Pre-LLM Steps -----------------
         for idx, step_description in enumerate(pre_llm_phase_descriptions):
             check_cancel(task_id)
             with progress_lock:
@@ -939,16 +873,14 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 with progress_lock:
                     progress_data[task_id]['progress'] += progress_increment_pre_llm
 
-        # ----------------- Process Cybersecurity Framework with RAG -----------------
         check_cancel(task_id)
         with progress_lock:
             progress_data[task_id]['status'] = "Processing control framework with RAG..."
         logging.info(f"Task {task_id}: Processing control framework with RAG. ETA: {format_eta(progress_data[task_id]['eta'])}")
-
         processed_framework_path = os.path.join(app.config['RAG_OUTPUTS'], f"cybersecurity_framework_with_answers_{task_id}.xlsx")
         faiss_index_controls_path = os.path.join(app.config['RAG_OUTPUTS'], f"faiss_index_controls_{task_id}.idx")
         df_control_chunks_path = os.path.join(app.config['RAG_OUTPUTS'], f"df_control_chunks_{task_id}.csv")
-
+        
         process_cybersecurity_framework_with_rag(
             excel_input_path=excel_path,
             output_path=processed_framework_path,
@@ -960,11 +892,9 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         if not os.path.exists(processed_framework_path):
             raise FileNotFoundError(f"Processed framework file not found at {processed_framework_path}")
 
-        # ----------------- Analyzing controls with LLM -----------------
         with progress_lock:
             progress_data[task_id]['status'] = "Analyzing controls with LLM..."
         logging.info(f"Task {task_id}: Analyzing controls with LLM. ETA: {format_eta(progress_data[task_id]['eta'])}")
-
         analysis_df = load_responses(processed_framework_path)
         analyzed_rows = []
 
@@ -980,6 +910,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['progress'] += progress_increment_llm
 
         analyzed_df = pd.concat(analyzed_rows, ignore_index=True) if analyzed_rows else pd.DataFrame()
+
         analyzed_df = remove_not_met_controls(analyzed_df)
 
         analysis_output_path = os.path.join(app.config['RESULTS_FOLDER'], f"Framework_Analysis_Completed_{task_id}.xlsx")
@@ -987,7 +918,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: LLM analysis completed at {analysis_output_path}")
         check_cancel(task_id)
 
-        # ----------------- Merge with user's framework and finalize -----------------
         framework_df = load_excel_file(excel_path)
         framework_df, error = map_columns_by_position(framework_df)
         if error:
@@ -1001,18 +931,14 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         final_output_path = os.path.join(app.config['EXCEL_FOLDER'], f"Final_Control_Status_{task_id}.xlsx")
         save_to_excel(final_df, final_output_path)
         logging.info(f"Task {task_id}: Final control status saved to {final_output_path}")
-
         with progress_lock:
             progress_data[task_id]['progress'] = 90.0
-
         rename_sheet_to_soc_mapping(final_output_path)
         check_cancel(task_id)
 
-        # ----------------- Qualifier checks -----------------
         with progress_lock:
             progress_data[task_id]['status'] = "Performing qualifier checks..."
         logging.info(f"Task {task_id}: Performing qualifier checks. ETA: {format_eta(progress_data[task_id]['eta'])}")
-
         try:
             qualify_soc_report(
                 pdf_path=pdf_path,
@@ -1035,7 +961,6 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
             progress_data[task_id]['progress'] += progress_increment_qualifier
         check_cancel(task_id)
 
-        # ----------------- Create Executive Summary -----------------
         with progress_lock:
             progress_data[task_id]['status'] = "Creating Executive Summary..."
         logging.info(f"Task {task_id}: Creating Executive Summary. ETA: {format_eta(progress_data[task_id]['eta'])}")
@@ -1048,32 +973,24 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         create_executive_summary(final_output_path, summary_output_path)
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
 
-        # ----------------- Add CUEC Sheet (New Step) -----------------
-        check_cancel(task_id)
+        # ---------------------------
+        # New Step: Add Complementary Sheet
+        # ---------------------------
         with progress_lock:
-            progress_data[task_id]['status'] = "Adding Complementary User Entity Controls..."
-        logging.info(f"Task {task_id}: Adding Complementary User Entity Controls. ETA: {format_eta(progress_data[task_id]['eta'])}")
+            progress_data[task_id]['status'] = "Adding Complementary User Entity Controls sheet..."
+        sleep_seconds(task_id, complementary_step_time)
+        add_cuec_sheet_to_excel(summary_output_path, pdf_path)
+        logging.info(f"Task {task_id}: Complementary User Entity Controls sheet added to {summary_output_path}")
 
-        sleep_seconds(task_id, cuec_time)
         with progress_lock:
-            if progress_data[task_id]['eta'] > cuec_time:
-                progress_data[task_id]['eta'] -= cuec_time
-            else:
-                progress_data[task_id]['eta'] = 0
-            progress_data[task_id]['progress'] += progress_increment_cuec
-        check_cancel(task_id)
-
-        add_cuec_sheet(pdf_path, summary_output_path)
-        logging.info(f"Task {task_id}: CUEC sheet added to {summary_output_path}")
-
-        # ----------------- Finalize Task -----------------
-        with progress_lock:
-            progress_data[task_id]['download_url'] = f"https://p5o8exb0s5dml8-5000.proxy.runpod.net/download/{final_filename}"
+            progress_data[task_id]['progress'] += progress_increment_complementary
             progress_data[task_id]['progress'] = 100.0
             progress_data[task_id]['eta'] = 0
             progress_data[task_id]['status'] = "Task completed successfully."
-
         logging.info(f"Task {task_id}: Task completed successfully.")
+
+        with progress_lock:
+            progress_data[task_id]['download_url'] = f"https://p5o8exb0s5dml8-5000.proxy.runpod.net/download/{final_filename}"
 
     except Exception as e:
         logging.error(f"Error in background_process (task_id: {task_id}): {e}", exc_info=True)
@@ -1092,8 +1009,18 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
                 progress_data[task_id]['error'] = str(e)
                 progress_data[task_id]['eta'] = 0
 
+def determine_status(question, answer):
+    if "signify the report is invalid" in question or "qualified report" in question:
+        if answer.strip().lower().startswith("yes."):
+            return "Fail"
+        return "Pass"
+    else:
+        if answer.strip().lower().startswith("yes."):
+            return "Pass"
+        return "Fail"
+
 # -------------------------------------------------------
-# Endpoint: /initial_qualifier_check (unchanged)
+# UPDATED Endpoint: /initial_qualifier_check (unchanged)
 # -------------------------------------------------------
 @app.route('/initial_qualifier_check', methods=['POST'])
 def initial_qualifier_check():
@@ -1133,7 +1060,6 @@ def initial_qualifier_check():
         report_qualified_result = is_report_qualified(df_temp, model, index, top_k=3)
 
         scope_of_services_result = describe_scope_of_services(df_temp, model, index, top_k=3)
-
         qualifiers = [
             {
                 "question": "Is the SOC 2 Type 2 Report latest (within the last 12 months)?",
@@ -1162,6 +1088,7 @@ def initial_qualifier_check():
             }
         ]
 
+        scope_of_services_result = describe_scope_of_services(df_temp, model, index, top_k=3)
         qualifiers.append({
             "question": "Please detail the scope of services within the SOC 2 Type 2 Report.",
             "answer": scope_of_services_result,
@@ -1184,7 +1111,7 @@ def initial_qualifier_check():
         return jsonify({"error": str(e)}), 400
 
 # -------------------------------------------------------
-# Endpoint: /detect_control_ids (modified to filter after Section IV)
+# NEW ENDPOINT: /detect_control_ids (MODIFIED)
 # -------------------------------------------------------
 @app.route('/detect_control_ids', methods=['POST'])
 def detect_control_ids_endpoint():
@@ -1199,7 +1126,7 @@ def detect_control_ids_endpoint():
         pdf_file.save(pdf_path)
         logging.info(f"PDF file saved to {pdf_path}")
 
-        # Identify repeating patterns (control IDs)
+        # Identify repeating patterns (control IDs) as before
         repeating_patterns = identify_control_ids(pdf_path)
         regex_to_cids = {}
         for pattern_dict in repeating_patterns:
@@ -1208,23 +1135,27 @@ def detect_control_ids_endpoint():
             if regex and cid:
                 regex_to_cids.setdefault(regex, []).append(cid)
 
-        # Get all control ID pages
+        # Get control ID pages as detected in the entire document
         all_control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
 
-        # Find page for Section IV
+        # Find the page number where Section IV heading appears (ignoring the first 5 pages)
         section_iv_page = find_section_iv_page(pdf_path)
         logging.info(f"Section IV heading detected on page: {section_iv_page}")
 
-        # Filter out any control IDs that do not appear AFTER Section IV
+        # Filter out any control IDs that do not appear AFTER the Section IV heading
+        # If no Section IV heading is found, we discard them all (or you can decide otherwise)
         filtered_control_id_pages = {}
+
         if section_iv_page is not None:
             for cid, pages in all_control_id_pages.items():
+                # Keep only pages that come strictly after section_iv_page
                 filtered_pages = [p for p in pages if p > section_iv_page]
                 if filtered_pages:
                     filtered_control_id_pages[cid] = filtered_pages
                 else:
-                    logging.info(f"Control ID '{cid}' discarded (before Section IV).")
+                    logging.info(f"Control ID '{cid}' discarded (appears only before Section IV or not at all).")
         else:
+            # No Section IV found => discard all
             logging.info("No Section IV heading found; discarding all control IDs.")
             filtered_control_id_pages = {}
 
@@ -1237,7 +1168,7 @@ def detect_control_ids_endpoint():
         return jsonify({"error": str(e)}), 400
 
 # -------------------------------------------------------
-# Endpoint: /process_all
+# UPDATED Endpoint: /process_all
 # -------------------------------------------------------
 @app.route('/process_all', methods=['POST'])
 def process_all():
@@ -1265,21 +1196,22 @@ def process_all():
         excel_file.save(excel_path)
         logging.info(f"Excel file saved to {excel_path}")
 
-        # Identify patterns actually relevant to the selected IDs
         repeating_patterns = identify_control_ids(pdf_path)
         regex_to_cids = {}
-        selected_ids = [c.strip() for c in control_id.split(',') if c.strip()]
         for pattern_dict in repeating_patterns:
             regex = pattern_dict.get("Regex Pattern")
             cid = pattern_dict.get("Example Control ID")
-            if regex and cid and cid in selected_ids:
+            if regex and cid and cid in [c.strip() for c in control_id.split(',') if c.strip()]:
                 regex_to_cids.setdefault(regex, []).append(cid)
+
+        control_ids_order = [cid.strip() for cid in control_id.split(',') if cid.strip()]
+        logging.info(f"Control IDs order for page range determination: {control_ids_order}")
 
         if not regex_to_cids:
             raise ValueError("No matching Control IDs found in the document based on the selected Control IDs.")
 
-        # Determine page range for these IDs
         control_id_pages = detect_control_id_pages(pdf_path, regex_to_cids)
+
         start_page, end_page = determine_page_range(control_id_pages, regex_to_cids)
         logging.info(f"Determined page range based on Control IDs: Start Page = {start_page}, End Page = {end_page}")
 
