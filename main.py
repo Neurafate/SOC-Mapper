@@ -1068,7 +1068,7 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         # ----------------- Finalize Task -----------------
         with progress_lock:
-            progress_data[task_id]['download_url'] = f"https://91upn2obiudwqc-5000.proxy.runpod.net/download/{final_filename}"
+            progress_data[task_id]['download_url'] = f"https://p5o8exb0s5dml8-5000.proxy.runpod.net/download/{final_filename}"
             progress_data[task_id]['progress'] = 100.0
             progress_data[task_id]['eta'] = 0
             progress_data[task_id]['status'] = "Task completed successfully."
