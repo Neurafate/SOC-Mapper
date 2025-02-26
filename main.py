@@ -78,7 +78,6 @@ progress_data = {}
 # -----------------------------------------------------------
 # New helper functions for Section IV detection & filtering
 # -----------------------------------------------------------
-
 def is_heading(line: str, max_words: int = 12) -> bool:
     """
     Determines if a given line of text can be considered a heading,
@@ -117,7 +116,6 @@ def find_section_iv_page(pdf_path):
 # ----------------------------------------------------------------
 # Helper functions from your existing code (unchanged)
 # ----------------------------------------------------------------
-
 def count_controls(excel_path):
     try:
         logging.info(f"Counting controls in {excel_path}.")
@@ -667,7 +665,6 @@ def determine_page_range(control_id_pages, regex_to_cids):
 # -------------------------------------------------------------------
 # Background processing function for /process_all endpoint (unchanged)
 # -------------------------------------------------------------------
-
 def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                        soc_report_filename, framework_filename):
     """
@@ -917,6 +914,69 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
 
         create_executive_summary(final_output_path, summary_output_path)
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
+
+        # ----------------------------------------------------------------
+        # NEW FUNCTIONALITY: Process CUEC module and add Complementary sheet
+        # ----------------------------------------------------------------
+        try:
+            from pathlib import Path
+            import CUEC  # Ensure CUEC.py is available in the PYTHONPATH
+            df_cuec = CUEC.process_pdf_to_dataframe(Path(pdf_path), pages_to_skip=5)
+            
+            # Open the summary Excel file and insert a new sheet after "Control Assessment"
+            wb = load_workbook(summary_output_path)
+            sheet_names = wb.sheetnames
+            try:
+                control_assessment_index = sheet_names.index("Control Assessment")
+            except ValueError:
+                control_assessment_index = 0
+            ws_cuec = wb.create_sheet("Complementary User Entity Controls")
+            sheets = wb._sheets
+            sheets.remove(ws_cuec)
+            sheets.insert(control_assessment_index + 1, ws_cuec)
+
+            # Write DataFrame header and rows into the new sheet
+            from openpyxl.utils.dataframe import dataframe_to_rows
+            header = list(df_cuec.columns)
+            ws_cuec.append(header)
+            for row in dataframe_to_rows(df_cuec, index=False, header=False):
+                ws_cuec.append(row)
+
+            # Apply formatting similar to other sheets
+            header_fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")
+            header_font = Font(bold=True, color="000000")
+            thin_border = Border(
+                left=Side(border_style="thin"),
+                right=Side(border_style="thin"),
+                top=Side(border_style="thin"),
+                bottom=Side(border_style="thin")
+            )
+            center_alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+            for cell in ws_cuec[1]:
+                cell.fill = header_fill
+                cell.font = header_font
+                cell.alignment = center_alignment
+                cell.border = thin_border
+
+            for col in ws_cuec.columns:
+                max_length = 0
+                column = col[0].column_letter
+                for cell in col:
+                    try:
+                        if cell.value:
+                            length = len(str(cell.value))
+                            if length > max_length:
+                                max_length = length
+                    except:
+                        pass
+                adjusted_width = max(10, max_length + 2)
+                ws_cuec.column_dimensions[column].width = adjusted_width
+
+            wb.save(summary_output_path)
+            logging.info(f"Task {task_id}: 'Complementary User Entity Controls' sheet added to {summary_output_path}")
+        except Exception as cuec_ex:
+            logging.error(f"Error adding Complementary User Entity Controls sheet: {cuec_ex}", exc_info=True)
+        # ----------------------------------------------------------------
 
         with progress_lock:
             progress_data[task_id]['download_url'] = f"https://91upn2obiudwqc-5000.proxy.runpod.net/download/{final_filename}"

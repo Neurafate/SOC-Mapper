@@ -1,99 +1,190 @@
-=== EXTRACTED COMPLEMENTARY CONTENT ===
-
-Google Cloud Platform is designed with the assumption that user entities (also referred to as customers) would implement certain policies, procedures, and controls. In certain situations, the application of specific or additional controls at the user entity may be necessary to achieve the applicable trust criteria stated in the description. Therefore, each user’s controls must be evaluated in conjunction with the controls summarized in Section III and Section IV of this report.
-
-This section describes those additional policies, procedures, and controls that Google recommends user entities should consider to complement Google’s policies, procedures, and controls. Management of the user entity and the user entity’s auditor should consider whether the following controls have been placed in operation at the user entity:
-
-Organization and Administration
-
-• Customers are responsible for considering information security requirements in the deployment, configuration, and modification of their instance of the Google Cloud Platform System
-
-• Customers are responsible for establishing organizational policies and procedures for the use or integration of third-party services
-
-• Customers are responsible for reviewing the information security policies and the security capabilities in the Google Cloud Platform System to determine their applicability and modify their internal controls as appropriate
-
-• Customers are responsible for establishing documented policies and procedures for the transfer and sharing of information within their organization and with third-party entities
-
-• Customers are responsible for providing the appropriate training to end-users on proper use of the Google Cloud Platform System consistent with the Acceptable Use Policies and Terms of Service. Acceptable Use Policies available at (or such URL as Google may provide):
-
-• Google Cloud Platform: https://cloud.google.com/terms/aup
-
-• Chronicle (Security Product) and Threat Intelligence for Chronicle:
-
-https://chronicle.security/legal/service-terms/ cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 50
-
-• Customers are responsible for ensuring that end-users are trained on the organizational policies and procedures relevant to the use of the Google Cloud Platform System
-
-• Customers are responsible for defining, documenting, and making available to users procedures for the operation of their instance of the Google Cloud Platform System
-
-• Customers are responsible for identifying and managing the inventory of information assets on the Google Cloud Platform System Logical Access
-
-• Customers are responsible for defining and maintaining policies and procedures governing the customer's administration of access to the Google Cloud Platform System
-
-• Customers are responsible for provisioning service availability, user roles, and sharing permissions within the Google Cloud Platform System consistent with customer organizational policies
-
-• Customers are responsible for implementing secure log-on procedures to access the Google Cloud Platform System consistent with customer access management policies
-
-• Customers are responsible for provisioning, maintaining, and disabling users’ access in accordance with customer access management policies
-
-• Customers are responsible for reviewing users' access rights periodically, consistent with customer organizational policies, to mitigate the risk of inappropriate access
-
-• Customers are responsible for enabling and enforcing the use of two-step verification on privileged administrator accounts
-
-• Customers are responsible for establishing procedures to allocate the initial password to access the Google Cloud Platform System to end-users when Google password authentication is used
-
-• Customers are responsible for training users on the use and disclosure of passwords used to authenticate to the Google Cloud Platform System
-
-• Customers are responsible for assigning responsibilities for the operation and monitoring of the Google Cloud Platform System
-
-• Customers are responsible for configuring GCP Marketplace permissions in Google Cloud Platform consistent with customer’s internal policies (GCP Marketplace contains enterprise applications that can be added to a Google Cloud Platform)
-
-• Customers are responsible for restricting access to and monitoring the use of Application Programming Interfaces (APIs) available in the Google Cloud Platform System
-
-• Customers are responsible for enabling logging and monitoring functionalities to detect administrator activity, customer support activity, security events, system errors, and data deletions to support customer incident management processes
-
-• Customers are responsible for configuring domain settings related to integration with other systems within the customer's environment consistent with customer policies
-
-• Customers are responsible for configuring the Google Cloud Platform System mobile device options consistent with customer policies and procedures
-
-• Customers are responsible for the deployment, configuration and modification of default security settings for cloud products including virtual machines in accordance with their information security requirements cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 51 Change Management
-
-• Customers are responsible for ensuring that individuals creating and/or updating profiles or changing the product configurations are authorized
-
-• Customers are responsible for ensuring any application software which they deploy onto the Google Cloud Platform System follows their specific software change management policies and procedures
-
-• Customers are responsible for reviewing and testing features, builds, and product releases, including Application Programming Interfaces (APIs), to evaluate their impact prior to deploying into production environments, as applicable
-
-• Customers are responsible for configuring test and/or development environments in their instance of the Google Cloud Platform System, as applicable, and restricting access to data in these environments
-
-• Customers are responsible for ensuring that user data is exported and deleted from the Google Cloud Platform System before or within a reasonable amount of time after termination
-
-• Customers are responsible for periodically reviewing the configuration of the Google Cloud Platform System to ensure it is consistent with their policies and procedures
-
-• Customers are responsible for managing and testing configurations that support their business and operational resiliency objectives, and for considering Google Cloud Platform architecture recommendations Physical Security
-
-• Customers are responsible for ensuring appropriate physical security controls over all devices that access the Google Cloud Platform System
-
-• Customers are responsible for ensuring any devices that access the Google Cloud Platform System or contain customer data are properly handled, secured, and transported as defined by the products requirements Incident Management
-
-• Customers are responsible for establishing responsibilities and procedures to respond to relevant information security incidents pertaining to the use of the Google Cloud Platform System
-
-• Customers should train administrators and end-users on their responsibilities and organizational procedures for identifying, handling, and responding to security incidents pertaining to the use of the Google Cloud Platform System
-
-• Customers should contact Google if there are any issues with service availability or security, including, but not limited to, unauthorized use of their password or account, compromise of data, and security events Availability
-
-• Customers are responsible for ensuring they have business recovery and backup procedures over their non-Google managed information systems that access the Google Cloud Platform System
-
-• Customers are responsible for configuring data storage locations that support their business and operational resiliency requirements cladmin-hcl-0101@unilever.com Google Confidental Information Google LLC | Description of the Google Cloud Platform System 52 Privacy
-
-• Customers are responsible for considering information security requirements in the deployment, configuration, and modification of their instance of the Google Cloud Platform System
-
-• Customers are responsible for provisioning, maintaining, monitoring and disabling end users’ access in accordance with their internal access management policies
-
-• Customers are responsible for establishing documented policies and procedures for the transfer and sharing of information within their organization and with third-party entities
-
-• Customers are responsible for establishing responsibilities and procedures to respond to relevant information security incidents pertaining to the use of the Google Cloud Platform System
-
-• Customers are responsible for ensuring that administrators do not send unnecessary employee personal data when escalating support requests to service providers, including Google cladmin-hcl-0101@unilever.com Google Confidental Information 53
-
-=== END ===
+[START: G. Complementary User Entity Control Considerations]
+Google Cloud Platform is designed with the assumption that user entities (also referred to as
+[HEADING]: customers) would implement certain policies, procedures, and controls. In certain situations, the
+application of specific or additional controls at the user entity may be necessary to achieve the
+applicable trust criteria stated in the description. Therefore, each user’s controls must be
+evaluated in conjunction with the controls summarized in Section III and Section IV of this report.
+[HEADING]: This section describes those additional policies, procedures, and controls that Google
+[HEADING]: recommends user entities should consider to complement Google’s policies, procedures, and
+controls. Management of the user entity and the user entity’s auditor should consider whether the
+[HEADING]: following controls have been placed in operation at the user entity:
+[HEADING]: Organization and Administration
+[HEADING]: •
+[HEADING]: Customers are responsible for considering information security requirements in the
+[HEADING]: deployment, configuration, and modification of their instance of the Google Cloud Platform
+[HEADING]: System
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing organizational policies and procedures for the use
+[HEADING]: or integration of third-party services
+[HEADING]: •
+[HEADING]: Customers are responsible for reviewing the information security policies and the security
+capabilities in the Google Cloud Platform System to determine their applicability and modify
+[HEADING]: their internal controls as appropriate
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing documented policies and procedures for the
+[HEADING]: transfer and sharing of information within their organization and with third-party entities
+[HEADING]: •
+Customers are responsible for providing the appropriate training to end-users on proper use
+of the Google Cloud Platform System consistent with the Acceptable Use Policies and Terms
+of Service. Acceptable Use Policies available at (or such URL as Google may provide):
+[HEADING]: •
+[HEADING]: Google Cloud Platform: https://cloud.google.com/terms/aup
+[HEADING]: •
+[HEADING]: Chronicle
+[HEADING]: (Security
+[HEADING]: Product)
+[HEADING]: and
+[HEADING]: Threat
+[HEADING]: Intelligence
+[HEADING]: for
+[HEADING]: Chronicle:
+[HEADING]: https://chronicle.security/legal/service-terms/
+[HEADING]: cladmin-hcl-0101@unilever.com
+[HEADING]: Google Confidental Information
+[HEADING]: Google LLC | Description of the Google Cloud Platform System
+[HEADING]: 50
+[HEADING]: •
+[HEADING]: Customers are responsible for ensuring that end-users are trained on the organizational
+policies and procedures relevant to the use of the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for defining, documenting, and making available to users
+procedures for the operation of their instance of the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for identifying and managing the inventory of information assets
+[HEADING]: on the Google Cloud Platform System
+[HEADING]: Logical Access
+[HEADING]: •
+[HEADING]: Customers are responsible for defining and maintaining policies and procedures governing
+[HEADING]: the customer's administration of access to the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for provisioning service availability, user roles, and sharing
+[HEADING]: permissions within the Google Cloud Platform System consistent with customer organizational
+[HEADING]: policies
+[HEADING]: •
+[HEADING]: Customers are responsible for implementing secure log-on procedures to access the Google
+[HEADING]: Cloud Platform System consistent with customer access management policies
+[HEADING]: •
+[HEADING]: Customers are responsible for provisioning, maintaining, and disabling users’ access in
+[HEADING]: accordance with customer access management policies
+[HEADING]: •
+[HEADING]: Customers are responsible for reviewing users' access rights periodically, consistent with
+[HEADING]: customer organizational policies, to mitigate the risk of inappropriate access
+[HEADING]: •
+Customers are responsible for enabling and enforcing the use of two-step verification on
+[HEADING]: privileged administrator accounts
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing procedures to allocate the initial password to
+[HEADING]: access the Google Cloud Platform System to end-users when Google password
+[HEADING]: authentication is used
+[HEADING]: •
+Customers are responsible for training users on the use and disclosure of passwords used to
+[HEADING]: authenticate to the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for assigning responsibilities for the operation and monitoring of
+[HEADING]: the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for configuring GCP Marketplace permissions in Google Cloud
+[HEADING]: Platform consistent with customer’s internal policies (GCP Marketplace contains enterprise
+[HEADING]: applications that can be added to a Google Cloud Platform)
+[HEADING]: •
+Customers are responsible for restricting access to and monitoring the use of Application
+[HEADING]: Programming Interfaces (APIs) available in the Google Cloud Platform System
+[HEADING]: •
+[HEADING]: Customers are responsible for enabling logging and monitoring functionalities to detect
+[HEADING]: administrator activity, customer support activity, security events, system errors, and data
+[HEADING]: deletions to support customer incident management processes
+[HEADING]: •
+[HEADING]: Customers are responsible for configuring domain settings related to integration with other
+[HEADING]: systems within the customer's environment consistent with customer policies
+[HEADING]: •
+[HEADING]: Customers are responsible for configuring the Google Cloud Platform System mobile device
+[HEADING]: options consistent with customer policies and procedures
+[HEADING]: •
+[HEADING]: Customers are responsible for the deployment, configuration and modification of default
+[HEADING]: security settings for cloud products including virtual machines in accordance with their
+[HEADING]: information security requirements
+[HEADING]: cladmin-hcl-0101@unilever.com
+[HEADING]: Google Confidental Information
+[HEADING]: Google LLC | Description of the Google Cloud Platform System
+[HEADING]: 51
+[HEADING]: Change Management
+[HEADING]: •
+[HEADING]: Customers are responsible for ensuring that individuals creating and/or updating profiles or
+[HEADING]: changing the product configurations are authorized
+[HEADING]: •
+Customers are responsible for ensuring any application software which they deploy onto the
+[HEADING]: Google Cloud Platform System follows their specific software change management policies
+[HEADING]: and procedures
+[HEADING]: •
+[HEADING]: Customers are responsible for reviewing and testing features, builds, and product releases,
+[HEADING]: including Application Programming Interfaces (APIs), to evaluate their impact prior to
+[HEADING]: deploying into production environments, as applicable
+[HEADING]: •
+[HEADING]: Customers are responsible for configuring test and/or development environments in their
+instance of the Google Cloud Platform System, as applicable, and restricting access to data
+[HEADING]: in these environments
+[HEADING]: •
+Customers are responsible for ensuring that user data is exported and deleted from the
+Google Cloud Platform System before or within a reasonable amount of time after termination
+[HEADING]: •
+[HEADING]: Customers are responsible for periodically reviewing the configuration of the Google Cloud
+[HEADING]: Platform System to ensure it is consistent with their policies and procedures
+[HEADING]: •
+[HEADING]: Customers are responsible for managing and testing configurations that support their
+[HEADING]: business and operational resiliency objectives, and for considering Google Cloud Platform
+[HEADING]: architecture recommendations
+[HEADING]: Physical Security
+[HEADING]: •
+[HEADING]: Customers are responsible for ensuring appropriate physical security controls over all devices
+[HEADING]: that access the Google Cloud Platform System
+[HEADING]: •
+Customers are responsible for ensuring any devices that access the Google Cloud Platform
+System or contain customer data are properly handled, secured, and transported as defined
+[HEADING]: by the products requirements
+[HEADING]: Incident Management
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing responsibilities and procedures to respond to
+relevant information security incidents pertaining to the use of the Google Cloud Platform
+[HEADING]: System
+[HEADING]: •
+[HEADING]: Customers should train administrators and end-users on their responsibilities and
+[HEADING]: organizational procedures for identifying, handling, and responding to security incidents
+[HEADING]: pertaining to the use of the Google Cloud Platform System
+[HEADING]: •
+Customers should contact Google if there are any issues with service availability or security,
+including, but not limited to, unauthorized use of their password or account, compromise of
+[HEADING]: data, and security events
+[HEADING]: Availability
+[HEADING]: •
+[HEADING]: Customers are responsible for ensuring they have business recovery and backup procedures
+[HEADING]: over their non-Google managed information systems that access the Google Cloud Platform
+[HEADING]: System
+[HEADING]: •
+[HEADING]: Customers are responsible for configuring data storage locations that support their business
+[HEADING]: and operational resiliency requirements
+[HEADING]: cladmin-hcl-0101@unilever.com
+[HEADING]: Google Confidental Information
+[HEADING]: Google LLC | Description of the Google Cloud Platform System
+[HEADING]: 52
+[HEADING]: Privacy
+[HEADING]: •
+[HEADING]: Customers are responsible for considering information security requirements in the
+[HEADING]: deployment, configuration, and modification of their instance of the Google Cloud Platform
+[HEADING]: System
+[HEADING]: •
+[HEADING]: Customers are responsible for provisioning, maintaining, monitoring and disabling end users’
+[HEADING]: access in accordance with their internal access management policies
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing documented policies and procedures for the
+[HEADING]: transfer and sharing of information within their organization and with third-party entities
+[HEADING]: •
+[HEADING]: Customers are responsible for establishing responsibilities and procedures to respond to
+relevant information security incidents pertaining to the use of the Google Cloud Platform
+[HEADING]: System
+[HEADING]: •
+[HEADING]: Customers are responsible for ensuring that administrators do not send unnecessary
+[HEADING]: employee personal data when escalating support requests to service providers, including
+[HEADING]: Google
+[HEADING]: cladmin-hcl-0101@unilever.com
+[HEADING]: Google Confidental Information
+[HEADING]: 53
