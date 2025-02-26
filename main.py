@@ -668,12 +668,12 @@ def determine_page_range(control_id_pages, regex_to_cids):
     return (start_page, end_page)
 
 # -------------------------------------------------------------------
-# NEW HELPER: Add Complementary User Entity Controls Sheet using CUEC
+# NEW HELPER: Add CUECs Sheet using CUEC
 # -------------------------------------------------------------------
 def add_cuec_sheet_to_excel(excel_path, pdf_path):
     """
     Calls the CUEC module to process the PDF and returns a DataFrame.
-    Then, it adds a new sheet called "Complementary User Entity Controls"
+    Then, it adds a new sheet called "CUECs"
     to the given Excel file (inserting it immediately after the 'Control Assessment' sheet)
     and applies formatting similar to the other sheets.
     """
@@ -682,7 +682,7 @@ def add_cuec_sheet_to_excel(excel_path, pdf_path):
         df_cuec = CUEC.process_pdf_to_dataframe(Path(pdf_path), pages_to_skip=5)
         wb = load_workbook(excel_path)
         # Create new sheet
-        new_sheet = wb.create_sheet("Complementary User Entity Controls")
+        new_sheet = wb.create_sheet("CUECs")
         # Reorder: place it immediately after the "Control Assessment" sheet
         sheet_names = wb.sheetnames
         try:
@@ -708,9 +708,9 @@ def add_cuec_sheet_to_excel(excel_path, pdf_path):
         new_sheet.column_dimensions['B'].width = 100
         wb.save(excel_path)
         wb.close()
-        logging.info("Complementary User Entity Controls sheet added successfully.")
+        logging.info("CUECs sheet added successfully.")
     except Exception as e:
-        logging.error(f"Error adding Complementary User Entity Controls sheet: {e}", exc_info=True)
+        logging.error(f"Error adding CUECs sheet: {e}", exc_info=True)
         raise
 
 # -------------------------------------------------------------------
@@ -977,10 +977,10 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         # New Step: Add Complementary Sheet
         # ---------------------------
         with progress_lock:
-            progress_data[task_id]['status'] = "Adding Complementary User Entity Controls sheet..."
+            progress_data[task_id]['status'] = "Adding CUECs sheet..."
         sleep_seconds(task_id, complementary_step_time)
         add_cuec_sheet_to_excel(summary_output_path, pdf_path)
-        logging.info(f"Task {task_id}: Complementary User Entity Controls sheet added to {summary_output_path}")
+        logging.info(f"Task {task_id}: CUECs sheet added to {summary_output_path}")
 
         with progress_lock:
             progress_data[task_id]['progress'] += progress_increment_complementary
