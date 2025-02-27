@@ -716,7 +716,6 @@ def add_cuec_sheet_to_excel(excel_path, pdf_path):
 # -------------------------------------------------------------------
 # Background processing function for /process_all endpoint
 # -------------------------------------------------------------------
-
 def background_process(task_id, pdf_path, excel_path, start_page, end_page, control_id,
                        soc_report_filename, framework_filename):
     """
@@ -957,7 +956,8 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: Finalizing qualifier processing. ETA: {format_eta(progress_data[task_id]['eta'])}")
         sleep_seconds(task_id, qualifier_time)
         with progress_lock:
-            progress_data[task_id]['eta'] -= qualifier_time
+            # Ensure ETA does not drop below 20 seconds for remaining steps.
+            progress_data[task_id]['eta'] = max(progress_data[task_id]['eta'] - qualifier_time, 20)
             progress_data[task_id]['progress'] += progress_increment_qualifier
         check_cancel(task_id)
 
@@ -974,14 +974,22 @@ def background_process(task_id, pdf_path, excel_path, start_page, end_page, cont
         logging.info(f"Task {task_id}: Executive Summary created at {summary_output_path}")
 
         # ---------------------------
-        # New Step: Add Complementary Sheet
+        # New Step: Add Complementary Sheet using CUEC
         # ---------------------------
         with progress_lock:
             progress_data[task_id]['status'] = "Adding CUECs sheet..."
-        sleep_seconds(task_id, complementary_step_time)
+        # Instead of a fixed sleep, call CUEC function and verify its output.
         add_cuec_sheet_to_excel(summary_output_path, pdf_path)
         logging.info(f"Task {task_id}: CUECs sheet added to {summary_output_path}")
-
+        
+        # Verify that the CUECs sheet has been added.
+        wb = load_workbook(summary_output_path)
+        if "CUECs" in wb.sheetnames:
+            logging.info(f"Task {task_id}: CUECs sheet confirmed in the Excel file.")
+        else:
+            raise FileNotFoundError("CUECs sheet was not found in the Excel file after processing.")
+        wb.close()
+        
         with progress_lock:
             progress_data[task_id]['progress'] += progress_increment_complementary
             progress_data[task_id]['progress'] = 100.0
