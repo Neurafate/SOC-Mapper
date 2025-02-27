@@ -312,15 +312,16 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
     def determine_status(question, answer):
         """
         Determines the status based on the question and the answer.
-        For some questions, "Yes" is a Pass; for others, "Yes" is a Fail.
+        For the scope of services question, the status is always set to Pass.
+        For other questions, "Yes" indicates Pass except for questions about invalid observations or a qualified report.
         """
+        if "scope of services" in question.lower():
+            return "Pass"
         if "signify the report is invalid" in question or "qualified report" in question:
-            # For these questions, "Yes" indicates a negative outcome (Fail)
             if answer.strip().lower().startswith("yes."):
                 return "Fail"
             return "Pass"
         else:
-            # For other questions, "Yes" indicates a positive outcome (Pass)
             if answer.strip().lower().startswith("yes."):
                 return "Pass"
             return "Fail"
@@ -413,6 +414,8 @@ def qualify_soc_report(pdf_path, df_chunks_path, faiss_index_path, excel_output_
             logging.warning("Qualifying Questions sheet not found in the Excel file.")
     except Exception as e:
         logging.error(f"Error formatting Qualifying Questions sheet: {e}", exc_info=True)
+
+
 if __name__ == "__main__":
     # Example usage (debug/test):
     pdf_path = "path/to/soc2_report.pdf"
