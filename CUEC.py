@@ -128,18 +128,14 @@ def spacy_prefilter(text: str) -> str:
 def get_cleaned_output(text: str) -> str:
     """
     Sends the pre-filtered text to the phi4 model via Ollama with a prompt instructing it
-    to return only the cleaned, plain text (without summarization, compression, or commentary).
-    The prompt also instructs the model to use a low temperature for deterministic output.
+    to return only the cleaned, plain text (without extra commentary).
     """
     filtered_text = spacy_prefilter(text)
     prompt = (
-        "Please clean up the following text without compressing, summarizing, or omitting any details. "
-        "Return the text exactly as it appears after fixing formatting issues, preserving all content, "
-        "and use a low temperature setting to ensure determinism (i.e. do not change or shorten the content):\n\n"
+        "Please clean up the following text. Do not add any summaries, commentary, or extra explanations—"
+        "return only the cleaned, plain text preserving its original structure:\n\n"
         + filtered_text
     )
-    # Optionally, you could pass additional parameters to adjust temperature if supported.
-    # For now, we rely on the prompt instruction.
     result = ollama.generate(model="phi4", prompt=prompt)
     return result["response"]
 
