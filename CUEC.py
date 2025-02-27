@@ -3,7 +3,8 @@
 """
 CUEC_full.py
 Extracts the "Complementary Content" section from a SOC Report PDF,
-cleans up the text for neat CSV import, and exports the results as a CSV file.
+applies a refined filtering pipeline using spaCy, an LLM (phi4 via Ollama), 
+and Pydantic to clean and validate the text, and then exports the results as a CSV file.
 Also saves the initial extracted text for debugging.
 """
 
@@ -13,9 +14,14 @@ from pathlib import Path
 import pandas as pd
 import spacy
 from collections import Counter
+import ollama
+from pydantic import BaseModel, validator
 
-# Load spaCy's English model.
-nlp = spacy.load("en_core_web_sm")
+# ---------------------------
+# Existing PDF Extraction Functions
+# ---------------------------
+# (These functions remain unchanged so that the extraction logic based on headings is preserved.)
+nlp_spacy = spacy.load("en_core_web_sm")
 
 def is_heading(line: str, max_words: int = 12) -> bool:
     """Determine if a line qualifies as a heading based on word count."""
@@ -34,46 +40,9 @@ def is_complementary_heading(heading_text: str) -> bool:
     """Check if a heading is the complementary content heading."""
     return "complementary" in heading_text.lower()
 
-def is_junk_line(line: str) -> bool:
-    """
-    Determines if a line is junk using universal heuristics and spaCy NLP.
-    
-    Heuristics include:
-      - Lines that are empty or very short (less than 3 words).
-      - Lines that are entirely uppercase and short.
-      - Lines containing a pipe ("|") with few words.
-      - Lines that match a page marker pattern like "31 of 97".
-      - Lines where a high ratio of tokens are numeric or recognized as ORG.
-    """
-    line = line.strip()
-    if not line:
-        return True
-    if len(line.split()) < 3:
-        return True
-    if line.isupper() and len(line.split()) < 10:
-        return True
-    if '|' in line and len(line.split()) < 10:
-        return True
-    if re.fullmatch(r'\d+\s+of\s+\d+', line):
-        return True
-    doc = nlp(line)
-    if len(doc) > 0:
-        junk_token_count = sum(1 for token in doc if token.ent_type_ in {"ORG", "CARDINAL"})
-        ratio = junk_token_count / len(doc)
-        if ratio > 0.7 and len(doc) < 15:
-            return True
-    return False
-
-def remove_emails_urls_page_numbers(line: str) -> str:
-    """Remove emails, URLs, and page number patterns from the line."""
-    line = re.sub(r'\S+@\S+\.\S+', '', line)       # Remove emails.
-    line = re.sub(r'https?://\S+', '', line)         # Remove URLs.
-    line = re.sub(r'\b\d+\s+of\s+\d+\b', '', line)    # Remove page number patterns.
-    return line.strip()
-
 def extract_complementary_text(pdf_path: Path, pages_to_skip: int = 5) -> str:
     """
-    Extracts lines from the PDF (after skipping initial pages) and uses structural logic
+    Extracts lines from the PDF (after skipping initial pages) using structural logic
     (via heading markers) to capture the complementary content section.
     """
     doc = fitz.open(pdf_path)
@@ -118,97 +87,130 @@ def extract_complementary_text(pdf_path: Path, pages_to_skip: int = 5) -> str:
                 captured_lines.append(line_text)
     return "\n".join(captured_lines)
 
-def clean_extracted_text(raw_text: str) -> list:
+# ---------------------------
+# New Filtering Pipeline Functions
+# ---------------------------
+def spacy_prefilter(text: str) -> str:
     """
-    Cleans the extracted text by:
-      1. Removing emails, URLs, and page number patterns.
-      2. Filtering out junk lines using universal heuristics.
-      3. Stripping out any remaining bracket tags.
-      4. Dynamically filtering out excessively repeated lines.
+    Pre-filter the text using spaCy:
+      - Remove tags enclosed in square brackets (e.g., [HEADING], [START], etc.).
+      - Split text into sentences.
+      - Remove duplicate sentences and sentences that are isolated tag words.
+      - Join the sentences into a single cleaned paragraph.
     """
-    lines = raw_text.splitlines()
-    temp_cleaned = []
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-        line = remove_emails_urls_page_numbers(line)
-        if is_junk_line(line):
-            continue
-        # Remove any bracket tags (e.g., [HEADING]: or [START: ...]).
-        line = re.sub(r'^\[[^\]]+\]\s*:?\s*', '', line).strip()
-        if line:
-            temp_cleaned.append(line)
-    total = len(temp_cleaned)
-    threshold = max(5, int(total * 0.1))  # Remove lines appearing in >10% of total, minimum 5.
-    freq = Counter(temp_cleaned)
-    cleaned_lines = [line for line in temp_cleaned if freq[line] <= threshold]
-    return cleaned_lines
+    # Remove any content within square brackets.
+    text = re.sub(r"\[.*?\]", "", text)
+    
+    # Process text with spaCy.
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    
+    # Extract and clean sentences.
+    sentences = [sent.text.strip() for sent in doc.sents if sent.text.strip()]
+    
+    # Remove sentences that are just common tag words.
+    tag_words = {"start", "heading", "complementary", "another"}
+    filtered_sentences = [sent for sent in sentences if sent.lower() not in tag_words]
+    
+    # Remove duplicate sentences (case-insensitive).
+    unique_sentences = []
+    seen = set()
+    for sent in filtered_sentences:
+        low = sent.lower()
+        if low not in seen:
+            seen.add(low)
+            unique_sentences.append(sent)
+    
+    cleaned_text = " ".join(unique_sentences)
+    cleaned_text = re.sub(r"\s+", " ", cleaned_text).strip()
+    return cleaned_text
 
-def merge_broken_lines(lines: list) -> list:
+def get_cleaned_output(text: str) -> str:
     """
-    Merges lines that are likely broken parts of the same paragraph using the following heuristic:
-      - If the current line ends with a colon (:), merge it with the next line.
-      - If the current line has an unmatched open parenthesis (more '(' than ')'),
-        merge it with the next line.
-      - Else if the current line ends with sentence-ending punctuation (., !, or ?), treat it as complete.
-      - Else if the next line starts with a lowercase letter, merge them.
-      - Otherwise, treat them as separate paragraphs.
+    Sends the pre-filtered text to the phi4 model via Ollama with a prompt instructing it
+    to return only the cleaned, plain text (without extra commentary).
     """
-    merged_lines = []
-    if not lines:
-        return merged_lines
-    current = lines[0]
-    for next_line in lines[1:]:
-        # If current line has an unmatched open parenthesis, merge unconditionally.
-        if current.count('(') > current.count(')'):
-            current = current + " " + next_line
-            continue
-        # If current ends with a colon, always merge.
-        if current.endswith(':'):
-            current = current + " " + next_line
-        # Else if current ends with sentence-ending punctuation, treat as complete.
-        elif current[-1] in {'.', '!', '?'}:
-            merged_lines.append(current)
-            current = next_line
-        # Else if next line starts with a lowercase letter, merge.
-        elif next_line and next_line[0].islower():
-            current = current + " " + next_line
-        else:
-            merged_lines.append(current)
-            current = next_line
-    if current:
-        merged_lines.append(current)
-    return merged_lines
+    filtered_text = spacy_prefilter(text)
+    prompt = (
+        "Please clean up the following text. Do not add any summaries, commentary, or extra explanations—"
+        "return only the cleaned, plain text preserving its original structure:\n\n"
+        + filtered_text
+    )
+    result = ollama.generate(model="phi4", prompt=prompt)
+    return result["response"]
 
+# ---------------------------
+# Pydantic Validation
+# ---------------------------
+class CleanedLine(BaseModel):
+    line: str
+
+    @validator("line")
+    def non_empty(cls, value):
+        value = value.strip()
+        if not value:
+            raise ValueError("Line cannot be empty")
+        return value
+
+def filter_and_validate_lines(text: str) -> list:
+    """
+    Splits the cleaned text into individual lines and validates each line using Pydantic.
+    Returns a list of dictionaries with validated lines.
+    """
+    raw_lines = text.splitlines()
+    valid_entries = []
+    for line in raw_lines:
+        if line.strip():
+            try:
+                entry = CleanedLine(line=line)
+                valid_entries.append(entry.dict())
+            except Exception as e:
+                print(f"Skipping line: {line}\nError: {e}")
+    return valid_entries
+
+# ---------------------------
+# New PDF Processing Function
+# ---------------------------
 def process_pdf_to_dataframe(pdf_path: Path, pages_to_skip: int = 5) -> pd.DataFrame:
     """
     Processes the PDF by:
-      - Extracting the raw text.
+      - Extracting the raw complementary text (using the original extraction logic).
       - Saving the raw text to 'output.txt' for debugging.
-      - Cleaning the text (using universal heuristics and dynamic frequency filtering).
-      - Merging broken lines using our refined merging heuristic.
-      
-    Returns a DataFrame with columns 'S. No.' and 'Content'.
+      - Cleaning the extracted text using the new filtering pipeline (spaCy prefilter + phi4 model via Ollama).
+      - Validating the cleaned text line-by-line using Pydantic.
+      - Returning a DataFrame with columns 'S. No.' and 'Content'.
     """
+    # Extract raw complementary text from the PDF.
     raw_text = extract_complementary_text(pdf_path, pages_to_skip=pages_to_skip)
+    
+    # Save raw extracted text for debugging.
     with open("output.txt", "w", encoding="utf-8") as f:
         f.write(raw_text)
-    cleaned_list_of_lines = clean_extracted_text(raw_text)
-    merged_paragraphs = merge_broken_lines(cleaned_list_of_lines)
-    data = [{"S. No.": idx, "Content": para} for idx, para in enumerate(merged_paragraphs, start=1)]
-    return pd.DataFrame(data)
+    
+    # Apply the new filtering pipeline to get the cleaned text.
+    cleaned_output = get_cleaned_output(raw_text)
+    
+    # Validate and filter cleaned output lines.
+    validated_lines = filter_and_validate_lines(cleaned_output)
+    
+    # Create a DataFrame (each validated line becomes a row).
+    data = [{"S. No.": idx, "Content": entry["line"]} for idx, entry in enumerate(validated_lines, start=1)]
+    df = pd.DataFrame(data)
+    return df
 
 def export_to_csv(df: pd.DataFrame, output_path: Path):
     """Exports the DataFrame to a CSV file."""
     df.to_csv(output_path, index=False)
 
+# ---------------------------
+# Main Function for Production Use
+# ---------------------------
 def main():
-    pdf_file = Path("GCP.pdf")  # Change filename as needed.
+    pdf_file = Path("GCP.pdf")  # Adjust the filename/path as needed.
     out_csv_file = Path("output.csv")
     df = process_pdf_to_dataframe(pdf_file, pages_to_skip=5)
     export_to_csv(df, out_csv_file)
-    print(f"Done. See {out_csv_file} and output.txt for debugging.")
+    print(f"Done. See '{out_csv_file}' and 'output.txt' for debugging.")
 
 if __name__ == "__main__":
     main()
